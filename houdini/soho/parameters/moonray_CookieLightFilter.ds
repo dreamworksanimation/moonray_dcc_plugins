@@ -1,0 +1,392 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayprojector_control_6fb"
+            label   "moonray:projector"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayprojector_51a"
+            label   "Projector"
+            type    oppath
+            default { "" }
+            help    "If a projector is specified, it overrides the node_xform and projector_* attributes"
+            disablewhen "{ xn__moonrayprojector_control_6fb == block } { xn__moonrayprojector_control_6fb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__moonraytexture_map_control_gjb"
+            label   "moonray:texture_map"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_map_f5a"
+            label   "Texture Map"
+            type    oppath
+            default { "" }
+            help    "Moonray map. Any Moonray map generator, checkerboard, noise, image map.  You may also add any of the map modifiers, color correct for example.  The default is an image map."
+            disablewhen "{ xn__moonraytexture_map_control_gjb == block } { xn__moonraytexture_map_control_gjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__moonrayblur_near_distance_control_uub"
+            label   "moonray:blur_near_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_near_distance_thb"
+            label   "Blur Near Distance"
+            type    float
+            default { "0" }
+            help    "Distance from cookie filter"
+            disablewhen "{ xn__moonrayblur_near_distance_control_uub == block } { xn__moonrayblur_near_distance_control_uub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_midpoint_control_pmb"
+            label   "moonray:blur_midpoint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_midpoint_o8a"
+            label   "Blur Midpoint"
+            type    float
+            default { "0.5" }
+            help    "Distance from cookie filter"
+            disablewhen "{ xn__moonrayblur_midpoint_control_pmb == block } { xn__moonrayblur_midpoint_control_pmb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_far_distance_control_7sb"
+            label   "moonray:blur_far_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_far_distance_6fb"
+            label   "Blur Far Distance"
+            type    float
+            default { "1" }
+            help    "Distance from cookie filter"
+            disablewhen "{ xn__moonrayblur_far_distance_control_7sb == block } { xn__moonrayblur_far_distance_control_7sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_near_value_control_ypb"
+            label   "moonray:blur_near_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_near_value_xcb"
+            label   "Blur Near Value"
+            type    float
+            default { "0" }
+            help    "Blur filter radius (in texture UV space) at the near distance"
+            disablewhen "{ xn__moonrayblur_near_value_control_ypb == block } { xn__moonrayblur_near_value_control_ypb == none }"
+            range   { 0 0.1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_mid_value_control_cob"
+            label   "moonray:blur_mid_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_mid_value_bbb"
+            label   "Blur Mid Value"
+            type    float
+            default { "0" }
+            help    "Blur filter radius (in texture UV space) at the mid distance"
+            disablewhen "{ xn__moonrayblur_mid_value_control_cob == block } { xn__moonrayblur_mid_value_control_cob == none }"
+            range   { 0 0.1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_far_value_control_cob"
+            label   "moonray:blur_far_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_far_value_bbb"
+            label   "Blur Far Value"
+            type    float
+            default { "0" }
+            help    "Blur filter radius (in texture UV space) at the far distance"
+            disablewhen "{ xn__moonrayblur_far_value_control_cob == block } { xn__moonrayblur_far_value_control_cob == none }"
+            range   { 0 0.1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_type_control_6fb"
+            label   "moonray:blur_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_type_51a"
+            label   "Blur Type"
+            type    string
+            default { "gaussian" }
+            help    "Gaussian or circular blur"
+            disablewhen "{ xn__moonrayblur_type_control_6fb == block } { xn__moonrayblur_type_control_6fb == none }"
+            menu {
+                "gaussian"  "Gaussian"
+                "circular"  "Circular"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonrayoutside_projection_control_uub"
+            label   "moonray:outside_projection"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayoutside_projection_thb"
+            label   "Outside Projection"
+            type    string
+            default { "black" }
+            help    "What happens outside the frustum of the projection camera.  Black (default), White, or Default (This uses the mode set on the Moonray map shader)"
+            disablewhen "{ xn__moonrayoutside_projection_control_uub == block } { xn__moonrayoutside_projection_control_uub == none }"
+            menu {
+                "black"     "Black"
+                "white"     "White"
+                "default"   "Default"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraydensity_control_xcb"
+            label   "moonray:density"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_wya"
+            label   "Density"
+            type    float
+            default { "1" }
+            help    "Controls how much of the cookie is added to the light"
+            disablewhen "{ xn__moonraydensity_control_xcb == block } { xn__moonraydensity_control_xcb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayinvert_control_bbb"
+            label   "moonray:invert"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayinvert_9wa"
+            label   "Invert"
+            type    toggle
+            default { "0" }
+            help    "Inverts the map"
+            disablewhen "{ xn__moonrayinvert_control_bbb == block } { xn__moonrayinvert_control_bbb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayprojector_type_control_cob"
+        label   "moonray:projector_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayprojector_type_bbb"
+        label   "Projector Type"
+        type    string
+        default { "perspective" }
+        help    "Perspective or orthographic projection"
+        disablewhen "{ xn__moonrayprojector_type_control_cob == block } { xn__moonrayprojector_type_control_cob == none }"
+        menu {
+            "perspective"   "Perspective"
+            "orthographic"  "Orthographic"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonrayprojector_focal_control_ypb"
+        label   "moonray:projector_focal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayprojector_focal_xcb"
+        label   "Projector Focal"
+        type    float
+        default { "30" }
+        help    "Focal length of the lens when using perspective projection"
+        disablewhen "{ xn__moonrayprojector_focal_control_ypb == block } { xn__moonrayprojector_focal_control_ypb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayprojector_film_width_aperture_control_rdc"
+        label   "moonray:projector_film_width_aperture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayprojector_film_width_aperture_qzb"
+        label   "Projector Film Width Aperture"
+        type    float
+        default { "24" }
+        help    "Size of the camera image plane"
+        disablewhen "{ xn__moonrayprojector_film_width_aperture_control_rdc == block } { xn__moonrayprojector_film_width_aperture_control_rdc == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayprojector_pixel_aspect_ratio_control_4bc"
+        label   "moonray:projector_pixel_aspect_ratio"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayprojector_pixel_aspect_ratio_3xb"
+        label   "Projector Pixel Aspect Ratio"
+        type    float
+        default { "1" }
+        help    "Aspect ratio of the projection"
+        disablewhen "{ xn__moonrayprojector_pixel_aspect_ratio_control_4bc == block } { xn__moonrayprojector_pixel_aspect_ratio_control_4bc == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

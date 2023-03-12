@@ -1,0 +1,141 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsbound_padding_control_1kb"
+        label   "inputs:bound_padding"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbound_padding_06a"
+        label   "Bound Padding"
+        type    float
+        default { "0" }
+        help    "bound padding defines how much to extend the bounding box of the object. Keep this value as low as possible unless the geometry skips tessellation because control cage bounding box is out of camera frustum but the displacement stretch out of the original object bounding box (pre-displacement). Setting the bound padding too large will consume more memory and tessellation time."
+        disablewhen "{ xn__inputsbound_padding_control_1kb == block } { xn__inputsbound_padding_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoperation_control_jeb"
+        label   "inputs:operation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoperation_i0a"
+        label   "Operation"
+        type    string
+        default { "add" }
+        disablewhen "{ xn__inputsoperation_control_jeb == block } { xn__inputsoperation_control_jeb == none }"
+        menu {
+            "add"           "Add"
+            "max magnitude" "Max Magnitude"
+            "min magnitude" "Min Magnitude"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_1_control_99a"
+        label   "inputs:input_1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_1_8wa"
+        label   "Input 1"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Displacement object 1"
+        disablewhen "{ xn__inputsinput_1_control_99a == block } { xn__inputsinput_1_control_99a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsscale_1_control_99a"
+        label   "inputs:scale_1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_1_8wa"
+        label   "Scale 1"
+        type    float
+        default { "1" }
+        help    "Scale of input 1"
+        disablewhen "{ xn__inputsscale_1_control_99a == block } { xn__inputsscale_1_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput_2_control_99a"
+        label   "inputs:input_2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_2_8wa"
+        label   "Input 2"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Displacement object 2"
+        disablewhen "{ xn__inputsinput_2_control_99a == block } { xn__inputsinput_2_control_99a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsscale_2_control_99a"
+        label   "inputs:scale_2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_2_8wa"
+        label   "Scale 2"
+        type    float
+        default { "1" }
+        help    "Scale of input 2"
+        disablewhen "{ xn__inputsscale_2_control_99a == block } { xn__inputsscale_2_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

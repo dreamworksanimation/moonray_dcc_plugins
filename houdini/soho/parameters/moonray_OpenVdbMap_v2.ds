@@ -1,0 +1,246 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsshow_active_field_control_krb"
+            label   "inputs:show_active_field"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_active_field_jeb"
+            label   "Show Active Field"
+            type    toggle
+            default { "0" }
+            help    "When enabled active/inactive field locations will be white/black, respectively"
+            disablewhen "{ xn__inputsshow_active_field_control_krb == block } { xn__inputsshow_active_field_control_krb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsvdb_source_control_5fb"
+        label   "inputs:vdb_source"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsvdb_source_41a"
+        label   "Vdb Source"
+        type    string
+        default { "from texture" }
+        help    "Where to look for the vdb filename.  Choose 'from texture' to specify a .vdb filename directly via the 'texture' attribute.  Choose 'from OpenVdbGeometry' to use the .vdb filename and transform from an OpenVdbGeometry object in the scene using the 'openvdb geometry' attribute"
+        disablewhen "{ xn__inputsvdb_source_control_5fb == block } { xn__inputsvdb_source_control_5fb == none }"
+        menu {
+            "from texture"          "From Texture"
+            "from OpenVdbGeometry"  "from OpenVdbGeometry"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstexture_control_99a"
+        label   "inputs:texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_8wa"
+        label   "Texture"
+        type    file
+        default { "" }
+        disablewhen "{ xn__inputstexture_control_99a == block } { xn__inputstexture_control_99a == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsopenvdb_geometry_control_xpb"
+        label   "inputs:openvdb_geometry"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "openvdb_geometry"
+        label    "Openvdb Geometry"
+        default 0
+        disablewhen "{ xn__inputsopenvdb_geometry_control_xpb == block } { xn__inputsopenvdb_geometry_control_xpb == none }"
+        parmtag { "usdvaluetype" "token" }
+
+        parm {
+            name    "xn__inputsopenvdb_geometry_wcb#"
+            label   "Openvdb Geometry"
+            type    oppath
+            default { "" }
+            help    "The OpenVdbGeometry object(s) from which to retrieve the .vdb filename and transform when 'vdb source' is set to 'from OpenVdbGeometry'"
+            parmtag { "moonray::is_parm" "1" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    parm {
+        name    "xn__inputsgrid_name_control_jeb"
+        label   "inputs:grid_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgrid_name_i0a"
+        label   "Grid Name"
+        type    string
+        default { "" }
+        help    "The name of the grid within the .vdb file from which to sample (hint: use openvdb_print to see contents of .vdb file). If no grid is specified, the first grid found in the .vdb will be used.  In cases where there are multiple grids with the same name, the grid name can be indexed (eg. density[1])"
+        disablewhen "{ xn__inputsgrid_name_control_jeb == block } { xn__inputsgrid_name_control_jeb == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_control_tub"
+        label   "inputs:texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_shb"
+        label   "Texture Coordinates"
+        type    string
+        default { "position" }
+        help    "Which coordinate source to use for the texture lookup"
+        disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
+        menu {
+            "position"                  "Position"
+            "reference position"        "Reference Position"
+            "input texture coordinates" "Input Texture Coordinates"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_control_l4b"
+        label   "inputs:input_texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_krb"
+        label   "Input Texture Coordinates"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "The world-space coordinate to use when 'texture coordinates' is set to 'input texture coordinates'"
+        disablewhen "{ xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsinterpolation_control_1kb"
+        label   "inputs:interpolation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinterpolation_06a"
+        label   "Interpolation"
+        type    string
+        default { "quadratic" }
+        help    "The type of interpolation to use when sampling the vdb"
+        disablewhen "{ xn__inputsinterpolation_control_1kb == block } { xn__inputsinterpolation_control_1kb == none }"
+        menu {
+            "point"     "Point"
+            "box"       "Box"
+            "quadratic" "Quadratic"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdefault_value_control_1kb"
+        label   "inputs:default_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdefault_value_06a"
+        label   "Default Value"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "A default value to use when A) the .vdb file is not found, B) the requested grid is not found, C) the grid is unspecified, but no grid is found"
+        disablewhen "{ xn__inputsdefault_value_control_1kb == block } { xn__inputsdefault_value_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsshow_warnings_control_1kb"
+        label   "inputs:show_warnings"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsshow_warnings_06a"
+        label   "Show Warnings"
+        type    toggle
+        default { "0" }
+        help    "Enables a warning message when A) the .vdb file is not found, B) the requested grid is not found, C) the grid is unspecified, but no grid is found"
+        disablewhen "{ xn__inputsshow_warnings_control_1kb == block } { xn__inputsshow_warnings_control_1kb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

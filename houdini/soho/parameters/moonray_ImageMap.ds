@@ -1,0 +1,662 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Blur"
+
+        parm {
+            name    "xn__inputsmip_bias_control_wcb"
+            label   "inputs:mip_bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsmip_bias_vya"
+            label   "Mip Bias"
+            type    float
+            default { "0" }
+            help    "Amount to scale derivatives which controls mipmap selection"
+            disablewhen "{ xn__inputsmip_bias_control_wcb == block } { xn__inputsmip_bias_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsblur_control_e5a"
+            label   "inputs:blur"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsblur_dsa"
+            label   "Blur"
+            type    float
+            default { "0" }
+            help    "This parameter is deprecated, do not use!   Number of pixels to blur the image"
+            disablewhen "{ xn__inputsblur_control_e5a == block } { xn__inputsblur_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsnum_blur_samples_control_xpb"
+            label   "inputs:num_blur_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnum_blur_samples_wcb"
+            label   "Num Blur Samples"
+            type    integer
+            default { "3" }
+            help    "This parameter is deprecated, do not use!  Number of internal samples for blur.   Higher values increase quality"
+            disablewhen "{ xn__inputsnum_blur_samples_control_xpb == block } { xn__inputsnum_blur_samples_control_xpb == none }"
+            range   { 1 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Color Correction"
+
+        parm {
+            name    "xn__inputssaturation_enabled_control_6sb"
+            label   "inputs:saturation_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssaturation_enabled_5fb"
+            label   "Saturation Enabled"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputssaturation_enabled_control_6sb == block } { xn__inputssaturation_enabled_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssaturation_control_5fb"
+            label   "inputs:saturation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssaturation_41a"
+            label   "Saturation"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputscontrast_enabled_control_xpb"
+            label   "inputs:contrast_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscontrast_enabled_wcb"
+            label   "Contrast Enabled"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputscontrast_enabled_control_xpb == block } { xn__inputscontrast_enabled_control_xpb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputscontrast_control_wcb"
+            label   "inputs:contrast"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscontrast_vya"
+            label   "Contrast"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputscontrast_control_wcb == block } { xn__inputscontrast_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsgamma_enabled_control_1kb"
+            label   "inputs:gamma_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgamma_enabled_06a"
+            label   "Gamma Enabled"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputsgamma_enabled_control_1kb == block } { xn__inputsgamma_enabled_control_1kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsgamma_adjust_control_fjb"
+            label   "inputs:gamma_adjust"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgamma_adjust_e5a"
+            label   "Gamma Adjust"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsgamma_adjust_control_fjb == block } { xn__inputsgamma_adjust_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsgain_offset_enabled_control_tub"
+            label   "inputs:gain_offset_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgain_offset_enabled_shb"
+            label   "Gain Offset Enabled"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputsgain_offset_enabled_control_tub == block } { xn__inputsgain_offset_enabled_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsgain_control_e5a"
+            label   "inputs:gain"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgain_dsa"
+            label   "Gain"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsoffset_adjust_control_1kb"
+            label   "inputs:offset_adjust"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsoffset_adjust_06a"
+            label   "Offset Adjust"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__inputsoffset_adjust_control_1kb == block } { xn__inputsoffset_adjust_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsTMI_control_enabled_control_tub"
+            label   "inputs:TMI_control_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsTMI_control_enabled_shb"
+            label   "TMI Control Enabled"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputsTMI_control_enabled_control_tub == block } { xn__inputsTMI_control_enabled_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsTMI_control_r3a"
+            label   "inputs:TMI"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsTMI_qqa"
+            label   "TMI"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "T = Temperature where positive values push towards blue and negative towards red.   M = Magenta where positive values push towards magenta and negative towards green.  I = Intensity where negative values remove and positive values add energy "
+            disablewhen "{ xn__inputsTMI_control_r3a == block } { xn__inputsTMI_control_r3a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputswrap_around_control_shb"
+        label   "inputs:wrap_around"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswrap_around_r3a"
+        label   "Wrap Around"
+        type    toggle
+        default { "1" }
+        disablewhen "{ xn__inputswrap_around_control_shb == block } { xn__inputswrap_around_control_shb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputstexture_control_99a"
+        label   "inputs:texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_8wa"
+        label   "Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx). If filename contains '<UDIM>', udim index substitution is performed on filename.  In the UDIM case, 'scale', 'offset', and 'wrap around' are ignored."
+        disablewhen "{ xn__inputstexture_control_99a == block } { xn__inputstexture_control_99a == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsuse_default_color_when_missing_control_qdc"
+        label   "inputs:use_default_color_when_missing"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_default_color_when_missing_pzb"
+        label   "Use Default Color When Missing"
+        type    toggle
+        default { "0" }
+        help    "Uses the 'default color' for missing udims and does not report error"
+        disablewhen "{ xn__inputsuse_default_color_when_missing_control_qdc == block } { xn__inputsuse_default_color_when_missing_control_qdc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsdefault_color_control_1kb"
+        label   "inputs:default_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdefault_color_06a"
+        label   "Default Color"
+        type    color
+        size    3
+        default { "0" "1" "0" }
+        help    "default color to be used for missing udims when 'use default color when missing' is enabled"
+        disablewhen "{ xn__inputsdefault_color_control_1kb == block } { xn__inputsdefault_color_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_control_tub"
+        label   "inputs:texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_shb"
+        label   "Texture Coordinates"
+        type    string
+        default { "texture" }
+        disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
+        menu {
+            "texture"                   "Texture"
+            "hair surface"              "Hair Surface"
+            "input texture coordinates" "Input Texture Coordinates"
+            "hair closest surface"      "Hair Closest Surface"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsalpha_only_control_5fb"
+        label   "inputs:alpha_only"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsalpha_only_41a"
+        label   "Alpha Only"
+        type    toggle
+        default { "0" }
+        help    "If true, the alpha channel of the texture will be placed in the rgb channels.  If the texture has no alpha channel, 1.0 is used, and the resulting texture lookup is then always white."
+        disablewhen "{ xn__inputsalpha_only_control_5fb == block } { xn__inputsalpha_only_control_5fb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_control_l4b"
+        label   "inputs:input_texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_krb"
+        label   "Input Texture Coordinates"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsgamma_control_06a"
+        label   "inputs:gamma"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_zta"
+        label   "Gamma"
+        type    string
+        default { "auto" }
+        disablewhen "{ xn__inputsgamma_control_06a == block } { xn__inputsgamma_control_06a == none }"
+        menu {
+            "off"   "Off"
+            "on"    "On"
+            "auto"  "Auto"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsoffset_control_n8a"
+        label   "inputs:offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_mva"
+        label   "Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        disablewhen "{ xn__inputsoffset_control_n8a == block } { xn__inputsoffset_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsrotation_angle_control_omb"
+        label   "inputs:rotation_angle"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_angle_n8a"
+        label   "Rotation Angle"
+        type    float
+        default { "0" }
+        help    "Rotation in degrees"
+        disablewhen "{ xn__inputsrotation_angle_control_omb == block } { xn__inputsrotation_angle_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsrotation_center_control_bob"
+        label   "inputs:rotation_center"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_center_99a"
+        label   "Rotation Center"
+        type    vector2
+        size    2
+        default { "0.5" "0.5" }
+        help    "UV coordinate around which to rotate"
+        disablewhen "{ xn__inputsrotation_center_control_bob == block } { xn__inputsrotation_center_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsudim_values_control_shb"
+        label   "inputs:udim_values"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "udim_values"
+        label    "Udim Values"
+        default 0
+        disablewhen "{ xn__inputsudim_values_control_shb == block } { xn__inputsudim_values_control_shb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__inputsudim_values_r3a#"
+            label   "Udim Values"
+            type    integer
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsudim_files_control_5fb"
+        label   "inputs:udim_files"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "udim_files"
+        label    "Udim Files"
+        default 0
+        disablewhen "{ xn__inputsudim_files_control_5fb == block } { xn__inputsudim_files_control_5fb == none }"
+        parmtag { "usdvaluetype" "string[]" }
+
+        parm {
+            name    "xn__inputsudim_files_41a#"
+            label   "Udim Files"
+            type    string
+            default { "" }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsudim_max_v_control_5fb"
+        label   "inputs:udim_max_v"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsudim_max_v_41a"
+        label   "Udim Max V"
+        type    integer
+        default { "10" }
+        help    "udim maximum v value"
+        disablewhen "{ xn__inputsudim_max_v_control_5fb == block } { xn__inputsudim_max_v_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+}

@@ -1,0 +1,200 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsdefault_material_control_xpb"
+        label   "inputs:default_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdefault_material_wcb"
+        label   "Default Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdefault_material_control_xpb == block } { xn__inputsdefault_material_control_xpb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputscamera_ray_material_control_tub"
+        label   "inputs:camera_ray_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscamera_ray_material_shb"
+        label   "Camera Ray Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputscamera_ray_material_control_tub == block } { xn__inputscamera_ray_material_control_tub == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsindirect_mirror_ray_material_control_h9b"
+        label   "inputs:indirect_mirror_ray_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsindirect_mirror_ray_material_gwb"
+        label   "Indirect Mirror Ray Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsindirect_mirror_ray_material_control_h9b == block } { xn__inputsindirect_mirror_ray_material_control_h9b == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsindirect_glossy_ray_material_control_h9b"
+        label   "inputs:indirect_glossy_ray_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsindirect_glossy_ray_material_gwb"
+        label   "Indirect Glossy Ray Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsindirect_glossy_ray_material_control_h9b == block } { xn__inputsindirect_glossy_ray_material_control_h9b == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsindirect_diffuse_ray_material_control_3bc"
+        label   "inputs:indirect_diffuse_ray_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsindirect_diffuse_ray_material_2xb"
+        label   "Indirect Diffuse Ray Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsindirect_diffuse_ray_material_control_3bc == block } { xn__inputsindirect_diffuse_ray_material_control_3bc == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputscutout_camera_rays_control_6sb"
+        label   "inputs:cutout_camera_rays"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscutout_camera_rays_5fb"
+        label   "Cutout Camera Rays"
+        type    toggle
+        default { "0" }
+        disablewhen "{ xn__inputscutout_camera_rays_control_6sb == block } { xn__inputscutout_camera_rays_control_6sb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

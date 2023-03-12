@@ -1,0 +1,141 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputscolor_A_control_99a"
+        label   "inputs:color_A"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_A_8wa"
+        label   "Color A"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "The color you get if blend amount is 0"
+        disablewhen "{ xn__inputscolor_A_control_99a == block } { xn__inputscolor_A_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputscolor_B_control_99a"
+        label   "inputs:color_B"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_B_8wa"
+        label   "Color B"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "The color you get if blend amount is 1"
+        disablewhen "{ xn__inputscolor_B_control_99a == block } { xn__inputscolor_B_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsblend_type_control_5fb"
+        label   "inputs:blend_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsblend_type_41a"
+        label   "Blend Type"
+        type    string
+        default { "linear" }
+        help    "The type of blending algorithm"
+        disablewhen "{ xn__inputsblend_type_control_5fb == block } { xn__inputsblend_type_control_5fb == none }"
+        menu {
+            "linear"    "Linear"
+            "cubic"     "Cubic"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsblend_amount_control_fjb"
+        label   "inputs:blend_amount"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsblend_amount_e5a"
+        label   "Blend Amount"
+        type    float
+        default { "0.5" }
+        help    "The amount to blend between color A (0) and color B (1)"
+        disablewhen "{ xn__inputsblend_amount_control_fjb == block } { xn__inputsblend_amount_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsthreshold_min_control_1kb"
+        label   "inputs:threshold_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsthreshold_min_06a"
+        label   "Threshold Min"
+        type    float
+        default { "0" }
+        help    "If the blend amount is less than or equal to this amount, it will choose color A (0)"
+        disablewhen "{ xn__inputsthreshold_min_control_1kb == block } { xn__inputsthreshold_min_control_1kb == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsthreshold_max_control_1kb"
+        label   "inputs:threshold_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsthreshold_max_06a"
+        label   "Threshold Max"
+        type    float
+        default { "1" }
+        help    "If the blend amount is greater than this amount, it will choose color B (1)"
+        disablewhen "{ xn__inputsthreshold_max_control_1kb == block } { xn__inputsthreshold_max_control_1kb == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

@@ -1,0 +1,89 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsline_color_control_5fb"
+        label   "inputs:line_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsline_color_41a"
+        label   "Line Color"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ xn__inputsline_color_control_5fb == block } { xn__inputsline_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsfill_color_control_5fb"
+        label   "inputs:fill_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfill_color_41a"
+        label   "Fill Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputsfill_color_control_5fb == block } { xn__inputsfill_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsraster_control_n8a"
+        label   "inputs:raster"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsraster_mva"
+        label   "Raster"
+        type    toggle
+        default { "1" }
+        disablewhen "{ xn__inputsraster_control_n8a == block } { xn__inputsraster_control_n8a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsline_width_control_5fb"
+        label   "inputs:line_width"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsline_width_41a"
+        label   "Line Width"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsline_width_control_5fb == block } { xn__inputsline_width_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

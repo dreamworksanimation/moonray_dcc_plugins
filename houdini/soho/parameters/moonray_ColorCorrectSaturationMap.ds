@@ -1,0 +1,179 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "bind the input here"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "enables/disables all color correct operations"
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmix_control_r3a"
+        label   "inputs:mix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_qqa"
+        label   "Mix"
+        type    float
+        default { "1" }
+        help    "how much of the overall color correct to mix in"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_control_5fb"
+        label   "inputs:saturation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_41a"
+        label   "Saturation"
+        type    float
+        default { "1" }
+        help    "desaturates the input below 1.0 and adds saturation above 1.0"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_saturation_control_75b"
+        label   "inputs:use_per_channel_saturation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_saturation_6sb"
+        label   "Use Per Channel Saturation"
+        type    toggle
+        default { "0" }
+        help    "enables separate RGB controls for saturation"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsuse_per_channel_saturation_control_75b == block } { xn__inputsuse_per_channel_saturation_control_75b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputssaturation_r_control_fjb"
+        label   "inputs:saturation_r"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_r_e5a"
+        label   "Saturation R"
+        type    float
+        default { "1" }
+        help    "desaturates the red channel input below 1.0 and adds saturation above 1.0"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_r_control_fjb == block } { xn__inputssaturation_r_control_fjb == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_g_control_fjb"
+        label   "inputs:saturation_g"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_g_e5a"
+        label   "Saturation G"
+        type    float
+        default { "1" }
+        help    "desaturates the green channel input below 1.0 and adds saturation above 1.0"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_g_control_fjb == block } { xn__inputssaturation_g_control_fjb == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_b_control_fjb"
+        label   "inputs:saturation_b"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_b_e5a"
+        label   "Saturation B"
+        type    float
+        default { "1" }
+        help    "desaturates the blue channel input below 1.0 and adds saturation above 1.0"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_b_control_fjb == block } { xn__inputssaturation_b_control_fjb == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

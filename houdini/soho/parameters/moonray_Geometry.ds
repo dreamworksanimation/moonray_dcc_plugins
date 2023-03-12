@@ -1,0 +1,35 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    label	"Moonray"
+    group {
+        name    "folder"
+        label   "Common Properties"
+
+    }
+
+    group {
+        name    "folder2"
+        label   "OpenVdb"
+
+    }
+
+    group {
+        name    "folder3"
+        label   "Alembic"
+
+    }
+
+    group {
+        name    "folder4"
+        label   "Willow"
+
+    }
+
+    group {
+        name    "folder5"
+        label   "FurDeform"
+
+    }
+
+}

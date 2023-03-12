@@ -1,0 +1,267 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "bind the input here"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "enables/disables all color correct operations"
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmix_control_r3a"
+        label   "inputs:mix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_qqa"
+        label   "Mix"
+        type    float
+        default { "1" }
+        help    "how much of the overall color correct to mix in"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgain_control_e5a"
+        label   "inputs:gain"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgain_dsa"
+        label   "Gain"
+        type    float
+        default { "1" }
+        help    "multiplies the input channels by the specified values"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoffset_control_n8a"
+        label   "inputs:offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_mva"
+        label   "Offset"
+        type    float
+        default { "0" }
+        help    "adds the specified values to the input"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsoffset_control_n8a == block } { xn__inputsoffset_control_n8a == none }"
+        range   { -1 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_gain_offset_control_u7b"
+        label   "inputs:use_per_channel_gain_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_gain_offset_tub"
+        label   "Use Per Channel Gain Offset"
+        type    toggle
+        default { "0" }
+        help    "enables separate RGB controls for gain and offset"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsuse_per_channel_gain_offset_control_u7b == block } { xn__inputsuse_per_channel_gain_offset_control_u7b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsgain_r_control_n8a"
+        label   "inputs:gain_r"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgain_r_mva"
+        label   "Gain R"
+        type    float
+        default { "1" }
+        help    "multiplies the red channel by the specified values"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_r_control_n8a == block } { xn__inputsgain_r_control_n8a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgain_g_control_n8a"
+        label   "inputs:gain_g"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgain_g_mva"
+        label   "Gain G"
+        type    float
+        default { "1" }
+        help    "multiplies the green channel by the specified values"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_g_control_n8a == block } { xn__inputsgain_g_control_n8a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgain_b_control_n8a"
+        label   "inputs:gain_b"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgain_b_mva"
+        label   "Gain B"
+        type    float
+        default { "1" }
+        help    "multiplies the blue channel by the specified values"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_b_control_n8a == block } { xn__inputsgain_b_control_n8a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoffset_r_control_wcb"
+        label   "inputs:offset_r"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_r_vya"
+        label   "Offset R"
+        type    float
+        default { "1" }
+        help    "adds the specified values to the red channel"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsoffset_r_control_wcb == block } { xn__inputsoffset_r_control_wcb == none }"
+        range   { -1 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoffset_g_control_wcb"
+        label   "inputs:offset_g"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_g_vya"
+        label   "Offset G"
+        type    float
+        default { "1" }
+        help    "adds the specified values to the green channel"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsoffset_g_control_wcb == block } { xn__inputsoffset_g_control_wcb == none }"
+        range   { -1 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoffset_b_control_wcb"
+        label   "inputs:offset_b"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_b_vya"
+        label   "Offset B"
+        type    float
+        default { "1" }
+        help    "adds the specified values to the blue channel"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsoffset_b_control_wcb == block } { xn__inputsoffset_b_control_wcb == none }"
+        range   { -1 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

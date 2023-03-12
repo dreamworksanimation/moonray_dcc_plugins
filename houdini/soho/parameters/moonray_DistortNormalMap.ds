@@ -1,0 +1,264 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Space"
+
+        parm {
+            name    "xn__inputsnoise_space_control_shb"
+            label   "inputs:noise_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnoise_space_r3a"
+            label   "Noise Space"
+            type    string
+            default { "object" }
+            help    "The space to calculate the noise in"
+            disablewhen "{ xn__inputsnoise_space_control_shb == block } { xn__inputsnoise_space_control_shb == none }"
+            menu {
+                "world"                     "World"
+                "object"                    "Object"
+                "reference"                 "Reference"
+                "texture"                   "Texture"
+                "input texture coordinates" "Input Texture Coordinates"
+                "hair_surface_uv"           "Hair_Surface_Uv"
+                "hair_closest_surface_uv"   "Hair_Closest_Surface_Uv"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_texture_coordinates_control_l4b"
+            label   "inputs:input_texture_coordinates"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_texture_coordinates_krb"
+            label   "Input Texture Coordinates"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ xn__inputsnoise_space_r3a != 7 } { xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsuse_input_vectors_control_krb"
+        label   "inputs:use_input_vectors"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_input_vectors_jeb"
+        label   "Use Input Vectors"
+        type    toggle
+        default { "0" }
+        help    "when checked, use input_U and V. otherwise use geometry dPds/t"
+        disablewhen "{ xn__inputsuse_input_vectors_control_krb == block } { xn__inputsuse_input_vectors_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsinput_U_control_99a"
+        label   "inputs:input_U"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_U_8wa"
+        label   "Input U"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "input U / tangent for distortion"
+        disablewhen "{ use_input_vectors == 0 } { xn__inputsinput_U_control_99a == block } { xn__inputsinput_U_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsinput_V_control_99a"
+        label   "inputs:input_V"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_V_8wa"
+        label   "Input V"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "input V / bitangent for distortion"
+        disablewhen "{ use_input_vectors == 0 } { xn__inputsinput_V_control_99a == block } { xn__inputsinput_V_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsseed_control_e5a"
+        label   "inputs:seed"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsseed_dsa"
+        label   "Seed"
+        type    integer
+        default { "0" }
+        help    "the seed for the noise generation"
+        disablewhen "{ xn__inputsseed_control_e5a == block } { xn__inputsseed_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsfrequency_U_control_shb"
+        label   "inputs:frequency_U"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfrequency_U_r3a"
+        label   "Frequency U"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "controls noise frequency for U distortion"
+        disablewhen "{ xn__inputsfrequency_U_control_shb == block } { xn__inputsfrequency_U_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsfrequency_V_control_shb"
+        label   "inputs:frequency_V"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfrequency_V_r3a"
+        label   "Frequency V"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "controls noise frequency for V distortion"
+        disablewhen "{ xn__inputsfrequency_V_control_shb == block } { xn__inputsfrequency_V_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsamplitude_U_control_shb"
+        label   "inputs:amplitude_U"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsamplitude_U_r3a"
+        label   "Amplitude U"
+        type    float
+        default { "1" }
+        help    "controls amplitude of U distortion"
+        disablewhen "{ xn__inputsamplitude_U_control_shb == block } { xn__inputsamplitude_U_control_shb == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsamplitude_V_control_shb"
+        label   "inputs:amplitude_V"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsamplitude_V_r3a"
+        label   "Amplitude V"
+        type    float
+        default { "1" }
+        help    "controls amplitude of V distortion"
+        disablewhen "{ xn__inputsamplitude_V_control_shb == block } { xn__inputsamplitude_V_control_shb == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput_normals_control_1kb"
+        label   "inputs:input_normals"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normals_06a"
+        label   "Input Normals"
+        type    oppath
+        invisible
+        default { "" }
+        help    "optional input to distort. if not connected, use geom normals"
+        disablewhen "{ xn__inputsinput_normals_control_1kb == block } { xn__inputsinput_normals_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

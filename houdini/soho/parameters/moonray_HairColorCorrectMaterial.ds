@@ -1,0 +1,257 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Hue/Sat/Gain"
+
+        parm {
+            name    "xn__inputshue_shift_control_jeb"
+            label   "inputs:hue_shift"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputshue_shift_i0a"
+            label   "Hue Shift"
+            type    float
+            default { "0" }
+            help    "shifts the hue of the input (spectrum range is 0-1)"
+            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputshue_shift_control_jeb == block } { xn__inputshue_shift_control_jeb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputssaturation_control_5fb"
+            label   "inputs:saturation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssaturation_41a"
+            label   "Saturation"
+            type    float
+            default { "1" }
+            help    "desaturates the input below 1.0 and adds saturation above 1.0"
+            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsgain_control_e5a"
+            label   "inputs:gain"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgain_dsa"
+            label   "Gain"
+            type    float
+            default { "1" }
+            help    "multiplies the input channels by the specified value"
+            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+            range   { 0 4 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "TMI"
+
+        parm {
+            name    "xn__inputsTMI_enabled_control_shb"
+            label   "inputs:TMI_enabled"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsTMI_enabled_r3a"
+            label   "TMI Enabled"
+            type    toggle
+            default { "0" }
+            help    "enables the TMI parameters"
+            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsTMI_enabled_control_shb == block } { xn__inputsTMI_enabled_control_shb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsTMI_control_r3a"
+            label   "inputs:TMI"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsTMI_qqa"
+            label   "TMI"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "T = Temperature where positive values push towards blue and negative towards red.   M = Magenta where positive values push towards magenta and negative towards green.  I = Intensity where negative values remove and positive values add energy "
+            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsTMI_control_r3a == block } { xn__inputsTMI_control_r3a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsinput_hair_material_control_tub"
+        label   "inputs:input_hair_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_hair_material_shb"
+        label   "Input Hair Material"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsinput_hair_material_control_tub == block } { xn__inputsinput_hair_material_control_tub == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Enable/disable all color corrections"
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmix_control_r3a"
+        label   "inputs:mix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_qqa"
+        label   "Mix"
+        type    float
+        default { "1" }
+        help    "how much of the overall color correct to mix in"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

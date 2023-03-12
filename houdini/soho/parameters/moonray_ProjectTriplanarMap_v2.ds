@@ -1,0 +1,1771 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Positive X Modifiers"
+
+        parm {
+            name    "xn__inputspositive_x_scale_control_xpb"
+            label   "inputs:positive_x_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_scale_wcb"
+            label   "Positive X Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_scale_control_xpb == block } { xn__inputspositive_x_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_x_offset_control_krb"
+            label   "inputs:positive_x_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_offset_jeb"
+            label   "Positive X Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_offset_control_krb == block } { xn__inputspositive_x_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_x_invert_s_control_tub"
+            label   "inputs:positive_x_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_invert_s_shb"
+            label   "Positive X Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_invert_s_control_tub == block } { xn__inputspositive_x_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_x_invert_t_control_tub"
+            label   "inputs:positive_x_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_invert_t_shb"
+            label   "Positive X Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_invert_t_control_tub == block } { xn__inputspositive_x_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_x_swap_st_control_6sb"
+            label   "inputs:positive_x_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_swap_st_5fb"
+            label   "Positive X Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_swap_st_control_6sb == block } { xn__inputspositive_x_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_x_rotation_control_tub"
+            label   "inputs:positive_x_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_rotation_shb"
+            label   "Positive X Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_rotation_control_tub == block } { xn__inputspositive_x_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputspositive_x_rotation_center_control_75b"
+            label   "inputs:positive_x_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_rotation_center_6sb"
+            label   "Positive X Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_rotation_center_control_75b == block } { xn__inputspositive_x_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_x_wrap_around_control_pzb"
+            label   "inputs:positive_x_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_x_wrap_around_omb"
+            label   "Positive X Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_wrap_around_control_pzb == block } { xn__inputspositive_x_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Positive Y Modifiers"
+
+        parm {
+            name    "xn__inputspositive_y_scale_control_xpb"
+            label   "inputs:positive_y_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_scale_wcb"
+            label   "Positive Y Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_scale_control_xpb == block } { xn__inputspositive_y_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_y_offset_control_krb"
+            label   "inputs:positive_y_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_offset_jeb"
+            label   "Positive Y Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_offset_control_krb == block } { xn__inputspositive_y_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_y_invert_s_control_tub"
+            label   "inputs:positive_y_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_invert_s_shb"
+            label   "Positive Y Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_invert_s_control_tub == block } { xn__inputspositive_y_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_y_invert_t_control_tub"
+            label   "inputs:positive_y_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_invert_t_shb"
+            label   "Positive Y Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_invert_t_control_tub == block } { xn__inputspositive_y_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_y_swap_st_control_6sb"
+            label   "inputs:positive_y_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_swap_st_5fb"
+            label   "Positive Y Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_swap_st_control_6sb == block } { xn__inputspositive_y_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_y_rotation_control_tub"
+            label   "inputs:positive_y_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_rotation_shb"
+            label   "Positive Y Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_rotation_control_tub == block } { xn__inputspositive_y_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputspositive_y_rotation_center_control_75b"
+            label   "inputs:positive_y_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_rotation_center_6sb"
+            label   "Positive Y Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_rotation_center_control_75b == block } { xn__inputspositive_y_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_y_wrap_around_control_pzb"
+            label   "inputs:positive_y_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_y_wrap_around_omb"
+            label   "Positive Y Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_wrap_around_control_pzb == block } { xn__inputspositive_y_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Positive Z Modifiers"
+
+        parm {
+            name    "xn__inputspositive_z_scale_control_xpb"
+            label   "inputs:positive_z_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_scale_wcb"
+            label   "Positive Z Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_scale_control_xpb == block } { xn__inputspositive_z_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_z_offset_control_krb"
+            label   "inputs:positive_z_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_offset_jeb"
+            label   "Positive Z Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_offset_control_krb == block } { xn__inputspositive_z_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_z_invert_s_control_tub"
+            label   "inputs:positive_z_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_invert_s_shb"
+            label   "Positive Z Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_invert_s_control_tub == block } { xn__inputspositive_z_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_z_invert_t_control_tub"
+            label   "inputs:positive_z_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_invert_t_shb"
+            label   "Positive Z Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_invert_t_control_tub == block } { xn__inputspositive_z_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_z_swap_st_control_6sb"
+            label   "inputs:positive_z_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_swap_st_5fb"
+            label   "Positive Z Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_swap_st_control_6sb == block } { xn__inputspositive_z_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputspositive_z_rotation_control_tub"
+            label   "inputs:positive_z_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_rotation_shb"
+            label   "Positive Z Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_rotation_control_tub == block } { xn__inputspositive_z_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputspositive_z_rotation_center_control_75b"
+            label   "inputs:positive_z_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_rotation_center_6sb"
+            label   "Positive Z Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_rotation_center_control_75b == block } { xn__inputspositive_z_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputspositive_z_wrap_around_control_pzb"
+            label   "inputs:positive_z_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspositive_z_wrap_around_omb"
+            label   "Positive Z Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_wrap_around_control_pzb == block } { xn__inputspositive_z_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Negative X Modifiers"
+
+        parm {
+            name    "xn__inputsnegative_x_scale_control_xpb"
+            label   "inputs:negative_x_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_scale_wcb"
+            label   "Negative X Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_scale_control_xpb == block } { xn__inputsnegative_x_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_offset_control_krb"
+            label   "inputs:negative_x_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_offset_jeb"
+            label   "Negative X Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_offset_control_krb == block } { xn__inputsnegative_x_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_invert_s_control_tub"
+            label   "inputs:negative_x_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_invert_s_shb"
+            label   "Negative X Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_invert_s_control_tub == block } { xn__inputsnegative_x_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_invert_t_control_tub"
+            label   "inputs:negative_x_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_invert_t_shb"
+            label   "Negative X Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_invert_t_control_tub == block } { xn__inputsnegative_x_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_swap_st_control_6sb"
+            label   "inputs:negative_x_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_swap_st_5fb"
+            label   "Negative X Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_swap_st_control_6sb == block } { xn__inputsnegative_x_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_rotation_control_tub"
+            label   "inputs:negative_x_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_rotation_shb"
+            label   "Negative X Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_rotation_control_tub == block } { xn__inputsnegative_x_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_rotation_center_control_75b"
+            label   "inputs:negative_x_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_rotation_center_6sb"
+            label   "Negative X Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_rotation_center_control_75b == block } { xn__inputsnegative_x_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_x_wrap_around_control_pzb"
+            label   "inputs:negative_x_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_x_wrap_around_omb"
+            label   "Negative X Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_wrap_around_control_pzb == block } { xn__inputsnegative_x_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Negative Y Modifiers"
+
+        parm {
+            name    "xn__inputsnegative_y_scale_control_xpb"
+            label   "inputs:negative_y_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_scale_wcb"
+            label   "Negative Y Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_scale_control_xpb == block } { xn__inputsnegative_y_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_offset_control_krb"
+            label   "inputs:negative_y_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_offset_jeb"
+            label   "Negative Y Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_offset_control_krb == block } { xn__inputsnegative_y_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_invert_s_control_tub"
+            label   "inputs:negative_y_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_invert_s_shb"
+            label   "Negative Y Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_invert_s_control_tub == block } { xn__inputsnegative_y_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_invert_t_control_tub"
+            label   "inputs:negative_y_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_invert_t_shb"
+            label   "Negative Y Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_invert_t_control_tub == block } { xn__inputsnegative_y_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_swap_st_control_6sb"
+            label   "inputs:negative_y_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_swap_st_5fb"
+            label   "Negative Y Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_swap_st_control_6sb == block } { xn__inputsnegative_y_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_rotation_control_tub"
+            label   "inputs:negative_y_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_rotation_shb"
+            label   "Negative Y Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_rotation_control_tub == block } { xn__inputsnegative_y_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_rotation_center_control_75b"
+            label   "inputs:negative_y_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_rotation_center_6sb"
+            label   "Negative Y Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_rotation_center_control_75b == block } { xn__inputsnegative_y_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_y_wrap_around_control_pzb"
+            label   "inputs:negative_y_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_y_wrap_around_omb"
+            label   "Negative Y Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_wrap_around_control_pzb == block } { xn__inputsnegative_y_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Negative Z Modifiers"
+
+        parm {
+            name    "xn__inputsnegative_z_scale_control_xpb"
+            label   "inputs:negative_z_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_scale_wcb"
+            label   "Negative Z Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "2D scale"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_scale_control_xpb == block } { xn__inputsnegative_z_scale_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_offset_control_krb"
+            label   "inputs:negative_z_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_offset_jeb"
+            label   "Negative Z Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D offset"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_offset_control_krb == block } { xn__inputsnegative_z_offset_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_invert_s_control_tub"
+            label   "inputs:negative_z_invert_s"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_invert_s_shb"
+            label   "Negative Z Invert S"
+            type    toggle
+            default { "0" }
+            help    "Flip in the s direction (horizontal)"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_invert_s_control_tub == block } { xn__inputsnegative_z_invert_s_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_invert_t_control_tub"
+            label   "inputs:negative_z_invert_t"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_invert_t_shb"
+            label   "Negative Z Invert T"
+            type    toggle
+            default { "0" }
+            help    "Flip in the t direction (vertical)"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_invert_t_control_tub == block } { xn__inputsnegative_z_invert_t_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_swap_st_control_6sb"
+            label   "inputs:negative_z_swap_st"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_swap_st_5fb"
+            label   "Negative Z Swap St"
+            type    toggle
+            default { "0" }
+            help    "Swap the s and t directions.   Same as a 90 degree rotation"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_swap_st_control_6sb == block } { xn__inputsnegative_z_swap_st_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_rotation_control_tub"
+            label   "inputs:negative_z_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_rotation_shb"
+            label   "Negative Z Rotation"
+            type    float
+            default { "0" }
+            help    "2D rotation amount"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_rotation_control_tub == block } { xn__inputsnegative_z_rotation_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_rotation_center_control_75b"
+            label   "inputs:negative_z_rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_rotation_center_6sb"
+            label   "Negative Z Rotation Center"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "2D rotation center"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_rotation_center_control_75b == block } { xn__inputsnegative_z_rotation_center_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsnegative_z_wrap_around_control_pzb"
+            label   "inputs:negative_z_wrap_around"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnegative_z_wrap_around_omb"
+            label   "Negative Z Wrap Around"
+            type    toggle
+            default { "1" }
+            help    "Controls whether to repeat (true) or clamp (false) the texture"
+            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_wrap_around_control_pzb == block } { xn__inputsnegative_z_wrap_around_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsgamma_control_06a"
+        label   "inputs:gamma"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_zta"
+        label   "Gamma"
+        type    string
+        default { "auto" }
+        help    "Controls application of gamma to images (off -0, on - 1, auto - 2).   Auto will apply gamma decoding to 8-bit images"
+        disablewhen "{ xn__inputsgamma_control_06a == block } { xn__inputsgamma_control_06a == none }"
+        menu {
+            "off"   "Off"
+            "on"    "On"
+            "auto"  "Auto"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsnumber_of_textures_control_6sb"
+        label   "inputs:number_of_textures"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnumber_of_textures_5fb"
+        label   "Number Of Textures"
+        type    string
+        default { "three" }
+        help    "Controls the number of active textures.   If set to 'one', only the 'pos x' texture settings will be used for all sides.   If set to 'three' the pos x, pos y, and pos z settings will be used for their respective negative sides.   If set to 'six', each side has independent controls and texture."
+        disablewhen "{ xn__inputsnumber_of_textures_control_6sb == block } { xn__inputsnumber_of_textures_control_6sb == none }"
+        menu {
+            "one"   "One"
+            "three" "Three"
+            "six"   "Six"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstransition_width_control_xpb"
+        label   "inputs:transition_width"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstransition_width_wcb"
+        label   "Transition Width"
+        type    float
+        default { "0.5" }
+        help    "Controls blending of per-axis projections.   Valid range is 0.0 (no blending) to 1.0 (max blending)"
+        disablewhen "{ xn__inputstransition_width_control_xpb == block } { xn__inputstransition_width_control_xpb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsrandom_seed_control_shb"
+        label   "inputs:random_seed"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrandom_seed_r3a"
+        label   "Random Seed"
+        type    integer
+        default { "8241" }
+        help    "Seed for randomizing orientation, offset, and flip"
+        disablewhen "{ xn__inputsrandom_seed_control_shb == block } { xn__inputsrandom_seed_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsrandomize_rotation_control_6sb"
+        label   "inputs:randomize_rotation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrandomize_rotation_5fb"
+        label   "Randomize Rotation"
+        type    toggle
+        default { "0" }
+        help    "Rnd 2d rotation of each active texture"
+        disablewhen "{ xn__inputsrandomize_rotation_control_6sb == block } { xn__inputsrandomize_rotation_control_6sb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrandomize_flip_control_omb"
+        label   "inputs:randomize_flip"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrandomize_flip_n8a"
+        label   "Randomize Flip"
+        type    toggle
+        default { "0" }
+        help    "Rnd flipping in S or T for each active texture"
+        disablewhen "{ xn__inputsrandomize_flip_control_omb == block } { xn__inputsrandomize_flip_control_omb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrandomize_offset_control_xpb"
+        label   "inputs:randomize_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrandomize_offset_wcb"
+        label   "Randomize Offset"
+        type    toggle
+        default { "0" }
+        help    "Rnd offset in S or T for each active texture"
+        disablewhen "{ xn__inputsrandomize_offset_control_xpb == block } { xn__inputsrandomize_offset_control_xpb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputspositive_x_active_control_krb"
+        label   "inputs:positive_x_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_x_active_jeb"
+        label   "Positive X Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputspositive_x_active_control_krb == block } { xn__inputspositive_x_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputspositive_x_texture_control_6sb"
+        label   "inputs:positive_x_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_x_texture_5fb"
+        label   "Positive X Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_texture_control_6sb == block } { xn__inputspositive_x_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputspositive_y_active_control_krb"
+        label   "inputs:positive_y_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_y_active_jeb"
+        label   "Positive Y Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputspositive_y_active_control_krb == block } { xn__inputspositive_y_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputspositive_y_texture_control_6sb"
+        label   "inputs:positive_y_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_y_texture_5fb"
+        label   "Positive Y Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_texture_control_6sb == block } { xn__inputspositive_y_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputspositive_z_active_control_krb"
+        label   "inputs:positive_z_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_z_active_jeb"
+        label   "Positive Z Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputspositive_z_active_control_krb == block } { xn__inputspositive_z_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputspositive_z_texture_control_6sb"
+        label   "inputs:positive_z_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspositive_z_texture_5fb"
+        label   "Positive Z Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_texture_control_6sb == block } { xn__inputspositive_z_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsnegative_x_active_control_krb"
+        label   "inputs:negative_x_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_x_active_jeb"
+        label   "Negative X Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputsnegative_x_active_control_krb == block } { xn__inputsnegative_x_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsnegative_x_texture_control_6sb"
+        label   "inputs:negative_x_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_x_texture_5fb"
+        label   "Negative X Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_texture_control_6sb == block } { xn__inputsnegative_x_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsnegative_y_active_control_krb"
+        label   "inputs:negative_y_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_y_active_jeb"
+        label   "Negative Y Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputsnegative_y_active_control_krb == block } { xn__inputsnegative_y_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsnegative_y_texture_control_6sb"
+        label   "inputs:negative_y_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_y_texture_5fb"
+        label   "Negative Y Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_texture_control_6sb == block } { xn__inputsnegative_y_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsnegative_z_active_control_krb"
+        label   "inputs:negative_z_active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_z_active_jeb"
+        label   "Negative Z Active"
+        type    toggle
+        default { "1" }
+        help    "Turns this direction on/off.  Output is black if off."
+        disablewhen "{ xn__inputsnegative_z_active_control_krb == block } { xn__inputsnegative_z_active_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsnegative_z_texture_control_6sb"
+        label   "inputs:negative_z_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnegative_z_texture_5fb"
+        label   "Negative Z Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_texture_control_6sb == block } { xn__inputsnegative_z_texture_control_6sb == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_control_bob"
+        label   "inputs:projection_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_99a"
+        label   "Projection Mode"
+        type    string
+        default { "projector" }
+        help    "Source parameters to use for projection transform"
+        disablewhen "{ xn__inputsprojection_mode_control_bob == block } { xn__inputsprojection_mode_control_bob == none }"
+        menu {
+            "projector"         "Projector"
+            "projection_matrix" "Projection_Matrix"
+            "TRS"               "TRS"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojector_control_jeb"
+        label   "inputs:projector"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojector_i0a"
+        label   "Projector"
+        type    oppath
+        default { "" }
+        help    "the object whose transform to use for projection"
+        disablewhen "{ projection_mode != projector } { xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_control_krb"
+        label   "inputs:projection_matrix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_jeb"
+        label   "Projection Matrix"
+        type    float
+        size    16
+        default { "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" }
+        help    "the transform to use for projection"
+        disablewhen "{ projection_mode != projection_matrix } { xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "double[]" }
+    }
+    parm {
+        name    "xn__inputsTRS_order_control_jeb"
+        label   "inputs:TRS_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsTRS_order_i0a"
+        label   "TRS Order"
+        type    string
+        default { "Scale Rot Trans" }
+        help    "Order in which to apply transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
+        menu {
+            "Scale Rot Trans"   "Scale Rot Trans"
+            "Scale Trans Rot"   "Scale Trans Rot"
+            "Rot Scale Trans"   "Rot Scale Trans"
+            "Rot Trans Scale"   "Rot Trans Scale"
+            "Trans Scale Rot"   "Trans Scale Rot"
+            "Trans Rot Scale"   "Trans Rot Scale"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsrotation_order_control_omb"
+        label   "inputs:rotation_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_order_n8a"
+        label   "Rotation Order"
+        type    string
+        default { "xyz" }
+        help    "Order in which to apply rotation transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+        menu {
+            "xyz"   "Xyz"
+            "xzy"   "Xzy"
+            "yxz"   "Yxz"
+            "yzx"   "Yzx"
+            "zxy"   "Zxy"
+            "zyx"   "Zyx"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstranslate_control_jeb"
+        label   "inputs:translate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstranslate_i0a"
+        label   "Translate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Tranlation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsrotate_control_n8a"
+        label   "inputs:rotate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotate_mva"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Rotation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "Scale of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsinput_position_source_control_2xb"
+        label   "inputs:input_position_source"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_position_source_1kb"
+        label   "Input Position Source"
+        type    string
+        default { "P/N" }
+        help    "Input position to use"
+        disablewhen "{ xn__inputsinput_position_source_control_2xb == block } { xn__inputsinput_position_source_control_2xb == none }"
+        menu {
+            "P/N"                           "P/N"
+            "ref_P/ref_N"                   "ref_P/ref_N"
+            "input_position/input_normal"   "Input_Position/Input_Normal"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_position_control_omb"
+        label   "inputs:input_position"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_position_n8a"
+        label   "Input Position"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Bind position data here"
+        disablewhen "{ input_position_source != input_position/input_normal } { xn__inputsinput_position_control_omb == block } { xn__inputsinput_position_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsinput_normal_control_fjb"
+        label   "inputs:input_normal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normal_e5a"
+        label   "Input Normal"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Bind normal data here"
+        disablewhen "{ input_position_source != input_position/input_normal } { xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+}

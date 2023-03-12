@@ -1,0 +1,26 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsscalar_value_control_fjb"
+        label   "inputs:scalar_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscalar_value_e5a"
+        label   "Scalar Value"
+        type    float
+        default { "1" }
+        help    "constant scalar value"
+        disablewhen "{ xn__inputsscalar_value_control_fjb == block } { xn__inputsscalar_value_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

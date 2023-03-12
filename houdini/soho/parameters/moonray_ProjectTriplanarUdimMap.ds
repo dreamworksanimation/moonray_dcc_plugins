@@ -1,0 +1,517 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsuse_correct_uv_control_omb"
+        label   "inputs:use_correct_uv"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_correct_uv_n8a"
+        label   "Use Correct Uv"
+        type    toggle
+        default { "0" }
+        help    "use correct uv orientation"
+        disablewhen "{ xn__inputsuse_correct_uv_control_omb == block } { xn__inputsuse_correct_uv_control_omb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_control_tub"
+        label   "inputs:use_reference_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_shb"
+        label   "Use Reference Space"
+        type    toggle
+        default { "0" }
+        help    "use reference space"
+        disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsx_offset_control_wcb"
+        label   "inputs:x_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsx_offset_vya"
+        label   "X Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        help    "2D offset for x projected map"
+        disablewhen "{ xn__inputsx_offset_control_wcb == block } { xn__inputsx_offset_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsx_scale_control_99a"
+        label   "inputs:x_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsx_scale_8wa"
+        label   "X Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        help    "2D scale for x projected map"
+        disablewhen "{ xn__inputsx_scale_control_99a == block } { xn__inputsx_scale_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsx_rotation_control_5fb"
+        label   "inputs:x_rotation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsx_rotation_41a"
+        label   "X Rotation"
+        type    float
+        default { "0" }
+        help    "2D rotation for x projected map"
+        disablewhen "{ xn__inputsx_rotation_control_5fb == block } { xn__inputsx_rotation_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsx_rotation_center_control_krb"
+        label   "inputs:x_rotation_center"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsx_rotation_center_jeb"
+        label   "X Rotation Center"
+        type    vector2
+        size    2
+        default { "0.5" "0.5" }
+        help    "2D rotation center for x projected map"
+        disablewhen "{ xn__inputsx_rotation_center_control_krb == block } { xn__inputsx_rotation_center_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsy_offset_control_wcb"
+        label   "inputs:y_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsy_offset_vya"
+        label   "Y Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        help    "2D offset for y projected map"
+        disablewhen "{ xn__inputsy_offset_control_wcb == block } { xn__inputsy_offset_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsy_scale_control_99a"
+        label   "inputs:y_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsy_scale_8wa"
+        label   "Y Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        help    "2D scale for y projected map"
+        disablewhen "{ xn__inputsy_scale_control_99a == block } { xn__inputsy_scale_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsy_rotation_control_5fb"
+        label   "inputs:y_rotation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsy_rotation_41a"
+        label   "Y Rotation"
+        type    float
+        default { "0" }
+        help    "2D rotation for y projected map"
+        disablewhen "{ xn__inputsy_rotation_control_5fb == block } { xn__inputsy_rotation_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsy_rotation_center_control_krb"
+        label   "inputs:y_rotation_center"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsy_rotation_center_jeb"
+        label   "Y Rotation Center"
+        type    vector2
+        size    2
+        default { "0.5" "0.5" }
+        help    "2D rotation center for y projected map"
+        disablewhen "{ xn__inputsy_rotation_center_control_krb == block } { xn__inputsy_rotation_center_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsz_offset_control_wcb"
+        label   "inputs:z_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsz_offset_vya"
+        label   "Z Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        help    "2D offset for z projected map"
+        disablewhen "{ xn__inputsz_offset_control_wcb == block } { xn__inputsz_offset_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsz_scale_control_99a"
+        label   "inputs:z_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsz_scale_8wa"
+        label   "Z Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        help    "2D scale for z projected map"
+        disablewhen "{ xn__inputsz_scale_control_99a == block } { xn__inputsz_scale_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsz_rotation_control_5fb"
+        label   "inputs:z_rotation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsz_rotation_41a"
+        label   "Z Rotation"
+        type    float
+        default { "0" }
+        help    "2D rotation for z projected map"
+        disablewhen "{ xn__inputsz_rotation_control_5fb == block } { xn__inputsz_rotation_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsz_rotation_center_control_krb"
+        label   "inputs:z_rotation_center"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsz_rotation_center_jeb"
+        label   "Z Rotation Center"
+        type    vector2
+        size    2
+        default { "0.5" "0.5" }
+        help    "2D rotation center for z projected map"
+        disablewhen "{ xn__inputsz_rotation_center_control_krb == block } { xn__inputsz_rotation_center_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_control_bob"
+        label   "inputs:projection_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_99a"
+        label   "Projection Mode"
+        type    string
+        default { "projector" }
+        help    "Source parameters to use for projection transform"
+        disablewhen "{ xn__inputsprojection_mode_control_bob == block } { xn__inputsprojection_mode_control_bob == none }"
+        menu {
+            "projector"         "Projector"
+            "projection_matrix" "Projection_Matrix"
+            "TRS"               "TRS"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojector_control_jeb"
+        label   "inputs:projector"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojector_i0a"
+        label   "Projector"
+        type    oppath
+        default { "" }
+        help    "the object whose transform to use for projection"
+        disablewhen "{ projection_mode != projector } { xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_control_krb"
+        label   "inputs:projection_matrix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_jeb"
+        label   "Projection Matrix"
+        type    float
+        size    16
+        default { "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" }
+        help    "the transform to use for projection"
+        disablewhen "{ projection_mode != projection_matrix } { xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "double[]" }
+    }
+    parm {
+        name    "xn__inputsTRS_order_control_jeb"
+        label   "inputs:TRS_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsTRS_order_i0a"
+        label   "TRS Order"
+        type    string
+        default { "Scale Rot Trans" }
+        help    "Order in which to apply transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
+        menu {
+            "Scale Rot Trans"   "Scale Rot Trans"
+            "Scale Trans Rot"   "Scale Trans Rot"
+            "Rot Scale Trans"   "Rot Scale Trans"
+            "Rot Trans Scale"   "Rot Trans Scale"
+            "Trans Scale Rot"   "Trans Scale Rot"
+            "Trans Rot Scale"   "Trans Rot Scale"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsrotation_order_control_omb"
+        label   "inputs:rotation_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_order_n8a"
+        label   "Rotation Order"
+        type    string
+        default { "xyz" }
+        help    "Order in which to apply rotation transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+        menu {
+            "xyz"   "Xyz"
+            "xzy"   "Xzy"
+            "yxz"   "Yxz"
+            "yzx"   "Yzx"
+            "zxy"   "Zxy"
+            "zyx"   "Zyx"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstranslate_control_jeb"
+        label   "inputs:translate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstranslate_i0a"
+        label   "Translate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Tranlation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsrotate_control_n8a"
+        label   "inputs:rotate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotate_mva"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Rotation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "Scale of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+}

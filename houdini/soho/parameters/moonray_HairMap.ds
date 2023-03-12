@@ -1,0 +1,113 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsbase_color_control_5fb"
+        label   "inputs:base_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbase_color_41a"
+        label   "Base Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputsbase_color_control_5fb == block } { xn__inputsbase_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputstip_color_control_jeb"
+        label   "inputs:tip_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstip_color_i0a"
+        label   "Tip Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputstip_color_control_jeb == block } { xn__inputstip_color_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsbias_control_e5a"
+        label   "inputs:bias"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbias_dsa"
+        label   "Bias"
+        type    float
+        default { "0.5" }
+        disablewhen "{ xn__inputsbias_control_e5a == block } { xn__inputsbias_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgain_control_e5a"
+        label   "inputs:gain"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgain_dsa"
+        label   "Gain"
+        type    float
+        default { "0.5" }
+        disablewhen "{ xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscolumn_uv_color_control_bob"
+        label   "inputs:column_uv_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolumn_uv_color_99a"
+        label   "Column Uv Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "Bound image map must have a HairColumnUvMap bound to its input texture coordinates."
+        disablewhen "{ xn__inputscolumn_uv_color_control_bob == block } { xn__inputscolumn_uv_color_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

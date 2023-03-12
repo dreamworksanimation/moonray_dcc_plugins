@@ -1,0 +1,568 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputstime_control_e5a"
+        label   "inputs:time"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstime_dsa"
+        label   "Time"
+        type    float
+        default { "0" }
+        help    "Current frame."
+        disablewhen "{ xn__inputstime_control_e5a == block } { xn__inputstime_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsspeed_control_06a"
+        label   "inputs:speed"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsspeed_zta"
+        label   "Speed"
+        type    float
+        default { "1" }
+        help    "Relative speed factor, does not animate easily because internally it scales the current frame."
+        disablewhen "{ xn__inputsspeed_control_06a == block } { xn__inputsspeed_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsheight_control_n8a"
+        label   "inputs:height"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsheight_mva"
+        label   "Height"
+        type    float
+        default { "1" }
+        help    "Height of waves, roughly peak-to-trough, in world units."
+        disablewhen "{ xn__inputsheight_control_n8a == block } { xn__inputsheight_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputspeaking_control_99a"
+        label   "inputs:peaking"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspeaking_8wa"
+        label   "Peaking"
+        type    float
+        default { "1" }
+        help    "Sharpness of wave crests, sets lateral displacement in world units."
+        disablewhen "{ xn__inputspeaking_control_99a == block } { xn__inputspeaking_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswind_control_e5a"
+        label   "inputs:wind"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswind_dsa"
+        label   "Wind"
+        type    float
+        default { "1" }
+        help    "Wind mainly affects wavelength composition, but not wavespeed. The  attribute does not have much effect beyond a value of 2, just as real ocean waves are limited to about 100' in height."
+        disablewhen "{ xn__inputswind_control_e5a == block } { xn__inputswind_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsdirection_control_jeb"
+        label   "inputs:direction"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdirection_i0a"
+        label   "Direction"
+        type    vector2
+        size    2
+        default { "1" "0" }
+        help    "Direction of travel of the primary wave set."
+        disablewhen "{ xn__inputsdirection_control_jeb == block } { xn__inputsdirection_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsdirectionality_control_omb"
+        label   "inputs:directionality"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdirectionality_n8a"
+        label   "Directionality"
+        type    float
+        default { "0" }
+        help    "How much to match direction (0 to 1)."
+        disablewhen "{ xn__inputsdirectionality_control_omb == block } { xn__inputsdirectionality_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsstretch_control_99a"
+        label   "inputs:stretch"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsstretch_8wa"
+        label   "Stretch"
+        type    float
+        default { "2" }
+        help    "Low value (0-1) gives conical waves, high values (4-6) give long rollers."
+        disablewhen "{ xn__inputsstretch_control_99a == block } { xn__inputsstretch_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssecondary_control_jeb"
+        label   "inputs:secondary"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssecondary_i0a"
+        label   "Secondary"
+        type    float
+        default { "0.25" }
+        help    "Height of secondary wave set relative to primary.  Default value of 0.25 gives nice ocean look, higher values make for a `sloshy' look."
+        disablewhen "{ xn__inputssecondary_control_jeb == block } { xn__inputssecondary_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsocean_scale_control_shb"
+        label   "inputs:ocean_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsocean_scale_r3a"
+        label   "Ocean Scale"
+        type    float
+        default { "1" }
+        help    "Relative area that the ocean patch is supposed to represent. Rule of thumb: smaller scale = longer wavelengths."
+        disablewhen "{ xn__inputsocean_scale_control_shb == block } { xn__inputsocean_scale_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsseed_control_e5a"
+        label   "inputs:seed"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsseed_dsa"
+        label   "Seed"
+        type    integer
+        default { "2" }
+        help    "Random seed value."
+        disablewhen "{ xn__inputsseed_control_e5a == block } { xn__inputsseed_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsfreq_power_lo_control_1kb"
+        label   "inputs:freq_power_lo"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfreq_power_lo_06a"
+        label   "Freq Power Lo"
+        type    integer
+        default { "0" }
+        help    "Power (of two) of lowest wavenumber (frequency) that will be computed."
+        disablewhen "{ xn__inputsfreq_power_lo_control_1kb == block } { xn__inputsfreq_power_lo_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsfreq_power_hi_control_1kb"
+        label   "inputs:freq_power_hi"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfreq_power_hi_06a"
+        label   "Freq Power Hi"
+        type    integer
+        default { "12" }
+        help    "Power of highest wavenumber that will be computed. e.g., 2^8 = 256, 2^12 = 4096. The geometry resolution will be 4 times this value in order to capture the highest wavenumbers without aliasing."
+        disablewhen "{ xn__inputsfreq_power_hi_control_1kb == block } { xn__inputsfreq_power_hi_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsgrid_power_control_5fb"
+        label   "inputs:grid_power"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgrid_power_41a"
+        label   "Grid Power"
+        type    integer
+        default { "7" }
+        help    "Sets grid resolution at which the FFT is computed. This determines how expensive the compute will be. A low power (4?) means that the larger waves will be tiled, a high power (11?) will take a long time to compute."
+        disablewhen "{ xn__inputsgrid_power_control_5fb == block } { xn__inputsgrid_power_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsmode_control_e5a"
+        label   "inputs:mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmode_dsa"
+        label   "Mode"
+        type    string
+        default { "height" }
+        help    "Height: generates height field displacement. Peaks: generates a grayscale map where higher values correspond to wave peaks and lower values are wave troughs."
+        disablewhen "{ xn__inputsmode_control_e5a == block } { xn__inputsmode_control_e5a == none }"
+        menu {
+            "height"            "Height"
+            "foam"              "Foam"
+            "foam historical"   "Foam Historical"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsspace_control_06a"
+        label   "inputs:space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsspace_zta"
+        label   "Space"
+        type    string
+        default { "render" }
+        disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+        menu {
+            "render"    "Render"
+            "camera"    "Camera"
+            "world"     "World"
+            "screen"    "Screen"
+            "object"    "Object"
+            "reference" "Reference"
+            "texture"   "Texture"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsobject_space_control_fjb"
+        label   "inputs:object_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsobject_space_e5a"
+        label   "Object Space"
+        type    oppath
+        default { "" }
+        help    "Directly connect object to use that object's space."
+        disablewhen "{ xn__inputsobject_space_control_fjb == block } { xn__inputsobject_space_control_fjb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsworld_offset_control_fjb"
+        label   "inputs:world_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsworld_offset_e5a"
+        label   "World Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        help    "Translates the ocean in world space XZ-plane."
+        disablewhen "{ xn__inputsworld_offset_control_fjb == block } { xn__inputsworld_offset_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsworld_tile_size_control_bob"
+        label   "inputs:world_tile_size"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsworld_tile_size_99a"
+        label   "World Tile Size"
+        type    float
+        default { "1000" }
+        help    "Size of a single tile (when operating in world/object space)."
+        disablewhen "{ xn__inputsworld_tile_size_control_bob == block } { xn__inputsworld_tile_size_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsuv_offset_control_jeb"
+        label   "inputs:uv_offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuv_offset_i0a"
+        label   "Uv Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        help    "Translates the origin in uv coordinates [0-1, 0-1]."
+        disablewhen "{ xn__inputsuv_offset_control_jeb == block } { xn__inputsuv_offset_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsuv_tile_control_99a"
+        label   "inputs:uv_tile"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuv_tile_8wa"
+        label   "Uv Tile"
+        type    float
+        default { "1" }
+        help    "Number of times pattern repeats in uv space."
+        disablewhen "{ xn__inputsuv_tile_control_99a == block } { xn__inputsuv_tile_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsfoam_time_range_control_bob"
+        label   "inputs:foam_time_range"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfoam_time_range_99a"
+        label   "Foam Time Range"
+        type    vector2
+        size    2
+        default { "-60" "-20" }
+        help    "Span of time to compute foam. X Value is start frame and y value is end frame. Values are offset from current time."
+        disablewhen "{ xn__inputsfoam_time_range_control_bob == block } { xn__inputsfoam_time_range_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsfoam_time_step_control_omb"
+        label   "inputs:foam_time_step"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfoam_time_step_n8a"
+        label   "Foam Time Step"
+        type    float
+        default { "4" }
+        help    "Time step between evaluating foam. Higher number = few frames computed."
+        disablewhen "{ xn__inputsfoam_time_step_control_omb == block } { xn__inputsfoam_time_step_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsfoam_time_gain_control_omb"
+        label   "inputs:foam_time_gain"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfoam_time_gain_n8a"
+        label   "Foam Time Gain"
+        type    float
+        default { "1" }
+        help    "Adjusts the falloff in foam intensity. 1 is linear, 0 is constant, values greater than 1 makes the old foam die off faster."
+        disablewhen "{ xn__inputsfoam_time_gain_control_omb == block } { xn__inputsfoam_time_gain_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsfoam_clamp_control_5fb"
+        label   "inputs:foam_clamp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfoam_clamp_41a"
+        label   "Foam Clamp"
+        type    toggle
+        default { "1" }
+        help    "Clamps the output to the range [0..1]. Only applies to non-historical foam because historical foam is always clamped."
+        disablewhen "{ xn__inputsfoam_clamp_control_5fb == block } { xn__inputsfoam_clamp_control_5fb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

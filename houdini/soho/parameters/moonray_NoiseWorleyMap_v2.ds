@@ -1,0 +1,742 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Output"
+
+        parm {
+            name    "xn__inputsoutput_mode_control_shb"
+            label   "inputs:output_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsoutput_mode_r3a"
+            label   "Output Mode"
+            type    string
+            default { "distance" }
+            help    "Method by which the shader outputs a color.  Distance uses F1..F4 interpolated between color A and color B, gradient outputs the gradient of the noise, and cell ID outputs a random color for each cell"
+            disablewhen "{ xn__inputsoutput_mode_control_shb == block } { xn__inputsoutput_mode_control_shb == none }"
+            menu {
+                "distance"      "Distance"
+                "gradient"      "Gradient"
+                "cell id"       "Cell Id"
+                "cell edges"    "Cell Edges"
+                "points"        "Points"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsdistance_method_control_bob"
+            label   "inputs:distance_method"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdistance_method_99a"
+            label   "Distance Method"
+            type    string
+            default { "linear" }
+            help    "Metric for calculating distance to feature points which controls the shape of the falloff when output mode is distance"
+            disablewhen "{ output_mode != distance } { xn__inputsdistance_method_control_bob == block } { xn__inputsdistance_method_control_bob == none }"
+            menu {
+                "linear"            "Linear"
+                "linear squared"    "Linear Squared"
+                "manhattan"         "Manhattan"
+                "chebyshev"         "Chebyshev"
+                "quadratic"         "Quadratic"
+                "minkowski"         "Minkowski"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsminkowski_number_control_xpb"
+            label   "inputs:minkowski_number"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsminkowski_number_wcb"
+            label   "Minkowski Number"
+            type    float
+            default { "3" }
+            help    "Exponent on distances when distance method is set to Minkowski"
+            disablewhen "{ distance_method != minkowski } { xn__inputsminkowski_number_control_xpb == block } { xn__inputsminkowski_number_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Space"
+
+        parm {
+            name    "xn__inputsspace_control_06a"
+            label   "inputs:space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspace_zta"
+            label   "Space"
+            type    string
+            default { "world" }
+            help    "The space to calculate the noise in"
+            disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+            menu {
+                "render"                    "Render"
+                "camera"                    "Camera"
+                "world"                     "World"
+                "screen"                    "Screen"
+                "object"                    "Object"
+                "reference"                 "Reference"
+                "texture"                   "Texture"
+                "input texture coordinates" "Input Texture Coordinates"
+                "hair_surface_uv"           "Hair_Surface_Uv"
+                "hair_closest_surface_uv"   "Hair_Closest_Surface_Uv"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_texture_coordinates_control_l4b"
+            label   "inputs:input_texture_coordinates"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_texture_coordinates_krb"
+            label   "Input Texture Coordinates"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ space != texture } { xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsobject_space_control_fjb"
+            label   "inputs:object_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsobject_space_e5a"
+            label   "Object Space"
+            type    oppath
+            default { "" }
+            help    "Directly connect object to use that object's space."
+            disablewhen "{ space != object } { xn__inputsobject_space_control_fjb == block } { xn__inputsobject_space_control_fjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputscamera_control_n8a"
+            label   "inputs:camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscamera_mva"
+            label   "Camera"
+            type    oppath
+            default { "" }
+            help    "camera used to define camera and screen space"
+            disablewhen "{ xn__inputscamera_control_n8a == block } { xn__inputscamera_control_n8a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Adjustment"
+
+        parm {
+            name    "xn__inputspoint_size_control_5fb"
+            label   "inputs:point_size"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspoint_size_41a"
+            label   "Point Size"
+            type    float
+            default { "1" }
+            help    "For points output mode, relative radius of points"
+            disablewhen "{ output_mode != points } { xn__inputspoint_size_control_5fb == block } { xn__inputspoint_size_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsremap_control_06a"
+            label   "inputs:remap"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsremap_zta"
+            label   "Remap"
+            type    vector2
+            size    2
+            default { "0" "1" }
+            help    "Allows mapping the distances from the specified min/max range into the 0..1 range"
+            disablewhen "{ xn__inputsremap_control_06a == block } { xn__inputsremap_control_06a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsuse_smoothstep_control_omb"
+            label   "inputs:use_smoothstep"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_smoothstep_n8a"
+            label   "Use Smoothstep"
+            type    toggle
+            default { "0" }
+            help    "Put the noise value through a smoothstep function defined by min/max"
+            disablewhen "{ xn__inputsuse_smoothstep_control_omb == block } { xn__inputsuse_smoothstep_control_omb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssmoothstep_control_5fb"
+            label   "inputs:smoothstep"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssmoothstep_41a"
+            label   "Smoothstep"
+            type    vector2
+            size    2
+            default { "0" "1" }
+            help    "min/max values between which the smoothstep will interpolate"
+            disablewhen "{ xn__inputsuse_smoothstep_n8a != 1 } { xn__inputssmoothstep_control_5fb == block } { xn__inputssmoothstep_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsbias_control_e5a"
+            label   "inputs:bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsbias_dsa"
+            label   "Bias"
+            type    float
+            default { "0.5" }
+            help    "Bias of interpolation from color A to color B"
+            disablewhen "{ xn__inputsbias_control_e5a == block } { xn__inputsbias_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsgain_control_e5a"
+            label   "inputs:gain"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsgain_dsa"
+            label   "Gain"
+            type    float
+            default { "0.5" }
+            help    "Gain of interpolation from color A to color B"
+            disablewhen "{ xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsinvert_control_n8a"
+            label   "inputs:invert"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinvert_mva"
+            label   "Invert"
+            type    toggle
+            default { "0" }
+            help    "Invert the final pattern"
+            disablewhen "{ xn__inputsinvert_control_n8a == block } { xn__inputsinvert_control_n8a == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Transform"
+
+        parm {
+            name    "xn__inputstranslation_control_shb"
+            label   "inputs:translation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslation_r3a"
+            label   "Translation"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "Translation of the noise in space"
+            disablewhen "{ xn__inputstranslation_control_shb == block } { xn__inputstranslation_control_shb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsscale_control_06a"
+            label   "inputs:scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscale_zta"
+            label   "Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            help    "Vector to scale the noise non-proportionally"
+            disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsrotation_control_wcb"
+            label   "inputs:rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsrotation_vya"
+            label   "Rotation"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "Rotates the noise in space based on the specified rotation order"
+            disablewhen "{ xn__inputsrotation_control_wcb == block } { xn__inputsrotation_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsrotation_order_control_omb"
+            label   "inputs:rotation_order"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsrotation_order_n8a"
+            label   "Rotation Order"
+            type    string
+            default { "xyz" }
+            help    "Order in which to apply the euler rotations"
+            disablewhen "{ xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+            menu {
+                "xyz"   "Xyz"
+                "xzy"   "Xzy"
+                "yxz"   "Yxz"
+                "yzx"   "Yzx"
+                "zxy"   "Zxy"
+                "zyx"   "Zyx"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputstransformation_order_control_gwb"
+            label   "inputs:transformation_order"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransformation_order_fjb"
+            label   "Transformation Order"
+            type    string
+            default { "tsr" }
+            help    "Order in which to apply the translation, rotation, and frequency"
+            disablewhen "{ xn__inputstransformation_order_control_gwb == block } { xn__inputstransformation_order_control_gwb == none }"
+            menu {
+                "srt"   "Srt"
+                "str"   "Str"
+                "rst"   "Rst"
+                "rts"   "Rts"
+                "tsr"   "Tsr"
+                "trs"   "Trs"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsF1_control_41a"
+            label   "inputs:F1"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsF1_3oa"
+            label   "F1"
+            type    float
+            default { "1" }
+            help    "Influence of F1 (the closest feature point)"
+            disablewhen "{ xn__inputsF1_control_41a == block } { xn__inputsF1_control_41a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsF2_control_41a"
+            label   "inputs:F2"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsF2_3oa"
+            label   "F2"
+            type    float
+            default { "0" }
+            help    "Influence of F2 (the second closest feature point)"
+            disablewhen "{ xn__inputsF2_control_41a == block } { xn__inputsF2_control_41a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsF3_control_41a"
+            label   "inputs:F3"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsF3_3oa"
+            label   "F3"
+            type    float
+            default { "0" }
+            help    "Influence of F3 (the third closest feature point)"
+            disablewhen "{ xn__inputsF3_control_41a == block } { xn__inputsF3_control_41a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsF4_control_41a"
+            label   "inputs:F4"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsF4_3oa"
+            label   "F4"
+            type    float
+            default { "0" }
+            help    "Influence of F4 (the fourth closest feature point)"
+            disablewhen "{ xn__inputsF4_control_41a == block } { xn__inputsF4_control_41a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputscell_id_control_99a"
+            label   "inputs:cell_id"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscell_id_8wa"
+            label   "Cell Id"
+            type    string
+            default { "f1" }
+            help    "Which of the distances determines the cell id"
+            disablewhen "{ xn__inputscell_id_control_99a == block } { xn__inputscell_id_control_99a == none }"
+            menu {
+                "f1"    "F1"
+                "f2"    "F2"
+                "f3"    "F3"
+                "f4"    "F4"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsseed_control_e5a"
+        label   "inputs:seed"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsseed_dsa"
+        label   "Seed"
+        type    integer
+        default { "0" }
+        help    "The seed for the random number generator"
+        disablewhen "{ xn__inputsseed_control_e5a == block } { xn__inputsseed_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsfrequency_control_jeb"
+        label   "inputs:frequency"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfrequency_i0a"
+        label   "Frequency"
+        type    float
+        default { "1" }
+        help    "Scalar multiplier for the frequency vector"
+        disablewhen "{ xn__inputsfrequency_control_jeb == block } { xn__inputsfrequency_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsjitter_control_n8a"
+        label   "inputs:jitter"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsjitter_mva"
+        label   "Jitter"
+        type    float
+        default { "1" }
+        help    "Controls the distortion of the cells"
+        disablewhen "{ xn__inputsjitter_control_n8a == block } { xn__inputsjitter_control_n8a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsmax_level_control_jeb"
+        label   "inputs:max_level"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmax_level_i0a"
+        label   "Max Level"
+        type    float
+        default { "1" }
+        help    "Number of octaves of noise to add together for the final result"
+        disablewhen "{ xn__inputsmax_level_control_jeb == block } { xn__inputsmax_level_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscolor_A_control_99a"
+        label   "inputs:color_A"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_A_8wa"
+        label   "Color A"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "The interpolated color value at distance equals zero"
+        disablewhen "{ xn__inputscolor_A_control_99a == block } { xn__inputscolor_A_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputscolor_B_control_99a"
+        label   "inputs:color_B"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_B_8wa"
+        label   "Color B"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "The interpolated color value at distance equals one"
+        disablewhen "{ xn__inputscolor_B_control_99a == block } { xn__inputscolor_B_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

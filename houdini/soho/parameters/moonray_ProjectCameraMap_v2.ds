@@ -1,0 +1,225 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsprojector_control_jeb"
+        label   "inputs:projector"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojector_i0a"
+        label   "Projector"
+        type    oppath
+        default { "" }
+        help    "the camera to project from"
+        disablewhen "{ xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsproject_on_back_faces_control_2xb"
+        label   "inputs:project_on_back_faces"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsproject_on_back_faces_1kb"
+        label   "Project On Back Faces"
+        type    toggle
+        default { "0" }
+        help    "Toggles whether camera projections appear on back faces."
+        disablewhen "{ xn__inputsproject_on_back_faces_control_2xb == block } { xn__inputsproject_on_back_faces_control_2xb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_control_y2b"
+        label   "inputs:black_outside_projection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_xpb"
+        label   "Black Outside Projection"
+        type    toggle
+        default { "1" }
+        help    "Toggles whether projections appear outside the 0-1 uv range of the projector"
+        disablewhen "{ xn__inputsblack_outside_projection_control_y2b == block } { xn__inputsblack_outside_projection_control_y2b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_control_tub"
+        label   "inputs:use_reference_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_shb"
+        label   "Use Reference Space"
+        type    toggle
+        default { "0" }
+        help    "use reference space"
+        disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputstexture_control_99a"
+        label   "inputs:texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_8wa"
+        label   "Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputstexture_control_99a == block } { xn__inputstexture_control_99a == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsalpha_only_control_5fb"
+        label   "inputs:alpha_only"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsalpha_only_41a"
+        label   "Alpha Only"
+        type    toggle
+        default { "0" }
+        help    "When enabled, the alpha channel is returned instead of RGB"
+        disablewhen "{ xn__inputsalpha_only_control_5fb == block } { xn__inputsalpha_only_control_5fb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsunpremultiply_control_1kb"
+        label   "inputs:unpremultiply"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsunpremultiply_06a"
+        label   "Unpremultiply"
+        type    toggle
+        default { "0" }
+        help    "When enabled, the rgb channels are divided by the alpha channel (where non-zero)"
+        disablewhen "{ xn__inputsalpha_only_41a != 1 } { xn__inputsunpremultiply_control_1kb == block } { xn__inputsunpremultiply_control_1kb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsaspect_ratio_source_control_tub"
+        label   "inputs:aspect_ratio_source"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsaspect_ratio_source_shb"
+        label   "Aspect Ratio Source"
+        type    string
+        default { "from texture" }
+        help    "Whether to use the image and pixel aspect ratio of the texture being projected, or a custom aspect ratio"
+        disablewhen "{ xn__inputsaspect_ratio_source_control_tub == block } { xn__inputsaspect_ratio_source_control_tub == none }"
+        menu {
+            "from texture"  "From Texture"
+            "custom"        "Custom"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputscustom_aspect_ratio_control_tub"
+        label   "inputs:custom_aspect_ratio"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscustom_aspect_ratio_shb"
+        label   "Custom Aspect Ratio"
+        type    float
+        default { "1" }
+        help    "a custom aspect ratio for the projected texture"
+        disablewhen "{ aspect_ratio_source != custom } { xn__inputscustom_aspect_ratio_control_tub == block } { xn__inputscustom_aspect_ratio_control_tub == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgamma_control_06a"
+        label   "inputs:gamma"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_zta"
+        label   "Gamma"
+        type    string
+        default { "auto" }
+        help    "Controls application of gamma to images (off -0, on - 1, auto - 2).   Auto will apply gamma decoding to 8-bit images"
+        disablewhen "{ xn__inputsgamma_control_06a == block } { xn__inputsgamma_control_06a == none }"
+        menu {
+            "off"   "Off"
+            "on"    "On"
+            "auto"  "Auto"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

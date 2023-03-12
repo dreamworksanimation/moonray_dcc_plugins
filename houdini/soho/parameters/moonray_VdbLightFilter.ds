@@ -1,0 +1,320 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayvdb_map_control_xcb"
+            label   "moonray:vdb_map"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvdb_map_wya"
+            label   "Vdb Map"
+            type    file
+            default { "" }
+            help    "The path to the vdb"
+            disablewhen "{ xn__moonrayvdb_map_control_xcb == block } { xn__moonrayvdb_map_control_xcb == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__moonraydensity_grid_name_control_7sb"
+            label   "moonray:density_grid_name"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_grid_name_6fb"
+            label   "Density Grid Name"
+            type    file
+            default { "" }
+            help    "The name of the grid within the .vdb file from which to sample for density(hint: use openvdb_print to see contents of .vdb file). If no grid is specified, it will use 'density' as the defaultIn cases where there are multiple grids with the same name, the grid name can be indexed (eg. density[1])"
+            disablewhen "{ xn__moonraydensity_grid_name_control_7sb == block } { xn__moonraydensity_grid_name_control_7sb == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_input_min_control_z2b"
+            label   "moonray:density_remap_input_min"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_input_min_ypb"
+            label   "Density Remap Input Min"
+            type    float
+            default { "0" }
+            help    "Clamp the remapped input to this min value"
+            disablewhen "{ density_rescale_enable == 0 } { xn__moonraydensity_remap_input_min_control_z2b == block } { xn__moonraydensity_remap_input_min_control_z2b == none }"
+            range   { -100 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_input_max_control_z2b"
+            label   "moonray:density_remap_input_max"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_input_max_ypb"
+            label   "Density Remap Input Max"
+            type    float
+            default { "1" }
+            help    "Clamp the remapped input to this max value"
+            disablewhen "{ density_rescale_enable == 0 } { xn__moonraydensity_remap_input_max_control_z2b == block } { xn__moonraydensity_remap_input_max_control_z2b == none }"
+            range   { -100 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_output_min_control_m4b"
+            label   "moonray:density_remap_output_min"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_output_min_lrb"
+            label   "Density Remap Output Min"
+            type    float
+            default { "0" }
+            help    "Clamp the remapped output to this min value"
+            disablewhen "{ density_rescale_enable == 0 } { xn__moonraydensity_remap_output_min_control_m4b == block } { xn__moonraydensity_remap_output_min_control_m4b == none }"
+            range   { -100 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_output_max_control_m4b"
+            label   "moonray:density_remap_output_max"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_output_max_lrb"
+            label   "Density Remap Output Max"
+            type    float
+            default { "1" }
+            help    "Clamp the remapped output to this max value"
+            disablewhen "{ density_rescale_enable == 0 } { xn__moonraydensity_remap_output_max_control_m4b == block } { xn__moonraydensity_remap_output_max_control_m4b == none }"
+            range   { -100 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_rescale_enable_control_d1b"
+            label   "moonray:density_rescale_enable"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_rescale_enable_cob"
+            label   "Density Rescale Enable"
+            type    toggle
+            default { "0" }
+            help    "Enable density rescaling"
+            disablewhen "{ xn__moonraydensity_rescale_enable_control_d1b == block } { xn__moonraydensity_rescale_enable_control_d1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraydensity_remap_outputs_control_qzb"
+            label   "moonray:density_remap_outputs"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "ramp"
+            label   "Ramp"
+            type    ramp_flt
+            default { "2" }
+            disablewhen "{ xn__moonraydensity_remap_outputs_control_qzb == block } { xn__moonraydensity_remap_outputs_control_qzb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "float[]" }
+        }
+        parm {
+            name    "xn__moonrayvdb_interpolation_type_control_d1b"
+            label   "moonray:vdb_interpolation_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvdb_interpolation_type_cob"
+            label   "Vdb Interpolation Type"
+            type    string
+            default { "point" }
+            help    "The type of interpolation to use when sampling the filter"
+            disablewhen "{ xn__moonrayvdb_interpolation_type_control_d1b == block } { xn__moonrayvdb_interpolation_type_control_d1b == none }"
+            menu {
+                "point"     "Point"
+                "box"       "Box"
+                "quadratic" "Quadratic"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonrayblur_value_control_thb"
+            label   "moonray:blur_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_value_s3a"
+            label   "Blur Value"
+            type    log
+            default { "0" }
+            help    "The blur radius"
+            disablewhen "{ xn__moonrayblur_value_control_thb == block } { xn__moonrayblur_value_control_thb == none }"
+            range   { 0 1000 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayblur_type_control_6fb"
+            label   "moonray:blur_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayblur_type_51a"
+            label   "Blur Type"
+            type    string
+            default { "gaussian" }
+            help    "The type of blur to apply"
+            disablewhen "{ xn__moonrayblur_type_control_6fb == block } { xn__moonrayblur_type_control_6fb == none }"
+            menu {
+                "gaussian"  "Gaussian"
+                "circular"  "Circular"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraycolor_tint_control_thb"
+            label   "moonray:color_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycolor_tint_s3a"
+            label   "Color Tint"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "Tints the light filter.  Lower density increases the shift toward the tint color."
+            disablewhen "{ xn__moonraycolor_tint_control_thb == block } { xn__moonraycolor_tint_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonrayinvert_density_control_cob"
+            label   "moonray:invert_density"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayinvert_density_bbb"
+            label   "Invert Density"
+            type    toggle
+            default { "0" }
+            help    "Invert the density with density = 1 - density"
+            disablewhen "{ xn__moonrayinvert_density_control_cob == block } { xn__moonrayinvert_density_control_cob == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

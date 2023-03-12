@@ -1,0 +1,1456 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsbound_padding_control_1kb"
+        label   "inputs:bound_padding"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbound_padding_06a"
+        label   "Bound Padding"
+        type    float
+        default { "0" }
+        help    "bound padding defines how much to extend the bounding box of the object. Keep this value as low as possible unless the geometry skips tessellation because control cage bounding box is out of camera frustum but the displacement stretch out of the original object bounding box (pre-displacement). Setting the bound padding too large will consume more memory and tessellation time."
+        disablewhen "{ xn__inputsbound_padding_control_1kb == block } { xn__inputsbound_padding_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputschoice_control_n8a"
+        label   "inputs:choice"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputschoice_mva"
+        label   "Choice"
+        type    float
+        default { "0" }
+        help    "which of the 64 inputs (0 to 63) to use, values greater than 63 get cycled back to be in [0,63]"
+        disablewhen "{ xn__inputschoice_control_n8a == block } { xn__inputschoice_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsdisplacement0_control_1kb"
+        label   "inputs:displacement0"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement0_06a"
+        label   "Displacement0"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement0_control_1kb == block } { xn__inputsdisplacement0_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement1_control_1kb"
+        label   "inputs:displacement1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement1_06a"
+        label   "Displacement1"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement1_control_1kb == block } { xn__inputsdisplacement1_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement2_control_1kb"
+        label   "inputs:displacement2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement2_06a"
+        label   "Displacement2"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement2_control_1kb == block } { xn__inputsdisplacement2_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement3_control_1kb"
+        label   "inputs:displacement3"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement3_06a"
+        label   "Displacement3"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement3_control_1kb == block } { xn__inputsdisplacement3_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement4_control_1kb"
+        label   "inputs:displacement4"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement4_06a"
+        label   "Displacement4"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement4_control_1kb == block } { xn__inputsdisplacement4_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement5_control_1kb"
+        label   "inputs:displacement5"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement5_06a"
+        label   "Displacement5"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement5_control_1kb == block } { xn__inputsdisplacement5_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement6_control_1kb"
+        label   "inputs:displacement6"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement6_06a"
+        label   "Displacement6"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement6_control_1kb == block } { xn__inputsdisplacement6_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement7_control_1kb"
+        label   "inputs:displacement7"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement7_06a"
+        label   "Displacement7"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement7_control_1kb == block } { xn__inputsdisplacement7_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement8_control_1kb"
+        label   "inputs:displacement8"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement8_06a"
+        label   "Displacement8"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement8_control_1kb == block } { xn__inputsdisplacement8_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement9_control_1kb"
+        label   "inputs:displacement9"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement9_06a"
+        label   "Displacement9"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement9_control_1kb == block } { xn__inputsdisplacement9_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement10_control_omb"
+        label   "inputs:displacement10"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement10_n8a"
+        label   "Displacement10"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement10_control_omb == block } { xn__inputsdisplacement10_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement11_control_omb"
+        label   "inputs:displacement11"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement11_n8a"
+        label   "Displacement11"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement11_control_omb == block } { xn__inputsdisplacement11_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement12_control_omb"
+        label   "inputs:displacement12"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement12_n8a"
+        label   "Displacement12"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement12_control_omb == block } { xn__inputsdisplacement12_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement13_control_omb"
+        label   "inputs:displacement13"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement13_n8a"
+        label   "Displacement13"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement13_control_omb == block } { xn__inputsdisplacement13_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement14_control_omb"
+        label   "inputs:displacement14"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement14_n8a"
+        label   "Displacement14"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement14_control_omb == block } { xn__inputsdisplacement14_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement15_control_omb"
+        label   "inputs:displacement15"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement15_n8a"
+        label   "Displacement15"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement15_control_omb == block } { xn__inputsdisplacement15_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement16_control_omb"
+        label   "inputs:displacement16"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement16_n8a"
+        label   "Displacement16"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement16_control_omb == block } { xn__inputsdisplacement16_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement17_control_omb"
+        label   "inputs:displacement17"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement17_n8a"
+        label   "Displacement17"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement17_control_omb == block } { xn__inputsdisplacement17_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement18_control_omb"
+        label   "inputs:displacement18"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement18_n8a"
+        label   "Displacement18"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement18_control_omb == block } { xn__inputsdisplacement18_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement19_control_omb"
+        label   "inputs:displacement19"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement19_n8a"
+        label   "Displacement19"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement19_control_omb == block } { xn__inputsdisplacement19_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement20_control_omb"
+        label   "inputs:displacement20"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement20_n8a"
+        label   "Displacement20"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement20_control_omb == block } { xn__inputsdisplacement20_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement21_control_omb"
+        label   "inputs:displacement21"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement21_n8a"
+        label   "Displacement21"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement21_control_omb == block } { xn__inputsdisplacement21_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement22_control_omb"
+        label   "inputs:displacement22"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement22_n8a"
+        label   "Displacement22"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement22_control_omb == block } { xn__inputsdisplacement22_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement23_control_omb"
+        label   "inputs:displacement23"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement23_n8a"
+        label   "Displacement23"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement23_control_omb == block } { xn__inputsdisplacement23_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement24_control_omb"
+        label   "inputs:displacement24"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement24_n8a"
+        label   "Displacement24"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement24_control_omb == block } { xn__inputsdisplacement24_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement25_control_omb"
+        label   "inputs:displacement25"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement25_n8a"
+        label   "Displacement25"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement25_control_omb == block } { xn__inputsdisplacement25_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement26_control_omb"
+        label   "inputs:displacement26"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement26_n8a"
+        label   "Displacement26"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement26_control_omb == block } { xn__inputsdisplacement26_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement27_control_omb"
+        label   "inputs:displacement27"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement27_n8a"
+        label   "Displacement27"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement27_control_omb == block } { xn__inputsdisplacement27_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement28_control_omb"
+        label   "inputs:displacement28"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement28_n8a"
+        label   "Displacement28"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement28_control_omb == block } { xn__inputsdisplacement28_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement29_control_omb"
+        label   "inputs:displacement29"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement29_n8a"
+        label   "Displacement29"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement29_control_omb == block } { xn__inputsdisplacement29_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement30_control_omb"
+        label   "inputs:displacement30"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement30_n8a"
+        label   "Displacement30"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement30_control_omb == block } { xn__inputsdisplacement30_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement31_control_omb"
+        label   "inputs:displacement31"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement31_n8a"
+        label   "Displacement31"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement31_control_omb == block } { xn__inputsdisplacement31_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement32_control_omb"
+        label   "inputs:displacement32"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement32_n8a"
+        label   "Displacement32"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement32_control_omb == block } { xn__inputsdisplacement32_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement33_control_omb"
+        label   "inputs:displacement33"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement33_n8a"
+        label   "Displacement33"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement33_control_omb == block } { xn__inputsdisplacement33_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement34_control_omb"
+        label   "inputs:displacement34"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement34_n8a"
+        label   "Displacement34"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement34_control_omb == block } { xn__inputsdisplacement34_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement35_control_omb"
+        label   "inputs:displacement35"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement35_n8a"
+        label   "Displacement35"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement35_control_omb == block } { xn__inputsdisplacement35_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement36_control_omb"
+        label   "inputs:displacement36"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement36_n8a"
+        label   "Displacement36"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement36_control_omb == block } { xn__inputsdisplacement36_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement37_control_omb"
+        label   "inputs:displacement37"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement37_n8a"
+        label   "Displacement37"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement37_control_omb == block } { xn__inputsdisplacement37_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement38_control_omb"
+        label   "inputs:displacement38"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement38_n8a"
+        label   "Displacement38"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement38_control_omb == block } { xn__inputsdisplacement38_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement39_control_omb"
+        label   "inputs:displacement39"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement39_n8a"
+        label   "Displacement39"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement39_control_omb == block } { xn__inputsdisplacement39_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement40_control_omb"
+        label   "inputs:displacement40"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement40_n8a"
+        label   "Displacement40"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement40_control_omb == block } { xn__inputsdisplacement40_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement41_control_omb"
+        label   "inputs:displacement41"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement41_n8a"
+        label   "Displacement41"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement41_control_omb == block } { xn__inputsdisplacement41_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement42_control_omb"
+        label   "inputs:displacement42"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement42_n8a"
+        label   "Displacement42"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement42_control_omb == block } { xn__inputsdisplacement42_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement43_control_omb"
+        label   "inputs:displacement43"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement43_n8a"
+        label   "Displacement43"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement43_control_omb == block } { xn__inputsdisplacement43_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement44_control_omb"
+        label   "inputs:displacement44"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement44_n8a"
+        label   "Displacement44"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement44_control_omb == block } { xn__inputsdisplacement44_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement45_control_omb"
+        label   "inputs:displacement45"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement45_n8a"
+        label   "Displacement45"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement45_control_omb == block } { xn__inputsdisplacement45_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement46_control_omb"
+        label   "inputs:displacement46"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement46_n8a"
+        label   "Displacement46"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement46_control_omb == block } { xn__inputsdisplacement46_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement47_control_omb"
+        label   "inputs:displacement47"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement47_n8a"
+        label   "Displacement47"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement47_control_omb == block } { xn__inputsdisplacement47_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement48_control_omb"
+        label   "inputs:displacement48"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement48_n8a"
+        label   "Displacement48"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement48_control_omb == block } { xn__inputsdisplacement48_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement49_control_omb"
+        label   "inputs:displacement49"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement49_n8a"
+        label   "Displacement49"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement49_control_omb == block } { xn__inputsdisplacement49_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement50_control_omb"
+        label   "inputs:displacement50"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement50_n8a"
+        label   "Displacement50"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement50_control_omb == block } { xn__inputsdisplacement50_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement51_control_omb"
+        label   "inputs:displacement51"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement51_n8a"
+        label   "Displacement51"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement51_control_omb == block } { xn__inputsdisplacement51_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement52_control_omb"
+        label   "inputs:displacement52"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement52_n8a"
+        label   "Displacement52"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement52_control_omb == block } { xn__inputsdisplacement52_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement53_control_omb"
+        label   "inputs:displacement53"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement53_n8a"
+        label   "Displacement53"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement53_control_omb == block } { xn__inputsdisplacement53_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement54_control_omb"
+        label   "inputs:displacement54"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement54_n8a"
+        label   "Displacement54"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement54_control_omb == block } { xn__inputsdisplacement54_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement55_control_omb"
+        label   "inputs:displacement55"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement55_n8a"
+        label   "Displacement55"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement55_control_omb == block } { xn__inputsdisplacement55_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement56_control_omb"
+        label   "inputs:displacement56"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement56_n8a"
+        label   "Displacement56"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement56_control_omb == block } { xn__inputsdisplacement56_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement57_control_omb"
+        label   "inputs:displacement57"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement57_n8a"
+        label   "Displacement57"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement57_control_omb == block } { xn__inputsdisplacement57_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement58_control_omb"
+        label   "inputs:displacement58"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement58_n8a"
+        label   "Displacement58"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement58_control_omb == block } { xn__inputsdisplacement58_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement59_control_omb"
+        label   "inputs:displacement59"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement59_n8a"
+        label   "Displacement59"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement59_control_omb == block } { xn__inputsdisplacement59_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement60_control_omb"
+        label   "inputs:displacement60"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement60_n8a"
+        label   "Displacement60"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement60_control_omb == block } { xn__inputsdisplacement60_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement61_control_omb"
+        label   "inputs:displacement61"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement61_n8a"
+        label   "Displacement61"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement61_control_omb == block } { xn__inputsdisplacement61_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement62_control_omb"
+        label   "inputs:displacement62"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement62_n8a"
+        label   "Displacement62"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement62_control_omb == block } { xn__inputsdisplacement62_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdisplacement63_control_omb"
+        label   "inputs:displacement63"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdisplacement63_n8a"
+        label   "Displacement63"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsdisplacement63_control_omb == block } { xn__inputsdisplacement63_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

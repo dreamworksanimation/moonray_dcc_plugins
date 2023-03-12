@@ -1,0 +1,139 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputsbake_resolution_mode_control_gwb"
+        label   "inputs:bake_resolution_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_resolution_mode_fjb"
+        label   "Bake Resolution Mode"
+        type    string
+        default { "default" }
+        help    "Toggle method to specify grid resolution of baked density grid.\n		default: for shaders that are bound to vdb volumes, use vdb resolution. For shaders that are bounds to mesh geometriesuse 100 divisions\n		divisions: specify number of divisions.\n		voxel size: specify voxel size."
+        disablewhen "{ xn__inputsbake_resolution_mode_control_gwb == block } { xn__inputsbake_resolution_mode_control_gwb == none }"
+        menu {
+            "default"       "Default"
+            "divisions"     "Divisions"
+            "voxel size"    "Voxel Size"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsbake_divisions_control_omb"
+        label   "inputs:bake_divisions"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_divisions_n8a"
+        label   "Bake Divisions"
+        type    integer
+        default { "100" }
+        help    "Divide widest axis by this many divisions"
+        disablewhen "{ xn__inputsbake_divisions_control_omb == block } { xn__inputsbake_divisions_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsbake_voxel_size_control_bob"
+        label   "inputs:bake_voxel_size"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_voxel_size_99a"
+        label   "Bake Voxel Size"
+        type    float
+        default { "10" }
+        help    "Size of voxel in world space"
+        disablewhen "{ xn__inputsbake_voxel_size_control_bob == block } { xn__inputsbake_voxel_size_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssurface_opacity_threshold_control_l4b"
+        label   "inputs:surface_opacity_threshold"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssurface_opacity_threshold_krb"
+        label   "Surface Opacity Threshold"
+        type    float
+        default { "0.5" }
+        help    "Accumulated opacity that's considered the 'surface' for computing surface position and Z"
+        disablewhen "{ xn__inputssurface_opacity_threshold_control_l4b == block } { xn__inputssurface_opacity_threshold_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsindirect_volume_control_bob"
+        label   "inputs:indirect_volume"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsindirect_volume_99a"
+        label   "Indirect Volume"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsindirect_volume_control_bob == block } { xn__inputsindirect_volume_control_bob == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

@@ -1,0 +1,812 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Common"
+
+        parm {
+            name    "xn__inputspresence_control_wcb"
+            label   "inputs:presence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspresence_vya"
+            label   "Presence"
+            type    float
+            default { "1" }
+            help    "controls the visibility of this object. Useful for fading an object in/out, or to specify a cut-out mask on thin single-sided geometry (eg. a complex leaf texture on a simple card)."
+            disablewhen "{ xn__inputspresence_control_wcb == block } { xn__inputspresence_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputscasts_caustics_control_omb"
+            label   "inputs:casts_caustics"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscasts_caustics_n8a"
+            label   "Casts Caustics"
+            type    toggle
+            default { "0" }
+            help    "allows continuation of caustic light paths."
+            disablewhen "{ xn__inputscasts_caustics_control_omb == block } { xn__inputscasts_caustics_control_omb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Fresnel"
+
+        parm {
+            name    "xn__inputsrefractive_index_control_xpb"
+            label   "inputs:refractive_index"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsrefractive_index_wcb"
+            label   "Refractive Index"
+            type    float
+            default { "1.45" }
+            help    "keep this value between [1.3,2.0] for realistic behavior (human hair is around 1.55)"
+            disablewhen "{ xn__inputsrefractive_index_control_xpb == block } { xn__inputsrefractive_index_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfresnel_type_control_fjb"
+            label   "inputs:fresnel_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfresnel_type_e5a"
+            label   "Fresnel Type"
+            type    string
+            default { "dielectric cylinder" }
+            disablewhen "{ xn__inputsfresnel_type_control_fjb == block } { xn__inputsfresnel_type_control_fjb == none }"
+            menu {
+                "simple longitudinal"   "Simple Longitudinal"
+                "dielectric cylinder"   "Dielectric Cylinder"
+                "layered cuticles"      "Layered Cuticles"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputscuticle_layer_thickness_control_c1b"
+            label   "inputs:cuticle_layer_thickness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscuticle_layer_thickness_bob"
+            label   "Cuticle Layer Thickness"
+            type    float
+            default { "0.1" }
+            disablewhen "{ fresnel_type != \"layered cuticles\" } { xn__inputscuticle_layer_thickness_control_c1b == block } { xn__inputscuticle_layer_thickness_control_c1b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Primary Specular"
+
+        parm {
+            name    "xn__inputsshow_primary_specular_control_2xb"
+            label   "inputs:show_primary_specular"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_primary_specular_1kb"
+            label   "Show Primary Specular"
+            type    toggle
+            default { "1" }
+            help    "show primary specular"
+            disablewhen "{ xn__inputsshow_primary_specular_control_2xb == block } { xn__inputsshow_primary_specular_control_2xb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_offset_control_c1b"
+            label   "inputs:primary_specular_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_offset_bob"
+            label   "Primary Specular Offset"
+            type    float
+            default { "-3" }
+            help    "offset specular highlight along hair direction (in degrees) [-10,+10], around -3 for human hair"
+            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_offset_control_c1b == block } { xn__inputsprimary_specular_offset_control_c1b == none }"
+            range   { -10 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_roughness_control_75b"
+            label   "inputs:primary_specular_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_roughness_6sb"
+            label   "Primary Specular Roughness"
+            type    float
+            default { "0.5" }
+            help    "roughness of the primary specular highlight, also sets the transmission roughness to 0.5x and secondary specular roughness to 2x by default unless independent roughnesses are being used for both"
+            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_roughness_control_75b == block } { xn__inputsprimary_specular_roughness_control_75b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_tint_control_2xb"
+            label   "inputs:primary_specular_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimary_specular_tint_1kb"
+            label   "Primary Specular Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "tint the primary specular highlight with this color (leave white for physical behavior)"
+            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_tint_control_2xb == block } { xn__inputsprimary_specular_tint_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Secondary Specular"
+
+        parm {
+            name    "xn__inputsshow_secondary_specular_control_c1b"
+            label   "inputs:show_secondary_specular"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_secondary_specular_bob"
+            label   "Show Secondary Specular"
+            type    toggle
+            default { "1" }
+            help    "show secondary specular"
+            disablewhen "{ xn__inputsshow_secondary_specular_control_c1b == block } { xn__inputsshow_secondary_specular_control_c1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssecondary_specular_offset_control_l4b"
+            label   "inputs:secondary_specular_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssecondary_specular_offset_krb"
+            label   "Secondary Specular Offset"
+            type    float
+            default { "-4.5" }
+            help    "offset secondary specular highlight along hair direction (in degrees) [-10,+10], around -4.5 for human hair"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputssecondary_specular_offset_control_l4b == block } { xn__inputssecondary_specular_offset_control_l4b == none }"
+            range   { -10 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsuse_independent_secondary_specular_roughness_control_j0c"
+            label   "inputs:use_independent_secondary_specular_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_independent_secondary_specular_roughness_inc"
+            label   "Use Independent Secondary Specular Roughness"
+            type    toggle
+            default { "0" }
+            help    "when disabled, uses a physically correct value for secondary specular roughness which is linked to the primary specular roughness"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsuse_independent_secondary_specular_roughness_control_j0c == block } { xn__inputsuse_independent_secondary_specular_roughness_control_j0c == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsindependent_secondary_specular_roughness_control_0tc"
+            label   "inputs:independent_secondary_specular_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsindependent_secondary_specular_roughness_zgc"
+            label   "Independent Secondary Specular Roughness"
+            type    float
+            default { "0.4" }
+            help    "secondary specular roughness"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsindependent_secondary_specular_roughness_control_0tc == block } { xn__inputsindependent_secondary_specular_roughness_control_0tc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputssecondary_specular_tint_control_c1b"
+            label   "inputs:secondary_specular_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssecondary_specular_tint_bob"
+            label   "Secondary Specular Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "tint secondary specular with this color (leave white for physical behavior)"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputssecondary_specular_tint_control_c1b == block } { xn__inputssecondary_specular_tint_control_c1b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsshow_hair_glint_control_bob"
+            label   "inputs:show_hair_glint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_hair_glint_99a"
+            label   "Show Hair Glint"
+            type    toggle
+            default { "0" }
+            help    "show hair glint"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsshow_hair_glint_control_bob == block } { xn__inputsshow_hair_glint_control_bob == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsglint_roughness_control_bob"
+            label   "inputs:glint_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglint_roughness_99a"
+            label   "Glint Roughness"
+            type    float
+            default { "0.5" }
+            help    "secondary specular glint roughness"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_roughness_control_bob == block } { xn__inputsglint_roughness_control_bob == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsglint_eccentricity_control_6sb"
+            label   "inputs:glint_eccentricity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglint_eccentricity_5fb"
+            label   "Glint Eccentricity"
+            type    float
+            default { "0.85" }
+            help    "secondary specular glint eccentricity [0.85, 1], values that deviate from 1 make the hair fiber more elliptical and more glinty"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_eccentricity_control_6sb == block } { xn__inputsglint_eccentricity_control_6sb == none }"
+            range   { 0.85 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsglint_min_twists_control_xpb"
+            label   "inputs:glint_min_twists"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglint_min_twists_wcb"
+            label   "Glint Min Twists"
+            type    float
+            default { "1.5" }
+            help    "the minimum number of twists along the hair's length. More twists means more glints. Each hair strand will be randomly assigned a twist amount between [min twists, max twists]"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_min_twists_control_xpb == block } { xn__inputsglint_min_twists_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsglint_max_twists_control_xpb"
+            label   "inputs:glint_max_twists"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglint_max_twists_wcb"
+            label   "Glint Max Twists"
+            type    float
+            default { "2.5" }
+            help    "the maximum number of twists along the hair's length. More twists means more glints. Each hair strand will be randomly assigned a twist amount between [min twists, max twists]"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_max_twists_control_xpb == block } { xn__inputsglint_max_twists_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsglint_saturation_control_xpb"
+            label   "inputs:glint_saturation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglint_saturation_wcb"
+            label   "Glint Saturation"
+            type    float
+            default { "0.5" }
+            help    "secondary specular glint saturation"
+            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_saturation_control_xpb == block } { xn__inputsglint_saturation_control_xpb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Transmission"
+
+        parm {
+            name    "xn__inputsshow_transmission_control_krb"
+            label   "inputs:show_transmission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_transmission_jeb"
+            label   "Show Transmission"
+            type    toggle
+            default { "1" }
+            help    "show tranmission specular"
+            disablewhen "{ xn__inputsshow_transmission_control_krb == block } { xn__inputsshow_transmission_control_krb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputstransmission_offset_control_tub"
+            label   "inputs:transmission_offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_offset_shb"
+            label   "Transmission Offset"
+            type    float
+            default { "-1.5" }
+            help    "offset transmission highlight along hair direction (in degrees) [-10,+10], around -1.5 for human hair"
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_offset_control_tub == block } { xn__inputstransmission_offset_control_tub == none }"
+            range   { -10 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsuse_independent_transmission_roughness_control_rqc"
+            label   "inputs:use_independent_transmission_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_independent_transmission_roughness_qdc"
+            label   "Use Independent Transmission Roughness"
+            type    toggle
+            default { "0" }
+            help    "when disabled, uses a physically correct value for Transmission roughness which is linked to the primary specular roughness"
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsuse_independent_transmission_roughness_control_rqc == block } { xn__inputsuse_independent_transmission_roughness_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsindependent_transmission_roughness_control_8jc"
+            label   "inputs:independent_transmission_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsindependent_transmission_roughness_75b"
+            label   "Independent Transmission Roughness"
+            type    float
+            default { "0.1" }
+            help    "transmission roughness"
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsindependent_transmission_roughness_control_8jc == block } { xn__inputsindependent_transmission_roughness_control_8jc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputstransmission_azimuthal_roughness_control_zgc"
+            label   "inputs:transmission_azimuthal_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_azimuthal_roughness_y2b"
+            label   "Transmission Azimuthal Roughness"
+            type    float
+            default { "1" }
+            help    "higher values create a softer look"
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_azimuthal_roughness_control_zgc == block } { xn__inputstransmission_azimuthal_roughness_control_zgc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputstransmission_tint_control_krb"
+            label   "inputs:transmission_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_tint_jeb"
+            label   "Transmission Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "tint transmission with this color (leave white for physical behavior)"
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_tint_control_krb == block } { xn__inputstransmission_tint_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsdirect_transmission_saturation_control_qdc"
+            label   "inputs:direct_transmission_saturation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdirect_transmission_saturation_pzb"
+            label   "Direct Transmission Saturation"
+            type    float
+            default { "1" }
+            help    "(Non-Physical, Advanced) saturate/desaturate direct transmission highlights."
+            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsdirect_transmission_saturation_control_qdc == block } { xn__inputsdirect_transmission_saturation_control_qdc == none }"
+            range   { 0 4 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsuse_optimized_sampling_control_pzb"
+            label   "inputs:use_optimized_sampling"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_optimized_sampling_omb"
+            label   "Use Optimized Sampling"
+            type    toggle
+            default { "1" }
+            help    "optimized sampling of all the hair lobes, results in 2x-4x speedup on average (disables individual hair lobe AOVs). When false, the look may slightly change if using biased techniques like roughness/sample clamping. "
+            disablewhen "{ xn__inputsuse_optimized_sampling_control_pzb == block } { xn__inputsuse_optimized_sampling_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsshow_multiple_scattering_control_y2b"
+            label   "inputs:show_multiple_scattering"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_multiple_scattering_xpb"
+            label   "Show Multiple Scattering"
+            type    toggle
+            default { "1" }
+            help    "show the amount of light scattered after TRT bounce, good for blonde/white hair"
+            disablewhen "{ xn__inputsshow_multiple_scattering_control_y2b == block } { xn__inputsshow_multiple_scattering_control_y2b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Emission"
+
+        parm {
+            name    "xn__inputsshow_emission_control_1kb"
+            label   "inputs:show_emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_emission_06a"
+            label   "Show Emission"
+            type    toggle
+            default { "0" }
+            help    "enables/disable emission"
+            disablewhen "{ xn__inputsshow_emission_control_1kb == block } { xn__inputsshow_emission_control_1kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsemission_control_wcb"
+            label   "inputs:emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_vya"
+            label   "Emission"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the energy emitted from this material"
+            disablewhen "{ xn__inputsshow_emission_06a != 1 } { xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputshair_color_control_5fb"
+        label   "inputs:hair_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputshair_color_41a"
+        label   "Hair Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputshair_color_control_5fb == block } { xn__inputshair_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

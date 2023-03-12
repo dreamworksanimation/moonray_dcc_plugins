@@ -1,0 +1,145 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsspace_control_06a"
+        label   "inputs:space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsspace_zta"
+        label   "Space"
+        type    string
+        default { "texture" }
+        disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+        menu {
+            "render"    "Render"
+            "camera"    "Camera"
+            "world"     "World"
+            "screen"    "Screen"
+            "object"    "Object"
+            "reference" "Reference"
+            "texture"   "Texture"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsoffset_control_n8a"
+        label   "inputs:offset"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoffset_mva"
+        label   "Offset"
+        type    vector2
+        size    2
+        default { "0" "0" }
+        disablewhen "{ xn__inputsoffset_control_n8a == block } { xn__inputsoffset_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    vector2
+        size    2
+        default { "1" "1" }
+        disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsrotation_angle_control_omb"
+        label   "inputs:rotation_angle"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_angle_n8a"
+        label   "Rotation Angle"
+        type    float
+        default { "0" }
+        help    "Rotation in degrees"
+        disablewhen "{ xn__inputsrotation_angle_control_omb == block } { xn__inputsrotation_angle_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsrotation_center_control_bob"
+        label   "inputs:rotation_center"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_center_99a"
+        label   "Rotation Center"
+        type    vector2
+        size    2
+        default { "0.5" "0.5" }
+        help    "UV coordinate around which to rotate"
+        disablewhen "{ xn__inputsrotation_center_control_bob == block } { xn__inputsrotation_center_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsrotation_axis_control_1kb"
+        label   "inputs:rotation_axis"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_axis_06a"
+        label   "Rotation Axis"
+        type    vector
+        size    3
+        default { "0" "0" "1" }
+        help    "Axis in which to rotate (only for 3D spaces)"
+        disablewhen "{ xn__inputsrotation_axis_control_1kb == block } { xn__inputsrotation_axis_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+}

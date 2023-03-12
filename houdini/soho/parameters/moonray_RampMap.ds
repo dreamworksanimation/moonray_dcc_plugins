@@ -1,0 +1,312 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Ramp Knot"
+
+        parm {
+            name    "xn__inputscolors_control_n8a"
+            label   "inputs:colors"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "ramp"
+            label   "Ramp"
+            type    ramp_rgb
+            default { "4" }
+            disablewhen "{ xn__inputscolors_control_n8a == block } { xn__inputscolors_control_n8a == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "color3f[]" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Ramp properties"
+
+        parm {
+            name    "xn__inputsramp_type_control_jeb"
+            label   "inputs:ramp_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsramp_type_i0a"
+            label   "Ramp Type"
+            type    string
+            default { "v" }
+            disablewhen "{ xn__inputsramp_type_control_jeb == block } { xn__inputsramp_type_control_jeb == none }"
+            menu {
+                "v"             "V"
+                "u"             "U"
+                "diagonal"      "Diagonal"
+                "radial"        "Radial"
+                "circular"      "Circular"
+                "box"           "Box"
+                "uxv"           "Uxv"
+                "four corner"   "Four Corner"
+                "input"         "Input"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_control_06a"
+            label   "inputs:input"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_zta"
+            label   "Input"
+            type    float
+            default { "1" }
+            help    "Input signal for ramp, used when ramp type is set to input"
+            disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspace_control_06a"
+            label   "inputs:space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspace_zta"
+            label   "Space"
+            type    string
+            default { "render" }
+            help    "Only applies when 'texture coordinates' is set to 'default state coordinates'"
+            disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+            menu {
+                "render"    "Render"
+                "camera"    "Camera"
+                "world"     "World"
+                "screen"    "Screen"
+                "object"    "Object"
+                "reference" "Reference"
+                "texture"   "Texture"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsobject_control_n8a"
+            label   "inputs:object"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsobject_mva"
+            label   "Object"
+            type    oppath
+            default { "" }
+            disablewhen "{ xn__inputsobject_control_n8a == block } { xn__inputsobject_control_n8a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputscamera_control_n8a"
+            label   "inputs:camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscamera_mva"
+            label   "Camera"
+            type    oppath
+            default { "" }
+            help    "Camera used to define camera and screen space"
+            disablewhen "{ xn__inputscamera_control_n8a == block } { xn__inputscamera_control_n8a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputscolor_space_control_shb"
+            label   "inputs:color_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscolor_space_r3a"
+            label   "Color Space"
+            type    string
+            default { "rgb" }
+            help    "Color space to perform interpolation in"
+            disablewhen "{ xn__inputscolor_space_control_shb == block } { xn__inputscolor_space_control_shb == none }"
+            menu {
+                "rgb"   "Rgb"
+                "hsv"   "Hsv"
+                "hsl"   "Hsl"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Additional properties"
+
+        parm {
+            name    "xn__inputsinput_texture_coordinates_control_l4b"
+            label   "inputs:input_texture_coordinates"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_texture_coordinates_krb"
+            label   "Input Texture Coordinates"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "Bind custom UV coordinates"
+            disablewhen "{ xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputswrap_type_control_jeb"
+            label   "inputs:wrap_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputswrap_type_i0a"
+            label   "Wrap Type"
+            type    string
+            default { "wrap" }
+            disablewhen "{ xn__inputswrap_type_control_jeb == block } { xn__inputswrap_type_control_jeb == none }"
+            menu {
+                "wrap"  "Wrap"
+                "clamp" "Clamp"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsuv_wave_control_99a"
+            label   "inputs:uv_wave"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuv_wave_8wa"
+            label   "Uv Wave"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "Creates waves which perturb the ramp pattern"
+            disablewhen "{ xn__inputsuv_wave_control_99a == block } { xn__inputsuv_wave_control_99a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsuv_repeat_control_jeb"
+            label   "inputs:uv_repeat"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuv_repeat_i0a"
+            label   "Uv Repeat"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "Number of times to repeat the ramp pattern"
+            disablewhen "{ xn__inputsuv_repeat_control_jeb == block } { xn__inputsuv_repeat_control_jeb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+    }
+
+    parm {
+        name    "xn__inputstexture_coordinates_control_tub"
+        label   "inputs:texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_shb"
+        label   "Texture Coordinates"
+        type    string
+        default { "default state coordinates" }
+        disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
+        menu {
+            "default state coordinates" "Default State Coordinates"
+            "input texture coordinates" "Input Texture Coordinates"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

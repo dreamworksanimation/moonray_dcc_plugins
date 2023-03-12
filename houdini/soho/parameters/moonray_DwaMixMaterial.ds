@@ -1,0 +1,1983 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsfallback_bssrdf_control_bob"
+            label   "inputs:fallback_bssrdf"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_bssrdf_99a"
+            label   "Fallback Bssrdf"
+            type    string
+            default { "normalized diffusion" }
+            help    "If child materials disagree on the type of bssrdf, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_bssrdf_control_bob == block } { xn__inputsfallback_bssrdf_control_bob == none }"
+            menu {
+                "normalized diffusion"  "Normalized Diffusion"
+                "dipole"                "Dipole"
+                "random walk"           "Random Walk"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_specular_model_control_c1b"
+            label   "inputs:fallback_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_specular_model_bob"
+            label   "Fallback Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_specular_model_control_c1b == block } { xn__inputsfallback_specular_model_control_c1b == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_toon_specular_model_control_h9b"
+            label   "inputs:fallback_toon_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_toon_specular_model_gwb"
+            label   "Fallback Toon Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of toon specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_toon_specular_model_control_h9b == block } { xn__inputsfallback_toon_specular_model_control_h9b == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+                "Toon"      "Toon"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_outer_specular_model_control_3bc"
+            label   "inputs:fallback_outer_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_outer_specular_model_2xb"
+            label   "Fallback Outer Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of outer specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_outer_specular_model_control_3bc == block } { xn__inputsfallback_outer_specular_model_control_3bc == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_clearcoat_use_bending_control_qdc"
+            label   "inputs:fallback_clearcoat_use_bending"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_clearcoat_use_bending_pzb"
+            label   "Fallback Clearcoat Use Bending"
+            type    toggle
+            default { "1" }
+            help    "If child materials disagree on the type of clearcoat use bending, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_clearcoat_use_bending_control_qdc == block } { xn__inputsfallback_clearcoat_use_bending_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsfallback_thin_geometry_control_pzb"
+            label   "inputs:fallback_thin_geometry"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_thin_geometry_omb"
+            label   "Fallback Thin Geometry"
+            type    toggle
+            default { "1" }
+            help    "If child materials disagree on the type of thin geometry, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_thin_geometry_control_pzb == block } { xn__inputsfallback_thin_geometry_control_pzb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsblend_color_space_control_krb"
+            label   "inputs:blend_color_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsblend_color_space_jeb"
+            label   "Blend Color Space"
+            type    string
+            default { "RGB" }
+            help    "Color space used when blending the two material's color parameters"
+            disablewhen "{ xn__inputsblend_color_space_control_krb == block } { xn__inputsblend_color_space_control_krb == none }"
+            menu {
+                "RGB"   "RGB"
+                "HSV"   "HSV"
+                "HSL"   "HSL"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_control_1kb"
+            label   "inputs:sss_trace_set"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_06a"
+            label   "Sss Trace Set"
+            type    oppath
+            default { "" }
+            help    "By default, only the geometry associated with this material contributes to subsurface. The DwaLayerMaterial ignores the sss trace sets of the submaterials. If you want adjacent geometry with different material to contribute as well, specify all those parts here."
+            disablewhen "{ xn__inputssss_trace_set_control_1kb == block } { xn__inputssss_trace_set_control_1kb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Glitter Fallback"
+
+        parm {
+            name    "xn__inputsfallback_glitter_seed_control_2xb"
+            label   "inputs:fallback_glitter_seed"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_seed_1kb"
+            label   "Fallback Glitter Seed"
+            type    integer
+            default { "0" }
+            help    "The seed for the glitter random number generator.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_seed_control_2xb == block } { xn__inputsfallback_glitter_seed_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_space_control_pzb"
+            label   "inputs:fallback_glitter_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_space_omb"
+            label   "Fallback Glitter Space"
+            type    string
+            default { "reference" }
+            help    "The space to calculate the worley noise in, defaults to reference space.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_space_control_pzb == block } { xn__inputsfallback_glitter_space_control_pzb == none }"
+            menu {
+                "object"    "Object"
+                "reference" "Reference"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_randomness_control_u7b"
+            label   "inputs:fallback_glitter_randomness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_randomness_tub"
+            label   "Fallback Glitter Randomness"
+            type    float
+            default { "0.5" }
+            help    "randomness of flake orientation.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_randomness_control_u7b == block } { xn__inputsfallback_glitter_randomness_control_u7b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_style_A_frequency_control_8jc"
+            label   "inputs:fallback_glitter_style_A_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_style_A_frequency_75b"
+            label   "Fallback Glitter Style A Frequency"
+            type    float
+            default { "1" }
+            help    "0 implies none of this style, 1 implies all the flakes will get this style.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_style_A_frequency_control_8jc == block } { xn__inputsfallback_glitter_style_A_frequency_control_8jc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_texture_A_control_75b"
+            label   "inputs:fallback_glitter_texture_A"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_texture_A_6sb"
+            label   "Fallback Glitter Texture A"
+            type    file
+            default { "" }
+            help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx).  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_texture_A_control_75b == block } { xn__inputsfallback_glitter_texture_A_control_75b == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_style_B_frequency_control_8jc"
+            label   "inputs:fallback_glitter_style_B_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_style_B_frequency_75b"
+            label   "Fallback Glitter Style B Frequency"
+            type    float
+            default { "1" }
+            help    "0 implies none of this style, 1 implies all the flakes will get this style.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_style_B_frequency_control_8jc == block } { xn__inputsfallback_glitter_style_B_frequency_control_8jc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_texture_B_control_75b"
+            label   "inputs:fallback_glitter_texture_B"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_texture_B_6sb"
+            label   "Fallback Glitter Texture B"
+            type    string
+            default { "" }
+            help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx).  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_texture_B_control_75b == block } { xn__inputsfallback_glitter_texture_B_control_75b == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_LOD_quality_control_h9b"
+            label   "inputs:fallback_glitter_LOD_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_LOD_quality_gwb"
+            label   "Fallback Glitter LOD Quality"
+            type    float
+            default { "0.5" }
+            help    "controls quality of glitter at distances where individual flakes cannot be perceived; at lower values, approximation kicks in earlier.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_LOD_quality_control_h9b == block } { xn__inputsfallback_glitter_LOD_quality_control_h9b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_layering_mode_control_qdc"
+            label   "inputs:fallback_glitter_layering_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_layering_mode_pzb"
+            label   "Fallback Glitter Layering Mode"
+            type    string
+            default { "physical" }
+            help    "layering mode for glitter on top of the under material. physical: conserves energy and glitter attenuates under material, additive: breaks energy conservation but glitter is never darker than the under material (eg. use case: snow).  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_layering_mode_control_qdc == block } { xn__inputsfallback_glitter_layering_mode_control_qdc == none }"
+            menu {
+                "physical"  "Physical"
+                "additive"  "Additive"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_debug_mode_control_u7b"
+            label   "inputs:fallback_glitter_debug_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_glitter_debug_mode_tub"
+            label   "Fallback Glitter Debug Mode"
+            type    string
+            default { "off" }
+            help    "developer debug visualization modes.  This parameter will only be used when layering two distinct glitter materials."
+            disablewhen "{ xn__inputsfallback_glitter_debug_mode_control_u7b == block } { xn__inputsfallback_glitter_debug_mode_control_u7b == none }"
+            menu {
+                "off"           "Off"
+                "blend"         "Blend"
+                "color"         "Color"
+                "averageColor"  "averageColor"
+                "footprintArea" "footprintArea"
+                "radius"        "Radius"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsmaterial0_control_jeb"
+        label   "inputs:material0"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial0_i0a"
+        label   "Material0"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial0_control_jeb == block } { xn__inputsmaterial0_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial1_control_jeb"
+        label   "inputs:material1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial1_i0a"
+        label   "Material1"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial1_control_jeb == block } { xn__inputsmaterial1_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial2_control_jeb"
+        label   "inputs:material2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial2_i0a"
+        label   "Material2"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial2_control_jeb == block } { xn__inputsmaterial2_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial3_control_jeb"
+        label   "inputs:material3"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial3_i0a"
+        label   "Material3"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial3_control_jeb == block } { xn__inputsmaterial3_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial4_control_jeb"
+        label   "inputs:material4"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial4_i0a"
+        label   "Material4"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial4_control_jeb == block } { xn__inputsmaterial4_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial5_control_jeb"
+        label   "inputs:material5"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial5_i0a"
+        label   "Material5"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial5_control_jeb == block } { xn__inputsmaterial5_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial6_control_jeb"
+        label   "inputs:material6"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial6_i0a"
+        label   "Material6"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial6_control_jeb == block } { xn__inputsmaterial6_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial7_control_jeb"
+        label   "inputs:material7"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial7_i0a"
+        label   "Material7"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial7_control_jeb == block } { xn__inputsmaterial7_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial8_control_jeb"
+        label   "inputs:material8"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial8_i0a"
+        label   "Material8"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial8_control_jeb == block } { xn__inputsmaterial8_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial9_control_jeb"
+        label   "inputs:material9"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial9_i0a"
+        label   "Material9"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial9_control_jeb == block } { xn__inputsmaterial9_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial10_control_5fb"
+        label   "inputs:material10"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial10_41a"
+        label   "Material10"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial10_control_5fb == block } { xn__inputsmaterial10_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial11_control_5fb"
+        label   "inputs:material11"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial11_41a"
+        label   "Material11"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial11_control_5fb == block } { xn__inputsmaterial11_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial12_control_5fb"
+        label   "inputs:material12"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial12_41a"
+        label   "Material12"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial12_control_5fb == block } { xn__inputsmaterial12_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial13_control_5fb"
+        label   "inputs:material13"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial13_41a"
+        label   "Material13"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial13_control_5fb == block } { xn__inputsmaterial13_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial14_control_5fb"
+        label   "inputs:material14"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial14_41a"
+        label   "Material14"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial14_control_5fb == block } { xn__inputsmaterial14_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial15_control_5fb"
+        label   "inputs:material15"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial15_41a"
+        label   "Material15"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial15_control_5fb == block } { xn__inputsmaterial15_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial16_control_5fb"
+        label   "inputs:material16"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial16_41a"
+        label   "Material16"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial16_control_5fb == block } { xn__inputsmaterial16_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial17_control_5fb"
+        label   "inputs:material17"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial17_41a"
+        label   "Material17"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial17_control_5fb == block } { xn__inputsmaterial17_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial18_control_5fb"
+        label   "inputs:material18"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial18_41a"
+        label   "Material18"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial18_control_5fb == block } { xn__inputsmaterial18_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial19_control_5fb"
+        label   "inputs:material19"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial19_41a"
+        label   "Material19"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial19_control_5fb == block } { xn__inputsmaterial19_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial20_control_5fb"
+        label   "inputs:material20"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial20_41a"
+        label   "Material20"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial20_control_5fb == block } { xn__inputsmaterial20_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial21_control_5fb"
+        label   "inputs:material21"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial21_41a"
+        label   "Material21"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial21_control_5fb == block } { xn__inputsmaterial21_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial22_control_5fb"
+        label   "inputs:material22"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial22_41a"
+        label   "Material22"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial22_control_5fb == block } { xn__inputsmaterial22_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial23_control_5fb"
+        label   "inputs:material23"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial23_41a"
+        label   "Material23"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial23_control_5fb == block } { xn__inputsmaterial23_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial24_control_5fb"
+        label   "inputs:material24"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial24_41a"
+        label   "Material24"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial24_control_5fb == block } { xn__inputsmaterial24_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial25_control_5fb"
+        label   "inputs:material25"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial25_41a"
+        label   "Material25"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial25_control_5fb == block } { xn__inputsmaterial25_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial26_control_5fb"
+        label   "inputs:material26"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial26_41a"
+        label   "Material26"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial26_control_5fb == block } { xn__inputsmaterial26_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial27_control_5fb"
+        label   "inputs:material27"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial27_41a"
+        label   "Material27"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial27_control_5fb == block } { xn__inputsmaterial27_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial28_control_5fb"
+        label   "inputs:material28"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial28_41a"
+        label   "Material28"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial28_control_5fb == block } { xn__inputsmaterial28_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial29_control_5fb"
+        label   "inputs:material29"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial29_41a"
+        label   "Material29"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial29_control_5fb == block } { xn__inputsmaterial29_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial30_control_5fb"
+        label   "inputs:material30"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial30_41a"
+        label   "Material30"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial30_control_5fb == block } { xn__inputsmaterial30_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial31_control_5fb"
+        label   "inputs:material31"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial31_41a"
+        label   "Material31"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial31_control_5fb == block } { xn__inputsmaterial31_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial32_control_5fb"
+        label   "inputs:material32"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial32_41a"
+        label   "Material32"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial32_control_5fb == block } { xn__inputsmaterial32_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial33_control_5fb"
+        label   "inputs:material33"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial33_41a"
+        label   "Material33"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial33_control_5fb == block } { xn__inputsmaterial33_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial34_control_5fb"
+        label   "inputs:material34"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial34_41a"
+        label   "Material34"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial34_control_5fb == block } { xn__inputsmaterial34_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial35_control_5fb"
+        label   "inputs:material35"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial35_41a"
+        label   "Material35"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial35_control_5fb == block } { xn__inputsmaterial35_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial36_control_5fb"
+        label   "inputs:material36"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial36_41a"
+        label   "Material36"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial36_control_5fb == block } { xn__inputsmaterial36_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial37_control_5fb"
+        label   "inputs:material37"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial37_41a"
+        label   "Material37"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial37_control_5fb == block } { xn__inputsmaterial37_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial38_control_5fb"
+        label   "inputs:material38"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial38_41a"
+        label   "Material38"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial38_control_5fb == block } { xn__inputsmaterial38_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial39_control_5fb"
+        label   "inputs:material39"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial39_41a"
+        label   "Material39"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial39_control_5fb == block } { xn__inputsmaterial39_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial40_control_5fb"
+        label   "inputs:material40"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial40_41a"
+        label   "Material40"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial40_control_5fb == block } { xn__inputsmaterial40_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial41_control_5fb"
+        label   "inputs:material41"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial41_41a"
+        label   "Material41"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial41_control_5fb == block } { xn__inputsmaterial41_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial42_control_5fb"
+        label   "inputs:material42"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial42_41a"
+        label   "Material42"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial42_control_5fb == block } { xn__inputsmaterial42_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial43_control_5fb"
+        label   "inputs:material43"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial43_41a"
+        label   "Material43"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial43_control_5fb == block } { xn__inputsmaterial43_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial44_control_5fb"
+        label   "inputs:material44"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial44_41a"
+        label   "Material44"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial44_control_5fb == block } { xn__inputsmaterial44_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial45_control_5fb"
+        label   "inputs:material45"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial45_41a"
+        label   "Material45"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial45_control_5fb == block } { xn__inputsmaterial45_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial46_control_5fb"
+        label   "inputs:material46"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial46_41a"
+        label   "Material46"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial46_control_5fb == block } { xn__inputsmaterial46_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial47_control_5fb"
+        label   "inputs:material47"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial47_41a"
+        label   "Material47"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial47_control_5fb == block } { xn__inputsmaterial47_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial48_control_5fb"
+        label   "inputs:material48"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial48_41a"
+        label   "Material48"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial48_control_5fb == block } { xn__inputsmaterial48_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial49_control_5fb"
+        label   "inputs:material49"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial49_41a"
+        label   "Material49"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial49_control_5fb == block } { xn__inputsmaterial49_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial50_control_5fb"
+        label   "inputs:material50"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial50_41a"
+        label   "Material50"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial50_control_5fb == block } { xn__inputsmaterial50_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial51_control_5fb"
+        label   "inputs:material51"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial51_41a"
+        label   "Material51"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial51_control_5fb == block } { xn__inputsmaterial51_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial52_control_5fb"
+        label   "inputs:material52"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial52_41a"
+        label   "Material52"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial52_control_5fb == block } { xn__inputsmaterial52_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial53_control_5fb"
+        label   "inputs:material53"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial53_41a"
+        label   "Material53"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial53_control_5fb == block } { xn__inputsmaterial53_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial54_control_5fb"
+        label   "inputs:material54"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial54_41a"
+        label   "Material54"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial54_control_5fb == block } { xn__inputsmaterial54_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial55_control_5fb"
+        label   "inputs:material55"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial55_41a"
+        label   "Material55"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial55_control_5fb == block } { xn__inputsmaterial55_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial56_control_5fb"
+        label   "inputs:material56"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial56_41a"
+        label   "Material56"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial56_control_5fb == block } { xn__inputsmaterial56_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial57_control_5fb"
+        label   "inputs:material57"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial57_41a"
+        label   "Material57"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial57_control_5fb == block } { xn__inputsmaterial57_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial58_control_5fb"
+        label   "inputs:material58"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial58_41a"
+        label   "Material58"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial58_control_5fb == block } { xn__inputsmaterial58_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial59_control_5fb"
+        label   "inputs:material59"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial59_41a"
+        label   "Material59"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial59_control_5fb == block } { xn__inputsmaterial59_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial60_control_5fb"
+        label   "inputs:material60"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial60_41a"
+        label   "Material60"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial60_control_5fb == block } { xn__inputsmaterial60_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial61_control_5fb"
+        label   "inputs:material61"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial61_41a"
+        label   "Material61"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial61_control_5fb == block } { xn__inputsmaterial61_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial62_control_5fb"
+        label   "inputs:material62"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial62_41a"
+        label   "Material62"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial62_control_5fb == block } { xn__inputsmaterial62_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmaterial63_control_5fb"
+        label   "inputs:material63"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmaterial63_41a"
+        label   "Material63"
+        type    oppath
+        invisible
+        default { "" }
+        disablewhen "{ xn__inputsmaterial63_control_5fb == block } { xn__inputsmaterial63_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmix_control_r3a"
+        label   "inputs:mix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_qqa"
+        label   "Mix"
+        type    float
+        default { "0" }
+        help    "Which of the 64 inputs (0 to 63) to use. Fractional values will mix the two materials the value lies between"
+        disablewhen "{ xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        range   { 0 63 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsremap_mix_to_inputs_control_tub"
+        label   "inputs:remap_mix_to_inputs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsremap_mix_to_inputs_shb"
+        label   "Remap Mix To Inputs"
+        type    toggle
+        default { "1" }
+        help    "When enabled, multiplies mix value by number of inputs used. Inputs should start at 0 with no gaps"
+        disablewhen "{ xn__inputsremap_mix_to_inputs_control_tub == block } { xn__inputsremap_mix_to_inputs_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmix_interpolation_control_krb"
+        label   "inputs:mix_interpolation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_interpolation_jeb"
+        label   "Mix Interpolation"
+        type    string
+        default { "linear" }
+        help    "Adjusts rate of transition from one material to the next based on mix value"
+        disablewhen "{ xn__inputsmix_interpolation_control_krb == block } { xn__inputsmix_interpolation_control_krb == none }"
+        menu {
+            "linear"    "Linear"
+            "hold"      "Hold"
+            "nearest"   "Nearest"
+            "smooth"    "Smooth"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

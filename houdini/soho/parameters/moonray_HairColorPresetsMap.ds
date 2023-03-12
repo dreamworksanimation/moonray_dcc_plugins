@@ -1,0 +1,41 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputscolor_control_06a"
+        label   "inputs:color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_zta"
+        label   "Color"
+        type    string
+        default { "black" }
+        disablewhen "{ xn__inputscolor_control_06a == block } { xn__inputscolor_control_06a == none }"
+        menu {
+            "black"             "Black"
+            "gray"              "Gray"
+            "platinum blond"    "Platinum Blond"
+            "light blond"       "Light Blond"
+            "golden blond"      "Golden Blond"
+            "strawberry blond"  "Strawberry Blond"
+            "light red"         "Light Red"
+            "dark red"          "Dark Red"
+            "light auburn"      "Light Auburn"
+            "dark auburn"       "Dark Auburn"
+            "brown"             "Brown"
+            "dark brown"        "Dark Brown"
+            "golden brown"      "Golden Brown"
+            "ash brown"         "Ash Brown"
+            "chestnut brown"    "Chestnut Brown"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

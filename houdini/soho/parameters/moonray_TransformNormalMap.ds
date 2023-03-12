@@ -1,0 +1,79 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_normal_control_fjb"
+            label   "inputs:input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_e5a"
+            label   "Input Normal"
+            type    vector
+            size    3
+            default { "0" "0" "1" }
+            help    "input normal in either tangent or render space"
+            disablewhen "{ xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputstransform_control_jeb"
+        label   "inputs:transform"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstransform_i0a"
+        label   "Transform"
+        type    string
+        default { "tangent to render" }
+        help    "transform to apply to the normals"
+        disablewhen "{ xn__inputstransform_control_jeb == block } { xn__inputstransform_control_jeb == none }"
+        menu {
+            "tangent to render" "Tangent To Render"
+            "render to tangent" "Render To Tangent"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdecode_input_normal_control_tub"
+        label   "inputs:decode_input_normal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdecode_input_normal_shb"
+        label   "Decode Input Normal"
+        type    toggle
+        default { "1" }
+        help    "decode the input normal if it's in tangent space [0,1] -> [-1,1]"
+        disablewhen "{ xn__inputsdecode_input_normal_control_tub == block } { xn__inputsdecode_input_normal_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

@@ -1,0 +1,166 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Primitive Attribute"
+
+        parm {
+            name    "xn__inputsprimitive_attribute_name_control_y2b"
+            label   "inputs:primitive_attribute_name"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_name_xpb"
+            label   "Primitive Attribute Name"
+            type    string
+            default { "Cd" }
+            help    "the name of primitive attribute to display when attribute 'map type' is set to 'primitive attribute'"
+            disablewhen "{ xn__inputsprimitive_attribute_name_control_y2b == block } { xn__inputsprimitive_attribute_name_control_y2b == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_type_control_y2b"
+            label   "inputs:primitive_attribute_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_type_xpb"
+            label   "Primitive Attribute Type"
+            type    string
+            default { "rgb" }
+            help    "the type of primitive attribute to display when attribute 'map type' is set to 'primitive attribute'"
+            disablewhen "{ xn__inputsprimitive_attribute_type_control_y2b == block } { xn__inputsprimitive_attribute_type_control_y2b == none }"
+            menu {
+                "float" "Float"
+                "vec2f" "Vec2F"
+                "vec3f" "Vec3F"
+                "rgb"   "Rgb"
+                "int"   "Int"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsmap_type_control_wcb"
+        label   "inputs:map_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap_type_vya"
+        label   "Map Type"
+        type    string
+        default { "primitive attribute" }
+        disablewhen "{ xn__inputsmap_type_control_wcb == block } { xn__inputsmap_type_control_wcb == none }"
+        menu {
+            "primitive attribute"       "Primitive Attribute"
+            "position"                  "Position"
+            "texture st"                "Texture St"
+            "shading normal"            "Shading Normal"
+            "geometric normal"          "Geometric Normal"
+            "dpds"                      "Dpds"
+            "dpdt"                      "Dpdt"
+            "dnds"                      "Dnds"
+            "dndt"                      "Dndt"
+            "map color"                 "Map Color"
+            "hair surface P"            "hair surface P"
+            "hair surface N"            "hair surface N"
+            "hair surface st"           "Hair Surface St"
+            "hair closest surface st"   "Hair Closest Surface St"
+            "id"                        "Id"
+            "velocity"                  "Velocity"
+            "acceleration"              "Acceleration"
+            "motionvec"                 "Motionvec"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdefault_value_control_1kb"
+        label   "inputs:default_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdefault_value_06a"
+        label   "Default Value"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "default value to display when the requested attribute is not available"
+        disablewhen "{ xn__inputsdefault_value_control_1kb == block } { xn__inputsdefault_value_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputswarn_when_unavailable_control_2xb"
+        label   "inputs:warn_when_unavailable"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswarn_when_unavailable_1kb"
+        label   "Warn When Unavailable"
+        type    toggle
+        default { "0" }
+        help    "Whether or not to issue a warning when the requested attribute is unavailable"
+        disablewhen "{ xn__inputswarn_when_unavailable_control_2xb == block } { xn__inputswarn_when_unavailable_control_2xb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputscolor_control_06a"
+        label   "inputs:color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_zta"
+        label   "Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "input color - preferably a connected map"
+        disablewhen "{ map_type != \"map color\" } { xn__inputscolor_control_06a == block } { xn__inputscolor_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

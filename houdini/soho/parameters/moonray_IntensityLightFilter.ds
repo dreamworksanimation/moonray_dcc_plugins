@@ -1,0 +1,119 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayintensity_control_6fb"
+            label   "moonray:intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayintensity_51a"
+            label   "Intensity"
+            type    float
+            default { "1" }
+            help    "Multiply the light radiance by this intensity value"
+            disablewhen "{ xn__moonrayintensity_control_6fb == block } { xn__moonrayintensity_control_6fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayexposure_control_keb"
+            label   "moonray:exposure"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayexposure_j0a"
+            label   "Exposure"
+            type    float
+            default { "0" }
+            help    "Multiply the light radiance by exposure = pow(2, exposure)"
+            disablewhen "{ xn__moonrayexposure_control_keb == block } { xn__moonrayexposure_control_keb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraycolor_control_o8a"
+            label   "moonray:color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycolor_nva"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Multiply the light radiance by this RGB color value"
+            disablewhen "{ xn__moonraycolor_control_o8a == block } { xn__moonraycolor_control_o8a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonrayinvert_control_bbb"
+            label   "moonray:invert"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayinvert_9wa"
+            label   "Invert"
+            type    toggle
+            default { "0" }
+            help    "Invert the light radiance by 1/radiance"
+            disablewhen "{ xn__moonrayinvert_control_bbb == block } { xn__moonrayinvert_control_bbb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

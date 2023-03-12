@@ -1,0 +1,297 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "the input value to transform"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsinput_type_control_5fb"
+        label   "inputs:input_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_type_41a"
+        label   "Input Type"
+        type    string
+        default { "vector" }
+        help    "the type of input value provided"
+        disablewhen "{ xn__inputsinput_type_control_5fb == block } { xn__inputsinput_type_control_5fb == none }"
+        menu {
+            "point"     "Point"
+            "vector"    "Vector"
+            "normal"    "Normal"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsfrom_space_control_5fb"
+        label   "inputs:from_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfrom_space_41a"
+        label   "From Space"
+        type    string
+        default { "render" }
+        help    "the space to transform from"
+        disablewhen "{ xn__inputsfrom_space_control_5fb == block } { xn__inputsfrom_space_control_5fb == none }"
+        menu {
+            "render"                    "Render"
+            "camera"                    "Camera"
+            "world"                     "World"
+            "screen"                    "Screen"
+            "object"                    "Object"
+            "local tangent"             "Local Tangent"
+            "instance object transform" "Instance Object Transform"
+            "instance level 0"          "Instance Level 0"
+            "instance level 1"          "Instance Level 1"
+            "instance level 2"          "Instance Level 2"
+            "instance level 3"          "Instance Level 3"
+            "instance level 4"          "Instance Level 4"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsto_space_control_wcb"
+        label   "inputs:to_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsto_space_vya"
+        label   "To Space"
+        type    string
+        default { "world" }
+        help    "the space to transform to"
+        disablewhen "{ xn__inputsto_space_control_wcb == block } { xn__inputsto_space_control_wcb == none }"
+        menu {
+            "render"                    "Render"
+            "camera"                    "Camera"
+            "world"                     "World"
+            "screen"                    "Screen"
+            "object"                    "Object"
+            "local reference tangent"   "Local Reference Tangent"
+            "instance level 0"          "Instance Level 0"
+            "instance level 1"          "Instance Level 1"
+            "instance level 2"          "Instance Level 2"
+            "instance level 3"          "Instance Level 3"
+            "instance level 4"          "Instance Level 4"
+            "instance object transform" "Instance Object Transform"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsconcatenate_instance_level_transforms_control_4oc"
+        label   "inputs:concatenate_instance_level_transforms"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsconcatenate_instance_level_transforms_3bc"
+        label   "Concatenate Instance Level Transforms"
+        type    toggle
+        default { "1" }
+        help    "When true, instance level transforms below the specified one are concatenated otherwise only the selected level's transform is used"
+        disablewhen "{ xn__inputsconcatenate_instance_level_transforms_control_4oc == block } { xn__inputsconcatenate_instance_level_transforms_control_4oc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputscamera_control_n8a"
+        label   "inputs:camera"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscamera_mva"
+        label   "Camera"
+        type    oppath
+        default { "" }
+        help    "an alternate camera to use when transforming to/from 'camera' space"
+        disablewhen "{ xn__inputscamera_control_n8a == block } { xn__inputscamera_control_n8a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsobject_control_n8a"
+        label   "inputs:object"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsobject_mva"
+        label   "Object"
+        type    oppath
+        default { "" }
+        help    "an alternate object to use when transforming to/from 'object' space"
+        disablewhen "{ xn__inputsobject_control_n8a == block } { xn__inputsobject_control_n8a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsuse_custom_window_coordinates_control_3bc"
+        label   "inputs:use_custom_window_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_custom_window_coordinates_2xb"
+        label   "Use Custom Window Coordinates"
+        type    toggle
+        default { "0" }
+        help    "used to apply non-uniform scaling to projection"
+        disablewhen "{ xn__inputsuse_custom_window_coordinates_control_3bc == block } { xn__inputsuse_custom_window_coordinates_control_3bc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputswindow_x_min_control_fjb"
+        label   "inputs:window_x_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_x_min_e5a"
+        label   "Window X Min"
+        type    float
+        default { "-1" }
+        help    "minimum projected x coordinate"
+        disablewhen "{ xn__inputswindow_x_min_control_fjb == block } { xn__inputswindow_x_min_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_x_max_control_fjb"
+        label   "inputs:window_x_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_x_max_e5a"
+        label   "Window X Max"
+        type    float
+        default { "1" }
+        help    "maximum projected x coordinate"
+        disablewhen "{ xn__inputswindow_x_max_control_fjb == block } { xn__inputswindow_x_max_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_y_min_control_fjb"
+        label   "inputs:window_y_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_y_min_e5a"
+        label   "Window Y Min"
+        type    float
+        default { "-1" }
+        help    "minimum projected y coordinate"
+        disablewhen "{ xn__inputswindow_y_min_control_fjb == block } { xn__inputswindow_y_min_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_y_max_control_fjb"
+        label   "inputs:window_y_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_y_max_e5a"
+        label   "Window Y Max"
+        type    float
+        default { "1" }
+        help    "maximum projected y coordinate"
+        disablewhen "{ xn__inputswindow_y_max_control_fjb == block } { xn__inputswindow_y_max_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

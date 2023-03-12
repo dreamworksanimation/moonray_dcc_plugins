@@ -1,0 +1,185 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsmode_control_e5a"
+        label   "inputs:mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmode_dsa"
+        label   "Mode"
+        type    string
+        default { "both" }
+        disablewhen "{ xn__inputsmode_control_e5a == block } { xn__inputsmode_control_e5a == none }"
+        menu {
+            "outline"   "Outline"
+            "crease"    "Crease"
+            "both"      "Both"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsfill_color_control_5fb"
+        label   "inputs:fill_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfill_color_41a"
+        label   "Fill Color"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ xn__inputsfill_color_control_5fb == block } { xn__inputsfill_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsoutline_color_control_1kb"
+        label   "inputs:outline_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutline_color_06a"
+        label   "Outline Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "Outlines are silhouettes of the geometry"
+        disablewhen "{ xn__inputsoutline_color_control_1kb == block } { xn__inputsoutline_color_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputscrease_color_control_fjb"
+        label   "inputs:crease_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscrease_color_e5a"
+        label   "Crease Color"
+        type    color
+        size    3
+        default { "1" "0" "0" }
+        help    "Creases are sharp edges like corners in the geometry."
+        disablewhen "{ xn__inputscrease_color_control_fjb == block } { xn__inputscrease_color_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsoutline_threshold_control_krb"
+        label   "inputs:outline_threshold"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutline_threshold_jeb"
+        label   "Outline Threshold"
+        type    float
+        default { "0" }
+        help    "In most cases, the shader would trace an outline of a model well when this threshold is zero."
+        disablewhen "{ xn__inputsoutline_threshold_control_krb == block } { xn__inputsoutline_threshold_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoutline_scale_control_1kb"
+        label   "inputs:outline_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutline_scale_06a"
+        label   "Outline Scale"
+        type    float
+        default { "1" }
+        help    "This attribute controls the thickness of outlines."
+        disablewhen "{ xn__inputsoutline_scale_control_1kb == block } { xn__inputsoutline_scale_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscrease_threshold_control_xpb"
+        label   "inputs:crease_threshold"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscrease_threshold_wcb"
+        label   "Crease Threshold"
+        type    float
+        default { "45" }
+        help    "This attribute sets the threshold angle (in degree units) to draw creases. The more the threshold angle is, the less the creases are traced."
+        disablewhen "{ xn__inputscrease_threshold_control_xpb == block } { xn__inputscrease_threshold_control_xpb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscrease_scale_control_fjb"
+        label   "inputs:crease_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscrease_scale_e5a"
+        label   "Crease Scale"
+        type    float
+        default { "1" }
+        help    "This attribute controls the thickness of creases."
+        disablewhen "{ xn__inputscrease_scale_control_fjb == block } { xn__inputscrease_scale_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

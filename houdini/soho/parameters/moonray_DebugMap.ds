@@ -1,0 +1,181 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_normal_space_control_6sb"
+            label   "inputs:input_normal_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_space_5fb"
+            label   "Input Normal Space"
+            type    string
+            default { "tangent" }
+            help    "Specifies what space the input normal is in.  Usually this is tangent space for texture maps and render space for projections"
+            disablewhen "{ xn__inputsinput_normal_space_control_6sb == block } { xn__inputsinput_normal_space_control_6sb == none }"
+            menu {
+                "tangent"   "Tangent"
+                "render"    "Render"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Primitive Attribute"
+
+        parm {
+            name    "xn__inputsprimitive_attribute_name_control_y2b"
+            label   "inputs:primitive_attribute_name"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_name_xpb"
+            label   "Primitive Attribute Name"
+            type    string
+            default { "surface_st" }
+            help    "the name of primitive attribute to displayed when attribute 'map type' is set to 'primitive attribute'"
+            disablewhen "{ xn__inputsprimitive_attribute_name_control_y2b == block } { xn__inputsprimitive_attribute_name_control_y2b == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_type_control_y2b"
+            label   "inputs:primitive_attribute_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsprimitive_attribute_type_xpb"
+            label   "Primitive Attribute Type"
+            type    string
+            default { "vec2f" }
+            help    "the type of primitive attribute to displayed when attribute 'map type' is set to 'primitive attribute'"
+            disablewhen "{ xn__inputsprimitive_attribute_type_control_y2b == block } { xn__inputsprimitive_attribute_type_control_y2b == none }"
+            menu {
+                "float" "Float"
+                "vec2f" "Vec2F"
+                "vec3f" "Vec3F"
+                "rgb"   "Rgb"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputscheckerboard_control_fjb"
+        label   "inputs:checkerboard"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscheckerboard_e5a"
+        label   "Checkerboard"
+        type    toggle
+        default { "1" }
+        disablewhen "{ xn__inputscheckerboard_control_fjb == block } { xn__inputscheckerboard_control_fjb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmap_type_control_wcb"
+        label   "inputs:map_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap_type_vya"
+        label   "Map Type"
+        type    string
+        default { "position" }
+        disablewhen "{ xn__inputsmap_type_control_wcb == block } { xn__inputsmap_type_control_wcb == none }"
+        menu {
+            "position"              "Position"
+            "texture st"            "Texture St"
+            "shading normal"        "Shading Normal"
+            "geometric normal"      "Geometric Normal"
+            "dpds"                  "Dpds"
+            "dpdt"                  "Dpdt"
+            "primitive attribute"   "Primitive Attribute"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_normal_control_fjb"
+        label   "inputs:input_normal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normal_e5a"
+        label   "Input Normal"
+        type    vector
+        size    3
+        default { "0" "0" "1" }
+        disablewhen "{ xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsinput_normal_dial_control_krb"
+        label   "inputs:input_normal_dial"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normal_dial_jeb"
+        label   "Input Normal Dial"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

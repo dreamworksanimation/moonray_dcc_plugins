@@ -1,0 +1,267 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsfallback_bssrdf_control_bob"
+            label   "inputs:fallback_bssrdf"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_bssrdf_99a"
+            label   "Fallback Bssrdf"
+            type    string
+            default { "normalized diffusion" }
+            help    "If the two materials disagree on the type of bssrdf, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_bssrdf_control_bob == block } { xn__inputsfallback_bssrdf_control_bob == none }"
+            menu {
+                "normalized diffusion"  "Normalized Diffusion"
+                "dipole"                "Dipole"
+                "random walk"           "Random Walk"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_specular_model_control_c1b"
+            label   "inputs:fallback_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_specular_model_bob"
+            label   "Fallback Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_specular_model_control_c1b == block } { xn__inputsfallback_specular_model_control_c1b == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_toon_specular_model_control_h9b"
+            label   "inputs:fallback_toon_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_toon_specular_model_gwb"
+            label   "Fallback Toon Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of toon specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_toon_specular_model_control_h9b == block } { xn__inputsfallback_toon_specular_model_control_h9b == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+                "Toon"      "Toon"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_outer_specular_model_control_3bc"
+            label   "inputs:fallback_outer_specular_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_outer_specular_model_2xb"
+            label   "Fallback Outer Specular Model"
+            type    string
+            default { "GGX" }
+            help    "If child materials disagree on the type of outer specular model, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_outer_specular_model_control_3bc == block } { xn__inputsfallback_outer_specular_model_control_3bc == none }"
+            menu {
+                "Beckmann"  "Beckmann"
+                "GGX"       "GGX"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfallback_clearcoat_use_bending_control_qdc"
+            label   "inputs:fallback_clearcoat_use_bending"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfallback_clearcoat_use_bending_pzb"
+            label   "Fallback Clearcoat Use Bending"
+            type    toggle
+            default { "1" }
+            help    "If child materials disagree on the type of clearcoat use bending, this type will be used instead."
+            disablewhen "{ xn__inputsfallback_clearcoat_use_bending_control_qdc == block } { xn__inputsfallback_clearcoat_use_bending_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_control_1kb"
+            label   "inputs:sss_trace_set"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_06a"
+            label   "Sss Trace Set"
+            type    oppath
+            default { "" }
+            help    "By default, only the geometry associated with this material contributes to subsurface. The DwaTwoSidedMaterial ignores the sss trace sets of the submaterials. If you want adjacent geometry with different material to contribute as well, specify all those parts here."
+            disablewhen "{ xn__inputssss_trace_set_control_1kb == block } { xn__inputssss_trace_set_control_1kb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsfront_material_control_omb"
+        label   "inputs:front_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfront_material_n8a"
+        label   "Front Material"
+        type    oppath
+        invisible
+        default { "" }
+        help    "material to use on front-facing surfaces"
+        disablewhen "{ xn__inputsfront_material_control_omb == block } { xn__inputsfront_material_control_omb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsback_material_control_1kb"
+        label   "inputs:back_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsback_material_06a"
+        label   "Back Material"
+        type    oppath
+        invisible
+        default { "" }
+        help    "material to use on back-facing surfaces"
+        disablewhen "{ xn__inputsback_material_control_1kb == block } { xn__inputsback_material_control_1kb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

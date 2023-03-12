@@ -1,0 +1,286 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsuse_reference_space_control_tub"
+        label   "inputs:use_reference_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_shb"
+        label   "Use Reference Space"
+        type    toggle
+        default { "0" }
+        help    "use reference space"
+        disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsproject_on_inward_surfaces_control_75b"
+        label   "inputs:project_on_inward_surfaces"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsproject_on_inward_surfaces_6sb"
+        label   "Project On Inward Surfaces"
+        type    toggle
+        default { "1" }
+        help    "enables projection on surfaces with inward facing normals"
+        disablewhen "{ xn__inputsproject_on_inward_surfaces_control_75b == block } { xn__inputsproject_on_inward_surfaces_control_75b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsproject_on_outward_surfaces_control_u7b"
+        label   "inputs:project_on_outward_surfaces"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsproject_on_outward_surfaces_tub"
+        label   "Project On Outward Surfaces"
+        type    toggle
+        default { "1" }
+        help    "enables projection on surfaces with outward facing normals"
+        disablewhen "{ xn__inputsproject_on_outward_surfaces_control_u7b == block } { xn__inputsproject_on_outward_surfaces_control_u7b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_control_y2b"
+        label   "inputs:black_outside_projection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_xpb"
+        label   "Black Outside Projection"
+        type    toggle
+        default { "1" }
+        help    "Toggles whether projections appear outside the 0-1 uv range of the projector"
+        disablewhen "{ xn__inputsblack_outside_projection_control_y2b == block } { xn__inputsblack_outside_projection_control_y2b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_control_bob"
+        label   "inputs:projection_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_mode_99a"
+        label   "Projection Mode"
+        type    string
+        default { "projector" }
+        help    "Source parameters to use for projection transform"
+        disablewhen "{ xn__inputsprojection_mode_control_bob == block } { xn__inputsprojection_mode_control_bob == none }"
+        menu {
+            "projector"         "Projector"
+            "projection_matrix" "Projection_Matrix"
+            "TRS"               "TRS"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojector_control_jeb"
+        label   "inputs:projector"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojector_i0a"
+        label   "Projector"
+        type    oppath
+        default { "" }
+        help    "the object whose transform to use for projection"
+        disablewhen "{ projection_mode != projector } { xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_control_krb"
+        label   "inputs:projection_matrix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojection_matrix_jeb"
+        label   "Projection Matrix"
+        type    float
+        size    16
+        default { "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" }
+        help    "the transform to use for projection"
+        disablewhen "{ projection_mode != projection_matrix } { xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "double[]" }
+    }
+    parm {
+        name    "xn__inputsTRS_order_control_jeb"
+        label   "inputs:TRS_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsTRS_order_i0a"
+        label   "TRS Order"
+        type    string
+        default { "Scale Rot Trans" }
+        help    "Order in which to apply transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
+        menu {
+            "Scale Rot Trans"   "Scale Rot Trans"
+            "Scale Trans Rot"   "Scale Trans Rot"
+            "Rot Scale Trans"   "Rot Scale Trans"
+            "Rot Trans Scale"   "Rot Trans Scale"
+            "Trans Scale Rot"   "Trans Scale Rot"
+            "Trans Rot Scale"   "Trans Rot Scale"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsrotation_order_control_omb"
+        label   "inputs:rotation_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotation_order_n8a"
+        label   "Rotation Order"
+        type    string
+        default { "xyz" }
+        help    "Order in which to apply rotation transformations"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+        menu {
+            "xyz"   "Xyz"
+            "xzy"   "Xzy"
+            "yxz"   "Yxz"
+            "yzx"   "Yzx"
+            "zxy"   "Zxy"
+            "zyx"   "Zyx"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstranslate_control_jeb"
+        label   "inputs:translate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstranslate_i0a"
+        label   "Translate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Tranlation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsrotate_control_n8a"
+        label   "inputs:rotate"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsrotate_mva"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "Rotation of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        help    "Scale of the projection transform"
+        disablewhen "{ projection_mode != TRS } { xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3d" }
+    }
+}

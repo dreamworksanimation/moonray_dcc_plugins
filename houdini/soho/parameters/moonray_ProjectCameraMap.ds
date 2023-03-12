@@ -1,0 +1,197 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsprojector_control_jeb"
+        label   "inputs:projector"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprojector_i0a"
+        label   "Projector"
+        type    oppath
+        default { "" }
+        disablewhen "{ xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsproject_on_back_faces_control_2xb"
+        label   "inputs:project_on_back_faces"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsproject_on_back_faces_1kb"
+        label   "Project On Back Faces"
+        type    toggle
+        default { "0" }
+        help    "Toggles whether camera projections appear on back faces."
+        disablewhen "{ xn__inputsproject_on_back_faces_control_2xb == block } { xn__inputsproject_on_back_faces_control_2xb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_control_y2b"
+        label   "inputs:black_outside_projection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsblack_outside_projection_xpb"
+        label   "Black Outside Projection"
+        type    toggle
+        default { "0" }
+        help    "Toggles whether projections appear outside the 0-1 uv range of the projector"
+        disablewhen "{ xn__inputsblack_outside_projection_control_y2b == block } { xn__inputsblack_outside_projection_control_y2b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_control_tub"
+        label   "inputs:use_reference_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_shb"
+        label   "Use Reference Space"
+        type    toggle
+        default { "0" }
+        help    "use reference space"
+        disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsuse_custom_window_coordinates_control_3bc"
+        label   "inputs:use_custom_window_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_custom_window_coordinates_2xb"
+        label   "Use Custom Window Coordinates"
+        type    toggle
+        default { "0" }
+        help    "used to apply non-uniform scaling to projection"
+        disablewhen "{ xn__inputsuse_custom_window_coordinates_control_3bc == block } { xn__inputsuse_custom_window_coordinates_control_3bc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputswindow_x_min_control_fjb"
+        label   "inputs:window_x_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_x_min_e5a"
+        label   "Window X Min"
+        type    float
+        default { "-1" }
+        help    "minimum projected x coordinate"
+        disablewhen "{ xn__inputswindow_x_min_control_fjb == block } { xn__inputswindow_x_min_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_x_max_control_fjb"
+        label   "inputs:window_x_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_x_max_e5a"
+        label   "Window X Max"
+        type    float
+        default { "1" }
+        help    "maximum projected x coordinate"
+        disablewhen "{ xn__inputswindow_x_max_control_fjb == block } { xn__inputswindow_x_max_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_y_min_control_fjb"
+        label   "inputs:window_y_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_y_min_e5a"
+        label   "Window Y Min"
+        type    float
+        default { "-1" }
+        help    "minimum projected y coordinate"
+        disablewhen "{ xn__inputswindow_y_min_control_fjb == block } { xn__inputswindow_y_min_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputswindow_y_max_control_fjb"
+        label   "inputs:window_y_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswindow_y_max_e5a"
+        label   "Window Y Max"
+        type    float
+        default { "1" }
+        help    "maximum projected y coordinate"
+        disablewhen "{ xn__inputswindow_y_max_control_fjb == block } { xn__inputswindow_y_max_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

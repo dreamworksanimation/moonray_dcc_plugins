@@ -1,0 +1,1370 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputschoice_control_n8a"
+        label   "inputs:choice"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputschoice_mva"
+        label   "Choice"
+        type    float
+        default { "0" }
+        help    "which of the 64 inputs (0 to 63) to use"
+        disablewhen "{ xn__inputschoice_control_n8a == block } { xn__inputschoice_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput0_control_n8a"
+        label   "inputs:input0"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput0_mva"
+        label   "Input0"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput0_control_n8a == block } { xn__inputsinput0_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput1_control_n8a"
+        label   "inputs:input1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput1_mva"
+        label   "Input1"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput1_control_n8a == block } { xn__inputsinput1_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput2_control_n8a"
+        label   "inputs:input2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput2_mva"
+        label   "Input2"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput2_control_n8a == block } { xn__inputsinput2_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput3_control_n8a"
+        label   "inputs:input3"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput3_mva"
+        label   "Input3"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput3_control_n8a == block } { xn__inputsinput3_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput4_control_n8a"
+        label   "inputs:input4"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput4_mva"
+        label   "Input4"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput4_control_n8a == block } { xn__inputsinput4_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput5_control_n8a"
+        label   "inputs:input5"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput5_mva"
+        label   "Input5"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput5_control_n8a == block } { xn__inputsinput5_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput6_control_n8a"
+        label   "inputs:input6"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput6_mva"
+        label   "Input6"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput6_control_n8a == block } { xn__inputsinput6_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput7_control_n8a"
+        label   "inputs:input7"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput7_mva"
+        label   "Input7"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput7_control_n8a == block } { xn__inputsinput7_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput8_control_n8a"
+        label   "inputs:input8"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput8_mva"
+        label   "Input8"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput8_control_n8a == block } { xn__inputsinput8_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput9_control_n8a"
+        label   "inputs:input9"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput9_mva"
+        label   "Input9"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput9_control_n8a == block } { xn__inputsinput9_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput10_control_99a"
+        label   "inputs:input10"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput10_8wa"
+        label   "Input10"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput10_control_99a == block } { xn__inputsinput10_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput11_control_99a"
+        label   "inputs:input11"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput11_8wa"
+        label   "Input11"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput11_control_99a == block } { xn__inputsinput11_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput12_control_99a"
+        label   "inputs:input12"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput12_8wa"
+        label   "Input12"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput12_control_99a == block } { xn__inputsinput12_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput13_control_99a"
+        label   "inputs:input13"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput13_8wa"
+        label   "Input13"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput13_control_99a == block } { xn__inputsinput13_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput14_control_99a"
+        label   "inputs:input14"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput14_8wa"
+        label   "Input14"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput14_control_99a == block } { xn__inputsinput14_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput15_control_99a"
+        label   "inputs:input15"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput15_8wa"
+        label   "Input15"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput15_control_99a == block } { xn__inputsinput15_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput16_control_99a"
+        label   "inputs:input16"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput16_8wa"
+        label   "Input16"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput16_control_99a == block } { xn__inputsinput16_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput17_control_99a"
+        label   "inputs:input17"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput17_8wa"
+        label   "Input17"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput17_control_99a == block } { xn__inputsinput17_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput18_control_99a"
+        label   "inputs:input18"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput18_8wa"
+        label   "Input18"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput18_control_99a == block } { xn__inputsinput18_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput19_control_99a"
+        label   "inputs:input19"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput19_8wa"
+        label   "Input19"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput19_control_99a == block } { xn__inputsinput19_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput20_control_99a"
+        label   "inputs:input20"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput20_8wa"
+        label   "Input20"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput20_control_99a == block } { xn__inputsinput20_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput21_control_99a"
+        label   "inputs:input21"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput21_8wa"
+        label   "Input21"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput21_control_99a == block } { xn__inputsinput21_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput22_control_99a"
+        label   "inputs:input22"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput22_8wa"
+        label   "Input22"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput22_control_99a == block } { xn__inputsinput22_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput23_control_99a"
+        label   "inputs:input23"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput23_8wa"
+        label   "Input23"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput23_control_99a == block } { xn__inputsinput23_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput24_control_99a"
+        label   "inputs:input24"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput24_8wa"
+        label   "Input24"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput24_control_99a == block } { xn__inputsinput24_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput25_control_99a"
+        label   "inputs:input25"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput25_8wa"
+        label   "Input25"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput25_control_99a == block } { xn__inputsinput25_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput26_control_99a"
+        label   "inputs:input26"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput26_8wa"
+        label   "Input26"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput26_control_99a == block } { xn__inputsinput26_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput27_control_99a"
+        label   "inputs:input27"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput27_8wa"
+        label   "Input27"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput27_control_99a == block } { xn__inputsinput27_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput28_control_99a"
+        label   "inputs:input28"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput28_8wa"
+        label   "Input28"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput28_control_99a == block } { xn__inputsinput28_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput29_control_99a"
+        label   "inputs:input29"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput29_8wa"
+        label   "Input29"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput29_control_99a == block } { xn__inputsinput29_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput30_control_99a"
+        label   "inputs:input30"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput30_8wa"
+        label   "Input30"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput30_control_99a == block } { xn__inputsinput30_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput31_control_99a"
+        label   "inputs:input31"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput31_8wa"
+        label   "Input31"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput31_control_99a == block } { xn__inputsinput31_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput32_control_99a"
+        label   "inputs:input32"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput32_8wa"
+        label   "Input32"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput32_control_99a == block } { xn__inputsinput32_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput33_control_99a"
+        label   "inputs:input33"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput33_8wa"
+        label   "Input33"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput33_control_99a == block } { xn__inputsinput33_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput34_control_99a"
+        label   "inputs:input34"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput34_8wa"
+        label   "Input34"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput34_control_99a == block } { xn__inputsinput34_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput35_control_99a"
+        label   "inputs:input35"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput35_8wa"
+        label   "Input35"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput35_control_99a == block } { xn__inputsinput35_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput36_control_99a"
+        label   "inputs:input36"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput36_8wa"
+        label   "Input36"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput36_control_99a == block } { xn__inputsinput36_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput37_control_99a"
+        label   "inputs:input37"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput37_8wa"
+        label   "Input37"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput37_control_99a == block } { xn__inputsinput37_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput38_control_99a"
+        label   "inputs:input38"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput38_8wa"
+        label   "Input38"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput38_control_99a == block } { xn__inputsinput38_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput39_control_99a"
+        label   "inputs:input39"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput39_8wa"
+        label   "Input39"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput39_control_99a == block } { xn__inputsinput39_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput40_control_99a"
+        label   "inputs:input40"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput40_8wa"
+        label   "Input40"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput40_control_99a == block } { xn__inputsinput40_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput41_control_99a"
+        label   "inputs:input41"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput41_8wa"
+        label   "Input41"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput41_control_99a == block } { xn__inputsinput41_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput42_control_99a"
+        label   "inputs:input42"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput42_8wa"
+        label   "Input42"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput42_control_99a == block } { xn__inputsinput42_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput43_control_99a"
+        label   "inputs:input43"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput43_8wa"
+        label   "Input43"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput43_control_99a == block } { xn__inputsinput43_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput44_control_99a"
+        label   "inputs:input44"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput44_8wa"
+        label   "Input44"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput44_control_99a == block } { xn__inputsinput44_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput45_control_99a"
+        label   "inputs:input45"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput45_8wa"
+        label   "Input45"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput45_control_99a == block } { xn__inputsinput45_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput46_control_99a"
+        label   "inputs:input46"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput46_8wa"
+        label   "Input46"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput46_control_99a == block } { xn__inputsinput46_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput47_control_99a"
+        label   "inputs:input47"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput47_8wa"
+        label   "Input47"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput47_control_99a == block } { xn__inputsinput47_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput48_control_99a"
+        label   "inputs:input48"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput48_8wa"
+        label   "Input48"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput48_control_99a == block } { xn__inputsinput48_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput49_control_99a"
+        label   "inputs:input49"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput49_8wa"
+        label   "Input49"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput49_control_99a == block } { xn__inputsinput49_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput50_control_99a"
+        label   "inputs:input50"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput50_8wa"
+        label   "Input50"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput50_control_99a == block } { xn__inputsinput50_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput51_control_99a"
+        label   "inputs:input51"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput51_8wa"
+        label   "Input51"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput51_control_99a == block } { xn__inputsinput51_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput52_control_99a"
+        label   "inputs:input52"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput52_8wa"
+        label   "Input52"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput52_control_99a == block } { xn__inputsinput52_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput53_control_99a"
+        label   "inputs:input53"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput53_8wa"
+        label   "Input53"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput53_control_99a == block } { xn__inputsinput53_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput54_control_99a"
+        label   "inputs:input54"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput54_8wa"
+        label   "Input54"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput54_control_99a == block } { xn__inputsinput54_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput55_control_99a"
+        label   "inputs:input55"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput55_8wa"
+        label   "Input55"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput55_control_99a == block } { xn__inputsinput55_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput56_control_99a"
+        label   "inputs:input56"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput56_8wa"
+        label   "Input56"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput56_control_99a == block } { xn__inputsinput56_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput57_control_99a"
+        label   "inputs:input57"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput57_8wa"
+        label   "Input57"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput57_control_99a == block } { xn__inputsinput57_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput58_control_99a"
+        label   "inputs:input58"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput58_8wa"
+        label   "Input58"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput58_control_99a == block } { xn__inputsinput58_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput59_control_99a"
+        label   "inputs:input59"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput59_8wa"
+        label   "Input59"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput59_control_99a == block } { xn__inputsinput59_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput60_control_99a"
+        label   "inputs:input60"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput60_8wa"
+        label   "Input60"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput60_control_99a == block } { xn__inputsinput60_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput61_control_99a"
+        label   "inputs:input61"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput61_8wa"
+        label   "Input61"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput61_control_99a == block } { xn__inputsinput61_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput62_control_99a"
+        label   "inputs:input62"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput62_8wa"
+        label   "Input62"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput62_control_99a == block } { xn__inputsinput62_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput63_control_99a"
+        label   "inputs:input63"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput63_8wa"
+        label   "Input63"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput63_control_99a == block } { xn__inputsinput63_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

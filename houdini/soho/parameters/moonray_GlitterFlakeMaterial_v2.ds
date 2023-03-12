@@ -1,0 +1,804 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Flake Generation"
+
+        parm {
+            name    "xn__inputsseed_control_e5a"
+            label   "inputs:seed"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsseed_dsa"
+            label   "Seed"
+            type    integer
+            default { "0" }
+            help    "The seed for the random number generator"
+            disablewhen "{ xn__inputsseed_control_e5a == block } { xn__inputsseed_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__inputsspace_control_06a"
+            label   "inputs:space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspace_zta"
+            label   "Space"
+            type    string
+            default { "reference" }
+            help    "The space to calculate the noise in, defaults to reference space"
+            disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+            menu {
+                "object"    "Object"
+                "reference" "Reference"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputscompensate_reference_space_deformation_control_rqc"
+            label   "inputs:compensate_reference_space_deformation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscompensate_reference_space_deformation_qdc"
+            label   "Compensate Reference Space Deformation"
+            type    toggle
+            default { "1" }
+            help    "(In ReferenceSpace) Compensates for stretch/compression/shear in glitter shapes resulting from animation etc"
+            disablewhen "{ space != reference } { xn__inputscompensate_reference_space_deformation_control_rqc == block } { xn__inputscompensate_reference_space_deformation_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Appearance"
+
+        parm {
+            name    "xn__inputsflake_jitter_control_fjb"
+            label   "inputs:flake_jitter"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_jitter_e5a"
+            label   "Flake Jitter"
+            type    float
+            default { "1" }
+            help    "Controls how much the flakes are randomly offset from a regular grid"
+            disablewhen "{ xn__inputsflake_jitter_control_fjb == block } { xn__inputsflake_jitter_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdecouple_flake_size_control_tub"
+            label   "inputs:decouple_flake_size"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdecouple_flake_size_shb"
+            label   "Decouple Flake Size"
+            type    toggle
+            default { "0" }
+            help    "makes flake size independent of flake density"
+            disablewhen "{ xn__inputsdecouple_flake_size_control_tub == block } { xn__inputsdecouple_flake_size_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsflake_density_control_1kb"
+            label   "inputs:flake_density"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_density_06a"
+            label   "Flake Density"
+            type    float
+            default { "1" }
+            help    "controls the number of flakes per unit length; larger density packs more flakes into same space"
+            disablewhen "{ xn__inputsflake_density_control_1kb == block } { xn__inputsflake_density_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_randomness_control_xpb"
+            label   "inputs:flake_randomness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_randomness_wcb"
+            label   "Flake Randomness"
+            type    float
+            default { "0.5" }
+            help    "randomness of flake orientation"
+            disablewhen "{ xn__inputsflake_randomness_control_xpb == block } { xn__inputsflake_randomness_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsuse_flake_textures_control_6sb"
+            label   "inputs:use_flake_textures"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_flake_textures_5fb"
+            label   "Use Flake Textures"
+            type    toggle
+            default { "0" }
+            help    "use textured glitter flakes"
+            disablewhen "{ xn__inputsuse_flake_textures_control_6sb == block } { xn__inputsuse_flake_textures_control_6sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsflake_orientation_randomness_control_h9b"
+            label   "inputs:flake_orientation_randomness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_orientation_randomness_gwb"
+            label   "Flake Orientation Randomness"
+            type    float
+            default { "0.15" }
+            help    "randomly orient each texture"
+            disablewhen "{ xn__inputsuse_flake_textures_5fb != 1 } { xn__inputsflake_orientation_randomness_control_h9b == block } { xn__inputsflake_orientation_randomness_control_h9b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_texture_1_control_bob"
+            label   "inputs:flake_texture_1"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_texture_1_99a"
+            label   "Flake Texture 1"
+            type    file
+            default { "" }
+            help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+            disablewhen "{ xn__inputsuse_flake_textures_5fb != 1 } { xn__inputsflake_texture_1_control_bob == block } { xn__inputsflake_texture_1_control_bob == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__inputsflake_texture_1_frequency_control_l4b"
+            label   "inputs:flake_texture_1_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_texture_1_frequency_krb"
+            label   "Flake Texture 1 Frequency"
+            type    float
+            default { "0.5" }
+            help    "0 implies none of this texture, 1 implies all the flakes will get this texture"
+            disablewhen "{ xn__inputsuse_flake_textures_5fb != 1 } { xn__inputsflake_texture_1_frequency_control_l4b == block } { xn__inputsflake_texture_1_frequency_control_l4b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_texture_2_control_bob"
+            label   "inputs:flake_texture_2"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_texture_2_99a"
+            label   "Flake Texture 2"
+            type    file
+            default { "" }
+            help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+            disablewhen "{ xn__inputsuse_flake_textures_5fb != 1 } { xn__inputsflake_texture_2_control_bob == block } { xn__inputsflake_texture_2_control_bob == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__inputsflake_texture_2_frequency_control_l4b"
+            label   "inputs:flake_texture_2_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_texture_2_frequency_krb"
+            label   "Flake Texture 2 Frequency"
+            type    float
+            default { "0.5" }
+            help    "0 implies none of this texture, 1 implies all the flakes will get this texture"
+            disablewhen "{ xn__inputsuse_flake_textures_5fb != 1 } { xn__inputsflake_texture_2_frequency_control_l4b == block } { xn__inputsflake_texture_2_frequency_control_l4b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_color_hue_variation_control_l4b"
+            label   "inputs:flake_color_hue_variation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_color_hue_variation_krb"
+            label   "Flake Color Hue Variation"
+            type    float
+            default { "0" }
+            help    "introduce hue variation in flake color centered at the base flake color's hue on the hue wheel"
+            disablewhen "{ xn__inputsflake_color_hue_variation_control_l4b == block } { xn__inputsflake_color_hue_variation_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_color_saturation_variation_control_zgc"
+            label   "inputs:flake_color_saturation_variation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_color_saturation_variation_y2b"
+            label   "Flake Color Saturation Variation"
+            type    float
+            default { "0" }
+            help    "introduce saturation variation in flake color centered at the base flake color's saturation"
+            disablewhen "{ xn__inputsflake_color_saturation_variation_control_zgc == block } { xn__inputsflake_color_saturation_variation_control_zgc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_color_value_variation_control_u7b"
+            label   "inputs:flake_color_value_variation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_color_value_variation_tub"
+            label   "Flake Color Value Variation"
+            type    float
+            default { "0" }
+            help    "introduce value variation in flake color centered at the base flake color's value"
+            disablewhen "{ xn__inputsflake_color_value_variation_control_u7b == block } { xn__inputsflake_color_value_variation_control_u7b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Glitter A Appearance"
+
+        parm {
+            name    "xn__inputsflake_style_A_frequency_control_c1b"
+            label   "inputs:flake_style_A_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_style_A_frequency_bob"
+            label   "Flake Style A Frequency"
+            type    float
+            default { "1" }
+            help    "0 implies none of this style, 1 implies all the flakes will get this style"
+            disablewhen "{ xn__inputsflake_style_A_frequency_control_c1b == block } { xn__inputsflake_style_A_frequency_control_c1b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_size_A_control_fjb"
+            label   "inputs:flake_size_A"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_size_A_e5a"
+            label   "Flake Size A"
+            type    float
+            default { "1" }
+            help    "size of the flakes.   Apparent flake size may vary based on how much the flake spheres intersect the surface"
+            disablewhen "{ xn__inputsflake_size_A_control_fjb == block } { xn__inputsflake_size_A_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_roughness_A_control_krb"
+            label   "inputs:flake_roughness_A"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_roughness_A_jeb"
+            label   "Flake Roughness A"
+            type    float
+            default { "0.14" }
+            help    "specular roughness of individual flakes (0 makes flakes mirror-like)"
+            disablewhen "{ xn__inputsflake_roughness_A_control_krb == block } { xn__inputsflake_roughness_A_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_color_A_control_1kb"
+            label   "inputs:flake_color_A"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_color_A_06a"
+            label   "Flake Color A"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "base flake color (use physical metallic color values)"
+            disablewhen "{ xn__inputsflake_color_A_control_1kb == block } { xn__inputsflake_color_A_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Glitter B Appearance"
+
+        parm {
+            name    "xn__inputsflake_style_B_frequency_control_c1b"
+            label   "inputs:flake_style_B_frequency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_style_B_frequency_bob"
+            label   "Flake Style B Frequency"
+            type    float
+            default { "0" }
+            help    "0 implies none of this style, 1 implies all the flakes will get this style"
+            disablewhen "{ xn__inputsflake_style_B_frequency_control_c1b == block } { xn__inputsflake_style_B_frequency_control_c1b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_size_B_control_fjb"
+            label   "inputs:flake_size_B"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_size_B_e5a"
+            label   "Flake Size B"
+            type    float
+            default { "1" }
+            help    "size of the flakes.   Apparent flake size may vary based on how much the flake spheres intersect the surface"
+            disablewhen "{ xn__inputsflake_size_B_control_fjb == block } { xn__inputsflake_size_B_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_roughness_B_control_krb"
+            label   "inputs:flake_roughness_B"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_roughness_B_jeb"
+            label   "Flake Roughness B"
+            type    float
+            default { "0.14" }
+            help    "specular roughness of individual flakes (0 makes flakes mirror-like)"
+            disablewhen "{ xn__inputsflake_roughness_B_control_krb == block } { xn__inputsflake_roughness_B_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsflake_color_B_control_1kb"
+            label   "inputs:flake_color_B"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsflake_color_B_06a"
+            label   "Flake Color B"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "base flake color (use physical metallic color values)"
+            disablewhen "{ xn__inputsflake_color_B_control_1kb == block } { xn__inputsflake_color_B_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsglitter_mask_control_fjb"
+            label   "inputs:glitter_mask"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsglitter_mask_e5a"
+            label   "Glitter Mask"
+            type    float
+            default { "1" }
+            help    "use this to control where glitter appears"
+            disablewhen "{ xn__inputsglitter_mask_control_fjb == block } { xn__inputsglitter_mask_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdense_glitter_LOD_quality_control_l4b"
+            label   "inputs:dense_glitter_LOD_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdense_glitter_LOD_quality_krb"
+            label   "Dense Glitter LOD Quality"
+            type    float
+            default { "0.5" }
+            help    "controls quality of glitter at distances where individual flakes cannot be perceived; at lower values, approximation kicks in earlier"
+            disablewhen "{ xn__inputsdense_glitter_LOD_quality_control_l4b == block } { xn__inputsdense_glitter_LOD_quality_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdebug_mode_control_5fb"
+            label   "inputs:debug_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdebug_mode_41a"
+            label   "Debug Mode"
+            type    string
+            default { "off" }
+            help    "developer debug visualization modes"
+            disablewhen "{ xn__inputsdebug_mode_control_5fb == block } { xn__inputsdebug_mode_control_5fb == none }"
+            menu {
+                "off"           "Off"
+                "blend"         "Blend"
+                "color"         "Color"
+                "averageColor"  "averageColor"
+                "footprintArea" "footprintArea"
+                "radius"        "Radius"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsapproximate_glitter_for_secondary_rays_control_rqc"
+            label   "inputs:approximate_glitter_for_secondary_rays"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsapproximate_glitter_for_secondary_rays_qdc"
+            label   "Approximate Glitter For Secondary Rays"
+            type    toggle
+            default { "1" }
+            help    "use an approximation to shade glitter for non-mirror secondary rays"
+            disablewhen "{ xn__inputsapproximate_glitter_for_secondary_rays_control_rqc == block } { xn__inputsapproximate_glitter_for_secondary_rays_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Layering"
+
+        parm {
+            name    "xn__inputsunder_material_control_omb"
+            label   "inputs:under_material"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsunder_material_n8a"
+            label   "Under Material"
+            type    oppath
+            invisible
+            default { "" }
+            help    "material that fills the gaps between glitter flakes"
+            disablewhen "{ xn__inputsunder_material_control_omb == block } { xn__inputsunder_material_control_omb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputslayering_mode_control_1kb"
+            label   "inputs:layering_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputslayering_mode_06a"
+            label   "Layering Mode"
+            type    string
+            default { "physical" }
+            help    "layering mode for glitter on top of the under material. physical: conserves energy and glitter attenuates under material, additive: breaks energy conservation but glitter is never darker than the under material (eg. use case: snow)"
+            disablewhen "{ xn__inputslayering_mode_control_1kb == block } { xn__inputslayering_mode_control_1kb == none }"
+            menu {
+                "physical"  "Physical"
+                "additive"  "Additive"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Common"
+
+        parm {
+            name    "xn__inputspresence_control_wcb"
+            label   "inputs:presence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspresence_vya"
+            label   "Presence"
+            type    float
+            default { "1" }
+            help    "controls the visibility of this object. Useful for fading an object in/out, or to specify a cut-out mask on thin single-sided geometry (eg. a complex leaf texture on a simple card)."
+            disablewhen "{ xn__inputspresence_control_wcb == block } { xn__inputspresence_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+}

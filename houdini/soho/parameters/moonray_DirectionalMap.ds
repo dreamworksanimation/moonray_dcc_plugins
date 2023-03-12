@@ -1,0 +1,391 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_normal_control_fjb"
+            label   "inputs:input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_e5a"
+            label   "Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal when bound. The binding multiplier is ignored"
+            disablewhen "{ xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_control_krb"
+            label   "inputs:input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_jeb"
+            label   "Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls the amount of influence of the alternate normal"
+            disablewhen "{ xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Adjustment"
+
+        parm {
+            name    "xn__inputsclamping_behavior_control_krb"
+            label   "inputs:clamping_behavior"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsclamping_behavior_jeb"
+            label   "Clamping Behavior"
+            type    string
+            default { "clamp" }
+            help    "determines how surfaces facing opposite the prime direction are handled"
+            disablewhen "{ xn__inputsclamping_behavior_control_krb == block } { xn__inputsclamping_behavior_control_krb == none }"
+            menu {
+                "clamp"     "Clamp"
+                "absolute"  "Absolute"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsbias_control_e5a"
+            label   "inputs:bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsbias_dsa"
+            label   "Bias"
+            type    float
+            default { "0.5" }
+            help    "controls the rate at which the effect increases as the shading normal approaches the prime direction"
+            disablewhen "{ xn__inputsbias_control_e5a == block } { xn__inputsbias_control_e5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsuse_smoothstep_control_omb"
+            label   "inputs:use_smoothstep"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_smoothstep_n8a"
+            label   "Use Smoothstep"
+            type    toggle
+            default { "0" }
+            help    "apply smoothstep function to result"
+            disablewhen "{ xn__inputsuse_smoothstep_control_omb == block } { xn__inputsuse_smoothstep_control_omb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssmoothstep_start_control_xpb"
+            label   "inputs:smoothstep_start"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssmoothstep_start_wcb"
+            label   "Smoothstep Start"
+            type    float
+            default { "0.45" }
+            help    "the value at which the effect is considered 100% off"
+            disablewhen "{ xn__inputsuse_smoothstep_n8a != 1 } { xn__inputssmoothstep_start_control_xpb == block } { xn__inputssmoothstep_start_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputssmoothstep_end_control_omb"
+            label   "inputs:smoothstep_end"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssmoothstep_end_n8a"
+            label   "Smoothstep End"
+            type    float
+            default { "0.55" }
+            help    "the value at which the effect is considered 100% on"
+            disablewhen "{ xn__inputsuse_smoothstep_n8a != 1 } { xn__inputssmoothstep_end_control_omb == block } { xn__inputssmoothstep_end_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfalloff_type_control_fjb"
+            label   "inputs:falloff_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_type_e5a"
+            label   "Falloff Type"
+            type    string
+            default { "cosine" }
+            help    "determines how the effect falls off as the difference angle increases"
+            disablewhen "{ xn__inputsfalloff_type_control_fjb == block } { xn__inputsfalloff_type_control_fjb == none }"
+            menu {
+                "cosine"    "Cosine"
+                "linear"    "Linear"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsprime_direction_control_bob"
+        label   "inputs:prime_direction"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsprime_direction_99a"
+        label   "Prime Direction"
+        type    string
+        default { "observer direction" }
+        help    "which source is used for the prime direction"
+        disablewhen "{ xn__inputsprime_direction_control_bob == block } { xn__inputsprime_direction_control_bob == none }"
+        menu {
+            "observer direction"    "Observer Direction"
+            "custom direction"      "Custom Direction"
+            "axis of object"        "Axis Of Object"
+            "look-at object"        "Look-At Object"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputspolarity_control_wcb"
+        label   "inputs:polarity"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspolarity_vya"
+        label   "Polarity"
+        type    string
+        default { "perpendicular" }
+        help    "determines which directions are given color A and which are given color B. Switching this effectively swaps the colors"
+        disablewhen "{ xn__inputspolarity_control_wcb == block } { xn__inputspolarity_control_wcb == none }"
+        menu {
+            "perpendicular" "Perpendicular"
+            "parallel"      "Parallel"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputscolor_a_control_99a"
+        label   "inputs:color_a"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_a_8wa"
+        label   "Color A"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "the color of the effect when the difference angle is greatest"
+        disablewhen "{ xn__inputscolor_a_control_99a == block } { xn__inputscolor_a_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputscolor_b_control_99a"
+        label   "inputs:color_b"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_b_8wa"
+        label   "Color B"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "the color of the effect when the difference angle is smallest"
+        disablewhen "{ xn__inputscolor_b_control_99a == block } { xn__inputscolor_b_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsobject_control_n8a"
+        label   "inputs:object"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsobject_mva"
+        label   "Object"
+        type    oppath
+        default { "" }
+        help    "the object to use when 'prime direction' is set to 'axis of object' or 'look-at object'"
+        disablewhen "{ prime_direction != \"look-at object\" } { xn__inputsobject_control_n8a == block } { xn__inputsobject_control_n8a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsobject_axis_control_shb"
+        label   "inputs:object_axis"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsobject_axis_r3a"
+        label   "Object Axis"
+        type    string
+        default { "-X axis" }
+        help    "which axis to use when 'prime direction' is set to 'axis of object'"
+        disablewhen "{ prime_direction != \"axis of object\" } { xn__inputsobject_axis_control_shb == block } { xn__inputsobject_axis_control_shb == none }"
+        menu {
+            "+X axis"   "+X axis"
+            "-X axis"   "-X axis"
+            "+Y axis"   "+Y axis"
+            "-Y axis"   "-Y axis"
+            "+Z axis"   "+Z axis"
+            "-Z axis"   "-Z axis"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputscustom_direction_control_xpb"
+        label   "inputs:custom_direction"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscustom_direction_wcb"
+        label   "Custom Direction"
+        type    vector
+        size    3
+        default { "0" "1" "0" }
+        help    "specifies a custom direction in world space as the prime direction"
+        disablewhen "{ prime_direction != \"custom direction\" } { xn__inputscustom_direction_control_xpb == block } { xn__inputscustom_direction_control_xpb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_control_tub"
+        label   "inputs:use_reference_space"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_reference_space_shb"
+        label   "Use Reference Space"
+        type    toggle
+        default { "0" }
+        help    "use reference space position and normals"
+        disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

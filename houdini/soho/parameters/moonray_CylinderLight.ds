@@ -1,0 +1,948 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayon_control_s3a"
+            label   "moonray:on"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayon_rqa"
+            label   "On"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is switched on."
+            disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraymb_control_s3a"
+            label   "moonray:mb"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymb_rqa"
+            label   "Mb"
+            type    toggle
+            default { "0" }
+            help    "Whether motion-blur is active for this light. When set to true, the scene's illumination will correctly account for any blur() applied to the light's transformation matrix."
+            disablewhen "{ xn__moonraymb_control_s3a == block } { xn__moonraymb_control_s3a == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_in_camera_control_7sb"
+            label   "moonray:visible_in_camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_in_camera_6fb"
+            label   "Visible In Camera"
+            type    string
+            default { "use default" }
+            help    "Whether the light is directly visible in the scene's active camera. When set to \"use default\" it reads from the value of SceneVariable lights_visible_in_camera."
+            disablewhen "{ xn__moonrayvisible_in_camera_control_7sb == block } { xn__moonrayvisible_in_camera_control_7sb == none }"
+            menu {
+                "force off"     "Force Off"
+                "force on"      "Force On"
+                "use default"   "Use Default"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraycolor_control_o8a"
+            label   "moonray:color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycolor_nva"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "The light's RGB values.\nThese are combined multiplicatively with the intensity and other attributes in determining the light's 3-channel radiance."
+            disablewhen "{ xn__moonraycolor_control_o8a == block } { xn__moonraycolor_control_o8a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonrayintensity_control_6fb"
+            label   "moonray:intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayintensity_51a"
+            label   "Intensity"
+            type    float
+            default { "1" }
+            help    "The light's intensity.\nThis is combined multiplicatively with the color and other attributes in determining the light's 3-channel radiance."
+            disablewhen "{ xn__moonrayintensity_control_6fb == block } { xn__moonrayintensity_control_6fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayexposure_control_keb"
+            label   "moonray:exposure"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayexposure_j0a"
+            label   "Exposure"
+            type    float
+            default { "0" }
+            help    "The light's exposure value.\nThis value provides an alternative to the intensity value as a mechanism for controlling the light's overall brightness, and is inspired by the corresponding photographic term but is generalised to apply independently to each light. To calculate its effect, pow(2, exposure) is combined multiplicatively with the color and other attributes in determining the light's 3-channel radiance."
+            disablewhen "{ xn__moonrayexposure_control_keb == block } { xn__moonrayexposure_control_keb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraymax_shadow_distance_control_hwb"
+            label   "moonray:max_shadow_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymax_shadow_distance_gjb"
+            label   "Max Shadow Distance"
+            type    float
+            default { "0" }
+            help    "The distance from the light beyond which a light-receiving surface will no longer receive shadows cast from that light.\nNote that the distance is thresholded for each occlusion ray cast for this light, it is possible for a receiving point to lie at an intermediate distance such that some parts of the light are closer than the threshold distance and other parts beyond it, in which case the point will appearto be in partial shadow."
+            disablewhen "{ xn__moonraymax_shadow_distance_control_hwb == block } { xn__moonraymax_shadow_distance_control_hwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraypresence_shadows_control_lrb"
+            label   "moonray:presence_shadows"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraypresence_shadows_keb"
+            label   "Presence Shadows"
+            type    string
+            default { "use default" }
+            help    "Switch this attribute on for shadows cast from this light to correctly respect presence values. When off, surfaces with a material with presence less than 1.0 will cast opaque shadows from this light. This is an optimization - when the attribute is off, occlusion rays (fast) are used for testing for shadows. When it is on, regular rays (slower) are used, and the material's presence is evaluated to determine how much shadowing should occur. When set to \"use default\" it reads from the value of SceneVariable enable_presence_shadows."
+            disablewhen "{ xn__moonraypresence_shadows_control_lrb == block } { xn__moonraypresence_shadows_control_lrb == none }"
+            menu {
+                "force off"     "Force Off"
+                "force on"      "Force On"
+                "use default"   "Use Default"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonrayray_termination_control_ypb"
+            label   "moonray:ray_termination"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayray_termination_xcb"
+            label   "Ray Termination"
+            type    toggle
+            default { "0" }
+            help    "Whether the light is used for ray termination color. Ray termination color is used for filling in falsely dark areas where ray paths have been terminated too early by the depth controls. Such a ray path immediately exits to any ray termination light(s) present in the light set being applied to the lobe, ignoring occlusion by scene geometry. Any light can either be a regular light or a ray termination light (but not both). Thus they can be freely assigned to light sets, which provides a mechanism for applying specific ray termination lights to specific materials, parts or objects. Ray termination color is only applied to non-hair transmission lobes."
+            disablewhen "{ xn__moonrayray_termination_control_ypb == block } { xn__moonrayray_termination_control_ypb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraytexture_filter_control_cob"
+            label   "moonray:texture_filter"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_filter_bbb"
+            label   "Texture Filter"
+            type    string
+            default { "nearest neighbor" }
+            help    "The filtering mode to apply to the texture. Nearest neighbor is the cheapest filtering mode but produces a blocky result. Switch linear filtering on for a smoother result. Additionally, mip-mapping can be switched on with either nearest neighbor or linear filtering."
+            disablewhen "{ xn__moonraytexture_filter_control_cob == block } { xn__moonraytexture_filter_control_cob == none }"
+            menu {
+                "nearest neighbor"                  "Nearest Neighbor"
+                "bilinear"                          "Bilinear"
+                "nearest neighbor with nearest mip" "Nearest Neighbor With Nearest Mip"
+                "bilinear with nearest mip"         "Bilinear With Nearest Mip"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraylabel_control_o8a"
+            label   "moonray:label"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraylabel_nva"
+            label   "Label"
+            type    string
+            default { "" }
+            help    "Label used in light aov expressions."
+            disablewhen "{ xn__moonraylabel_control_o8a == block } { xn__moonraylabel_control_o8a == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__moonraynormalized_control_thb"
+            label   "moonray:normalized"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraynormalized_s3a"
+            label   "Normalized"
+            type    toggle
+            default { "1" }
+            help    "When set to true, the size of the light can be changed without altering the amount of total energy cast into the scene. This is achieved via scaling the light's radiance by the reciprocal of its surface area. When set to false, the radiance is used as-is, regardless of surface area."
+            disablewhen "{ xn__moonraynormalized_control_thb == block } { xn__moonraynormalized_control_thb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayapply_scene_scale_control_7sb"
+            label   "moonray:apply_scene_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayapply_scene_scale_6fb"
+            label   "Apply Scene Scale"
+            type    toggle
+            default { "1" }
+            help    "Whether to apply scene scale variable when normalized."
+            disablewhen "{ xn__moonrayapply_scene_scale_control_7sb == block } { xn__moonrayapply_scene_scale_control_7sb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayradius_control_bbb"
+            label   "moonray:radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayradius_9wa"
+            label   "Radius"
+            type    float
+            default { "1" }
+            help    "The radius of the cylinder."
+            disablewhen "{ xn__moonrayradius_control_bbb == block } { xn__moonrayradius_control_bbb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayheight_control_bbb"
+            label   "moonray:height"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayheight_9wa"
+            label   "Height"
+            type    float
+            default { "1" }
+            help    "The height of the cylinder as measured along its axis."
+            disablewhen "{ xn__moonrayheight_control_bbb == block } { xn__moonrayheight_control_bbb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysidedness_control_6fb"
+            label   "moonray:sidedness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysidedness_51a"
+            label   "Sidedness"
+            type    string
+            default { "regular" }
+            help    "When set to 0 (regular), light is emitted from the outward-facing surface of the cylinder. When set to 1 (reverse), light is emitted from the inward-facing surface of the cylinder. There is no mode for emitting from both surfaces at the same time, but two cylinder lights of opposing sidedness can be combined to achieve this effect."
+            disablewhen "{ xn__moonraysidedness_control_6fb == block } { xn__moonraysidedness_control_6fb == none }"
+            menu {
+                "regular"   "Regular"
+                "reverse"   "Reverse"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_control_2kb"
+            label   "moonray:clear_radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_16a"
+            label   "Clear Radius"
+            type    float
+            default { "0" }
+            help    "Shadows less than this distance from the light are ignored. Setting this value to 0.0 or less effectively disables this feature."
+            disablewhen "{ xn__moonrayclear_radius_control_2kb == block } { xn__moonrayclear_radius_control_2kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_falloff_distance_control_rdc"
+            label   "moonray:clear_radius_falloff_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_falloff_distance_qzb"
+            label   "Clear Radius Falloff Distance"
+            type    float
+            default { "0" }
+            help    "Distance over which the shadows fall off. Shadows are fully visible at a distance clear_radius + clear_radius_falloff_distance from the light, and fully invisble at a distance clear_radius from the light."
+            disablewhen "{ xn__moonrayclear_radius_falloff_distance_control_rdc == block } { xn__moonrayclear_radius_falloff_distance_control_rdc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_interpolation_type_control_0gc"
+            label   "moonray:clear_radius_interpolation_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayclear_radius_interpolation_type_z2b"
+            label   "Clear Radius Interpolation Type"
+            type    string
+            default { "linear" }
+            help    "Interpolation type to use for the clear radius shadow falloff."
+            disablewhen "{ xn__moonrayclear_radius_interpolation_type_control_0gc == block } { xn__moonrayclear_radius_interpolation_type_control_0gc == none }"
+            menu {
+                "linear"            "Linear"
+                "exponential_up"    "Exponential_Up"
+                "exponential_down"  "Exponential_Down"
+                "smoothstep"        "Smoothstep"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Map"
+
+        parm {
+            name    "xn__moonraytexture_control_xcb"
+            label   "moonray:texture"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_wya"
+            label   "Texture"
+            type    file
+            default { "" }
+            help    "File name of the texture applied to the light. If set to the empty string, no texture is applied. Any file format supported by OpenImageIO can be used. The texture is used in 2 ways - for looking up the texture value at the intersection point when a ray hits the light, and for building a lookup-table-based auxilliary data structure used for distributing light samples over the texture."
+            disablewhen "{ xn__moonraytexture_control_xcb == block } { xn__moonraytexture_control_xcb == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+        parm {
+            name    "xn__moonraysaturation_control_thb"
+            label   "moonray:saturation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysaturation_s3a"
+            label   "Saturation"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Per-channel saturation used in color-correcting the light's texture, if one is present. This is achieved by applying the following formula for each channel:\n  output = lerp(luminance(inputRGB), input, saturation)."
+            disablewhen "{ xn__moonraysaturation_control_thb == block } { xn__moonraysaturation_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonraycontrast_control_keb"
+            label   "moonray:contrast"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycontrast_j0a"
+            label   "Contrast"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Per-channel contrast used in color-correcting the light's texture, if one is present. The operation mimics Nuke's ColorCorrect node's contrast function:\n  For input >  0, output = 0.18 * pow(inputCompnent/0.18, contrast).\n  For input <= 0, output = 0.18 * input * pow(1/0.18, contrast)."
+            disablewhen "{ xn__moonraycontrast_control_keb == block } { xn__moonraycontrast_control_keb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonraygamma_control_o8a"
+            label   "moonray:gamma"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraygamma_nva"
+            label   "Gamma"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Per-channel gamma used in color-correcting the light's texture, if one is present. This is achieved by applying the following formula for each channel:\n  For input >  0, output = pow(input, gamma)\n  For input <= 0, output = input"
+            disablewhen "{ xn__moonraygamma_control_o8a == block } { xn__moonraygamma_control_o8a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonraygain_control_16a"
+            label   "moonray:gain"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraygain_0ta"
+            label   "Gain"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Per-channel gain used in tandem with a per-channel offset for color-correcting the light's texture, if one is present. This is achieved by applying the following formula for each channel:\n  output = input * gain + offset"
+            disablewhen "{ xn__moonraygain_control_16a == block } { xn__moonraygain_control_16a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonrayoffset_control_bbb"
+            label   "moonray:offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayoffset_9wa"
+            label   "Offset"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "Per-channel offset used in tandem with a per-channel gain for color-correcting the light's texture, if one is present. This is achieved by applying the following formula for each channel:\n  output = input * gain + offset"
+            disablewhen "{ xn__moonrayoffset_control_bbb == block } { xn__moonrayoffset_control_bbb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonraytemperature_control_gjb"
+            label   "moonray:temperature"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytemperature_f5a"
+            label   "Temperature"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "Color temperature using Nuke-style T/M/I settings (T = temperature, M = magenta/green, I = intensity). This is achieved as follows:\nThe 3-channel temperature is interpreted as the vector (T,M,I). The followiong scale values are then applied to the RGB components:\n  outputR = inputR * (pow(2,I) + M/3 - T/2)\n  outputG = inputG * (pow(2,I) - 2*M/3\n  outputB = inputB * (pow(2,I) + M/3 + T/2)"
+            disablewhen "{ xn__moonraytemperature_control_gjb == block } { xn__moonraytemperature_control_gjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__moonraytexture_rotation_control_lrb"
+            label   "moonray:texture_rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_rotation_keb"
+            label   "Texture Rotation"
+            type    float
+            default { "0" }
+            help    "Clockwise rotation angle in degrees."
+            disablewhen "{ xn__moonraytexture_rotation_control_lrb == block } { xn__moonraytexture_rotation_control_lrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraytexture_translation_control_hwb"
+            label   "moonray:texture_translation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_translation_gjb"
+            label   "Texture Translation"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            help    "Translation of the texture in (u,v)-space, in units of the texture size. For example, a translation of (0.25, 0.5) will translate the texture one-quarter of its width in the u-direction and one-half of its height in the v-direction."
+            disablewhen "{ xn__moonraytexture_translation_control_hwb == block } { xn__moonraytexture_translation_control_hwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__moonraytexture_coverage_control_lrb"
+            label   "moonray:texture_coverage"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_coverage_keb"
+            label   "Texture Coverage"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            help    "Texture scales in the u and v-directions."
+            disablewhen "{ xn__moonraytexture_coverage_control_lrb == block } { xn__moonraytexture_coverage_control_lrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__moonraytexture_reps_u_control_cob"
+            label   "moonray:texture_reps_u"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_reps_u_bbb"
+            label   "Texture Reps U"
+            type    float
+            default { "1" }
+            help    "Number of times texture repeats in u over the scaled texture space."
+            disablewhen "{ xn__moonraytexture_reps_u_control_cob == block } { xn__moonraytexture_reps_u_control_cob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraytexture_reps_v_control_cob"
+            label   "moonray:texture_reps_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_reps_v_bbb"
+            label   "Texture Reps V"
+            type    float
+            default { "1" }
+            help    "Number of times texture repeats in v over the scaled texture space."
+            disablewhen "{ xn__moonraytexture_reps_v_control_cob == block } { xn__moonraytexture_reps_v_control_cob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraytexture_mirror_u_control_lrb"
+            label   "moonray:texture_mirror_u"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_mirror_u_keb"
+            label   "Texture Mirror U"
+            type    toggle
+            default { "0" }
+            help    "Whether to mirror the texture in the u-direction. If set to false, the texture is repeated in the u-direction."
+            disablewhen "{ xn__moonraytexture_mirror_u_control_lrb == block } { xn__moonraytexture_mirror_u_control_lrb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraytexture_mirror_v_control_lrb"
+            label   "moonray:texture_mirror_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_mirror_v_keb"
+            label   "Texture Mirror V"
+            type    toggle
+            default { "0" }
+            help    "Whether to mirror the texture in the v-direction. If set to false, the texture is repeated in the v-direction."
+            disablewhen "{ xn__moonraytexture_mirror_v_control_lrb == block } { xn__moonraytexture_mirror_v_control_lrb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraytexture_border_color_control_3xb"
+            label   "moonray:texture_border_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytexture_border_color_2kb"
+            label   "Texture Border Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "RGB value used when a texture lookup occurs outside the texture."
+            disablewhen "{ xn__moonraytexture_border_color_control_3xb == block } { xn__moonraytexture_border_color_control_3xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Visibility Flags"
+
+        parm {
+            name    "xn__moonrayvisible_diffuse_reflection_control_v7b"
+            label   "moonray:visible_diffuse_reflection"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_diffuse_reflection_uub"
+            label   "Visible Diffuse Reflection"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in diffuse reflection."
+            disablewhen "{ xn__moonrayvisible_diffuse_reflection_control_v7b == block } { xn__moonrayvisible_diffuse_reflection_control_v7b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_diffuse_transmission_control_4bc"
+            label   "moonray:visible_diffuse_transmission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_diffuse_transmission_3xb"
+            label   "Visible Diffuse Transmission"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in diffuse transmission."
+            disablewhen "{ xn__moonrayvisible_diffuse_transmission_control_4bc == block } { xn__moonrayvisible_diffuse_transmission_control_4bc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_glossy_reflection_control_85b"
+            label   "moonray:visible_glossy_reflection"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_glossy_reflection_7sb"
+            label   "Visible Glossy Reflection"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in glossy reflection."
+            disablewhen "{ xn__moonrayvisible_glossy_reflection_control_85b == block } { xn__moonrayvisible_glossy_reflection_control_85b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_glossy_transmission_control_i9b"
+            label   "moonray:visible_glossy_transmission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_glossy_transmission_hwb"
+            label   "Visible Glossy Transmission"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in glossy transmission (refraction)."
+            disablewhen "{ xn__moonrayvisible_glossy_transmission_control_i9b == block } { xn__moonrayvisible_glossy_transmission_control_i9b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_mirror_reflection_control_85b"
+            label   "moonray:visible_mirror_reflection"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_mirror_reflection_7sb"
+            label   "Visible Mirror Reflection"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in miror reflection."
+            disablewhen "{ xn__moonrayvisible_mirror_reflection_control_85b == block } { xn__moonrayvisible_mirror_reflection_control_85b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayvisible_mirror_transmission_control_i9b"
+            label   "moonray:visible_mirror_transmission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayvisible_mirror_transmission_hwb"
+            label   "Visible Mirror Transmission"
+            type    toggle
+            default { "1" }
+            help    "Whether the light is visible in miror transmission (refraction)."
+            disablewhen "{ xn__moonrayvisible_mirror_transmission_control_i9b == block } { xn__moonrayvisible_mirror_transmission_control_i9b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraylight_filters_control_pmb"
+        label   "moonray:light_filters"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "light_filters"
+        label    "Light Filters"
+        default 0
+        disablewhen "{ xn__moonraylight_filters_control_pmb == block } { xn__moonraylight_filters_control_pmb == none }"
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+
+        parm {
+            name    "xn__moonraylight_filters_o8a#"
+            label   "Light Filters"
+            type    oppath
+            default { "" }
+            help    "Vector of LightFilters associated with the light."
+            parmtag { "moonray::is_parm" "1" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+}

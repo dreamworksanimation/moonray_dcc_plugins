@@ -1,0 +1,292 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Scattering Properties"
+
+        parm {
+            name    "xn__inputsdiffuse_color_control_1kb"
+            label   "inputs:diffuse_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdiffuse_color_06a"
+            label   "Diffuse Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "reflectance color of the volume. Technically this is called scattering albedo, which is the scattering coefficient divided by the extinction coefficient."
+            disablewhen "{ xn__inputsdiffuse_color_control_1kb == block } { xn__inputsdiffuse_color_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsanisotropy_control_5fb"
+            label   "inputs:anisotropy"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsanisotropy_41a"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            help    "Value in the interval [-1,1] that defines how foward (1) or backward (-1) scattering the volume is. 0.0 is isotropic."
+            disablewhen "{ xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Attenuation Properties"
+
+        parm {
+            name    "xn__inputsattenuation_intensity_control_2xb"
+            label   "inputs:attenuation_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsattenuation_intensity_1kb"
+            label   "Attenuation Intensity"
+            type    float
+            default { "1" }
+            help    "the rate at which the intensity of a ray traversing a volume is lost. The attenuation (extinction) coefficient is technically the product of attenuation_color, attenuation_intensity, and attenuation_factor"
+            disablewhen "{ xn__inputsattenuation_intensity_control_2xb == block } { xn__inputsattenuation_intensity_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsattenuation_factor_control_6sb"
+            label   "inputs:attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsattenuation_factor_5fb"
+            label   "Attenuation Factor"
+            type    float
+            default { "1" }
+            help    "An additional factor to scale the attenuation. This attribute behaves identically to attenuation_intensity - it is provided simply as an extra way to control attenuation, typically during lighting. Surfacing should generally avoid setting this."
+            disablewhen "{ xn__inputsattenuation_factor_control_6sb == block } { xn__inputsattenuation_factor_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsattenuation_color_control_krb"
+            label   "inputs:attenuation_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsattenuation_color_jeb"
+            label   "Attenuation Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "a color to tint (multiply to) the attenuation. Technically the product of attenuation color and intensity is the attenuation(extinction) coefficient.(Note the inverse behavior of color with this parameter.)"
+            disablewhen "{ xn__inputsattenuation_color_control_krb == block } { xn__inputsattenuation_color_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Emission Properties"
+
+        parm {
+            name    "xn__inputsemission_intensity_control_6sb"
+            label   "inputs:emission_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_intensity_5fb"
+            label   "Emission Intensity"
+            type    float
+            default { "1" }
+            help    "the rate at which a volume emits light at a given point. Technically the product of emission color and intensity is the emission coefficient."
+            disablewhen "{ xn__inputsemission_intensity_control_6sb == block } { xn__inputsemission_intensity_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsemission_color_control_omb"
+            label   "inputs:emission_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_color_n8a"
+            label   "Emission Color"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "a color to tint (multiply to) the emission Technically the product of emision color and intensity is the emission coefficient"
+            disablewhen "{ xn__inputsemission_color_control_omb == block } { xn__inputsemission_color_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputsbake_resolution_mode_control_gwb"
+        label   "inputs:bake_resolution_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_resolution_mode_fjb"
+        label   "Bake Resolution Mode"
+        type    string
+        default { "default" }
+        help    "Toggle method to specify grid resolution of baked density grid.\n		default: for shaders that are bound to vdb volumes, use vdb resolution. For shaders that are bounds to mesh geometriesuse 100 divisions\n		divisions: specify number of divisions.\n		voxel size: specify voxel size."
+        disablewhen "{ xn__inputsbake_resolution_mode_control_gwb == block } { xn__inputsbake_resolution_mode_control_gwb == none }"
+        menu {
+            "default"       "Default"
+            "divisions"     "Divisions"
+            "voxel size"    "Voxel Size"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsbake_divisions_control_omb"
+        label   "inputs:bake_divisions"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_divisions_n8a"
+        label   "Bake Divisions"
+        type    integer
+        default { "100" }
+        help    "Divide widest axis by this many divisions"
+        disablewhen "{ xn__inputsbake_divisions_control_omb == block } { xn__inputsbake_divisions_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsbake_voxel_size_control_bob"
+        label   "inputs:bake_voxel_size"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbake_voxel_size_99a"
+        label   "Bake Voxel Size"
+        type    float
+        default { "10" }
+        help    "Size of voxel in world space"
+        disablewhen "{ xn__inputsbake_voxel_size_control_bob == block } { xn__inputsbake_voxel_size_control_bob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssurface_opacity_threshold_control_l4b"
+        label   "inputs:surface_opacity_threshold"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssurface_opacity_threshold_krb"
+        label   "Surface Opacity Threshold"
+        type    float
+        default { "0.5" }
+        help    "Accumulated opacity that's considered the 'surface' for computing surface position and Z"
+        disablewhen "{ xn__inputssurface_opacity_threshold_control_l4b == block } { xn__inputssurface_opacity_threshold_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

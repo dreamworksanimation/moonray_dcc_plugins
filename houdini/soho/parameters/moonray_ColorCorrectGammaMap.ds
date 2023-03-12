@@ -1,0 +1,179 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "bind the input here"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "enables/disables all color correct operations"
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmix_control_r3a"
+        label   "inputs:mix"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmix_qqa"
+        label   "Mix"
+        type    float
+        default { "1" }
+        help    "how much of the overall color correct to mix in"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgamma_control_06a"
+        label   "inputs:gamma"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_zta"
+        label   "Gamma"
+        type    float
+        default { "1" }
+        help    "raises the input to the specified exponents"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgamma_control_06a == block } { xn__inputsgamma_control_06a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_gamma_control_2xb"
+        label   "inputs:use_per_channel_gamma"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_per_channel_gamma_1kb"
+        label   "Use Per Channel Gamma"
+        type    toggle
+        default { "0" }
+        help    "enables separate RGB controls for gamma"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsuse_per_channel_gamma_control_2xb == block } { xn__inputsuse_per_channel_gamma_control_2xb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsgamma_r_control_99a"
+        label   "inputs:gamma_r"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_r_8wa"
+        label   "Gamma R"
+        type    float
+        default { "1" }
+        help    "raises the red channel to the specified exponents"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgamma_r_control_99a == block } { xn__inputsgamma_r_control_99a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgamma_g_control_99a"
+        label   "inputs:gamma_g"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_g_8wa"
+        label   "Gamma G"
+        type    float
+        default { "1" }
+        help    "raises the green channel to the specified exponents"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgamma_g_control_99a == block } { xn__inputsgamma_g_control_99a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsgamma_b_control_99a"
+        label   "inputs:gamma_b"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsgamma_b_8wa"
+        label   "Gamma B"
+        type    float
+        default { "1" }
+        help    "raises the blue channel to the specified exponents"
+        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgamma_b_control_99a == block } { xn__inputsgamma_b_control_99a == none }"
+        range   { 0 4 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

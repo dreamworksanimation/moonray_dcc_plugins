@@ -1,0 +1,140 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputscolor_A_control_99a"
+        label   "inputs:color_A"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_A_8wa"
+        label   "Color A"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ xn__inputscolor_A_control_99a == block } { xn__inputscolor_A_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputscolor_B_control_99a"
+        label   "inputs:color_B"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_B_8wa"
+        label   "Color B"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputscolor_B_control_99a == block } { xn__inputscolor_B_control_99a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsnum_u_tiles_control_shb"
+        label   "inputs:num_u_tiles"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnum_u_tiles_r3a"
+        label   "Num U Tiles"
+        type    integer
+        default { "8" }
+        help    "number of checkerboard squares in the U direction"
+        disablewhen "{ xn__inputsnum_u_tiles_control_shb == block } { xn__inputsnum_u_tiles_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsnum_v_tiles_control_shb"
+        label   "inputs:num_v_tiles"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnum_v_tiles_r3a"
+        label   "Num V Tiles"
+        type    integer
+        default { "8" }
+        help    "number of checkerboard squares in the V direction"
+        disablewhen "{ xn__inputsnum_v_tiles_control_shb == block } { xn__inputsnum_v_tiles_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_control_tub"
+        label   "inputs:texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_shb"
+        label   "Texture Coordinates"
+        type    string
+        default { "texture" }
+        help    "switches between the model's uv coordinates or the input texture coordinates"
+        disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
+        menu {
+            "texture"                   "Texture"
+            "input texture coordinates" "Input Texture Coordinates"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_control_l4b"
+        label   "inputs:input_texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_krb"
+        label   "Input Texture Coordinates"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        help    "bind a shader that outputs UV coordinates (such as a projection shader) here"
+        disablewhen "{ xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+}

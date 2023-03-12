@@ -1,0 +1,90 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsbound_padding_control_1kb"
+        label   "inputs:bound_padding"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbound_padding_06a"
+        label   "Bound Padding"
+        type    float
+        default { "0" }
+        help    "bound padding defines how much to extend the bounding box of the object. Keep this value as low as possible unless the geometry skips tessellation because control cage bounding box is out of camera frustum but the displacement stretch out of the original object bounding box (pre-displacement). Setting the bound padding too large will consume more memory and tessellation time."
+        disablewhen "{ xn__inputsbound_padding_control_1kb == block } { xn__inputsbound_padding_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsheight_control_n8a"
+        label   "inputs:height"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsheight_mva"
+        label   "Height"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsheight_control_n8a == block } { xn__inputsheight_control_n8a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputszero_value_control_5fb"
+        label   "inputs:zero_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputszero_value_41a"
+        label   "Zero Value"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputszero_value_control_5fb == block } { xn__inputszero_value_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsheight_multiplier_control_krb"
+        label   "inputs:height_multiplier"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsheight_multiplier_jeb"
+        label   "Height Multiplier"
+        type    float
+        default { "1" }
+        help    "Multiply the computed (post zero-value) height with this factor."
+        disablewhen "{ xn__inputsheight_multiplier_control_krb == block } { xn__inputsheight_multiplier_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

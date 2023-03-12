@@ -1,0 +1,69 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputscolor_control_06a"
+        label   "inputs:color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscolor_zta"
+        label   "Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "Bind the root of a map shader network that you want evaluated as an extra aov"
+        disablewhen "{ xn__inputscolor_control_06a == block } { xn__inputscolor_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "Sets the LPE label that is used for the extra aov"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspost_scatter_control_fjb"
+        label   "inputs:post_scatter"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspost_scatter_e5a"
+        label   "Post Scatter"
+        type    toggle
+        default { "0" }
+        help    "If true, accumulate this aov when scattering off the surface as an indirect ray (after the LPE scatter transition event, after path throughput multiplication), rather than when the surface is first intersected.  The purpose of this setting is to efficiently capture information from all rays that leave a surface that could potentially intersect and trigger aov evaluation on other surfaces."
+        disablewhen "{ xn__inputspost_scatter_control_fjb == block } { xn__inputspost_scatter_control_fjb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

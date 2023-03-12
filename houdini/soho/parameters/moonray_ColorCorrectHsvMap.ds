@@ -1,0 +1,223 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "input color"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "all attributes on/off"
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputshue_shift_control_jeb"
+        label   "inputs:hue_shift"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputshue_shift_i0a"
+        label   "Hue Shift"
+        type    float
+        default { "0" }
+        help    "shifts the hue of the input (360 rolls over back to 0)"
+        disablewhen "{ xn__inputshue_shift_control_jeb == block } { xn__inputshue_shift_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_factor_control_krb"
+        label   "inputs:saturation_factor"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_factor_jeb"
+        label   "Saturation Factor"
+        type    float
+        default { "1" }
+        help    "multiplies the saturation of the input"
+        disablewhen "{ xn__inputssaturation_factor_control_krb == block } { xn__inputssaturation_factor_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_contrast_control_tub"
+        label   "inputs:saturation_contrast"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_contrast_shb"
+        label   "Saturation Contrast"
+        type    float
+        default { "0" }
+        help    "modifies the contrast of the input's saturation (-1, 1)"
+        disablewhen "{ xn__inputssaturation_contrast_control_tub == block } { xn__inputssaturation_contrast_control_tub == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_shift_control_xpb"
+        label   "inputs:saturation_shift"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_shift_wcb"
+        label   "Saturation Shift"
+        type    float
+        default { "0" }
+        help    "shifts the saturation of the input (-1, 1)"
+        disablewhen "{ xn__inputssaturation_shift_control_xpb == block } { xn__inputssaturation_shift_control_xpb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsvalue_factor_control_fjb"
+        label   "inputs:value_factor"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsvalue_factor_e5a"
+        label   "Value Factor"
+        type    float
+        default { "1" }
+        help    "multiplies the value of the input"
+        disablewhen "{ xn__inputsvalue_factor_control_fjb == block } { xn__inputsvalue_factor_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsvalue_contrast_control_omb"
+        label   "inputs:value_contrast"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsvalue_contrast_n8a"
+        label   "Value Contrast"
+        type    float
+        default { "0" }
+        help    "modifies the contrast of the input's value (-1, 1)"
+        disablewhen "{ xn__inputsvalue_contrast_control_omb == block } { xn__inputsvalue_contrast_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsvalue_shift_control_shb"
+        label   "inputs:value_shift"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsvalue_shift_r3a"
+        label   "Value Shift"
+        type    float
+        default { "0" }
+        help    "shifts the value of the input (-1, 1)"
+        disablewhen "{ xn__inputsvalue_shift_control_shb == block } { xn__inputsvalue_shift_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsclamp_control_06a"
+        label   "inputs:clamp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_zta"
+        label   "Clamp"
+        type    toggle
+        default { "0" }
+        help    "clamps output to [0,1] range"
+        disablewhen "{ xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

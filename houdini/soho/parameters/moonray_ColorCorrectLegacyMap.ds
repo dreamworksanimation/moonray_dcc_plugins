@@ -1,0 +1,243 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputson_control_41a"
+        label   "inputs:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputson_3oa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        disablewhen "{ xn__inputson_control_41a == block } { xn__inputson_control_41a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmask_control_e5a"
+        label   "inputs:mask"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmask_dsa"
+        label   "Mask"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsmask_control_e5a == block } { xn__inputsmask_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsbrightness_control_5fb"
+        label   "inputs:brightness"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbrightness_41a"
+        label   "Brightness"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputsbrightness_control_5fb == block } { xn__inputsbrightness_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscontrast_control_wcb"
+        label   "inputs:contrast"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscontrast_vya"
+        label   "Contrast"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputscontrast_control_wcb == block } { xn__inputscontrast_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputshue_control_r3a"
+        label   "inputs:hue"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputshue_qqa"
+        label   "Hue"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputshue_control_r3a == block } { xn__inputshue_control_r3a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputssaturation_control_5fb"
+        label   "inputs:saturation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputssaturation_41a"
+        label   "Saturation"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinvert_control_n8a"
+        label   "inputs:invert"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinvert_mva"
+        label   "Invert"
+        type    toggle
+        default { "0" }
+        disablewhen "{ xn__inputsinvert_control_n8a == block } { xn__inputsinvert_control_n8a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsmonochrome_control_5fb"
+        label   "inputs:monochrome"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmonochrome_41a"
+        label   "Monochrome"
+        type    string
+        default { "off" }
+        disablewhen "{ xn__inputsmonochrome_control_5fb == block } { xn__inputsmonochrome_control_5fb == none }"
+        menu {
+            "off"           "Off"
+            "luminance"     "Luminance"
+            "average"       "Average"
+            "minimum"       "Minimum"
+            "maximum"       "Maximum"
+            "red channel"   "Red Channel"
+            "green channel" "Green Channel"
+            "blue channel"  "Blue Channel"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmultiplier_control_5fb"
+        label   "inputs:multiplier"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmultiplier_41a"
+        label   "Multiplier"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputsmultiplier_control_5fb == block } { xn__inputsmultiplier_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsclamp_control_06a"
+        label   "inputs:clamp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_zta"
+        label   "Clamp"
+        type    toggle
+        default { "0" }
+        disablewhen "{ xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

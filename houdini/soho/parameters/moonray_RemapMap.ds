@@ -1,0 +1,415 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Channel"
+
+        parm {
+            name    "xn__inputsinput_min_RGB_control_1kb"
+            label   "inputs:input_min_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_min_RGB_06a"
+            label   "Input Min RGB"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "the input value that will be remapped to the 'output min' value"
+            disablewhen "{ remap_method != RGB } { xn__inputsinput_min_RGB_control_1kb == block } { xn__inputsinput_min_RGB_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsinput_max_RGB_control_1kb"
+            label   "inputs:input_max_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_max_RGB_06a"
+            label   "Input Max RGB"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the input value that will be remapped to the 'output max' value"
+            disablewhen "{ remap_method != RGB } { xn__inputsinput_max_RGB_control_1kb == block } { xn__inputsinput_max_RGB_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsoutput_min_RGB_control_omb"
+            label   "inputs:output_min_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsoutput_min_RGB_n8a"
+            label   "Output Min RGB"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "the value that 'input min' is remapped to"
+            disablewhen "{ remap_method != RGB } { xn__inputsoutput_min_RGB_control_omb == block } { xn__inputsoutput_min_RGB_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsoutput_max_RGB_control_omb"
+            label   "inputs:output_max_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsoutput_max_RGB_n8a"
+            label   "Output Max RGB"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the value that 'input max' is remapped to"
+            disablewhen "{ remap_method != RGB } { xn__inputsoutput_max_RGB_control_omb == block } { xn__inputsoutput_max_RGB_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsmidpoint_bias_RGB_control_krb"
+            label   "inputs:midpoint_bias_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsmidpoint_bias_RGB_jeb"
+            label   "Midpoint Bias RGB"
+            type    color
+            size    3
+            default { "0.5" "0.5" "0.5" }
+            help    "biases the in-between values toward 'output min' or 'output max'. Default = 0.5"
+            disablewhen "{ remap_method != RGB } { xn__inputsmidpoint_bias_RGB_control_krb == block } { xn__inputsmidpoint_bias_RGB_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsclamp_min_RGB_control_1kb"
+            label   "inputs:clamp_min_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsclamp_min_RGB_06a"
+            label   "Clamp Min RGB"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "the minimum value output by this map when 'clamp' is enabled"
+            disablewhen "{ remap_method != RGB } { xn__inputsclamp_min_RGB_control_1kb == block } { xn__inputsclamp_min_RGB_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsclamp_max_RGB_control_1kb"
+            label   "inputs:clamp_max_RGB"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsclamp_max_RGB_06a"
+            label   "Clamp Max RGB"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the maximum value output by this map when 'clamp' is enabled"
+            disablewhen "{ remap_method != RGB } { xn__inputsclamp_max_RGB_control_1kb == block } { xn__inputsclamp_max_RGB_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsremap_method_control_fjb"
+        label   "inputs:remap_method"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsremap_method_e5a"
+        label   "Remap Method"
+        type    string
+        default { "uniform" }
+        help    "Choose whether you are remapping using single values (uniform) or with separate RGB channels"
+        disablewhen "{ xn__inputsremap_method_control_fjb == block } { xn__inputsremap_method_control_fjb == none }"
+        menu {
+            "uniform"   "Uniform"
+            "RGB"       "RGB"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_control_06a"
+        label   "inputs:input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_zta"
+        label   "Input"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "the input values to be remapped"
+        disablewhen "{ xn__inputsinput_control_06a == block } { xn__inputsinput_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsinput_min_control_jeb"
+        label   "inputs:input_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_min_i0a"
+        label   "Input Min"
+        type    float
+        default { "0" }
+        help    "the input value that will be remapped to the 'output min' value"
+        disablewhen "{ remap_method != uniform } { xn__inputsinput_min_control_jeb == block } { xn__inputsinput_min_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsinput_max_control_jeb"
+        label   "inputs:input_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_max_i0a"
+        label   "Input Max"
+        type    float
+        default { "1" }
+        help    "the input value that will be remapped to the 'output max' value"
+        disablewhen "{ remap_method != uniform } { xn__inputsinput_max_control_jeb == block } { xn__inputsinput_max_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoutput_min_control_5fb"
+        label   "inputs:output_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutput_min_41a"
+        label   "Output Min"
+        type    float
+        default { "0" }
+        help    "the value that 'input min' is remapped to"
+        disablewhen "{ remap_method != uniform } { xn__inputsoutput_min_control_5fb == block } { xn__inputsoutput_min_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsoutput_max_control_5fb"
+        label   "inputs:output_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutput_max_41a"
+        label   "Output Max"
+        type    float
+        default { "1" }
+        help    "the value that 'input max' is remapped to"
+        disablewhen "{ remap_method != uniform } { xn__inputsoutput_max_control_5fb == block } { xn__inputsoutput_max_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsmidpoint_bias_control_1kb"
+        label   "inputs:midpoint_bias"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmidpoint_bias_06a"
+        label   "Midpoint Bias"
+        type    float
+        default { "0.5" }
+        help    "biases the in-between values toward 'output min' or 'output max'. Default = 0.5"
+        disablewhen "{ remap_method != uniform } { xn__inputsmidpoint_bias_control_1kb == block } { xn__inputsmidpoint_bias_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsclamp_control_06a"
+        label   "inputs:clamp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_zta"
+        label   "Clamp"
+        type    toggle
+        default { "1" }
+        help    "enables/disables clamping of the output values.  This useful prevent out-of-range values when expanding the input values."
+        disablewhen "{ remap_method != uniform } { xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsclamp_min_control_jeb"
+        label   "inputs:clamp_min"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_min_i0a"
+        label   "Clamp Min"
+        type    float
+        default { "0" }
+        help    "the minimum value output by this map when 'clamp' is enabled"
+        disablewhen "{ remap_method != uniform } { xn__inputsclamp_min_control_jeb == block } { xn__inputsclamp_min_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsclamp_max_control_jeb"
+        label   "inputs:clamp_max"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_max_i0a"
+        label   "Clamp Max"
+        type    float
+        default { "1" }
+        help    "the maximum value output by this map when 'clamp' is enabled"
+        disablewhen "{ remap_method != uniform } { xn__inputsclamp_max_control_jeb == block } { xn__inputsclamp_max_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsclamp_RGB_control_jeb"
+        label   "inputs:clamp_RGB"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_RGB_i0a"
+        label   "Clamp RGB"
+        type    toggle
+        default { "1" }
+        help    "enables/disables clamping of the output values.  This useful prevent out-of-range values when expanding the input values."
+        disablewhen "{ remap_method != RGB } { xn__inputsclamp_RGB_control_jeb == block } { xn__inputsclamp_RGB_control_jeb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

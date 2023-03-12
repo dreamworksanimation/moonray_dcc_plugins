@@ -1,0 +1,46 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "category"
+        label   "Category"
+        type    buttonstrip
+        default { "0" }
+        menu {
+            "Shader"        "Shader"
+            "Light"         "Light"
+            "Camera"        "Camera"
+            "Light Filter"  "Light Filter"
+            "Geometry"      "Geometry"
+        }
+    }
+    parm {
+        name    "primtype"
+        label   "Primitive Type"
+        type    string
+        default { "" }
+        menureplace {
+            [ "" ]
+            [ "        parm = hou.pwd().parm(\"category\")" ]
+            [ "        selected = parm.eval()" ]
+            [ "        tokens = parm.parmTemplate().menuItems()" ]
+            [ "        menulist = []" ]
+            [ "        token = tokens[selected]" ]
+            [ "        if token == \"Shader\":" ]
+            [ "            menulist = [u'AttributeMap', u'AttributeMap', u'AxisAngleMap', u'AxisAngleMap', u'BaseMaterial', u'BaseMaterial', u'BaseVolume', u'BaseVolume', u'BlendMap', u'BlendMap', u'CheckerboardMap', u'CheckerboardMap', u'ClampMap', u'ClampMap', u'ColorCorrectContrastMap', u'ColorCorrectContrastMap', u'ColorCorrectGainOffsetMap', u'ColorCorrectGainOffsetMap', u'ColorCorrectGammaMap', u'ColorCorrectGammaMap', u'ColorCorrectHsvMap', u'ColorCorrectHsvMap', u'ColorCorrectHueShiftMap', u'ColorCorrectHueShiftMap', u'ColorCorrectLegacyMap', u'ColorCorrectLegacyMap', u'ColorCorrectMap', u'ColorCorrectMap', u'ColorCorrectNukeMap', u'ColorCorrectNukeMap', u'ColorCorrectSaturationMap', u'ColorCorrectSaturationMap', u'ColorCorrectTMIMap', u'ColorCorrectTMIMap', u'CombineDisplacement', u'CombineDisplacement', u'CombineNormalMap', u'CombineNormalMap', u'ConstantColorMap', u'ConstantColorMap', u'ConstantScalarMap', u'ConstantScalarMap', u'CurvatureMap', u'CurvatureMap', u'CutoutVolume', u'CutoutVolume', u'DebugMap', u'DebugMap', u'DeformationMap', u'DeformationMap', u'DirectionalMap', u'DirectionalMap', u'DistortNormalMap', u'DistortNormalMap', u'DwaAdjustMaterial', u'DwaAdjustMaterial', u'DwaBaseMaterial', u'DwaBaseMaterial', u'DwaColorCorrectMaterial', u'DwaColorCorrectMaterial', u'DwaEmissiveMaterial', u'DwaEmissiveMaterial', u'DwaFabricMaterial', u'DwaFabricMaterial', u'DwaLayerMaterial', u'DwaLayerMaterial', u'DwaMetalMaterial', u'DwaMetalMaterial', u'DwaMixMaterial', u'DwaMixMaterial', u'DwaRefractiveMaterial', u'DwaRefractiveMaterial', u'DwaSkinMaterial', u'DwaSkinMaterial', u'DwaSolidDielectricMaterial', u'DwaSolidDielectricMaterial', u'DwaSwitchMaterial', u'DwaSwitchMaterial', u'DwaToonMaterial', u'DwaToonMaterial', u'DwaTwoSidedMaterial', u'DwaTwoSidedMaterial', u'DwaVelvetMaterial_v2', u'DwaVelvetMaterial_v2', u'ExtraAovMap', u'ExtraAovMap', u'FloatToRgbMap', u'FloatToRgbMap', u'GlitterFlakeMaterial_v2', u'GlitterFlakeMaterial_v2', u'GradientMap', u'GradientMap', u'HairColorCorrectMaterial', u'HairColorCorrectMaterial', u'HairColorPresetsMap', u'HairColorPresetsMap', u'HairColumnMap', u'HairColumnMap', u'HairDiffuseMaterial', u'HairDiffuseMaterial', u'HairLayerMaterial', u'HairLayerMaterial', u'HairMap', u'HairMap', u'HairMaterial_v3', u'HairMaterial_v3', u'HairToonMaterial', u'HairToonMaterial', u'HsvToRgbMap', u'HsvToRgbMap', u'ImageMap', u'ImageMap', u'ImageNormalMap', u'ImageNormalMap', u'LODMap', u'LODMap', u'LayerMap', u'LayerMap', u'ListMap', u'ListMap', u'MacroFlakeMaterial', u'MacroFlakeMaterial', u'MultiChannelToFloatMap', u'MultiChannelToFloatMap', u'NoiseMap', u'NoiseMap', u'NoiseMap_v2', u'NoiseMap_v2', u'NoiseWorleyMap', u'NoiseWorleyMap', u'NoiseWorleyMap_v2', u'NoiseWorleyMap_v2', u'NormalDisplacement', u'NormalDisplacement', u'NormalToRgbMap', u'NormalToRgbMap', u'OpMap', u'OpMap', u'OpenVdbMap', u'OpenVdbMap', u'OpenVdbMap_v2', u'OpenVdbMap_v2', u'ProjectCameraMap', u'ProjectCameraMap', u'ProjectCameraMap_v2', u'ProjectCameraMap_v2', u'ProjectCameraNormalMap', u'ProjectCameraNormalMap', u'ProjectCylindricalMap', u'ProjectCylindricalMap', u'ProjectPlanarMap', u'ProjectPlanarMap', u'ProjectPlanarNormalMap', u'ProjectPlanarNormalMap', u'ProjectSphericalMap', u'ProjectSphericalMap', u'ProjectTriplanarMap', u'ProjectTriplanarMap', u'ProjectTriplanarMap_v2', u'ProjectTriplanarMap_v2', u'ProjectTriplanarNormalMap', u'ProjectTriplanarNormalMap', u'ProjectTriplanarNormalMap_v2', u'ProjectTriplanarNormalMap_v2', u'ProjectTriplanarUdimMap', u'ProjectTriplanarUdimMap', u'RampMap', u'RampMap', u'RandomMap', u'RandomMap', u'RandomNormalMap', u'RandomNormalMap', u'RaySwitchMaterial', u'RaySwitchMaterial', u'RemapMap', u'RemapMap', u'RgbToFloatMap', u'RgbToFloatMap', u'RgbToHsvMap', u'RgbToHsvMap', u'RgbToLabMap', u'RgbToLabMap', u'RgbToNormalMap', u'RgbToNormalMap', u'SwitchColorMap', u'SwitchColorMap', u'SwitchDisplacement', u'SwitchDisplacement', u'SwitchFloatMap', u'SwitchFloatMap', u'SwitchMaterial', u'SwitchMaterial', u'SwitchNormalMap', u'SwitchNormalMap', u'ToonMap', u'ToonMap', u'TransformNormalMap', u'TransformNormalMap', u'TransformSpaceMap', u'TransformSpaceMap', u'UVTransformMap', u'UVTransformMap', u'VectorDisplacement', u'VectorDisplacement', u'WireframeMap', u'WireframeMap']" ]
+            [ "        elif token == \"Light\":" ]
+            [ "            menulist = [u'CylinderLight', u'CylinderLight', u'DiskLight', u'DiskLight', u'DistantLight', u'DistantLight', u'EnvLight', u'EnvLight', u'MeshLight', u'MeshLight', u'RectLight', u'RectLight', u'SphereLight', u'SphereLight', u'SpotLight', u'SpotLight']" ]
+            [ "        elif token == \"Camera\":" ]
+            [ "            menulist = [u'BakeCamera', u'BakeCamera', u'DomeMaster3DCamera', u'DomeMaster3DCamera', u'OrthographicCamera', u'OrthographicCamera', u'PerspectiveCamera', u'PerspectiveCamera', u'SphericalCamera', u'SphericalCamera']" ]
+            [ "        elif token == \"Light Filter\":" ]
+            [ "            menulist = [u'BarnDoorLightFilter', u'BarnDoorLightFilter', u'ColorRampLightFilter', u'ColorRampLightFilter', u'CombineLightFilter', u'CombineLightFilter', u'CookieLightFilter', u'CookieLightFilter', u'CookieLightFilter_v2', u'CookieLightFilter_v2', u'DecayLightFilter', u'DecayLightFilter', u'IntensityLightFilter', u'IntensityLightFilter', u'RodLightFilter', u'RodLightFilter', u'VdbLightFilter', u'VdbLightFilter']" ]
+            [ "        elif token == \"Geometry\":" ]
+            [ "            menulist = [u'BoxGeometry', u'BoxGeometry', u'SphereGeometry', u'SphereGeometry', u'UsdGeometry', u'UsdGeometry', u'UsdInstanceGeometry', u'UsdInstanceGeometry']" ]
+            [ "        return menulist" ]
+            [ "        " ]
+            language python
+        }
+        parmtag { "script_callback" "hou.phm().load_ds(hou.pwd())" }
+        parmtag { "script_callback_language" "python" }
+    }
+}

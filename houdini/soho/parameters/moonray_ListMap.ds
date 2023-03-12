@@ -1,0 +1,464 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsmap0_control_e5a"
+        label   "inputs:map0"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap0_dsa"
+        label   "Map0"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap0_control_e5a == block } { xn__inputsmap0_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap1_control_e5a"
+        label   "inputs:map1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap1_dsa"
+        label   "Map1"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap1_control_e5a == block } { xn__inputsmap1_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap2_control_e5a"
+        label   "inputs:map2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap2_dsa"
+        label   "Map2"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap2_control_e5a == block } { xn__inputsmap2_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap3_control_e5a"
+        label   "inputs:map3"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap3_dsa"
+        label   "Map3"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap3_control_e5a == block } { xn__inputsmap3_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap4_control_e5a"
+        label   "inputs:map4"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap4_dsa"
+        label   "Map4"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap4_control_e5a == block } { xn__inputsmap4_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap5_control_e5a"
+        label   "inputs:map5"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap5_dsa"
+        label   "Map5"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap5_control_e5a == block } { xn__inputsmap5_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap6_control_e5a"
+        label   "inputs:map6"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap6_dsa"
+        label   "Map6"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap6_control_e5a == block } { xn__inputsmap6_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap7_control_e5a"
+        label   "inputs:map7"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap7_dsa"
+        label   "Map7"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap7_control_e5a == block } { xn__inputsmap7_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap8_control_e5a"
+        label   "inputs:map8"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap8_dsa"
+        label   "Map8"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap8_control_e5a == block } { xn__inputsmap8_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap9_control_e5a"
+        label   "inputs:map9"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap9_dsa"
+        label   "Map9"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap9_control_e5a == block } { xn__inputsmap9_control_e5a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap10_control_06a"
+        label   "inputs:map10"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap10_zta"
+        label   "Map10"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap10_control_06a == block } { xn__inputsmap10_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap11_control_06a"
+        label   "inputs:map11"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap11_zta"
+        label   "Map11"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap11_control_06a == block } { xn__inputsmap11_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap12_control_06a"
+        label   "inputs:map12"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap12_zta"
+        label   "Map12"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap12_control_06a == block } { xn__inputsmap12_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap13_control_06a"
+        label   "inputs:map13"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap13_zta"
+        label   "Map13"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap13_control_06a == block } { xn__inputsmap13_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap14_control_06a"
+        label   "inputs:map14"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap14_zta"
+        label   "Map14"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap14_control_06a == block } { xn__inputsmap14_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap15_control_06a"
+        label   "inputs:map15"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap15_zta"
+        label   "Map15"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap15_control_06a == block } { xn__inputsmap15_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap16_control_06a"
+        label   "inputs:map16"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap16_zta"
+        label   "Map16"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap16_control_06a == block } { xn__inputsmap16_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap17_control_06a"
+        label   "inputs:map17"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap17_zta"
+        label   "Map17"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap17_control_06a == block } { xn__inputsmap17_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap18_control_06a"
+        label   "inputs:map18"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap18_zta"
+        label   "Map18"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap18_control_06a == block } { xn__inputsmap18_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmap19_control_06a"
+        label   "inputs:map19"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmap19_zta"
+        label   "Map19"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Map object reference"
+        disablewhen "{ xn__inputsmap19_control_06a == block } { xn__inputsmap19_control_06a == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

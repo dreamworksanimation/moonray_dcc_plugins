@@ -1,0 +1,524 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayprojector_type_control_cob"
+            label   "moonray:projector_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayprojector_type_bbb"
+            label   "Projector Type"
+            type    string
+            default { "perspective" }
+            help    "projection type used to map points to the flap opening. perspective has a focal point, while orthographic does not."
+            disablewhen "{ xn__moonrayprojector_type_control_cob == block } { xn__moonrayprojector_type_control_cob == none }"
+            menu {
+                "perspective"   "Perspective"
+                "orthographic"  "Orthographic"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonrayprojector_focal_distance_control_m4b"
+            label   "moonray:projector_focal_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayprojector_focal_distance_lrb"
+            label   "Projector Focal Distance"
+            type    float
+            default { "30" }
+            help    "distance of the flap opening from the projector origin. Ignored for orthographic projection"
+            disablewhen "{ mode == analytical } { xn__moonrayprojector_focal_distance_control_m4b == block } { xn__moonrayprojector_focal_distance_control_m4b == none }"
+            range   { 0 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayprojector_width_control_ypb"
+            label   "moonray:projector_width"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayprojector_width_xcb"
+            label   "Projector Width"
+            type    float
+            default { "1" }
+            help    "width of the frustum at distance 1.0"
+            disablewhen "{ xn__moonrayprojector_width_control_ypb == block } { xn__moonrayprojector_width_control_ypb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayprojector_height_control_lrb"
+            label   "moonray:projector_height"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayprojector_height_keb"
+            label   "Projector Height"
+            type    float
+            default { "1" }
+            help    "height of the frustum at distance 1.0"
+            disablewhen "{ xn__moonrayprojector_height_control_lrb == block } { xn__moonrayprojector_height_control_lrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraypre_barn_mode_control_pmb"
+            label   "moonray:pre_barn_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraypre_barn_mode_o8a"
+            label   "Pre Barn Mode"
+            type    string
+            default { "default" }
+            help    "force region before the pre_barn_distance to be fully filtered (black), not filtered at all (white), or treated the same as elsewhere (default)"
+            disablewhen "{ xn__moonraypre_barn_mode_control_pmb == block } { xn__moonraypre_barn_mode_control_pmb == none }"
+            menu {
+                "black"     "Black"
+                "white"     "White"
+                "default"   "Default"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraypre_barn_distance_control_7sb"
+            label   "moonray:pre_barn_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraypre_barn_distance_6fb"
+            label   "Pre Barn Distance"
+            type    float
+            default { "0.5" }
+            help    "distance from the BarnDoorLightFilter that the pre_barn_mode control takes effect"
+            disablewhen "{ xn__moonraypre_barn_distance_control_7sb == block } { xn__moonraypre_barn_distance_control_7sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_top_control_cob"
+            label   "moonray:edge_scale_top"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_top_bbb"
+            label   "Edge Scale Top"
+            type    float
+            default { "1" }
+            help    "scale factor for top edge"
+            disablewhen "{ xn__moonrayedge_scale_top_control_cob == block } { xn__moonrayedge_scale_top_control_cob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_bottom_control_7sb"
+            label   "moonray:edge_scale_bottom"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_bottom_6fb"
+            label   "Edge Scale Bottom"
+            type    float
+            default { "1" }
+            help    "scale factor for bottom edge"
+            disablewhen "{ xn__moonrayedge_scale_bottom_control_7sb == block } { xn__moonrayedge_scale_bottom_control_7sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_left_control_ypb"
+            label   "moonray:edge_scale_left"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_left_xcb"
+            label   "Edge Scale Left"
+            type    float
+            default { "1" }
+            help    "scale factor for left edge"
+            disablewhen "{ xn__moonrayedge_scale_left_control_ypb == block } { xn__moonrayedge_scale_left_control_ypb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_right_control_lrb"
+            label   "moonray:edge_scale_right"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayedge_scale_right_keb"
+            label   "Edge Scale Right"
+            type    float
+            default { "1" }
+            help    "scale factor for right edge"
+            disablewhen "{ xn__moonrayedge_scale_right_control_lrb == block } { xn__moonrayedge_scale_right_control_lrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_control_xcb"
+            label   "moonray:density"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_wya"
+            label   "Density"
+            type    float
+            default { "1" }
+            help    "fades the filter effect. 0=no effect (like having no filter), 1=full effect"
+            disablewhen "{ xn__moonraydensity_control_xcb == block } { xn__moonraydensity_control_xcb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayinvert_control_bbb"
+            label   "moonray:invert"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayinvert_9wa"
+            label   "Invert"
+            type    toggle
+            default { "0" }
+            help    "swap application of filter from inside the Barn Door to outside"
+            disablewhen "{ xn__moonrayinvert_control_bbb == block } { xn__moonrayinvert_control_bbb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayradius_control_bbb"
+            label   "moonray:radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayradius_9wa"
+            label   "Radius"
+            type    float
+            default { "0" }
+            help    "radius by which to convert the base box shape into a rounded box, as a proportion of half the width (or height, whichever is smaller)"
+            disablewhen "{ xn__moonrayradius_control_bbb == block } { xn__moonrayradius_control_bbb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayedge_control_16a"
+            label   "moonray:edge"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayedge_0ta"
+            label   "Edge"
+            type    float
+            default { "0" }
+            help    "size of transition zone from the rounded box to the outside, as a proportion of width (or height, whichever is smaller)"
+            disablewhen "{ xn__moonrayedge_control_16a == block } { xn__moonrayedge_control_16a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraymode_control_16a"
+            label   "moonray:mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymode_0ta"
+            label   "Mode"
+            type    string
+            default { "analytical" }
+            help    "analytical mode allows light to shading points that project to the flap opening.physical mode allows light whose direction goes through the flap opening."
+            disablewhen "{ use_light_xform == 0 } { xn__moonraymode_control_16a == block } { xn__moonraymode_control_16a == none }"
+            menu {
+                "analytical"    "Analytical"
+                "physical"      "Physical"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysize_top_control_keb"
+            label   "moonray:size_top"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysize_top_j0a"
+            label   "Size Top"
+            type    float
+            default { "0" }
+            help    "additional size on top edge"
+            disablewhen "{ xn__moonraysize_top_control_keb == block } { xn__moonraysize_top_control_keb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysize_bottom_control_gjb"
+            label   "moonray:size_bottom"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysize_bottom_f5a"
+            label   "Size Bottom"
+            type    float
+            default { "0" }
+            help    "additional size on bottom edge"
+            disablewhen "{ xn__moonraysize_bottom_control_gjb == block } { xn__moonraysize_bottom_control_gjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysize_left_control_6fb"
+            label   "moonray:size_left"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysize_left_51a"
+            label   "Size Left"
+            type    float
+            default { "0" }
+            help    "additional size on left edge"
+            disablewhen "{ xn__moonraysize_left_control_6fb == block } { xn__moonraysize_left_control_6fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysize_right_control_thb"
+            label   "moonray:size_right"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraysize_right_s3a"
+            label   "Size Right"
+            type    float
+            default { "0" }
+            help    "additional size on right edge"
+            disablewhen "{ xn__moonraysize_right_control_thb == block } { xn__moonraysize_right_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayuse_light_xform_control_ypb"
+            label   "moonray:use_light_xform"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayuse_light_xform_xcb"
+            label   "Use Light Xform"
+            type    toggle
+            default { "1" }
+            help    "attach to the light (in the -Z direction) and ignore node_xform"
+            disablewhen "{ xn__moonrayuse_light_xform_control_ypb == block } { xn__moonrayuse_light_xform_control_ypb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayrotation_control_keb"
+            label   "moonray:rotation"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayrotation_j0a"
+            label   "Rotation"
+            type    float
+            default { "0" }
+            help    "angle to rotate the Barn Door counter-clockwise as seen from the light, in degrees"
+            disablewhen "{ xn__moonrayrotation_control_keb == block } { xn__moonrayrotation_control_keb == none }"
+            range   { -180 180 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraycolor_control_o8a"
+            label   "moonray:color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycolor_nva"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Color within the Barn Door lit region. For each color channel, 0=full shadow, 1=no shadow"
+            disablewhen "{ xn__moonraycolor_control_o8a == block } { xn__moonraycolor_control_o8a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

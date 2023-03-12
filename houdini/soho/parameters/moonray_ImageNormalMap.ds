@@ -1,0 +1,335 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "UVs"
+
+        parm {
+            name    "xn__inputsoffset_control_n8a"
+            label   "inputs:offset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsoffset_mva"
+            label   "Offset"
+            type    vector2
+            size    2
+            default { "0" "0" }
+            disablewhen "{ xn__inputsoffset_control_n8a == block } { xn__inputsoffset_control_n8a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsscale_control_06a"
+            label   "inputs:scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscale_zta"
+            label   "Scale"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsrotation_angle_control_omb"
+            label   "inputs:rotation_angle"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsrotation_angle_n8a"
+            label   "Rotation Angle"
+            type    float
+            default { "0" }
+            help    "Rotation in degrees"
+            disablewhen "{ xn__inputsrotation_angle_control_omb == block } { xn__inputsrotation_angle_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsrotation_center_control_bob"
+            label   "inputs:rotation_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsrotation_center_99a"
+            label   "Rotation Center"
+            type    vector2
+            size    2
+            default { "0.5" "0.5" }
+            help    "UV coordinate around which to rotate"
+            disablewhen "{ xn__inputsrotation_center_control_bob == block } { xn__inputsrotation_center_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float2" }
+        }
+        parm {
+            name    "xn__inputsudim_values_control_shb"
+            label   "inputs:udim_values"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "udim_values"
+            label    "Udim Values"
+            default 0
+            disablewhen "{ xn__inputsudim_values_control_shb == block } { xn__inputsudim_values_control_shb == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__inputsudim_values_r3a#"
+                label   "Udim Values"
+                type    integer
+                default { "0" }
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__inputsudim_files_control_5fb"
+            label   "inputs:udim_files"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "udim_files"
+            label    "Udim Files"
+            default 0
+            disablewhen "{ xn__inputsudim_files_control_5fb == block } { xn__inputsudim_files_control_5fb == none }"
+            parmtag { "usdvaluetype" "string[]" }
+
+            parm {
+                name    "xn__inputsudim_files_41a#"
+                label   "Udim Files"
+                type    string
+                default { "" }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__inputsudim_max_v_control_5fb"
+            label   "inputs:udim_max_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsudim_max_v_41a"
+            label   "Udim Max V"
+            type    integer
+            default { "10" }
+            help    "udim maximum v value"
+            disablewhen "{ xn__inputsudim_max_v_control_5fb == block } { xn__inputsudim_max_v_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+    }
+
+    parm {
+        name    "xn__inputstangent_space_normal_texture_control_h9b"
+        label   "inputs:tangent_space_normal_texture"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstangent_space_normal_texture_gwb"
+        label   "Tangent Space Normal Texture"
+        type    file
+        default { "" }
+        help    "filename that points to a tangent space normal texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputstangent_space_normal_texture_control_h9b == block } { xn__inputstangent_space_normal_texture_control_h9b == none }"
+        parmtag { "usdvaluetype" "asset" }
+    }
+    parm {
+        name    "xn__inputsuse_default_value_when_missing_control_qdc"
+        label   "inputs:use_default_value_when_missing"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_default_value_when_missing_pzb"
+        label   "Use Default Value When Missing"
+        type    toggle
+        default { "0" }
+        help    "Uses the 'default_value' for missing udims and does not report error"
+        disablewhen "{ xn__inputsuse_default_value_when_missing_control_qdc == block } { xn__inputsuse_default_value_when_missing_control_qdc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsdefault_value_control_1kb"
+        label   "inputs:default_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdefault_value_06a"
+        label   "Default Value"
+        type    vector
+        size    3
+        default { "0" "0" "1" }
+        help    "default value to be used for missing udims when 'use_default_value_when_missing' is enabled"
+        disablewhen "{ xn__inputsuse_default_value_when_missing_pzb != 1 } { xn__inputsdefault_value_control_1kb == block } { xn__inputsdefault_value_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputswrap_around_control_shb"
+        label   "inputs:wrap_around"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswrap_around_r3a"
+        label   "Wrap Around"
+        type    toggle
+        default { "1" }
+        help    "Controls whether to repeat (true) or clamp (false) the texture"
+        disablewhen "{ xn__inputswrap_around_control_shb == block } { xn__inputswrap_around_control_shb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsnormal_encoding_control_bob"
+        label   "inputs:normal_encoding"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnormal_encoding_99a"
+        label   "Normal Encoding"
+        type    string
+        default { "[0,1]" }
+        help    "Most normal maps are encoded [0,1]. Only certain rare floating point normal maps are encoded [-1,1]"
+        disablewhen "{ xn__inputsnormal_encoding_control_bob == block } { xn__inputsnormal_encoding_control_bob == none }"
+        menu {
+            "[0,1]"     "[0,1]"
+            "[-1,1]"    "[-1,1]"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_control_tub"
+        label   "inputs:texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputstexture_coordinates_shb"
+        label   "Texture Coordinates"
+        type    string
+        default { "texture" }
+        disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
+        menu {
+            "texture"                   "Texture"
+            "input texture coordinates" "Input Texture Coordinates"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_control_l4b"
+        label   "inputs:input_texture_coordinates"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_texture_coordinates_krb"
+        label   "Input Texture Coordinates"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ texture_coordinates != \"input texture coordinates\" } { xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+}

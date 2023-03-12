@@ -1,0 +1,83 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonraylight_filters_control_pmb"
+        label   "moonray:light_filters"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "light_filters"
+        label    "Light Filters"
+        default 0
+        disablewhen "{ xn__moonraylight_filters_control_pmb == block } { xn__moonraylight_filters_control_pmb == none }"
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+
+        parm {
+            name    "xn__moonraylight_filters_o8a#"
+            label   "Light Filters"
+            type    oppath
+            default { "" }
+            help    "List of light filters to combine together"
+            parmtag { "moonray::is_parm" "1" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    parm {
+        name    "xn__moonraymode_control_16a"
+        label   "moonray:mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraymode_0ta"
+        label   "Mode"
+        type    string
+        default { "multiply" }
+        help    "How the light filters are combined"
+        disablewhen "{ xn__moonraymode_control_16a == block } { xn__moonraymode_control_16a == none }"
+        menu {
+            "multiply"  "Multiply"
+            "min"       "Min"
+            "max"       "Max"
+            "add"       "Add"
+            "subtract"  "Subtract"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

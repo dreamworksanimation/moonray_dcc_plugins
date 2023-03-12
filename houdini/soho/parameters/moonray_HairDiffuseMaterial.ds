@@ -1,0 +1,450 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Common"
+
+        parm {
+            name    "xn__inputspresence_control_wcb"
+            label   "inputs:presence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspresence_vya"
+            label   "Presence"
+            type    float
+            default { "1" }
+            help    "controls the visibility of this object. Useful for fading an object in/out, or to specify a cut-out mask on thin single-sided geometry (eg. a complex leaf texture on a simple card)."
+            disablewhen "{ xn__inputspresence_control_wcb == block } { xn__inputspresence_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputscasts_caustics_control_omb"
+            label   "inputs:casts_caustics"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscasts_caustics_n8a"
+            label   "Casts Caustics"
+            type    toggle
+            default { "0" }
+            help    "allows continuation of caustic light paths."
+            disablewhen "{ xn__inputscasts_caustics_control_omb == block } { xn__inputscasts_caustics_control_omb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsuse_independent_front_and_back_hair_color_control_nvc"
+            label   "inputs:use_independent_front_and_back_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_independent_front_and_back_hair_color_mic"
+            label   "Use Independent Front And Back Hair Color"
+            type    toggle
+            default { "0" }
+            help    "(advanced) use a separate hair color for front and back"
+            disablewhen "{ xn__inputsuse_independent_front_and_back_hair_color_control_nvc == block } { xn__inputsuse_independent_front_and_back_hair_color_control_nvc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsfront_hair_color_control_xpb"
+            label   "inputs:front_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfront_hair_color_wcb"
+            label   "Front Hair Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "(advanced only) hair color used for front-lit hair (backward reflectance)"
+            disablewhen "{ xn__inputsuse_independent_front_and_back_hair_color_mic != 1 } { xn__inputsfront_hair_color_control_xpb == block } { xn__inputsfront_hair_color_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsback_hair_color_control_bob"
+            label   "inputs:back_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsback_hair_color_99a"
+            label   "Back Hair Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "(advanced only) hair color used for back-lit hair (transmission/forward reflectance)"
+            disablewhen "{ xn__inputsuse_independent_front_and_back_hair_color_mic != 1 } { xn__inputsback_hair_color_control_bob == block } { xn__inputsback_hair_color_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_control_1kb"
+            label   "inputs:sss_trace_set"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_06a"
+            label   "Sss Trace Set"
+            type    oppath
+            default { "" }
+            help    "Set of geometries that contribute neighboring subsurface points. By default, only the geometry associated with this material contributes to subsurface. If you want adjacent geometry with different material to contribute as well, specify all those parts here."
+            disablewhen "{ xn__inputssss_trace_set_control_1kb == block } { xn__inputssss_trace_set_control_1kb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Subsurface"
+
+        parm {
+            name    "xn__inputssubsurface_blend_control_xpb"
+            label   "inputs:subsurface_blend"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssubsurface_blend_wcb"
+            label   "Subsurface Blend"
+            type    float
+            default { "1" }
+            help    "0 is fully hair diffuse, 1 is fully SSS. No effect if scattering radius is 0."
+            disablewhen "{ xn__inputssubsurface_blend_control_xpb == block } { xn__inputssubsurface_blend_control_xpb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsbssrdf_control_n8a"
+            label   "inputs:bssrdf"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsbssrdf_mva"
+            label   "Bssrdf"
+            type    string
+            default { "normalized diffusion" }
+            help    "0 for NormalizedDiffuse, 1 for Dipole. Random walk unsupported for hair."
+            disablewhen "{ xn__inputsbssrdf_control_n8a == block } { xn__inputsbssrdf_control_n8a == none }"
+            menu {
+                "normalized diffusion"  "Normalized Diffusion"
+                "dipole"                "Dipole"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsscattering_color_control_xpb"
+            label   "inputs:scattering_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscattering_color_wcb"
+            label   "Scattering Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the subsurface scattering 'falloff' color"
+            disablewhen "{ xn__inputsscattering_color_control_xpb == block } { xn__inputsscattering_color_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsscattering_radius_control_krb"
+            label   "inputs:scattering_radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscattering_radius_jeb"
+            label   "Scattering Radius"
+            type    float
+            default { "0" }
+            help    "the distance the light scatters beneath the surface.  When 0 surface diffuse is used"
+            disablewhen "{ xn__inputsscattering_radius_control_krb == block } { xn__inputsscattering_radius_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsenable_sss_input_normal_control_c1b"
+            label   "inputs:enable_sss_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsenable_sss_input_normal_bob"
+            label   "Enable Sss Input Normal"
+            type    toggle
+            default { "0" }
+            help    "enables sampling the normal map for sss samples. More accurate but potentially expensive"
+            disablewhen "{ xn__inputsenable_sss_input_normal_control_c1b == block } { xn__inputsenable_sss_input_normal_control_c1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_control_fjb"
+            label   "inputs:input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_e5a"
+            label   "Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal (only for SSS lobe)"
+            disablewhen "{ xn__inputsenable_sss_input_normal_bob != 1 } { xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_control_krb"
+            label   "inputs:input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_jeb"
+            label   "Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls influence of input normal versus hair normal for SSS"
+            disablewhen "{ xn__inputsenable_sss_input_normal_bob != 1 } { xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Emission"
+
+        parm {
+            name    "xn__inputsshow_emission_control_1kb"
+            label   "inputs:show_emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_emission_06a"
+            label   "Show Emission"
+            type    toggle
+            default { "0" }
+            help    "enables/disable emission"
+            disablewhen "{ xn__inputsshow_emission_control_1kb == block } { xn__inputsshow_emission_control_1kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsemission_control_wcb"
+            label   "inputs:emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_vya"
+            label   "Emission"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the energy emitted from this material"
+            disablewhen "{ xn__inputsshow_emission_06a != 1 } { xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputshair_color_control_5fb"
+        label   "inputs:hair_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputshair_color_41a"
+        label   "Hair Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputshair_color_control_5fb == block } { xn__inputshair_color_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

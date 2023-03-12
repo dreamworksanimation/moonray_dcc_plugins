@@ -1,0 +1,2719 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    label	"Moonray"
+    group {
+        name    "folder"
+        label   "Frame"
+
+        parm {
+            name    "xn__sceneVariablemin_frame_control_4pb"
+            label   "sceneVariable:min_frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemin_frame_3cb"
+            label   "Min Frame"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__sceneVariablemin_frame_control_4pb == block } { xn__sceneVariablemin_frame_control_4pb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_frame_control_4pb"
+            label   "sceneVariable:max_frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_frame_3cb"
+            label   "Max Frame"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__sceneVariablemax_frame_control_4pb == block } { xn__sceneVariablemax_frame_control_4pb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariableframe_control_mjb"
+            label   "sceneVariable:frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableframe_l5a"
+            label   "Frame"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__sceneVariableframe_control_mjb == block } { xn__sceneVariableframe_control_mjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Camera and Layer"
+
+        parm {
+            name    "xn__sceneVariablecamera_control_8kb"
+            label   "sceneVariable:camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecamera_76a"
+            label   "Camera"
+            type    oppath
+            default { "" }
+            disablewhen "{ xn__sceneVariablecamera_control_8kb == block } { xn__sceneVariablecamera_control_8kb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__sceneVariabledicing_camera_control_nwb"
+            label   "sceneVariable:dicing_camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledicing_camera_mjb"
+            label   "Dicing Camera"
+            type    oppath
+            default { "" }
+            disablewhen "{ xn__sceneVariabledicing_camera_control_nwb == block } { xn__sceneVariabledicing_camera_control_nwb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__sceneVariablelayer_control_mjb"
+            label   "sceneVariable:layer"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablelayer_l5a"
+            label   "Layer"
+            type    oppath
+            default { "" }
+            disablewhen "{ xn__sceneVariablelayer_control_mjb == block } { xn__sceneVariablelayer_control_mjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Metadata"
+
+        parm {
+            name    "xn__sceneVariableexr_header_attributes_control_o9b"
+            label   "sceneVariable:exr_header_attributes"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableexr_header_attributes_nwb"
+            label   "Exr Header Attributes"
+            type    oppath
+            default { "" }
+            help    "Metadata that is passed directly to the exr header. Format: {\"name\", \"type\", \"value\"}"
+            disablewhen "{ xn__sceneVariableexr_header_attributes_control_o9b == block } { xn__sceneVariableexr_header_attributes_control_o9b == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Image Size"
+
+        parm {
+            name    "xn__sceneVariableimage_width_control_etb"
+            label   "sceneVariable:image_width"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableimage_width_dgb"
+            label   "Image Width"
+            type    integer
+            default { "1920" }
+            disablewhen "{ xn__sceneVariableimage_width_control_etb == block } { xn__sceneVariableimage_width_control_etb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariableimage_height_control_0ub"
+            label   "sceneVariable:image_height"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableimage_height_zhb"
+            label   "Image Height"
+            type    integer
+            default { "1080" }
+            disablewhen "{ xn__sceneVariableimage_height_control_0ub == block } { xn__sceneVariableimage_height_control_0ub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariableres_control_dgb"
+            label   "sceneVariable:res"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableres_c2a"
+            label   "Res"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__sceneVariableres_control_dgb == block } { xn__sceneVariableres_control_dgb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariableaperture_window_control_wzb"
+            label   "sceneVariable:aperture_window"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "aperture_window"
+            label    "Aperture Window"
+            default 4
+            disablewhen "{ xn__sceneVariableaperture_window_control_wzb == block } { xn__sceneVariableaperture_window_control_wzb == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariableaperture_window_vmb#"
+                label   "Aperture Window"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "The window of the camera aperture. Overrides image_width and image_height. Ordered as xmin, ymin, xmax, and ymax, with origin at the bottom-left."
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariableregion_window_control_nwb"
+            label   "sceneVariable:region_window"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "region_window"
+            label    "Region Window"
+            default 4
+            disablewhen "{ xn__sceneVariableregion_window_control_nwb == block } { xn__sceneVariableregion_window_control_nwb == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariableregion_window_mjb#"
+                label   "Region Window"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "Window that is rendered. Overrides image width / height (and overrides aperture window override). Order: xmin ymin xmax ymax, with origin at left bottom."
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariablesub_viewport_control_0ub"
+            label   "sceneVariable:sub_viewport"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "sub_viewport"
+            label    "Sub Viewport"
+            default 4
+            disablewhen "{ xn__sceneVariablesub_viewport_control_0ub == block } { xn__sceneVariablesub_viewport_control_0ub == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariablesub_viewport_zhb#"
+                label   "Sub Viewport"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "Subviewport of region window. Coordinate (0,0) maps to left, bottom of region window"
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder5"
+        label   "Motion and Scale"
+
+        parm {
+            name    "xn__sceneVariablemotion_steps_control_0ub"
+            label   "sceneVariable:motion_steps"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "motion_steps"
+            label    "Motion Steps"
+            default 2
+            disablewhen "{ xn__sceneVariablemotion_steps_control_0ub == block } { xn__sceneVariablemotion_steps_control_0ub == none }"
+            parmtag { "usdvaluetype" "float[]" }
+
+            parm {
+                name    "xn__sceneVariablemotion_steps_zhb#"
+                label   "Motion Steps"
+                type    float
+                default { "-1" }
+                help    "frame-relative time offsets for motion sampling"
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariablescene_scale_control_etb"
+            label   "sceneVariable:scene_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablescene_scale_dgb"
+            label   "Scene Scale"
+            type    float
+            default { "0.01" }
+            help    "(in meters): one unit in world space = 'scene scale' meters"
+            disablewhen "{ xn__sceneVariablescene_scale_control_etb == block } { xn__sceneVariablescene_scale_control_etb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Sampling"
+
+        parm {
+            name    "xn__sceneVariablepixel_samples_control_nwb"
+            label   "sceneVariable:pixel_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepixel_samples_mjb"
+            label   "Pixel Samples"
+            type    integer
+            default { "8" }
+            help    "The square root of the number of primary samples taken for each pixel in uniform sampling mode. For example, a value of 4 will result in 4*4 = 16 uniform pixel samples."
+            disablewhen "{ xn__sceneVariablepixel_samples_control_nwb == block } { xn__sceneVariablepixel_samples_control_nwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablelight_samples_control_nwb"
+            label   "sceneVariable:light_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablelight_samples_mjb"
+            label   "Light Samples"
+            type    integer
+            default { "2" }
+            disablewhen "{ xn__sceneVariablelight_samples_control_nwb == block } { xn__sceneVariablelight_samples_control_nwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablebsdf_samples_control_0ub"
+            label   "sceneVariable:bsdf_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablebsdf_samples_zhb"
+            label   "Bsdf Samples"
+            type    integer
+            default { "2" }
+            disablewhen "{ xn__sceneVariablebsdf_samples_control_0ub == block } { xn__sceneVariablebsdf_samples_control_0ub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablebsdf_sampler_strategy_control_o9b"
+            label   "sceneVariable:bsdf_sampler_strategy"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablebsdf_sampler_strategy_nwb"
+            label   "Bsdf Sampler Strategy"
+            type    string
+            default { "multi-sample" }
+            help    "Indirect sampling and evaluation strategy: all lobes using one path segment per lobe (multi-sample), all lobes using one shared path segment (one-sample), or one lobe."
+            disablewhen "{ xn__sceneVariablebsdf_sampler_strategy_control_o9b == block } { xn__sceneVariablebsdf_sampler_strategy_control_o9b == none }"
+            menu {
+                "multi-sample"  "Multi-Sample"
+                "one-sample"    "One-Sample"
+                "one-lobe"      "One-Lobe"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariablebssrdf_samples_control_9xb"
+            label   "sceneVariable:bssrdf_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablebssrdf_samples_8kb"
+            label   "Bssrdf Samples"
+            type    integer
+            default { "2" }
+            disablewhen "{ xn__sceneVariablebssrdf_samples_control_9xb == block } { xn__sceneVariablebssrdf_samples_control_9xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_depth_control_4pb"
+            label   "sceneVariable:max_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_depth_3cb"
+            label   "Max Depth"
+            type    integer
+            default { "5" }
+            disablewhen "{ xn__sceneVariablemax_depth_control_4pb == block } { xn__sceneVariablemax_depth_control_4pb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_diffuse_depth_control_52b"
+            label   "sceneVariable:max_diffuse_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_diffuse_depth_4pb"
+            label   "Max Diffuse Depth"
+            type    integer
+            default { "2" }
+            disablewhen "{ xn__sceneVariablemax_diffuse_depth_control_52b == block } { xn__sceneVariablemax_diffuse_depth_control_52b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_glossy_depth_control_j1b"
+            label   "sceneVariable:max_glossy_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_glossy_depth_iob"
+            label   "Max Glossy Depth"
+            type    integer
+            default { "2" }
+            disablewhen "{ xn__sceneVariablemax_glossy_depth_control_j1b == block } { xn__sceneVariablemax_glossy_depth_control_j1b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_mirror_depth_control_j1b"
+            label   "sceneVariable:max_mirror_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_mirror_depth_iob"
+            label   "Max Mirror Depth"
+            type    integer
+            default { "3" }
+            disablewhen "{ xn__sceneVariablemax_mirror_depth_control_j1b == block } { xn__sceneVariablemax_mirror_depth_control_j1b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_presence_depth_control_s4b"
+            label   "sceneVariable:max_presence_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_presence_depth_rrb"
+            label   "Max Presence Depth"
+            type    integer
+            default { "16" }
+            disablewhen "{ xn__sceneVariablemax_presence_depth_control_s4b == block } { xn__sceneVariablemax_presence_depth_control_s4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_hair_depth_control_9xb"
+            label   "sceneVariable:max_hair_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_hair_depth_8kb"
+            label   "Max Hair Depth"
+            type    integer
+            default { "5" }
+            disablewhen "{ xn__sceneVariablemax_hair_depth_control_9xb == block } { xn__sceneVariablemax_hair_depth_control_9xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariabledisable_optimized_hair_sampling_control_yqc"
+            label   "sceneVariable:disable_optimized_hair_sampling"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledisable_optimized_hair_sampling_xdc"
+            label   "Disable Optimized Hair Sampling"
+            type    toggle
+            default { "0" }
+            help    "Forces all hair materials to sample each hair BSDF lobe independently. This will enable the LPE label syntax for 'hair R', 'hair TT', 'hair TRT' and 'hair TRRT ' but will result in slower rendering"
+            disablewhen "{ xn__sceneVariabledisable_optimized_hair_sampling_control_yqc == block } { xn__sceneVariabledisable_optimized_hair_sampling_control_yqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_subsurface_per_path_control_xdc"
+            label   "sceneVariable:max_subsurface_per_path"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_subsurface_per_path_wzb"
+            label   "Max Subsurface Per Path"
+            type    integer
+            default { "1" }
+            disablewhen "{ xn__sceneVariablemax_subsurface_per_path_control_xdc == block } { xn__sceneVariablemax_subsurface_per_path_control_xdc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablerussian_roulette_threshold_control_tic"
+            label   "sceneVariable:russian_roulette_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablerussian_roulette_threshold_s4b"
+            label   "Russian Roulette Threshold"
+            type    float
+            default { "0.0375" }
+            disablewhen "{ xn__sceneVariablerussian_roulette_threshold_control_tic == block } { xn__sceneVariablerussian_roulette_threshold_control_tic == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariabletransparency_threshold_control_bcc"
+            label   "sceneVariable:transparency_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletransparency_threshold_9xb"
+            label   "Transparency Threshold"
+            type    float
+            default { "1" }
+            help    "Defines at which point the accumulated opacity can be considered as opaque, skipping generation of new transparency rays."
+            disablewhen "{ xn__sceneVariabletransparency_threshold_control_bcc == block } { xn__sceneVariabletransparency_threshold_control_bcc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablepresence_threshold_control_s4b"
+            label   "sceneVariable:presence_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepresence_threshold_rrb"
+            label   "Presence Threshold"
+            type    float
+            default { "0.999" }
+            help    "Defines at which point the accumulated presence can be considered as opaque, skipping generation of presence continuation rays."
+            disablewhen "{ xn__sceneVariablepresence_threshold_control_s4b == block } { xn__sceneVariablepresence_threshold_control_s4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablelock_frame_noise_control_j1b"
+            label   "sceneVariable:lock_frame_noise"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablelock_frame_noise_iob"
+            label   "Lock Frame Noise"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariablelock_frame_noise_control_j1b == block } { xn__sceneVariablelock_frame_noise_control_j1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Volumes"
+
+        parm {
+            name    "xn__sceneVariablemax_volume_depth_control_j1b"
+            label   "sceneVariable:max_volume_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_volume_depth_iob"
+            label   "Max Volume Depth"
+            type    integer
+            default { "1" }
+            disablewhen "{ xn__sceneVariablemax_volume_depth_control_j1b == block } { xn__sceneVariablemax_volume_depth_control_j1b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_quality_control_9xb"
+            label   "sceneVariable:volume_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_quality_8kb"
+            label   "Volume Quality"
+            type    float
+            default { "0.5" }
+            help    "Controls the overall quality of volume rendering. The higher number gives better volume shape detail and more accurate scattering integration result."
+            disablewhen "{ xn__sceneVariablevolume_quality_control_9xb == block } { xn__sceneVariablevolume_quality_control_9xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_shadow_quality_control_o9b"
+            label   "sceneVariable:volume_shadow_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_shadow_quality_nwb"
+            label   "Volume Shadow Quality"
+            type    float
+            default { "1" }
+            help    "Controls the quality of volume shadow (transmittance). The higher number gives more accurate volume shadow."
+            disablewhen "{ xn__sceneVariablevolume_shadow_quality_control_o9b == block } { xn__sceneVariablevolume_shadow_quality_control_o9b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_illumination_samples_control_gkc"
+            label   "sceneVariable:volume_illumination_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_illumination_samples_f6b"
+            label   "Volume Illumination Samples"
+            type    integer
+            default { "4" }
+            help    "Sample number along the ray when computing volume scattering radiance towards the eye. Set to 0 to turn off volume lighting completely."
+            disablewhen "{ xn__sceneVariablevolume_illumination_samples_control_gkc == block } { xn__sceneVariablevolume_illumination_samples_control_gkc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_opacity_threshold_control_kfc"
+            label   "sceneVariable:volume_opacity_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_opacity_threshold_j1b"
+            label   "Volume Opacity Threshold"
+            type    float
+            default { "0.995" }
+            help    "As a ray travels through volume regions, it will accumulate the amount of opacity. When the value exceeds volume opacity threshold the renderer will stop the further volume integration along this ray."
+            disablewhen "{ xn__sceneVariablevolume_opacity_threshold_control_kfc == block } { xn__sceneVariablevolume_opacity_threshold_control_kfc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_overlap_mode_control_f6b"
+            label   "sceneVariable:volume_overlap_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_overlap_mode_etb"
+            label   "Volume Overlap Mode"
+            type    string
+            default { "sum" }
+            help    "Selects how to handle contributions from overlapping volumes:\n		sum: add contributions from all volumes\n		max: only consider maximum volume based on extinction\n		rnd: randomly choose one value weighted by extinction\n		Warning: light linking does not work correctly in sum mode."
+            disablewhen "{ xn__sceneVariablevolume_overlap_mode_control_f6b == block } { xn__sceneVariablevolume_overlap_mode_control_f6b == none }"
+            menu {
+                "sum"   "Sum"
+                "max"   "Max"
+                "rnd"   "Rnd"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_attenuation_factor_control_6gc"
+            label   "sceneVariable:volume_attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_attenuation_factor_52b"
+            label   "Volume Attenuation Factor"
+            type    float
+            default { "0.65" }
+            help    "Controls how volume attenuation gets exponentially scaled down when rendering multiple scattering volumes. Dialing down the value generally results in more translucent look. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__sceneVariablevolume_attenuation_factor_control_6gc == block } { xn__sceneVariablevolume_attenuation_factor_control_6gc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_contribution_factor_control_tic"
+            label   "sceneVariable:volume_contribution_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_contribution_factor_s4b"
+            label   "Volume Contribution Factor"
+            type    float
+            default { "0.65" }
+            help    "Controls how scattering contribution gets exponentially scaled down when rendering multiple scattering volumes. Dialing down the value generally results in a darker volume scattering look. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__sceneVariablevolume_contribution_factor_control_tic == block } { xn__sceneVariablevolume_contribution_factor_control_tic == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_phase_attenuation_factor_control_yqc"
+            label   "sceneVariable:volume_phase_attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevolume_phase_attenuation_factor_xdc"
+            label   "Volume Phase Attenuation Factor"
+            type    float
+            default { "0.5" }
+            help    "Controls how phase function (anisotropy) gets exponentially scaled down when rendering multiple scattering volumes. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__sceneVariablevolume_phase_attenuation_factor_control_yqc == block } { xn__sceneVariablevolume_phase_attenuation_factor_control_yqc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder8"
+        label   "Path Guide"
+
+        parm {
+            name    "xn__sceneVariablepath_guide_enable_control_52b"
+            label   "sceneVariable:path_guide_enable"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepath_guide_enable_4pb"
+            label   "Path Guide Enable"
+            type    toggle
+            default { "0" }
+            help    "Turn on path guiding to handle difficult light transport problems (e.g. caustics) at the cost of increased memory"
+            disablewhen "{ xn__sceneVariablepath_guide_enable_control_52b == block } { xn__sceneVariablepath_guide_enable_control_52b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder9"
+        label   "Fireflies Removal"
+
+        parm {
+            name    "xn__sceneVariablesample_clamping_value_control_o9b"
+            label   "sceneVariable:sample_clamping_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablesample_clamping_value_nwb"
+            label   "Sample Clamping Value"
+            type    float
+            default { "10" }
+            help    "Clamp sample radiance values to this maximum value (the feature is disabled if the value is 0.0). Using this technique reduces fireflies, but is biased."
+            disablewhen "{ xn__sceneVariablesample_clamping_value_control_o9b == block } { xn__sceneVariablesample_clamping_value_control_o9b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablesample_clamping_depth_control_o9b"
+            label   "sceneVariable:sample_clamping_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablesample_clamping_depth_nwb"
+            label   "Sample Clamping Depth"
+            type    integer
+            default { "1" }
+            help    "Clamp sample values only after the given non-specular ray depth."
+            disablewhen "{ xn__sceneVariablesample_clamping_depth_control_o9b == block } { xn__sceneVariablesample_clamping_depth_control_o9b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariableroughness_clamping_factor_control_6gc"
+            label   "sceneVariable:roughness_clamping_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableroughness_clamping_factor_52b"
+            label   "Roughness Clamping Factor"
+            type    float
+            default { "0" }
+            help    "Clamp material roughness along paths. A value of 1 clamps values to the maximum roughness encountered, while lower values temper the clamping value. 0 disables the effect. Using this technique reduces fireflies from indirect caustics but is biased."
+            disablewhen "{ xn__sceneVariableroughness_clamping_factor_control_6gc == block } { xn__sceneVariableroughness_clamping_factor_control_6gc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder10"
+        label   "Filtering"
+
+        parm {
+            name    "xn__sceneVariabletexture_blur_control_0ub"
+            label   "sceneVariable:texture_blur"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletexture_blur_zhb"
+            label   "Texture Blur"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__sceneVariabletexture_blur_control_0ub == block } { xn__sceneVariabletexture_blur_control_0ub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablepixel_filter_width_control_s4b"
+            label   "sceneVariable:pixel_filter_width"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepixel_filter_width_rrb"
+            label   "Pixel Filter Width"
+            type    float
+            default { "3" }
+            help    "The overall extents, in pixels, of the pixel filter. Larger values will result in softer images."
+            disablewhen "{ xn__sceneVariablepixel_filter_width_control_s4b == block } { xn__sceneVariablepixel_filter_width_control_s4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablepixel_filter_control_0ub"
+            label   "sceneVariable:pixel_filter"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepixel_filter_zhb"
+            label   "Pixel Filter"
+            type    string
+            default { "cubic b-spline" }
+            help    "The type of filter used for filter importance sampling. A box filter with a width of 1 is analogous to disabling pixel filtering."
+            disablewhen "{ xn__sceneVariablepixel_filter_control_0ub == block } { xn__sceneVariablepixel_filter_control_0ub == none }"
+            menu {
+                "box"                   "Box"
+                "cubic b-spline"        "Cubic B-Spline"
+                "quadratic b-spline"    "Quadratic B-Spline"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder11"
+        label   "Deep Images"
+
+        parm {
+            name    "xn__sceneVariabledeep_format_control_etb"
+            label   "sceneVariable:deep_format"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_format_dgb"
+            label   "Deep Format"
+            type    string
+            default { "opendcx2.0" }
+            help    "Deep image format:\n		openexr2.0: vanilla OpenEXR deep\n		opendcx2.0: DCX abuffer mask encoding"
+            disablewhen "{ xn__sceneVariabledeep_format_control_etb == block } { xn__sceneVariabledeep_format_control_etb == none }"
+            menu {
+                "openexr2.0"    "Openexr2.0"
+                "opendcx2.0"    "Opendcx2.0"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_curvature_tolerance_control_kfc"
+            label   "sceneVariable:deep_curvature_tolerance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_curvature_tolerance_j1b"
+            label   "Deep Curvature Tolerance"
+            type    float
+            default { "45" }
+            help    "Maximum curvature (in degrees) of the deep surface within a pixel before it is split"
+            disablewhen "{ xn__sceneVariabledeep_curvature_tolerance_control_kfc == block } { xn__sceneVariabledeep_curvature_tolerance_control_kfc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_z_tolerance_control_j1b"
+            label   "sceneVariable:deep_z_tolerance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_z_tolerance_iob"
+            label   "Deep Z Tolerance"
+            type    float
+            default { "2" }
+            help    "Maximum range of the deep surface's Z values within a pixel before it is split"
+            disablewhen "{ xn__sceneVariabledeep_z_tolerance_control_j1b == block } { xn__sceneVariabledeep_z_tolerance_control_j1b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_vol_compression_res_control_kfc"
+            label   "sceneVariable:deep_vol_compression_res"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_vol_compression_res_j1b"
+            label   "Deep Vol Compression Res"
+            type    integer
+            default { "10" }
+            help    "Volume opacity compression resolution.  Lower values gives higher compression."
+            disablewhen "{ xn__sceneVariabledeep_vol_compression_res_control_kfc == block } { xn__sceneVariabledeep_vol_compression_res_control_kfc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_id_attribute_names_control_xdc"
+            label   "sceneVariable:deep_id_attribute_names"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "deep_id_attribute_names"
+            label    "Deep Id Attribute Names"
+            default 0
+            disablewhen "{ xn__sceneVariabledeep_id_attribute_names_control_xdc == block } { xn__sceneVariabledeep_id_attribute_names_control_xdc == none }"
+            parmtag { "usdvaluetype" "string[]" }
+
+            parm {
+                name    "xn__sceneVariabledeep_id_attribute_names_wzb#"
+                label   "Deep Id Attribute Names"
+                type    string
+                default { "" }
+                help    "Names of primitive attributes containing deep IDs"
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariabledeep_max_layers_control_wzb"
+            label   "sceneVariable:deep_max_layers"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_max_layers_vmb"
+            label   "Deep Max Layers"
+            type    integer
+            default { "1" }
+            help    "Maximum number of depth layers to output"
+            disablewhen "{ xn__sceneVariabledeep_max_layers_control_wzb == block } { xn__sceneVariabledeep_max_layers_control_wzb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_layer_bias_control_wzb"
+            label   "sceneVariable:deep_layer_bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledeep_layer_bias_vmb"
+            label   "Deep Layer Bias"
+            type    float
+            default { "0.1" }
+            help    "Minimum distance between deep layers"
+            disablewhen "{ xn__sceneVariabledeep_layer_bias_control_wzb == block } { xn__sceneVariabledeep_layer_bias_control_wzb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder12"
+        label   "Caching"
+
+        parm {
+            name    "xn__sceneVariabletexture_cache_size_control_s4b"
+            label   "sceneVariable:texture_cache_size"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletexture_cache_size_rrb"
+            label   "Texture Cache Size"
+            type    integer
+            default { "4000" }
+            help    "size is in Mb and this is the maximum cache size"
+            disablewhen "{ xn__sceneVariabletexture_cache_size_control_s4b == block } { xn__sceneVariabletexture_cache_size_control_s4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariabletexture_file_handles_control_17b"
+            label   "sceneVariable:texture_file_handles"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletexture_file_handles_0ub"
+            label   "Texture File Handles"
+            type    integer
+            default { "24000" }
+            help    "maximum number of simultaneous open file handles"
+            disablewhen "{ xn__sceneVariabletexture_file_handles_control_17b == block } { xn__sceneVariabletexture_file_handles_control_17b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablefast_geometry_update_control_17b"
+            label   "sceneVariable:fast_geometry_update"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablefast_geometry_update_0ub"
+            label   "Fast Geometry Update"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariablefast_geometry_update_control_17b == block } { xn__sceneVariablefast_geometry_update_control_17b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder13"
+        label   "Checkpoint"
+
+        parm {
+            name    "xn__sceneVariablecheckpoint_active_control_52b"
+            label   "sceneVariable:checkpoint_active"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_active_4pb"
+            label   "Checkpoint Active"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariablecheckpoint_active_control_52b == block } { xn__sceneVariablecheckpoint_active_control_52b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_interval_control_f6b"
+            label   "sceneVariable:checkpoint_interval"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_interval_etb"
+            label   "Checkpoint Interval"
+            type    float
+            default { "15" }
+            help    "Length of time, in minutes, between checkpoint file writes. Time must be greater or equal to 0.1"
+            disablewhen "{ xn__sceneVariablecheckpoint_interval_control_f6b == block } { xn__sceneVariablecheckpoint_interval_control_f6b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_quality_steps_control_kfc"
+            label   "sceneVariable:checkpoint_quality_steps"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_quality_steps_j1b"
+            label   "Checkpoint Quality Steps"
+            type    integer
+            default { "2" }
+            help    "Steps of quality, internal sampling iteration count, between checkpoint file writes. Value should be equal or bigger than 1. Uniform sampling case, this steps number is equivalent as each pixel's pixel sampling steps. If you set quality steps=2, checkpoint file is created at every timing of each pixel's sample count exceeds at 2, 4, 6, 8, 10, ... Adaptive sampling case, this steps number is equivalent as internal adaptive sampling iteration steps. Recommended number is 1~3 range. You can use more than 4 but bigger number always require longer rendering time. If you set 2, checkpoint file is created after finish every 2 adaptive sampling iteration execution."
+            disablewhen "{ xn__sceneVariablecheckpoint_quality_steps_control_kfc == block } { xn__sceneVariablecheckpoint_quality_steps_control_kfc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_time_cap_control_f6b"
+            label   "sceneVariable:checkpoint_time_cap"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_time_cap_etb"
+            label   "Checkpoint Time Cap"
+            type    float
+            default { "0" }
+            help    "When total render process time exceeds this value, in minutes, the render will finish after the next checkpoint write. Disabled time cap feature when set to 0."
+            disablewhen "{ xn__sceneVariablecheckpoint_time_cap_control_f6b == block } { xn__sceneVariablecheckpoint_time_cap_control_f6b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_sample_cap_control_o9b"
+            label   "sceneVariable:checkpoint_sample_cap"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_sample_cap_nwb"
+            label   "Checkpoint Sample Cap"
+            type    integer
+            default { "0" }
+            help    "When total pixel sample count exceeds this value at every pixel (If you set 1024, each pixel exceeds 1024, then try to finish), the render will finish after the next checkpoint write. Disabled sample cap feature when set to 0."
+            disablewhen "{ xn__sceneVariablecheckpoint_sample_cap_control_o9b == block } { xn__sceneVariablecheckpoint_sample_cap_control_o9b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_overwrite_control_17b"
+            label   "sceneVariable:checkpoint_overwrite"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_overwrite_0ub"
+            label   "Checkpoint Overwrite"
+            type    toggle
+            default { "1" }
+            help    "If true, the last checkpoint file is overwritten when writing out the checkpoint file. If false, the checkpoint filename is appended with the total number of samples, resulting in the retention of all checkpoint files."
+            disablewhen "{ xn__sceneVariablecheckpoint_overwrite_control_17b == block } { xn__sceneVariablecheckpoint_overwrite_control_17b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_mode_control_wzb"
+            label   "sceneVariable:checkpoint_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_mode_vmb"
+            label   "Checkpoint Mode"
+            type    string
+            default { "time" }
+            help    "Select whether checkpoint images are written depending on time elapsed or on quality reached."
+            disablewhen "{ xn__sceneVariablecheckpoint_mode_control_wzb == block } { xn__sceneVariablecheckpoint_mode_control_wzb == none }"
+            menu {
+                "time"      "Time"
+                "quality"   "Quality"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_start_sample_control_xdc"
+            label   "sceneVariable:checkpoint_start_sample"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_start_sample_wzb"
+            label   "Checkpoint Start Sample"
+            type    integer
+            default { "1" }
+            help    "Specify samples per pixel (SPP) number. Checkpoint file is created when all pixel's SPP are same or bigger than this number. Until then, checkpoint file is not created."
+            disablewhen "{ xn__sceneVariablecheckpoint_start_sample_control_xdc == block } { xn__sceneVariablecheckpoint_start_sample_control_xdc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_bg_write_control_f6b"
+            label   "sceneVariable:checkpoint_bg_write"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_bg_write_etb"
+            label   "Checkpoint Bg Write"
+            type    toggle
+            default { "1" }
+            help    "If true, the checkpoint file write is written in a background thread that runs in parallel with the MCRT threads. Otherwise, all MCRT threads wait while the checkpoint file is written."
+            disablewhen "{ xn__sceneVariablecheckpoint_bg_write_control_f6b == block } { xn__sceneVariablecheckpoint_bg_write_control_f6b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_post_script_control_bcc"
+            label   "sceneVariable:checkpoint_post_script"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_post_script_9xb"
+            label   "Checkpoint Post Script"
+            type    string
+            default { "" }
+            help    "This defines the file name of a Lua script executed after every checkpoint file has been written, which is run in parallel with the ongoing MCRT threads. See further documentation for MoonRay-provided Lua variables accessible within the script."
+            disablewhen "{ xn__sceneVariablecheckpoint_post_script_control_bcc == block } { xn__sceneVariablecheckpoint_post_script_control_bcc == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_total_files_control_bcc"
+            label   "sceneVariable:checkpoint_total_files"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_total_files_9xb"
+            label   "Checkpoint Total Files"
+            type    integer
+            default { "0" }
+            help    "Specify total number of checkpoint files for quality based checkpoint mode.This variable is a substitute parameter of checkpoint_quality_steps.If this value is 0 (= default), the checkpoint generation interval is controlled by checkpoint_quality_steps variable. If this value is 1 or bigger, checkpoint generation interval is calculated based on this value and the renderer tries to generate a user defined number of checkpoint files automatically.This option respects the checkpoint_start_sample variable.In some cases, the renderer might not create the requested checkpoint_total_files due to current limitation of internal implementation or user specified bigger than 1 for checkpoint_start_sample variable. However even in that case, the renderer tries to create the closest number of total checkpoint files which user defined number as checkpoint_total_files."
+            disablewhen "{ xn__sceneVariablecheckpoint_total_files_control_bcc == block } { xn__sceneVariablecheckpoint_total_files_control_bcc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_max_bgcache_control_bcc"
+            label   "sceneVariable:checkpoint_max_bgcache"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_max_bgcache_9xb"
+            label   "Checkpoint Max Bgcache"
+            type    integer
+            default { "2" }
+            help    "Specify the maximum number of queued checkpoint images that the checkpoint-writing background thread can handle. The value of checkpoint_max_bgcache must be greater than or equal to 1. Once this number is exceeded, the MCRT threads are suspended while background images are written to create room in the queue. A larger number can robustly support background writing even with short checkpoint intervals at the expense of memory. A value of 2 is best for most cases."
+            disablewhen "{ xn__sceneVariablecheckpoint_max_bgcache_control_bcc == block } { xn__sceneVariablecheckpoint_max_bgcache_control_bcc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_max_snapshot_overhead_control_lsc"
+            label   "sceneVariable:checkpoint_max_snapshot_overhead"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_max_snapshot_overhead_kfc"
+            label   "Checkpoint Max Snapshot Overhead"
+            type    float
+            default { "0" }
+            help    "Specify max fraction of snapshot overhead threshold for extra snapshot action regarding unexpected interruption by SIGINT. This value is fraction. If this value is ZERO or negative, no extra snapshot action is executed and no checkpoint file is generated when SIGINT is received."
+            disablewhen "{ xn__sceneVariablecheckpoint_max_snapshot_overhead_control_lsc == block } { xn__sceneVariablecheckpoint_max_snapshot_overhead_control_lsc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_snapshot_interval_control_2lc"
+            label   "sceneVariable:checkpoint_snapshot_interval"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecheckpoint_snapshot_interval_17b"
+            label   "Checkpoint Snapshot Interval"
+            type    float
+            default { "0" }
+            help    "Interval of time in minutes, about snapshot refreshment regarding interruption by SIGINT. Unit is minute. If this value is ZERO or negative, checkpoint_max_snapshot_overhead parameter is used instead."
+            disablewhen "{ xn__sceneVariablecheckpoint_snapshot_interval_control_2lc == block } { xn__sceneVariablecheckpoint_snapshot_interval_control_2lc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder14"
+        label   "Resume Render"
+
+        parm {
+            name    "xn__sceneVariableresumable_output_control_j1b"
+            label   "sceneVariable:resumable_output"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableresumable_output_iob"
+            label   "Resumable Output"
+            type    toggle
+            default { "0" }
+            help    "make aov output as resumable for resume render"
+            disablewhen "{ xn__sceneVariableresumable_output_control_j1b == block } { xn__sceneVariableresumable_output_control_j1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableresume_render_control_nwb"
+            label   "sceneVariable:resume_render"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableresume_render_mjb"
+            label   "Resume Render"
+            type    toggle
+            default { "0" }
+            help    "resuming render process"
+            disablewhen "{ xn__sceneVariableresume_render_control_nwb == block } { xn__sceneVariableresume_render_control_nwb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableon_resume_script_control_j1b"
+            label   "sceneVariable:on_resume_script"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableon_resume_script_iob"
+            label   "On Resume Script"
+            type    string
+            default { "" }
+            help    "Define on-resume lua script name. This script is loaded into the renderer just after renderPrep execution under resume render mode then executed. This script is not executed if non-resume render mode even if you set script name.Renderer sets some lua global variables and lua script can access them. We can get resume render start condition (true=properly started or false=failed to start as resume render and fall back to normal rendering) via lua global variable. See details in rendering-wiki checkpoint/resume page. If empty, on-resume script execution is disabled."
+            disablewhen "{ xn__sceneVariableon_resume_script_control_j1b == block } { xn__sceneVariableon_resume_script_control_j1b == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+    }
+
+    group {
+        name    "folder15"
+        label   "Global Toggles"
+
+        parm {
+            name    "xn__sceneVariableenable_motion_blur_control_s4b"
+            label   "sceneVariable:enable_motion_blur"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_motion_blur_rrb"
+            label   "Enable Motion Blur"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableenable_motion_blur_control_s4b == block } { xn__sceneVariableenable_motion_blur_control_s4b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_dof_control_rrb"
+            label   "sceneVariable:enable_dof"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_dof_qeb"
+            label   "Enable Dof"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableenable_dof_control_rrb == block } { xn__sceneVariableenable_dof_control_rrb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_max_geometry_resolution_control_cpc"
+            label   "sceneVariable:enable_max_geometry_resolution"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_max_geometry_resolution_bcc"
+            label   "Enable Max Geometry Resolution"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableenable_max_geometry_resolution_control_cpc == block } { xn__sceneVariableenable_max_geometry_resolution_control_cpc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablemax_geometry_resolution_control_xdc"
+            label   "sceneVariable:max_geometry_resolution"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemax_geometry_resolution_wzb"
+            label   "Max Geometry Resolution"
+            type    integer
+            default { "2.14748e+09" }
+            disablewhen "{ xn__sceneVariablemax_geometry_resolution_control_xdc == block } { xn__sceneVariablemax_geometry_resolution_control_xdc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_displacement_control_f6b"
+            label   "sceneVariable:enable_displacement"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_displacement_etb"
+            label   "Enable Displacement"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableenable_displacement_control_f6b == block } { xn__sceneVariableenable_displacement_control_f6b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_subsurface_scattering_control_2lc"
+            label   "sceneVariable:enable_subsurface_scattering"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_subsurface_scattering_17b"
+            label   "Enable Subsurface Scattering"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableenable_subsurface_scattering_control_2lc == block } { xn__sceneVariableenable_subsurface_scattering_control_2lc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_shadowing_control_j1b"
+            label   "sceneVariable:enable_shadowing"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_shadowing_iob"
+            label   "Enable Shadowing"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableenable_shadowing_control_j1b == block } { xn__sceneVariableenable_shadowing_control_j1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableenable_presence_shadows_control_xdc"
+            label   "sceneVariable:enable_presence_shadows"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableenable_presence_shadows_wzb"
+            label   "Enable Presence Shadows"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableenable_presence_shadows_control_xdc == block } { xn__sceneVariableenable_presence_shadows_control_xdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablelights_visible_in_camera_control_kfc"
+            label   "sceneVariable:lights_visible_in_camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablelights_visible_in_camera_j1b"
+            label   "Lights Visible In Camera"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariablelights_visible_in_camera_control_kfc == block } { xn__sceneVariablelights_visible_in_camera_control_kfc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablepropagate_visibility_bounce_type_control_lsc"
+            label   "sceneVariable:propagate_visibility_bounce_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablepropagate_visibility_bounce_type_kfc"
+            label   "Propagate Visibility Bounce Type"
+            type    toggle
+            default { "0" }
+            help    "turns on/off propagation for ray visibility masks"
+            disablewhen "{ xn__sceneVariablepropagate_visibility_bounce_type_control_lsc == block } { xn__sceneVariablepropagate_visibility_bounce_type_control_lsc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableshadow_terminator_fix_control_o9b"
+            label   "sceneVariable:shadow_terminator_fix"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableshadow_terminator_fix_nwb"
+            label   "Shadow Terminator Fix"
+            type    string
+            default { "Off" }
+            help    "Attempt to soften hard shadow terminator boundaries due to shading/geometric normal deviations.  \"ON uses a custom terminator softening method. Cosine Compensation\" is Chiang's 2019 SIGGRAPH technique.  \"GGX\" is Estevez's raytracing gems technique.  \"Sine Compensation\" is a sine based modification of Chiang's method. Different scenes may work better with different techniques.  The recommendation is to start with the custom compensation ON, then sine compensation technique, then GGX, then cosine."
+            disablewhen "{ xn__sceneVariableshadow_terminator_fix_control_o9b == block } { xn__sceneVariableshadow_terminator_fix_control_o9b == none }"
+            menu {
+                "Off"                                   "Off"
+                "On"                                    "On"
+                "On (Sine Compensation Alternative)"    "On (Sine Compensation Alternative)"
+                "On (GGX Compensation Alternative)"     "On (GGX Compensation Alternative)"
+                "On (Cosine Compensation Alternative"   "On (Cosine Compensation Alternative"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariablecorrect_reflections_in_medium_control_pnc"
+            label   "sceneVariable:correct_reflections_in_medium"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablecorrect_reflections_in_medium_o9b"
+            label   "Correct Reflections In Medium"
+            type    toggle
+            default { "0" }
+            help    "Temporary toggle to turn on a bug fix that corrects reflections that occur within a medium."
+            disablewhen "{ xn__sceneVariablecorrect_reflections_in_medium_control_pnc == block } { xn__sceneVariablecorrect_reflections_in_medium_control_pnc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder16"
+        label   "Driver"
+
+        parm {
+            name    "xn__sceneVariablethreads_control_vmb"
+            label   "sceneVariable:threads"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablethreads_u8a"
+            label   "Threads"
+            type    integer
+            default { "0" }
+            disablewhen "{ xn__sceneVariablethreads_control_vmb == block } { xn__sceneVariablethreads_control_vmb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablemachine_id_control_rrb"
+            label   "sceneVariable:machine_id"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablemachine_id_qeb"
+            label   "Machine Id"
+            type    integer
+            default { "-1" }
+            disablewhen "{ xn__sceneVariablemachine_id_control_rrb == block } { xn__sceneVariablemachine_id_control_rrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablenum_machines_control_0ub"
+            label   "sceneVariable:num_machines"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablenum_machines_zhb"
+            label   "Num Machines"
+            type    integer
+            default { "-1" }
+            disablewhen "{ xn__sceneVariablenum_machines_control_0ub == block } { xn__sceneVariablenum_machines_control_0ub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariabletask_distribution_type_control_bcc"
+            label   "sceneVariable:task_distribution_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletask_distribution_type_9xb"
+            label   "Task Distribution Type"
+            type    string
+            default { "multiplex pixel" }
+            disablewhen "{ xn__sceneVariabletask_distribution_type_control_bcc == block } { xn__sceneVariabletask_distribution_type_control_bcc == none }"
+            menu {
+                "non-overlapped tile"   "Non-Overlapped Tile"
+                "multiplex pixel"       "Multiplex Pixel"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__sceneVariableinteractive_mode_control_j1b"
+            label   "sceneVariable:interactive_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableinteractive_mode_iob"
+            label   "Interactive Mode"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableinteractive_mode_control_j1b == block } { xn__sceneVariableinteractive_mode_control_j1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableprogressive_shading_control_f6b"
+            label   "sceneVariable:progressive_shading"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableprogressive_shading_etb"
+            label   "Progressive Shading"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableprogressive_shading_control_f6b == block } { xn__sceneVariableprogressive_shading_control_f6b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableoutput_file_control_etb"
+            label   "sceneVariable:output_file"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableoutput_file_dgb"
+            label   "Output File"
+            type    string
+            default { "scene.exr" }
+            help    "This specifies the output path for the beauty image (RGBA). This is independent of the AOV RenderOutputs, which can also write a beauty image."
+            disablewhen "{ xn__sceneVariableoutput_file_control_etb == block } { xn__sceneVariableoutput_file_control_etb == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__sceneVariabletmp_dir_control_vmb"
+            label   "sceneVariable:tmp_dir"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabletmp_dir_u8a"
+            label   "Tmp Dir"
+            type    string
+            default { "" }
+            help    "Define temporary directory name for temporary file generation. Use $TMPDIR environment variable value if this variable is empty.If $TMPDIR is also empty, use /tmp"
+            disablewhen "{ xn__sceneVariabletmp_dir_control_vmb == block } { xn__sceneVariabletmp_dir_control_vmb == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+    }
+
+    group {
+        name    "folder17"
+        label   "Logging"
+
+        parm {
+            name    "xn__sceneVariabledebug_control_mjb"
+            label   "sceneVariable:debug"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledebug_l5a"
+            label   "Debug"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariabledebug_control_mjb == block } { xn__sceneVariabledebug_control_mjb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableinfo_control_zhb"
+            label   "sceneVariable:info"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableinfo_y3a"
+            label   "Info"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableinfo_control_zhb == block } { xn__sceneVariableinfo_control_zhb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablewarning_control_vmb"
+            label   "sceneVariable:warning"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablewarning_u8a"
+            label   "Warning"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariablewarning_control_vmb == block } { xn__sceneVariablewarning_control_vmb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariableerror_control_mjb"
+            label   "sceneVariable:error"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableerror_l5a"
+            label   "Error"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__sceneVariableerror_control_mjb == block } { xn__sceneVariableerror_control_mjb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__sceneVariablefatal_color_control_etb"
+            label   "sceneVariable:fatal_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablefatal_color_dgb"
+            label   "Fatal Color"
+            type    color
+            size    3
+            default { "1" "0" "1" }
+            disablewhen "{ xn__sceneVariablefatal_color_control_etb == block } { xn__sceneVariablefatal_color_control_etb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__sceneVariablestats_file_control_rrb"
+            label   "sceneVariable:stats_file"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablestats_file_qeb"
+            label   "Stats File"
+            type    string
+            default { "" }
+            disablewhen "{ xn__sceneVariablestats_file_control_rrb == block } { xn__sceneVariablestats_file_control_rrb == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__sceneVariableathena_debug_control_0ub"
+            label   "sceneVariable:athena_debug"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariableathena_debug_zhb"
+            label   "Athena Debug"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__sceneVariableathena_debug_control_0ub == block } { xn__sceneVariableathena_debug_control_0ub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder18"
+        label   "Debug"
+
+        parm {
+            name    "xn__sceneVariabledebug_pixel_control_etb"
+            label   "sceneVariable:debug_pixel"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "debug_pixel"
+            label    "Debug Pixel"
+            default 2
+            disablewhen "{ xn__sceneVariabledebug_pixel_control_etb == block } { xn__sceneVariabledebug_pixel_control_etb == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariabledebug_pixel_dgb#"
+                label   "Debug Pixel"
+                type    integer
+                default { "-2.14748e+09" }
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariabledebug_rays_file_control_wzb"
+            label   "sceneVariable:debug_rays_file"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledebug_rays_file_vmb"
+            label   "Debug Rays File"
+            type    string
+            default { "" }
+            disablewhen "{ xn__sceneVariabledebug_rays_file_control_wzb == block } { xn__sceneVariabledebug_rays_file_control_wzb == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__sceneVariabledebug_rays_primary_range_control_kfc"
+            label   "sceneVariable:debug_rays_primary_range"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "debug_rays_primary_range"
+            label    "Debug Rays Primary Range"
+            default 2
+            disablewhen "{ xn__sceneVariabledebug_rays_primary_range_control_kfc == block } { xn__sceneVariabledebug_rays_primary_range_control_kfc == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariabledebug_rays_primary_range_j1b#"
+                label   "Debug Rays Primary Range"
+                type    integer
+                default { "-2.14748e+09" }
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariabledebug_rays_depth_range_control_bcc"
+            label   "sceneVariable:debug_rays_depth_range"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        multiparm {
+            name    "debug_rays_depth_range"
+            label    "Debug Rays Depth Range"
+            default 2
+            disablewhen "{ xn__sceneVariabledebug_rays_depth_range_control_bcc == block } { xn__sceneVariabledebug_rays_depth_range_control_bcc == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__sceneVariabledebug_rays_depth_range_9xb#"
+                label   "Debug Rays Depth Range"
+                type    integer
+                default { "-2.14748e+09" }
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__sceneVariabledebug_console_control_nwb"
+            label   "sceneVariable:debug_console"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariabledebug_console_mjb"
+            label   "Debug Console"
+            type    integer
+            default { "-1" }
+            help    "Specify port number for debug console. If you set -1 (=default), all debug console functionalities are disabled. If you set 0 or positive port number, debug console functionalities are enabled. If enabled, we can send commands via telnet connection and control rendering behavior for debugging purposes. If you set 0, the kernel finds the available port for you and displays the port number to the cerr. Otherwise you have to set the available port number yourself."
+            disablewhen "{ xn__sceneVariabledebug_console_control_nwb == block } { xn__sceneVariabledebug_console_control_nwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__sceneVariablevalidate_geometry_control_52b"
+            label   "sceneVariable:validate_geometry"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__sceneVariablevalidate_geometry_4pb"
+            label   "Validate Geometry"
+            type    toggle
+            default { "0" }
+            help    "Checks geometry for bad data"
+            disablewhen "{ xn__sceneVariablevalidate_geometry_control_52b == block } { xn__sceneVariablevalidate_geometry_control_52b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__sceneVariablefps_control_dgb"
+        label   "sceneVariable:fps"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablefps_c2a"
+        label   "Fps"
+        type    float
+        default { "24" }
+        disablewhen "{ xn__sceneVariablefps_control_dgb == block } { xn__sceneVariablefps_control_dgb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__sceneVariablesampling_mode_control_nwb"
+        label   "sceneVariable:sampling_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablesampling_mode_mjb"
+        label   "Sampling Mode"
+        type    string
+        default { "uniform" }
+        help    "Controls which sampling scheme to use: uniform or adaptive."
+        disablewhen "{ xn__sceneVariablesampling_mode_control_nwb == block } { xn__sceneVariablesampling_mode_control_nwb == none }"
+        menu {
+            "uniform"   "Uniform"
+            "adaptive"  "Adaptive"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__sceneVariablemin_adaptive_samples_control_17b"
+        label   "sceneVariable:min_adaptive_samples"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablemin_adaptive_samples_0ub"
+        label   "Min Adaptive Samples"
+        type    integer
+        default { "16" }
+        help    "When adaptive sampling is turned on, it's possible that a tile may be mis-classified as having converged before it has actually converged. This manifests itself as square 8x8 artifacts in the final image. The higher this value, the less the chance of this happening."
+        disablewhen "{ xn__sceneVariablemin_adaptive_samples_control_17b == block } { xn__sceneVariablemin_adaptive_samples_control_17b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__sceneVariablemax_adaptive_samples_control_17b"
+        label   "sceneVariable:max_adaptive_samples"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablemax_adaptive_samples_0ub"
+        label   "Max Adaptive Samples"
+        type    integer
+        default { "4096" }
+        help    "When adaptive sampling is turned on, this represents the max number of samples we can throw at a pixel. It's best to err on the high side since adaptive sampling will cull out samples where they're not needed based on the target adaptive error, in which case we should rarely hit the max samples value."
+        disablewhen "{ xn__sceneVariablemax_adaptive_samples_control_17b == block } { xn__sceneVariablemax_adaptive_samples_control_17b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__sceneVariabletarget_adaptive_error_control_o9b"
+        label   "sceneVariable:target_adaptive_error"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariabletarget_adaptive_error_nwb"
+        label   "Target Adaptive Error"
+        type    float
+        default { "10" }
+        help    "When adaptive sampling is turned on, this represents the desired quality of the output images. Lower values will give higher quality but take longer to render. Higher values will give lower quality but render quicker."
+        disablewhen "{ xn__sceneVariabletarget_adaptive_error_control_o9b == block } { xn__sceneVariabletarget_adaptive_error_control_o9b == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__sceneVariablebatch_tile_order_control_j1b"
+        label   "sceneVariable:batch_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablebatch_tile_order_iob"
+        label   "Batch Tile Order"
+        type    string
+        default { "morton" }
+        disablewhen "{ xn__sceneVariablebatch_tile_order_control_j1b == block } { xn__sceneVariablebatch_tile_order_control_j1b == none }"
+        menu {
+            "top"           "Top"
+            "bottom"        "Bottom"
+            "left"          "Left"
+            "right"         "Right"
+            "morton"        "Morton"
+            "random"        "Random"
+            "spiral square" "Spiral Square"
+            "spiral rect"   "Spiral Rect"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__sceneVariableprogressive_tile_order_control_bcc"
+        label   "sceneVariable:progressive_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariableprogressive_tile_order_9xb"
+        label   "Progressive Tile Order"
+        type    string
+        default { "morton" }
+        disablewhen "{ xn__sceneVariableprogressive_tile_order_control_bcc == block } { xn__sceneVariableprogressive_tile_order_control_bcc == none }"
+        menu {
+            "top"           "Top"
+            "bottom"        "Bottom"
+            "left"          "Left"
+            "right"         "Right"
+            "morton"        "Morton"
+            "random"        "Random"
+            "spiral square" "Spiral Square"
+            "spiral rect"   "Spiral Rect"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__sceneVariablecheckpoint_tile_order_control_o9b"
+        label   "sceneVariable:checkpoint_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariablecheckpoint_tile_order_nwb"
+        label   "Checkpoint Tile Order"
+        type    string
+        default { "morton" }
+        disablewhen "{ xn__sceneVariablecheckpoint_tile_order_control_o9b == block } { xn__sceneVariablecheckpoint_tile_order_control_o9b == none }"
+        menu {
+            "top"           "Top"
+            "bottom"        "Bottom"
+            "left"          "Left"
+            "right"         "Right"
+            "morton"        "Morton"
+            "random"        "Random"
+            "spiral square" "Spiral Square"
+            "spiral rect"   "Spiral Rect"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__sceneVariabletwo_stage_output_control_j1b"
+        label   "sceneVariable:two_stage_output"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__sceneVariabletwo_stage_output_iob"
+        label   "Two Stage Output"
+        type    toggle
+        default { "1" }
+        help    "Selection of image file write uses two stage output logic or not. Two stage output (=true: default) is that the image file is written out to temporary file location first and copy/rename next. This solution greatly reduces the risk of output data collapsing from unexpected render process termination for both of final output and checkpoint output. Temporary file directory is defined by tmp_dir scene_variable."
+        disablewhen "{ xn__sceneVariabletwo_stage_output_control_j1b == block } { xn__sceneVariabletwo_stage_output_control_j1b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

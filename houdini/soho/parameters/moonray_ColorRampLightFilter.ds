@@ -1,0 +1,211 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonraybegin_distance_control_cob"
+            label   "moonray:begin_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraybegin_distance_bbb"
+            label   "Begin Distance"
+            type    float
+            default { "0" }
+            help    "Where the ramp starts relative to the light or the ramp's independent transform"
+            disablewhen "{ xn__moonraybegin_distance_control_cob == block } { xn__moonraybegin_distance_control_cob == none }"
+            range   { 0 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayend_distance_control_2kb"
+            label   "moonray:end_distance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayend_distance_16a"
+            label   "End Distance"
+            type    float
+            default { "1" }
+            help    "Where the ramp ends relative to the light or the ramp's independent transform"
+            disablewhen "{ xn__moonrayend_distance_control_2kb == block } { xn__moonrayend_distance_control_2kb == none }"
+            range   { 0 100 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraycolors_control_bbb"
+            label   "moonray:colors"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "ramp"
+            label   "Ramp"
+            type    ramp_rgb
+            default { "2" }
+            disablewhen "{ xn__moonraycolors_control_bbb == block } { xn__moonraycolors_control_bbb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "color3f[]" }
+        }
+        parm {
+            name    "xn__moonrayintensity_control_6fb"
+            label   "moonray:intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayintensity_51a"
+            label   "Intensity"
+            type    float
+            default { "1" }
+            help    "The intensity of the filter"
+            disablewhen "{ xn__moonrayintensity_control_6fb == block } { xn__moonrayintensity_control_6fb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraydensity_control_xcb"
+            label   "moonray:density"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraydensity_wya"
+            label   "Density"
+            type    float
+            default { "1" }
+            help    "The density of the filter"
+            disablewhen "{ xn__moonraydensity_control_xcb == block } { xn__moonraydensity_control_xcb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraymode_control_16a"
+            label   "moonray:mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymode_0ta"
+            label   "Mode"
+            type    string
+            default { "radial" }
+            help    "Ramp: Radiates out from the center of the light or ramp location.  Directional: Linear starting at the location of the light or ramp location along negative z"
+            disablewhen "{ xn__moonraymode_control_16a == block } { xn__moonraymode_control_16a == none }"
+            menu {
+                "radial"        "Radial"
+                "directional"   "Directional"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraywrap_mode_control_6fb"
+            label   "moonray:wrap_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraywrap_mode_51a"
+            label   "Wrap Mode"
+            type    string
+            default { "extend" }
+            help    "For directional filter mode where filter uses distance along -Z axis.  Extend: f(z) = f(0) for z > 0.  Mirror: f(z) = f(-z)."
+            disablewhen "{ xn__moonraywrap_mode_control_6fb == block } { xn__moonraywrap_mode_control_6fb == none }"
+            menu {
+                "extend"    "Extend"
+                "mirror"    "Mirror"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayuse_xform_control_6fb"
+        label   "moonray:use_xform"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayuse_xform_51a"
+        label   "Use Xform"
+        type    toggle
+        default { "0" }
+        help    "The filter can be bound to a light or lights position or when this toggle is set, can have its own transform"
+        disablewhen "{ xn__moonrayuse_xform_control_6fb == block } { xn__moonrayuse_xform_control_6fb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

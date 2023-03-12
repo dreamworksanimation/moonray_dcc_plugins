@@ -1,0 +1,176 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsoperation_control_jeb"
+        label   "inputs:operation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoperation_i0a"
+        label   "Operation"
+        type    string
+        default { "add" }
+        disablewhen "{ xn__inputsoperation_control_jeb == block } { xn__inputsoperation_control_jeb == none }"
+        menu {
+            "add"                   "Add"
+            "subtract"              "Subtract"
+            "multiply"              "Multiply"
+            "divide"                "Divide"
+            "maximum"               "Maximum"
+            "minimum"               "Minimum"
+            "power"                 "Power"
+            "cross"                 "Cross"
+            "dot"                   "Dot"
+            "invert op1"            "Invert Op1"
+            "normalize op1"         "Normalize Op1"
+            "op1"                   "Op1"
+            "op2"                   "Op2"
+            "overlay"               "Overlay"
+            "screen"                "Screen"
+            "abs"                   "Abs"
+            "ceil"                  "Ceil"
+            "floor"                 "Floor"
+            "modulo"                "Modulo"
+            "fraction"              "Fraction"
+            "length"                "Length"
+            "sine"                  "Sine"
+            "cosine"                "Cosine"
+            "round"                 "Round"
+            "acos"                  "Acos"
+            "less_than"             "Less_Than"
+            "less_than_or_equal"    "Less_Than_Or_Equal"
+            "greater_than"          "Greater_Than"
+            "greater_than_or_equal" "Greater_Than_Or_Equal"
+            "equal"                 "Equal"
+            "not equal"             "Not Equal"
+            "and"                   "And"
+            "or"                    "Or"
+            "not"                   "Not"
+            "xor"                   "Xor"
+            "bit_shift_left"        "Bit_Shift_Left"
+            "bit_shift_right"       "Bit_Shift_Right"
+            "bitwise_and"           "Bitwise_And"
+            "bitwise_or"            "Bitwise_Or"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsop1_control_r3a"
+        label   "inputs:op1"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsop1_qqa"
+        label   "Op1"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "the first operand"
+        disablewhen "{ xn__inputsop1_control_r3a == block } { xn__inputsop1_control_r3a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsop2_control_r3a"
+        label   "inputs:op2"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsop2_qqa"
+        label   "Op2"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "the second operand"
+        disablewhen "{ xn__inputsop2_control_r3a == block } { xn__inputsop2_control_r3a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsop1_factor_control_5fb"
+        label   "inputs:op1_factor"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsop1_factor_41a"
+        label   "Op1 Factor"
+        type    float
+        default { "1" }
+        help    "a scalar multiplier on op1"
+        disablewhen "{ xn__inputsop1_factor_control_5fb == block } { xn__inputsop1_factor_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsop2_factor_control_5fb"
+        label   "inputs:op2_factor"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsop2_factor_41a"
+        label   "Op2 Factor"
+        type    float
+        default { "1" }
+        help    "a scalar multiplier on op2"
+        disablewhen "{ xn__inputsop2_factor_control_5fb == block } { xn__inputsop2_factor_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsclamp_control_06a"
+        label   "inputs:clamp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsclamp_zta"
+        label   "Clamp"
+        type    toggle
+        default { "0" }
+        help    "if on, the result is clamped to 0 - 1"
+        disablewhen "{ xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

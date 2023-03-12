@@ -1,0 +1,1621 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Diffuse"
+
+        parm {
+            name    "xn__inputsshow_hair_diffuse_control_krb"
+            label   "inputs:show_hair_diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_hair_diffuse_jeb"
+            label   "Show Hair Diffuse"
+            type    toggle
+            default { "1" }
+            help    "Show the hair diffuse lobe"
+            disablewhen "{ xn__inputsshow_hair_diffuse_control_krb == block } { xn__inputsshow_hair_diffuse_control_krb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputshair_diffuse_control_fjb"
+            label   "inputs:hair_diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputshair_diffuse_e5a"
+            label   "Hair Diffuse"
+            type    float
+            default { "1" }
+            help    "Amount of hair diffuse"
+            disablewhen "{ show_hair_diffuse == 0 } { xn__inputshair_diffuse_control_fjb == block } { xn__inputshair_diffuse_control_fjb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputshair_color_control_5fb"
+            label   "inputs:hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputshair_color_41a"
+            label   "Hair Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ use_independent_front_and_back_hair_color == 1 } { xn__inputshair_color_control_5fb == block } { xn__inputshair_color_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Specular 1"
+
+        parm {
+            name    "xn__inputsspecular_1_show_control_bob"
+            label   "inputs:specular_1_show"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_show_99a"
+            label   "Specular 1 Show"
+            type    toggle
+            default { "1" }
+            help    "Show first toon specular lobe"
+            disablewhen "{ xn__inputsspecular_1_show_control_bob == block } { xn__inputsspecular_1_show_control_bob == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_model_control_xpb"
+            label   "inputs:specular_1_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_model_wcb"
+            label   "Specular 1 Model"
+            type    string
+            default { "Toon_Surface" }
+            help    "sets the normal distribution function for specular"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_model_control_xpb == block } { xn__inputsspecular_1_model_control_xpb == none }"
+            menu {
+                "Toon_Surface"  "Toon_Surface"
+                "Toon_Hair"     "Toon_Hair"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_intensity_control_gwb"
+            label   "inputs:specular_1_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_intensity_fjb"
+            label   "Specular 1 Intensity"
+            type    float
+            default { "1" }
+            help    "The overall intensity of the specular response"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_intensity_control_gwb == block } { xn__inputsspecular_1_intensity_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_tint_control_bob"
+            label   "inputs:specular_1_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_tint_99a"
+            label   "Specular 1 Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_tint_control_bob == block } { xn__inputsspecular_1_tint_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_roughness_control_gwb"
+            label   "inputs:specular_1_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_roughness_fjb"
+            label   "Specular 1 Roughness"
+            type    float
+            default { "0.9" }
+            help    "The roughness of the toon specular.   Smaller values produce tighter highlights"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_roughness_control_gwb == block } { xn__inputsspecular_1_roughness_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_stretch_u_control_gwb"
+            label   "inputs:specular_1_stretch_u"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_stretch_u_fjb"
+            label   "Specular 1 Stretch U"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the u direction "
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_stretch_u_control_gwb == block } { xn__inputsspecular_1_stretch_u_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_stretch_v_control_gwb"
+            label   "inputs:specular_1_stretch_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_stretch_v_fjb"
+            label   "Specular 1 Stretch V"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the v direction "
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_stretch_v_control_gwb == block } { xn__inputsspecular_1_stretch_v_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_use_input_vectors_for_stretch_control_0tc"
+            label   "inputs:specular_1_use_input_vectors_for_stretch"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_use_input_vectors_for_stretch_zgc"
+            label   "Specular 1 Use Input Vectors For Stretch"
+            type    toggle
+            default { "0" }
+            help    "when checked, use input_U and V. otherwise use geometry dPds/t"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_use_input_vectors_for_stretch_control_0tc == block } { xn__inputsspecular_1_use_input_vectors_for_stretch_control_0tc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_U_control_6sb"
+            label   "inputs:specular_1_input_U"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_U_5fb"
+            label   "Specular 1 Input U"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input U / tangent for specular stretch"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_input_U_control_6sb == block } { xn__inputsspecular_1_input_U_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_V_control_6sb"
+            label   "inputs:specular_1_input_V"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_V_5fb"
+            label   "Specular 1 Input V"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input V / bitangent for specular stretch"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_input_V_control_6sb == block } { xn__inputsspecular_1_input_V_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_values_control_krb"
+            label   "inputs:specular_1_values"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "specular_1_ramp"
+            label   "Specular 1 Ramp"
+            type    ramp_flt
+            default { "4" }
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_values_control_krb == block } { xn__inputsspecular_1_values_control_krb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "float[]" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_enable_input_normal_control_qdc"
+            label   "inputs:specular_1_enable_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_enable_input_normal_pzb"
+            label   "Specular 1 Enable Input Normal"
+            type    toggle
+            default { "0" }
+            help    "enables sampling the normal map for toon specular 1"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_enable_input_normal_control_qdc == block } { xn__inputsspecular_1_enable_input_normal_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_normal_control_c1b"
+            label   "inputs:specular_1_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_normal_bob"
+            label   "Specular 1 Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal for toon specular 1"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_input_normal_control_c1b == block } { xn__inputsspecular_1_input_normal_control_c1b == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_normal_dial_control_h9b"
+            label   "inputs:specular_1_input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_input_normal_dial_gwb"
+            label   "Specular 1 Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls influence of input normal versus hair normal for toon specular 1"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_input_normal_dial_control_h9b == block } { xn__inputsspecular_1_input_normal_dial_control_h9b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_enable_indirect_reflections_control_rqc"
+            label   "inputs:specular_1_enable_indirect_reflections"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_enable_indirect_reflections_qdc"
+            label   "Specular 1 Enable Indirect Reflections"
+            type    toggle
+            default { "0" }
+            help    "enables indirect GGX reflections for toon specular model"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_enable_indirect_reflections_control_rqc == block } { xn__inputsspecular_1_enable_indirect_reflections_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_indirect_reflections_intensity_control_nvc"
+            label   "inputs:specular_1_indirect_reflections_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_indirect_reflections_intensity_mic"
+            label   "Specular 1 Indirect Reflections Intensity"
+            type    float
+            default { "1" }
+            help    "the intensity for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_indirect_reflections_intensity_control_nvc == block } { xn__inputsspecular_1_indirect_reflections_intensity_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_1_indirect_reflections_roughness_control_nvc"
+            label   "inputs:specular_1_indirect_reflections_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_1_indirect_reflections_roughness_mic"
+            label   "Specular 1 Indirect Reflections Roughness"
+            type    float
+            default { "0.5" }
+            help    "the roughness for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_1_show == 0 } { xn__inputsspecular_1_indirect_reflections_roughness_control_nvc == block } { xn__inputsspecular_1_indirect_reflections_roughness_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Specular 2"
+
+        parm {
+            name    "xn__inputsspecular_2_show_control_bob"
+            label   "inputs:specular_2_show"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_show_99a"
+            label   "Specular 2 Show"
+            type    toggle
+            default { "0" }
+            help    "Show second toon specular lobe"
+            disablewhen "{ xn__inputsspecular_2_show_control_bob == block } { xn__inputsspecular_2_show_control_bob == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_model_control_xpb"
+            label   "inputs:specular_2_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_model_wcb"
+            label   "Specular 2 Model"
+            type    string
+            default { "Toon_Surface" }
+            help    "sets the normal distribution function for specular"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_model_control_xpb == block } { xn__inputsspecular_2_model_control_xpb == none }"
+            menu {
+                "Toon_Surface"  "Toon_Surface"
+                "Toon_Hair"     "Toon_Hair"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_intensity_control_gwb"
+            label   "inputs:specular_2_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_intensity_fjb"
+            label   "Specular 2 Intensity"
+            type    float
+            default { "1" }
+            help    "The overall intensity of the specular response"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_intensity_control_gwb == block } { xn__inputsspecular_2_intensity_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_tint_control_bob"
+            label   "inputs:specular_2_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_tint_99a"
+            label   "Specular 2 Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_tint_control_bob == block } { xn__inputsspecular_2_tint_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_roughness_control_gwb"
+            label   "inputs:specular_2_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_roughness_fjb"
+            label   "Specular 2 Roughness"
+            type    float
+            default { "0.9" }
+            help    "The roughness of the toon specular.   Smaller values produce tighter highlights"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_roughness_control_gwb == block } { xn__inputsspecular_2_roughness_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_stretch_u_control_gwb"
+            label   "inputs:specular_2_stretch_u"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_stretch_u_fjb"
+            label   "Specular 2 Stretch U"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the u direction "
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_stretch_u_control_gwb == block } { xn__inputsspecular_2_stretch_u_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_stretch_v_control_gwb"
+            label   "inputs:specular_2_stretch_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_stretch_v_fjb"
+            label   "Specular 2 Stretch V"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the v direction "
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_stretch_v_control_gwb == block } { xn__inputsspecular_2_stretch_v_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_use_input_vectors_for_stretch_control_0tc"
+            label   "inputs:specular_2_use_input_vectors_for_stretch"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_use_input_vectors_for_stretch_zgc"
+            label   "Specular 2 Use Input Vectors For Stretch"
+            type    toggle
+            default { "0" }
+            help    "when checked, use input_U and V. otherwise use geometry dPds/t"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_use_input_vectors_for_stretch_control_0tc == block } { xn__inputsspecular_2_use_input_vectors_for_stretch_control_0tc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_U_control_6sb"
+            label   "inputs:specular_2_input_U"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_U_5fb"
+            label   "Specular 2 Input U"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input U / tangent for specular stretch"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_input_U_control_6sb == block } { xn__inputsspecular_2_input_U_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_V_control_6sb"
+            label   "inputs:specular_2_input_V"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_V_5fb"
+            label   "Specular 2 Input V"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input V / bitangent for specular stretch"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_input_V_control_6sb == block } { xn__inputsspecular_2_input_V_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_values_control_krb"
+            label   "inputs:specular_2_values"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "specular_2_ramp"
+            label   "Specular 2 Ramp"
+            type    ramp_flt
+            default { "4" }
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_values_control_krb == block } { xn__inputsspecular_2_values_control_krb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "float[]" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_enable_input_normal_control_qdc"
+            label   "inputs:specular_2_enable_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_enable_input_normal_pzb"
+            label   "Specular 2 Enable Input Normal"
+            type    toggle
+            default { "0" }
+            help    "enables sampling the normal map for toon specular 2"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_enable_input_normal_control_qdc == block } { xn__inputsspecular_2_enable_input_normal_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_normal_control_c1b"
+            label   "inputs:specular_2_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_normal_bob"
+            label   "Specular 2 Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal for toon specular 2"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_input_normal_control_c1b == block } { xn__inputsspecular_2_input_normal_control_c1b == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_normal_dial_control_h9b"
+            label   "inputs:specular_2_input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_input_normal_dial_gwb"
+            label   "Specular 2 Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls influence of input normal versus hair normal for toon specular 2"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_input_normal_dial_control_h9b == block } { xn__inputsspecular_2_input_normal_dial_control_h9b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_enable_indirect_reflections_control_rqc"
+            label   "inputs:specular_2_enable_indirect_reflections"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_enable_indirect_reflections_qdc"
+            label   "Specular 2 Enable Indirect Reflections"
+            type    toggle
+            default { "0" }
+            help    "enables indirect GGX reflections for toon specular model"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_enable_indirect_reflections_control_rqc == block } { xn__inputsspecular_2_enable_indirect_reflections_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_indirect_reflections_intensity_control_nvc"
+            label   "inputs:specular_2_indirect_reflections_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_indirect_reflections_intensity_mic"
+            label   "Specular 2 Indirect Reflections Intensity"
+            type    float
+            default { "1" }
+            help    "the intensity for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_indirect_reflections_intensity_control_nvc == block } { xn__inputsspecular_2_indirect_reflections_intensity_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_2_indirect_reflections_roughness_control_nvc"
+            label   "inputs:specular_2_indirect_reflections_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_2_indirect_reflections_roughness_mic"
+            label   "Specular 2 Indirect Reflections Roughness"
+            type    float
+            default { "0.5" }
+            help    "the roughness for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_2_show == 0 } { xn__inputsspecular_2_indirect_reflections_roughness_control_nvc == block } { xn__inputsspecular_2_indirect_reflections_roughness_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Specular 3"
+
+        parm {
+            name    "xn__inputsspecular_3_show_control_bob"
+            label   "inputs:specular_3_show"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_show_99a"
+            label   "Specular 3 Show"
+            type    toggle
+            default { "0" }
+            help    "Show third toon specular lobe"
+            disablewhen "{ xn__inputsspecular_3_show_control_bob == block } { xn__inputsspecular_3_show_control_bob == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_model_control_xpb"
+            label   "inputs:specular_3_model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_model_wcb"
+            label   "Specular 3 Model"
+            type    string
+            default { "Toon_Surface" }
+            help    "sets the normal distribution function for specular"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_model_control_xpb == block } { xn__inputsspecular_3_model_control_xpb == none }"
+            menu {
+                "Toon_Surface"  "Toon_Surface"
+                "Toon_Hair"     "Toon_Hair"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_intensity_control_gwb"
+            label   "inputs:specular_3_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_intensity_fjb"
+            label   "Specular 3 Intensity"
+            type    float
+            default { "1" }
+            help    "The overall intensity of the specular response"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_intensity_control_gwb == block } { xn__inputsspecular_3_intensity_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_tint_control_bob"
+            label   "inputs:specular_3_tint"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_tint_99a"
+            label   "Specular 3 Tint"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_tint_control_bob == block } { xn__inputsspecular_3_tint_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_roughness_control_gwb"
+            label   "inputs:specular_3_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_roughness_fjb"
+            label   "Specular 3 Roughness"
+            type    float
+            default { "0.9" }
+            help    "The roughness of the toon specular.   Smaller values produce tighter highlights"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_roughness_control_gwb == block } { xn__inputsspecular_3_roughness_control_gwb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_stretch_u_control_gwb"
+            label   "inputs:specular_3_stretch_u"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_stretch_u_fjb"
+            label   "Specular 3 Stretch U"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the u direction "
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_stretch_u_control_gwb == block } { xn__inputsspecular_3_stretch_u_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_stretch_v_control_gwb"
+            label   "inputs:specular_3_stretch_v"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_stretch_v_fjb"
+            label   "Specular 3 Stretch V"
+            type    float
+            default { "0" }
+            help    "Amount to stretch or compress the specular in the v direction "
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_stretch_v_control_gwb == block } { xn__inputsspecular_3_stretch_v_control_gwb == none }"
+            range   { -1 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_use_input_vectors_for_stretch_control_0tc"
+            label   "inputs:specular_3_use_input_vectors_for_stretch"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_use_input_vectors_for_stretch_zgc"
+            label   "Specular 3 Use Input Vectors For Stretch"
+            type    toggle
+            default { "0" }
+            help    "when checked, use input_U and V. otherwise use geometry dPds/t"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_use_input_vectors_for_stretch_control_0tc == block } { xn__inputsspecular_3_use_input_vectors_for_stretch_control_0tc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_U_control_6sb"
+            label   "inputs:specular_3_input_U"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_U_5fb"
+            label   "Specular 3 Input U"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input U / tangent for specular stretch"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_input_U_control_6sb == block } { xn__inputsspecular_3_input_U_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_V_control_6sb"
+            label   "inputs:specular_3_input_V"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_V_5fb"
+            label   "Specular 3 Input V"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "input V / bitangent for specular stretch"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_input_V_control_6sb == block } { xn__inputsspecular_3_input_V_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_values_control_krb"
+            label   "inputs:specular_3_values"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "specular_3_ramp"
+            label   "Specular 3 Ramp"
+            type    ramp_flt
+            default { "4" }
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_values_control_krb == block } { xn__inputsspecular_3_values_control_krb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "float[]" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_enable_input_normal_control_qdc"
+            label   "inputs:specular_3_enable_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_enable_input_normal_pzb"
+            label   "Specular 3 Enable Input Normal"
+            type    toggle
+            default { "0" }
+            help    "enables sampling the normal map for toon specular 3"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_enable_input_normal_control_qdc == block } { xn__inputsspecular_3_enable_input_normal_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_normal_control_c1b"
+            label   "inputs:specular_3_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_normal_bob"
+            label   "Specular 3 Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal for toon specular 3"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_input_normal_control_c1b == block } { xn__inputsspecular_3_input_normal_control_c1b == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_normal_dial_control_h9b"
+            label   "inputs:specular_3_input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_input_normal_dial_gwb"
+            label   "Specular 3 Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls influence of input normal versus hair normal for toon specular 3"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_input_normal_dial_control_h9b == block } { xn__inputsspecular_3_input_normal_dial_control_h9b == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_enable_indirect_reflections_control_rqc"
+            label   "inputs:specular_3_enable_indirect_reflections"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_enable_indirect_reflections_qdc"
+            label   "Specular 3 Enable Indirect Reflections"
+            type    toggle
+            default { "0" }
+            help    "enables indirect GGX reflections for toon specular model"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_enable_indirect_reflections_control_rqc == block } { xn__inputsspecular_3_enable_indirect_reflections_control_rqc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_indirect_reflections_intensity_control_nvc"
+            label   "inputs:specular_3_indirect_reflections_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_indirect_reflections_intensity_mic"
+            label   "Specular 3 Indirect Reflections Intensity"
+            type    float
+            default { "1" }
+            help    "the intensity for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_indirect_reflections_intensity_control_nvc == block } { xn__inputsspecular_3_indirect_reflections_intensity_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_3_indirect_reflections_roughness_control_nvc"
+            label   "inputs:specular_3_indirect_reflections_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_3_indirect_reflections_roughness_mic"
+            label   "Specular 3 Indirect Reflections Roughness"
+            type    float
+            default { "0.5" }
+            help    "the roughness for the indirect reflections of the toon specular model"
+            disablewhen "{ specular_3_show == 0 } { xn__inputsspecular_3_indirect_reflections_roughness_control_nvc == block } { xn__inputsspecular_3_indirect_reflections_roughness_control_nvc == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Advanced"
+
+        parm {
+            name    "xn__inputsuse_independent_front_and_back_hair_color_control_nvc"
+            label   "inputs:use_independent_front_and_back_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsuse_independent_front_and_back_hair_color_mic"
+            label   "Use Independent Front And Back Hair Color"
+            type    toggle
+            default { "0" }
+            help    "(advanced) use a separate hair color for front and back"
+            disablewhen "{ xn__inputsuse_independent_front_and_back_hair_color_control_nvc == block } { xn__inputsuse_independent_front_and_back_hair_color_control_nvc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsfront_hair_color_control_xpb"
+            label   "inputs:front_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfront_hair_color_wcb"
+            label   "Front Hair Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "(advanced only) hair color used for front-lit hair (backward reflectance)"
+            disablewhen "{ use_independent_front_and_back_hair_color == 0 } { xn__inputsfront_hair_color_control_xpb == block } { xn__inputsfront_hair_color_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsback_hair_color_control_bob"
+            label   "inputs:back_hair_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsback_hair_color_99a"
+            label   "Back Hair Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "(advanced only) hair color used for back-lit hair (transmission/forward reflectance)"
+            disablewhen "{ use_independent_front_and_back_hair_color == 0 } { xn__inputsback_hair_color_control_bob == block } { xn__inputsback_hair_color_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_control_1kb"
+            label   "inputs:sss_trace_set"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssss_trace_set_06a"
+            label   "Sss Trace Set"
+            type    oppath
+            default { "" }
+            help    "Set of geometries that contribute neighboring subsurface points. By default, only the geometry associated with this material contributes to subsurface. If you want adjacent geometry with different material to contribute as well, specify all those parts here."
+            disablewhen "{ xn__inputssss_trace_set_control_1kb == block } { xn__inputssss_trace_set_control_1kb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Subsurface"
+
+        parm {
+            name    "xn__inputssubsurface_blend_control_xpb"
+            label   "inputs:subsurface_blend"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssubsurface_blend_wcb"
+            label   "Subsurface Blend"
+            type    float
+            default { "1" }
+            help    "0 is fully hair diffuse, 1 is fully SSS. No effect if scattering radius is 0."
+            disablewhen "{ xn__inputssubsurface_blend_control_xpb == block } { xn__inputssubsurface_blend_control_xpb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsbssrdf_control_n8a"
+            label   "inputs:bssrdf"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsbssrdf_mva"
+            label   "Bssrdf"
+            type    string
+            default { "normalized diffusion" }
+            help    "0 for NormalizedDiffuse, 1 for Dipole. Random walk unsupported for hair."
+            disablewhen "{ xn__inputsbssrdf_control_n8a == block } { xn__inputsbssrdf_control_n8a == none }"
+            menu {
+                "normalized diffusion"  "Normalized Diffusion"
+                "dipole"                "Dipole"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsscattering_color_control_xpb"
+            label   "inputs:scattering_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscattering_color_wcb"
+            label   "Scattering Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the subsurface scattering 'falloff' color"
+            disablewhen "{ xn__inputsscattering_color_control_xpb == block } { xn__inputsscattering_color_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsscattering_radius_control_krb"
+            label   "inputs:scattering_radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsscattering_radius_jeb"
+            label   "Scattering Radius"
+            type    float
+            default { "0" }
+            help    "the distance the light scatters beneath the surface.  When 0 surface diffuse is used"
+            disablewhen "{ xn__inputsscattering_radius_control_krb == block } { xn__inputsscattering_radius_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsenable_sss_input_normal_control_c1b"
+            label   "inputs:enable_sss_input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsenable_sss_input_normal_bob"
+            label   "Enable Sss Input Normal"
+            type    toggle
+            default { "0" }
+            help    "enables sampling the normal map for sss samples. More accurate but potentially expensive"
+            disablewhen "{ xn__inputsenable_sss_input_normal_control_c1b == block } { xn__inputsenable_sss_input_normal_control_c1b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_control_fjb"
+            label   "inputs:input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_e5a"
+            label   "Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal (only for SSS lobe)"
+            disablewhen "{ enable_sss_input_normal == 0 } { xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_control_krb"
+            label   "inputs:input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_jeb"
+            label   "Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls influence of input normal versus hair normal for SSS"
+            disablewhen "{ enable_sss_input_normal == 0 } { xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Common"
+
+        parm {
+            name    "xn__inputspresence_control_wcb"
+            label   "inputs:presence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputspresence_vya"
+            label   "Presence"
+            type    float
+            default { "1" }
+            help    "controls the visibility of this object. Useful for fading an object in/out, or to specify a cut-out mask on thin single-sided geometry (eg. a complex leaf texture on a simple card)."
+            disablewhen "{ xn__inputspresence_control_wcb == block } { xn__inputspresence_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder8"
+        label   "Emission"
+
+        parm {
+            name    "xn__inputsshow_emission_control_1kb"
+            label   "inputs:show_emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsshow_emission_06a"
+            label   "Show Emission"
+            type    toggle
+            default { "0" }
+            help    "enables/disable emission"
+            disablewhen "{ xn__inputsshow_emission_control_1kb == block } { xn__inputsshow_emission_control_1kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsemission_control_wcb"
+            label   "inputs:emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_vya"
+            label   "Emission"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the energy emitted from this material"
+            disablewhen "{ xn__inputsshow_emission_06a != 1 } { xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+}

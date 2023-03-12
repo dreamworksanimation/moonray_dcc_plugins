@@ -1,0 +1,336 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Specular"
+
+        parm {
+            name    "xn__inputsmetallic_color_control_omb"
+            label   "inputs:metallic_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsmetallic_color_n8a"
+            label   "Metallic Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the overall reflection color, defines Fresnel behavior"
+            disablewhen "{ xn__inputsmetallic_color_control_omb == block } { xn__inputsmetallic_color_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsmetallic_edge_color_control_tub"
+            label   "inputs:metallic_edge_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsmetallic_edge_color_shb"
+            label   "Metallic Edge Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "the reflection color at grazing angles, defines Fresnel behavior"
+            disablewhen "{ xn__inputsmetallic_edge_color_control_tub == block } { xn__inputsmetallic_edge_color_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsroughness_control_jeb"
+            label   "inputs:roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsroughness_i0a"
+            label   "Roughness"
+            type    float
+            default { "0.5" }
+            help    "the roughness of the surface (currently only affects reflection)"
+            disablewhen "{ xn__inputsroughness_control_jeb == block } { xn__inputsroughness_control_jeb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_normal_control_fjb"
+            label   "inputs:input_normal"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_e5a"
+            label   "Input Normal"
+            type    oppath
+            invisible
+            default { "" }
+            help    "specifies an alternate shading normal in the tangent frame (normal map)"
+            disablewhen "{ xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_control_krb"
+            label   "inputs:input_normal_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_dial_jeb"
+            label   "Input Normal Dial"
+            type    float
+            default { "1" }
+            help    "controls the amount of influence of the alternate normal"
+            disablewhen "{ xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+            range   { 0 1 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsbackground_material_control_tub"
+        label   "inputs:background_material"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsbackground_material_shb"
+        label   "Background Material"
+        type    oppath
+        invisible
+        default { "" }
+        help    "background material"
+        disablewhen "{ xn__inputsbackground_material_control_tub == block } { xn__inputsbackground_material_control_tub == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsmask_control_e5a"
+        label   "inputs:mask"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmask_dsa"
+        label   "Mask"
+        type    float
+        default { "1" }
+        help    "foreground (metal) material weight"
+        disablewhen "{ xn__inputsmask_control_e5a == block } { xn__inputsmask_control_e5a == none }"
+        range   { 0 1 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsis_additive_control_shb"
+        label   "inputs:is_additive"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsis_additive_r3a"
+        label   "Is Additive"
+        type    toggle
+        default { "0" }
+        help    "When true, lobe does not block background material"
+        disablewhen "{ xn__inputsis_additive_control_shb == block } { xn__inputsis_additive_control_shb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsfuzz_mode_control_jeb"
+        label   "inputs:fuzz_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfuzz_mode_i0a"
+        label   "Fuzz Mode"
+        type    string
+        default { "block" }
+        help    "Whether to block the fuzz lobe where the mask is applied"
+        disablewhen "{ is_additive == 0 } { xn__inputsfuzz_mode_control_jeb == block } { xn__inputsfuzz_mode_control_jeb == none }"
+        menu {
+            "block" "Block"
+            "add"   "Add"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsdiffuse_mode_control_fjb"
+        label   "inputs:diffuse_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsdiffuse_mode_e5a"
+        label   "Diffuse Mode"
+        type    string
+        default { "add" }
+        help    "Whether to block the diffuse lobe where the mask is applied"
+        disablewhen "{ is_additive == 0 } { xn__inputsdiffuse_mode_control_fjb == block } { xn__inputsdiffuse_mode_control_fjb == none }"
+        menu {
+            "block" "Block"
+            "add"   "Add"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsspecular_background_mode_control_y2b"
+        label   "inputs:specular_background_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsspecular_background_mode_xpb"
+        label   "Specular Background Mode"
+        type    string
+        default { "add" }
+        help    "Whether to block the underlying specular lobe where the mask is applied"
+        disablewhen "{ is_additive == 0 } { xn__inputsspecular_background_mode_control_y2b == block } { xn__inputsspecular_background_mode_control_y2b == none }"
+        menu {
+            "block" "Block"
+            "add"   "Add"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

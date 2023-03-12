@@ -1,0 +1,562 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Curve"
+
+        parm {
+            name    "xn__moonrayuse_curve_part_name_control_hwb"
+            label   "moonray:use_curve_part_name"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayuse_curve_part_name_gjb"
+            label   "Use Curve Part Name"
+            type    toggle
+            default { "0" }
+            help    "use the curve name suffix (up to the right-most '_') as the part name"
+            disablewhen "{ xn__moonrayuse_curve_part_name_control_hwb == block } { xn__moonrayuse_curve_part_name_control_hwb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayradius_control_bbb"
+            label   "moonray:radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayradius_9wa"
+            label   "Radius"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__moonrayradius_control_bbb == block } { xn__moonrayradius_control_bbb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraycurves_subtype_control_cob"
+            label   "moonray:curves_subtype"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraycurves_subtype_bbb"
+            label   "Curves Subtype"
+            type    string
+            default { "ray_facing" }
+            help    "Curves subtype is ray facing or round"
+            disablewhen "{ xn__moonraycurves_subtype_control_cob == block } { xn__moonraycurves_subtype_control_cob == none }"
+            menu {
+                "ray_facing"    "Ray_Facing"
+                "round"         "Round"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraytessellation_rate_control_7sb"
+            label   "moonray:tessellation_rate"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraytessellation_rate_6fb"
+            label   "Tessellation Rate"
+            type    integer
+            default { "4" }
+            help    "Number of segments to split curve spans into"
+            disablewhen "{ xn__moonraytessellation_rate_control_7sb == block } { xn__moonraytessellation_rate_control_7sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Model"
+
+        parm {
+            name    "xn__moonraymodel_control_o8a"
+            label   "moonray:model"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymodel_nva"
+            label   "Model"
+            type    file
+            default { "" }
+            help    "filename that points to a model .mc file"
+            disablewhen "{ xn__moonraymodel_control_o8a == block } { xn__moonraymodel_control_o8a == none }"
+            parmtag { "usdvaluetype" "asset" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraylabel_control_o8a"
+        label   "moonray:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraylabel_nva"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material aov expresssions"
+        disablewhen "{ xn__moonraylabel_control_o8a == block } { xn__moonraylabel_control_o8a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonrayreferences_control_thb"
+        label   "moonray:references"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "references"
+        label    "References"
+        default 0
+        disablewhen "{ xn__moonrayreferences_control_thb == block } { xn__moonrayreferences_control_thb == none }"
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+
+        parm {
+            name    "xn__moonrayreferences_s3a#"
+            label   "References"
+            type    oppath
+            default { "" }
+            help    "list of geometries that geometry procedural can reference during procedural generate/update stages. For example, an instancer geometry procedural can instance primitives generated by the reference geometry procedural."
+            parmtag { "moonray::is_parm" "1" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    parm {
+        name    "xn__moonraystatic_control_bbb"
+        label   "moonray:static"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraystatic_9wa"
+        label   "Static"
+        type    toggle
+        default { "1" }
+        help    "disable if the geometry will be updated between frames"
+        disablewhen "{ xn__moonraystatic_control_bbb == block } { xn__moonraystatic_control_bbb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayside_type_control_6fb"
+        label   "moonray:side_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayside_type_51a"
+        label   "Side Type"
+        type    string
+        default { "force two-sided" }
+        help    "set single sidedness of the mesh, will affect the visibility of the mesh based on normal direction"
+        disablewhen "{ xn__moonrayside_type_control_6fb == block } { xn__moonrayside_type_control_6fb == none }"
+        menu {
+            "force two-sided"       "Force Two-Sided"
+            "force single-sided"    "Force Single-Sided"
+            "use mesh sidedness"    "Use Mesh Sidedness"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonrayreverse_normals_control_ypb"
+        label   "moonray:reverse_normals"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayreverse_normals_xcb"
+        label   "Reverse Normals"
+        type    toggle
+        default { "0" }
+        help    "enable to reverse the normals in the geometry"
+        disablewhen "{ xn__moonrayreverse_normals_control_ypb == block } { xn__moonrayreverse_normals_control_ypb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_in_camera_control_7sb"
+        label   "moonray:visible_in_camera"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_in_camera_6fb"
+        label   "Visible In Camera"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible to camera rays"
+        disablewhen "{ xn__moonrayvisible_in_camera_control_7sb == block } { xn__moonrayvisible_in_camera_control_7sb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_shadow_control_cob"
+        label   "moonray:visible_shadow"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_shadow_bbb"
+        label   "Visible Shadow"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry casts shadows"
+        disablewhen "{ xn__moonrayvisible_shadow_control_cob == block } { xn__moonrayvisible_shadow_control_cob == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_diffuse_reflection_control_v7b"
+        label   "moonray:visible_diffuse_reflection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_diffuse_reflection_uub"
+        label   "Visible Diffuse Reflection"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in diffuse reflection"
+        disablewhen "{ xn__moonrayvisible_diffuse_reflection_control_v7b == block } { xn__moonrayvisible_diffuse_reflection_control_v7b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_diffuse_transmission_control_4bc"
+        label   "moonray:visible_diffuse_transmission"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_diffuse_transmission_3xb"
+        label   "Visible Diffuse Transmission"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in diffuse transmission"
+        disablewhen "{ xn__moonrayvisible_diffuse_transmission_control_4bc == block } { xn__moonrayvisible_diffuse_transmission_control_4bc == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_glossy_reflection_control_85b"
+        label   "moonray:visible_glossy_reflection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_glossy_reflection_7sb"
+        label   "Visible Glossy Reflection"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in glossy reflection."
+        disablewhen "{ xn__moonrayvisible_glossy_reflection_control_85b == block } { xn__moonrayvisible_glossy_reflection_control_85b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_glossy_transmission_control_i9b"
+        label   "moonray:visible_glossy_transmission"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_glossy_transmission_hwb"
+        label   "Visible Glossy Transmission"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in glossy transmission (refraction)."
+        disablewhen "{ xn__moonrayvisible_glossy_transmission_control_i9b == block } { xn__moonrayvisible_glossy_transmission_control_i9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_mirror_reflection_control_85b"
+        label   "moonray:visible_mirror_reflection"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_mirror_reflection_7sb"
+        label   "Visible Mirror Reflection"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in miror reflection."
+        disablewhen "{ xn__moonrayvisible_mirror_reflection_control_85b == block } { xn__moonrayvisible_mirror_reflection_control_85b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_mirror_transmission_control_i9b"
+        label   "moonray:visible_mirror_transmission"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_mirror_transmission_hwb"
+        label   "Visible Mirror Transmission"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in miror transmission (refraction)."
+        disablewhen "{ xn__moonrayvisible_mirror_transmission_control_i9b == block } { xn__moonrayvisible_mirror_transmission_control_i9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayvisible_volume_control_cob"
+        label   "moonray:visible_volume"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvisible_volume_bbb"
+        label   "Visible Volume"
+        type    toggle
+        default { "1" }
+        help    "whether the geometry is visible in indirect volume rays"
+        disablewhen "{ xn__moonrayvisible_volume_control_cob == block } { xn__moonrayvisible_volume_control_cob == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayray_epsilon_control_gjb"
+        label   "moonray:ray_epsilon"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayray_epsilon_f5a"
+        label   "Ray Epsilon"
+        type    float
+        default { "0" }
+        help    "When a secondary ray is fired, anything within this distance of the intersection point will be ignored.  Instead, it is considered part of the current intersection's geometry.  If zero, an automatically calculated epsilon will be used."
+        disablewhen "{ xn__moonrayray_epsilon_control_gjb == block } { xn__moonrayray_epsilon_control_gjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayshadow_ray_epsilon_control_uub"
+        label   "moonray:shadow_ray_epsilon"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayshadow_ray_epsilon_thb"
+        label   "Shadow Ray Epsilon"
+        type    float
+        default { "0" }
+        help    "When a shadow ray is fired, anything within this distance of the intersection point will be ignored.  If this value is less than \"ray_epsilon\", then it has no additional effect."
+        disablewhen "{ xn__moonrayshadow_ray_epsilon_control_uub == block } { xn__moonrayshadow_ray_epsilon_control_uub == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayshadow_receiver_label_control_qzb"
+        label   "moonray:shadow_receiver_label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayshadow_receiver_label_pmb"
+        label   "Shadow Receiver Label"
+        type    string
+        default { "" }
+        help    "Label used to associate Geometry objects into sets. Then, using the [\"shadow_exclusion_mappings\"] attribute, shadows from specified geometry parts can be suppressed from casting onto specified sets."
+        disablewhen "{ xn__moonrayshadow_receiver_label_control_qzb == block } { xn__moonrayshadow_receiver_label_control_qzb == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonrayshadow_exclusion_mappings_control_85b"
+        label   "moonray:shadow_exclusion_mappings"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayshadow_exclusion_mappings_7sb"
+        label   "Shadow Exclusion Mappings"
+        type    string
+        default { "" }
+        help    "List of mappings of the form A:B where:\nA is a list of names of parts to be mapped, or asterisk to map the whole geometry\nB is a list of labels corresponding to the sets corresponding to distinct values of [\"shadow_receiver_label\"], or asterisk to map to all such sets."
+        disablewhen "{ xn__moonrayshadow_exclusion_mappings_control_85b == block } { xn__moonrayshadow_exclusion_mappings_control_85b == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonraycontains_camera_control_ypb"
+        label   "moonray:contains_camera"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraycontains_camera_xcb"
+        label   "Contains Camera"
+        type    toggle
+        default { "0" }
+        help    "Specifies whether the geometry contains the camera and should be used for IOR tracking. This should not be changed by the user -- they should instead attach the relevant geometry to the camera, which will then flag this geometry."
+        disablewhen "{ xn__moonraycontains_camera_control_ypb == block } { xn__moonraycontains_camera_control_ypb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonraydicing_camera_control_pmb"
+        label   "moonray:dicing_camera"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraydicing_camera_o8a"
+        label   "Dicing Camera"
+        type    oppath
+        default { "" }
+        disablewhen "{ xn__moonraydicing_camera_control_pmb == block } { xn__moonraydicing_camera_control_pmb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+    }
+}

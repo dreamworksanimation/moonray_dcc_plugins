@@ -1,0 +1,26 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinput_color_control_shb"
+        label   "inputs:input_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_color_r3a"
+        label   "Input Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        disablewhen "{ xn__inputsinput_color_control_shb == block } { xn__inputsinput_color_control_shb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

@@ -1,0 +1,100 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_1_control_99a"
+            label   "inputs:input_1"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_1_8wa"
+            label   "Input 1"
+            type    oppath
+            invisible
+            default { "" }
+            help    "First normal map to combine; usually a base map"
+            disablewhen "{ xn__inputsinput_1_control_99a == block } { xn__inputsinput_1_control_99a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsnormal_map_1_dial_control_krb"
+            label   "inputs:normal_map_1_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnormal_map_1_dial_jeb"
+            label   "Normal Map 1 Dial"
+            type    float
+            default { "1" }
+            help    "Amount of normal map 1 to blend in"
+            disablewhen "{ xn__inputsnormal_map_1_dial_control_krb == block } { xn__inputsnormal_map_1_dial_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsinput_2_control_99a"
+            label   "inputs:input_2"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_2_8wa"
+            label   "Input 2"
+            type    oppath
+            invisible
+            default { "" }
+            help    "Second normal map to combine; usually a base map"
+            disablewhen "{ xn__inputsinput_2_control_99a == block } { xn__inputsinput_2_control_99a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsnormal_map_2_dial_control_krb"
+            label   "inputs:normal_map_2_dial"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsnormal_map_2_dial_jeb"
+            label   "Normal Map 2 Dial"
+            type    float
+            default { "1" }
+            help    "Amount of normal map 2 to blend in"
+            disablewhen "{ xn__inputsnormal_map_2_dial_control_krb == block } { xn__inputsnormal_map_2_dial_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+}

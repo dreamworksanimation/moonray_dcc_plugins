@@ -1,0 +1,67 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsR_control_i0a"
+        label   "inputs:R"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsR_hna"
+        label   "R"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsR_control_i0a == block } { xn__inputsR_control_i0a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsG_control_i0a"
+        label   "inputs:G"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsG_hna"
+        label   "G"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsG_control_i0a == block } { xn__inputsG_control_i0a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsB_control_i0a"
+        label   "inputs:B"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsB_hna"
+        label   "B"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsB_control_i0a == block } { xn__inputsB_control_i0a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+}

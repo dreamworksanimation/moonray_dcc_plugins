@@ -1,0 +1,161 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Properties"
+
+        parm {
+            name    "xn__moonrayfalloff_near_control_2kb"
+            label   "moonray:falloff_near"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayfalloff_near_16a"
+            label   "Falloff Near"
+            type    toggle
+            default { "0" }
+            help    "does the light fade in?"
+            disablewhen "{ xn__moonrayfalloff_near_control_2kb == block } { xn__moonrayfalloff_near_control_2kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonrayfalloff_far_control_gjb"
+            label   "moonray:falloff_far"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayfalloff_far_f5a"
+            label   "Falloff Far"
+            type    toggle
+            default { "0" }
+            help    "does the light fade out?"
+            disablewhen "{ xn__moonrayfalloff_far_control_gjb == block } { xn__moonrayfalloff_far_control_gjb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraynear_start_control_thb"
+            label   "moonray:near_start"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraynear_start_s3a"
+            label   "Near Start"
+            type    float
+            default { "0" }
+            help    "distance from light to start of fade in"
+            disablewhen "{ falloff_near == 0 } { xn__moonraynear_start_control_thb == block } { xn__moonraynear_start_control_thb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraynear_end_control_keb"
+            label   "moonray:near_end"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraynear_end_j0a"
+            label   "Near End"
+            type    float
+            default { "0" }
+            help    "distance from light to end of fade in"
+            disablewhen "{ falloff_near == 0 } { xn__moonraynear_end_control_keb == block } { xn__moonraynear_end_control_keb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayfar_start_control_6fb"
+            label   "moonray:far_start"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayfar_start_51a"
+            label   "Far Start"
+            type    float
+            default { "0" }
+            help    "distance from light to start of fade out"
+            disablewhen "{ falloff_far == 0 } { xn__moonrayfar_start_control_6fb == block } { xn__moonrayfar_start_control_6fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayfar_end_control_xcb"
+            label   "moonray:far_end"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayfar_end_wya"
+            label   "Far End"
+            type    float
+            default { "0" }
+            help    "distance from light to end of fade out"
+            disablewhen "{ falloff_far == 0 } { xn__moonrayfar_end_control_xcb == block } { xn__moonrayfar_end_control_xcb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayon_control_s3a"
+        label   "moonray:on"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayon_rqa"
+        label   "On"
+        type    toggle
+        default { "1" }
+        help    "Turns the light filter on/off"
+        disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

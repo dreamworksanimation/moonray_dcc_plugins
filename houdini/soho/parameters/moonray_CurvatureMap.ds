@@ -1,0 +1,93 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsinvert_control_n8a"
+        label   "inputs:invert"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinvert_mva"
+        label   "Invert"
+        type    toggle
+        default { "0" }
+        disablewhen "{ xn__inputsinvert_control_n8a == block } { xn__inputsinvert_control_n8a == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputspower_control_06a"
+        label   "inputs:power"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspower_zta"
+        label   "Power"
+        type    float
+        default { "0.5" }
+        disablewhen "{ xn__inputspower_control_06a == block } { xn__inputspower_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsscale_control_06a"
+        label   "inputs:scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsscale_zta"
+        label   "Scale"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsmode_control_e5a"
+        label   "inputs:mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmode_dsa"
+        label   "Mode"
+        type    string
+        default { "all" }
+        help    "The composite mode outputs the composite of convex curvature and concave curvature as grayscale ((concave - convex) * 0.5) + 0.5. The all mode outputs the convex curvature in the red channel, concave curvature in the green channel, and composite of both curvatures in the blue channel."
+        disablewhen "{ xn__inputsmode_control_e5a == block } { xn__inputsmode_control_e5a == none }"
+        menu {
+            "convex"    "Convex"
+            "concave"   "Concave"
+            "composite" "Composite"
+            "all"       "All"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+}

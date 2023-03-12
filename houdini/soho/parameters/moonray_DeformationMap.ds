@@ -1,0 +1,75 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsoutput_mode_control_shb"
+        label   "inputs:output_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsoutput_mode_r3a"
+        label   "Output Mode"
+        type    string
+        default { "deformation_avg" }
+        help    "Controls output: \n		    RGB - R = deformation along S, G = deformation along T, B = average deformation from ref space \n		    deformation_S - deformation along S \n		    deformation_T - deformation along T \n		    deformation_avg - average deformation from ref space"
+        disablewhen "{ xn__inputsoutput_mode_control_shb == block } { xn__inputsoutput_mode_control_shb == none }"
+        menu {
+            "RGB"               "RGB"
+            "deformation_S"     "deformation_S"
+            "deformation_T"     "deformation_T"
+            "deformation_avg"   "Deformation_Avg"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsuse_warning_color_control_krb"
+        label   "inputs:use_warning_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_warning_color_jeb"
+        label   "Use Warning Color"
+        type    toggle
+        default { "0" }
+        help    "If derivatives are missing or zero output the warning color erroring out"
+        disablewhen "{ xn__inputsuse_warning_color_control_krb == block } { xn__inputsuse_warning_color_control_krb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputswarning_color_control_1kb"
+        label   "inputs:warning_color"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputswarning_color_06a"
+        label   "Warning Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "Warning color to output when derivatives are missing or zero"
+        disablewhen "{ xn__inputsuse_warning_color_jeb != 1 } { xn__inputswarning_color_control_1kb == block } { xn__inputswarning_color_control_1kb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

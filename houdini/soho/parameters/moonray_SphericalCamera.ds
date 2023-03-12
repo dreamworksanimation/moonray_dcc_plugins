@@ -1,0 +1,203 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Frustum"
+
+        parm {
+            name    "xn__moonraynear_control_16a"
+            label   "moonray:near"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraynear_0ta"
+            label   "Near"
+            type    float
+            default { "1" }
+            help    "Near clipping plane"
+            disablewhen "{ xn__moonraynear_control_16a == block } { xn__moonraynear_control_16a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonrayfar_control_f5a"
+            label   "moonray:far"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonrayfar_esa"
+            label   "Far"
+            type    float
+            default { "10000" }
+            help    "Far clipping plane"
+            disablewhen "{ xn__moonrayfar_control_f5a == block } { xn__moonrayfar_control_f5a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Motion Blur"
+
+        parm {
+            name    "xn__moonraymb_shutter_open_control_ypb"
+            label   "moonray:mb_shutter_open"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymb_shutter_open_xcb"
+            label   "Mb Shutter Open"
+            type    float
+            default { "-0.25" }
+            help    "Frame at which the shutter opens, i.e., the beginning of the motion blur interval."
+            disablewhen "{ xn__moonraymb_shutter_open_control_ypb == block } { xn__moonraymb_shutter_open_control_ypb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraymb_shutter_close_control_lrb"
+            label   "moonray:mb_shutter_close"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymb_shutter_close_keb"
+            label   "Mb Shutter Close"
+            type    float
+            default { "0.25" }
+            help    "Frame at which the shutter closes, i.e., the end of the motion blur interval."
+            disablewhen "{ xn__moonraymb_shutter_close_control_lrb == block } { xn__moonraymb_shutter_close_control_lrb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraymb_shutter_bias_control_ypb"
+            label   "moonray:mb_shutter_bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymb_shutter_bias_xcb"
+            label   "Mb Shutter Bias"
+            type    float
+            default { "0" }
+            help    "Biases the motion blur samples toward one end of the shutter interval."
+            disablewhen "{ xn__moonraymb_shutter_bias_control_ypb == block } { xn__moonraymb_shutter_bias_control_ypb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Render Masks"
+
+        parm {
+            name    "xn__moonraypixel_sample_map_control_lrb"
+            label   "moonray:pixel_sample_map"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraypixel_sample_map_keb"
+            label   "Pixel Sample Map"
+            type    string
+            default { "" }
+            help    "Map indicating the number of pixel samples that should be used per pixel (in uniform sampling mode). This is a multiplier on the global pixel sample count specified in SceneVariables. If the provided map has incompatible dimensions, it will be resized."
+            disablewhen "{ xn__moonraypixel_sample_map_control_lrb == block } { xn__moonraypixel_sample_map_control_lrb == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Medium"
+
+        parm {
+            name    "xn__moonraymedium_material_control_ypb"
+            label   "moonray:medium_material"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymedium_material_xcb"
+            label   "Medium Material"
+            type    oppath
+            default { "" }
+            help    "The material the camera is 'inside'. If no medium_geometry is specified, ALL rays will have this initial index of refraction applied. "
+            disablewhen "{ xn__moonraymedium_material_control_ypb == block } { xn__moonraymedium_material_control_ypb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__moonraymedium_geometry_control_ypb"
+            label   "moonray:medium_geometry"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__moonraymedium_geometry_xcb"
+            label   "Medium Geometry"
+            type    oppath
+            default { "" }
+            help    "The geometry the camera is 'inside' to which you'd like the medium_material applied. (The use case for this is typically partially-submerged cameras)"
+            disablewhen "{ xn__moonraymedium_geometry_control_ypb == block } { xn__moonraymedium_geometry_control_ypb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+}

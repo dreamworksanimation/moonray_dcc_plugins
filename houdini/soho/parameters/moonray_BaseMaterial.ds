@@ -1,0 +1,1086 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Diffuse"
+
+        parm {
+            name    "xn__inputsdiffuse_control_99a"
+            label   "inputs:diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdiffuse_8wa"
+            label   "Diffuse"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputsdiffuse_control_99a == block } { xn__inputsdiffuse_control_99a == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_color_control_1kb"
+            label   "inputs:diffuse_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdiffuse_color_06a"
+            label   "Diffuse Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsdiffuse_color_control_1kb == block } { xn__inputsdiffuse_color_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_factor_control_omb"
+            label   "inputs:diffuse_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdiffuse_factor_n8a"
+            label   "Diffuse Factor"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__inputsdiffuse_factor_control_omb == block } { xn__inputsdiffuse_factor_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Specular"
+
+        parm {
+            name    "xn__inputsspecular_control_wcb"
+            label   "inputs:specular"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_vya"
+            label   "Specular"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputsspecular_control_wcb == block } { xn__inputsspecular_control_wcb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsspecular_color_control_omb"
+            label   "inputs:specular_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_color_n8a"
+            label   "Specular Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsspecular_color_control_omb == block } { xn__inputsspecular_color_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsspecular_factor_control_bob"
+            label   "inputs:specular_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_factor_99a"
+            label   "Specular Factor"
+            type    float
+            default { "0.1" }
+            disablewhen "{ xn__inputsspecular_factor_control_bob == block } { xn__inputsspecular_factor_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsretroreflectivity_control_krb"
+            label   "inputs:retroreflectivity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsretroreflectivity_jeb"
+            label   "Retroreflectivity"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__inputsretroreflectivity_control_krb == block } { xn__inputsretroreflectivity_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsspecular_roughness_control_6sb"
+            label   "inputs:specular_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspecular_roughness_5fb"
+            label   "Specular Roughness"
+            type    float
+            default { "0.3" }
+            disablewhen "{ xn__inputsspecular_roughness_control_6sb == block } { xn__inputsspecular_roughness_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Directional Diffuse"
+
+        parm {
+            name    "xn__inputsdirectional_diffuse_control_tub"
+            label   "inputs:directional_diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_shb"
+            label   "Directional Diffuse"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputsdirectional_diffuse_control_tub == block } { xn__inputsdirectional_diffuse_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_color_control_l4b"
+            label   "inputs:directional_diffuse_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_color_krb"
+            label   "Directional Diffuse Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsdirectional_diffuse_color_control_l4b == block } { xn__inputsdirectional_diffuse_color_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_factor_control_75b"
+            label   "inputs:directional_diffuse_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_factor_6sb"
+            label   "Directional Diffuse Factor"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__inputsdirectional_diffuse_factor_control_75b == block } { xn__inputsdirectional_diffuse_factor_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_roughness_control_3bc"
+            label   "inputs:directional_diffuse_roughness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsdirectional_diffuse_roughness_2xb"
+            label   "Directional Diffuse Roughness"
+            type    float
+            default { "0.5" }
+            disablewhen "{ xn__inputsdirectional_diffuse_roughness_control_3bc == block } { xn__inputsdirectional_diffuse_roughness_control_3bc == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Translucency"
+
+        parm {
+            name    "xn__inputstranslucency_control_fjb"
+            label   "inputs:translucency"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucency_e5a"
+            label   "Translucency"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputstranslucency_control_fjb == block } { xn__inputstranslucency_control_fjb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputstranslucency_color_control_6sb"
+            label   "inputs:translucency_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucency_color_5fb"
+            label   "Translucency Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputstranslucency_color_control_6sb == block } { xn__inputstranslucency_color_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputstranslucency_factor_control_tub"
+            label   "inputs:translucency_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucency_factor_shb"
+            label   "Translucency Factor"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__inputstranslucency_factor_control_tub == block } { xn__inputstranslucency_factor_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputstranslucency_falloff_control_gwb"
+            label   "inputs:translucency_falloff"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucency_falloff_fjb"
+            label   "Translucency Falloff"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputstranslucency_falloff_control_gwb == block } { xn__inputstranslucency_falloff_control_gwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputstranslucency_radius_control_tub"
+            label   "inputs:translucency_radius"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucency_radius_shb"
+            label   "Translucency Radius"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__inputstranslucency_radius_control_tub == block } { xn__inputstranslucency_radius_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Transmission"
+
+        parm {
+            name    "xn__inputstransmission_control_fjb"
+            label   "inputs:transmission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_e5a"
+            label   "Transmission"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputstransmission_control_fjb == block } { xn__inputstransmission_control_fjb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputstransmission_color_control_6sb"
+            label   "inputs:transmission_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_color_5fb"
+            label   "Transmission Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputstransmission_color_control_6sb == block } { xn__inputstransmission_color_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputstransmission_factor_control_tub"
+            label   "inputs:transmission_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstransmission_factor_shb"
+            label   "Transmission Factor"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__inputstransmission_factor_control_tub == block } { xn__inputstransmission_factor_control_tub == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Translucent Diffuse"
+
+        parm {
+            name    "xn__inputstranslucent_diffuse_control_tub"
+            label   "inputs:translucent_diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucent_diffuse_shb"
+            label   "Translucent Diffuse"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputstranslucent_diffuse_control_tub == block } { xn__inputstranslucent_diffuse_control_tub == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputstranslucent_diffuse_color_control_l4b"
+            label   "inputs:translucent_diffuse_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucent_diffuse_color_krb"
+            label   "Translucent Diffuse Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputstranslucent_diffuse_color_control_l4b == block } { xn__inputstranslucent_diffuse_color_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputstranslucent_diffuse_factor_control_75b"
+            label   "inputs:translucent_diffuse_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputstranslucent_diffuse_factor_6sb"
+            label   "Translucent Diffuse Factor"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__inputstranslucent_diffuse_factor_control_75b == block } { xn__inputstranslucent_diffuse_factor_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Opacity"
+
+        parm {
+            name    "xn__inputsopacity_control_99a"
+            label   "inputs:opacity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsopacity_8wa"
+            label   "Opacity"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputsopacity_control_99a == block } { xn__inputsopacity_control_99a == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsopacity_factor_control_omb"
+            label   "inputs:opacity_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsopacity_factor_n8a"
+            label   "Opacity Factor"
+            type    float
+            default { "1" }
+            disablewhen "{ xn__inputsopacity_factor_control_omb == block } { xn__inputsopacity_factor_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder8"
+        label   "Emission"
+
+        parm {
+            name    "xn__inputsemission_control_wcb"
+            label   "inputs:emission"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_vya"
+            label   "Emission"
+            type    toggle
+            default { "1" }
+            disablewhen "{ xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsemission_color_control_omb"
+            label   "inputs:emission_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_color_n8a"
+            label   "Emission Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ xn__inputsemission_color_control_omb == block } { xn__inputsemission_color_control_omb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsemission_factor_control_bob"
+            label   "inputs:emission_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsemission_factor_99a"
+            label   "Emission Factor"
+            type    float
+            default { "0" }
+            disablewhen "{ xn__inputsemission_factor_control_bob == block } { xn__inputsemission_factor_control_bob == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder9"
+        label   "Normal"
+
+        parm {
+            name    "xn__inputsinput_normal_space_control_6sb"
+            label   "inputs:input_normal_space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsinput_normal_space_5fb"
+            label   "Input Normal Space"
+            type    string
+            default { "tangent" }
+            help    "Specifies what space the input normal is in.  Usually this is tangent space for texture maps and render space for projections"
+            disablewhen "{ xn__inputsinput_normal_space_control_6sb == block } { xn__inputsinput_normal_space_control_6sb == none }"
+            menu {
+                "tangent"   "Tangent"
+                "render"    "Render"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder10"
+        label   "Iridescence"
+
+        parm {
+            name    "xn__inputsiridescence_control_shb"
+            label   "inputs:iridescence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_r3a"
+            label   "Iridescence"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputsiridescence_control_shb == block } { xn__inputsiridescence_control_shb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsiridescence_factor_control_6sb"
+            label   "inputs:iridescence_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_factor_5fb"
+            label   "Iridescence Factor"
+            type    float
+            default { "1" }
+            help    "overall multiplier on effect of iridescence"
+            disablewhen "{ xn__inputsiridescence_factor_control_6sb == block } { xn__inputsiridescence_factor_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsiridescence_primary_color_control_l4b"
+            label   "inputs:iridescence_primary_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_primary_color_krb"
+            label   "Iridescence Primary Color"
+            type    color
+            size    3
+            default { "1" "0" "0" }
+            help    "First color to interpolate from around the hue wheel"
+            disablewhen "{ xn__inputsiridescence_primary_color_control_l4b == block } { xn__inputsiridescence_primary_color_control_l4b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsiridescence_secondary_color_control_u7b"
+            label   "inputs:iridescence_secondary_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_secondary_color_tub"
+            label   "Iridescence Secondary Color"
+            type    color
+            size    3
+            default { "1" "0" "0" }
+            help    "Second color to interpolate to around the hue wheel"
+            disablewhen "{ xn__inputsiridescence_secondary_color_control_u7b == block } { xn__inputsiridescence_secondary_color_control_u7b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsiridescence_flip_hue_direction_control_qdc"
+            label   "inputs:iridescence_flip_hue_direction"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_flip_hue_direction_pzb"
+            label   "Iridescence Flip Hue Direction"
+            type    toggle
+            default { "0" }
+            disablewhen "{ xn__inputsiridescence_flip_hue_direction_control_qdc == block } { xn__inputsiridescence_flip_hue_direction_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsiridescence_thickness_control_2xb"
+            label   "inputs:iridescence_thickness"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_thickness_1kb"
+            label   "Iridescence Thickness"
+            type    float
+            default { "1" }
+            help    "Controls how much the color spectrum is repeated"
+            disablewhen "{ xn__inputsiridescence_thickness_control_2xb == block } { xn__inputsiridescence_thickness_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsiridescence_exponent_control_gwb"
+            label   "inputs:iridescence_exponent"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_exponent_fjb"
+            label   "Iridescence Exponent"
+            type    float
+            default { "1" }
+            help    "Tightens or broadens the distribution of colors"
+            disablewhen "{ xn__inputsiridescence_exponent_control_gwb == block } { xn__inputsiridescence_exponent_control_gwb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsiridescence_at_0_incidence_control_75b"
+            label   "inputs:iridescence_at_0_incidence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsiridescence_at_0_incidence_6sb"
+            label   "Iridescence At 0 Incidence"
+            type    float
+            default { "1" }
+            help    "Iridescence effect at 0 degree viewing angle"
+            disablewhen "{ xn__inputsiridescence_at_0_incidence_control_75b == block } { xn__inputsiridescence_at_0_incidence_control_75b == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    parm {
+        name    "xn__inputsextra_aovs_control_5fb"
+        label   "inputs:extra_aovs"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsextra_aovs_41a"
+        label   "Extra Aovs"
+        type    oppath
+        invisible
+        default { "" }
+        help    "Bind this attribute to a 'ListMap' that contains references to ExtraAovMaps that specify additional outputs that can be assigned to a RenderOutput \"light aov\" result"
+        disablewhen "{ xn__inputsextra_aovs_control_5fb == block } { xn__inputsextra_aovs_control_5fb == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputslabel_control_06a"
+        label   "inputs:label"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputslabel_zta"
+        label   "Label"
+        type    string
+        default { "" }
+        help    "label used in material and light aovs"
+        disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__inputspriority_control_wcb"
+        label   "inputs:priority"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputspriority_vya"
+        label   "Priority"
+        type    integer
+        default { "0" }
+        help    "The material's place in an order of precedence for overlapping dielectrics. A value of 0 means the priority should be ignored. Materials with lower numbers (higher priority) \"override\" materials with higher numbers (lower priority).  To enable automatic removal of self-overlapping geometry, a non-zero priority must be set on the geometry's material."
+        disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsinput_normal_control_fjb"
+        label   "inputs:input_normal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normal_e5a"
+        label   "Input Normal"
+        type    vector
+        size    3
+        default { "0" "0" "1" }
+        disablewhen "{ xn__inputsinput_normal_control_fjb == block } { xn__inputsinput_normal_control_fjb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "vector3f" }
+    }
+    parm {
+        name    "xn__inputsinput_normal_dial_control_krb"
+        label   "inputs:input_normal_dial"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsinput_normal_dial_jeb"
+        label   "Input Normal Dial"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsinput_normal_dial_control_krb == block } { xn__inputsinput_normal_dial_control_krb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsuse_fresnel_control_shb"
+        label   "inputs:use_fresnel"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsuse_fresnel_r3a"
+        label   "Use Fresnel"
+        type    toggle
+        default { "1" }
+        disablewhen "{ xn__inputsuse_fresnel_control_shb == block } { xn__inputsuse_fresnel_control_shb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsfresnel_factor_control_omb"
+        label   "inputs:fresnel_factor"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfresnel_factor_n8a"
+        label   "Fresnel Factor"
+        type    float
+        default { "1" }
+        disablewhen "{ xn__inputsfresnel_factor_control_omb == block } { xn__inputsfresnel_factor_control_omb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsanisotropy_control_5fb"
+        label   "inputs:anisotropy"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsanisotropy_41a"
+        label   "Anisotropy"
+        type    float
+        default { "0" }
+        disablewhen "{ xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsanisotropic_direction_control_2xb"
+        label   "inputs:anisotropic_direction"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsanisotropic_direction_1kb"
+        label   "Anisotropic Direction"
+        type    vector2
+        size    2
+        default { "1" "0" }
+        disablewhen "{ xn__inputsanisotropic_direction_control_2xb == block } { xn__inputsanisotropic_direction_control_2xb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float2" }
+    }
+    parm {
+        name    "xn__inputsindex_of_refraction_control_tub"
+        label   "inputs:index_of_refraction"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsindex_of_refraction_shb"
+        label   "Index Of Refraction"
+        type    float
+        default { "1" }
+        help    "affects transmission and translucency"
+        disablewhen "{ xn__inputsindex_of_refraction_control_tub == block } { xn__inputsindex_of_refraction_control_tub == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputscasts_caustics_control_omb"
+        label   "inputs:casts_caustics"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputscasts_caustics_n8a"
+        label   "Casts Caustics"
+        type    toggle
+        default { "0" }
+        disablewhen "{ xn__inputscasts_caustics_control_omb == block } { xn__inputscasts_caustics_control_omb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

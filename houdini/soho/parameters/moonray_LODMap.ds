@@ -1,0 +1,119 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    parm {
+        name    "xn__inputsmode_control_e5a"
+        label   "inputs:mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsmode_dsa"
+        label   "Mode"
+        type    string
+        default { "feature width" }
+        help    "Use feature_width for LOD based on average, world-space feature-width visible in a pixel, correctly changing with resolution. Use camera_distance for LOD based on distance from render cam."
+        disablewhen "{ xn__inputsmode_control_e5a == block } { xn__inputsmode_control_e5a == none }"
+        menu {
+            "feature width"     "Feature Width"
+            "camera distance"   "Camera Distance"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__inputsstart_control_06a"
+        label   "inputs:start"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsstart_zta"
+        label   "Start"
+        type    float
+        default { "0.01" }
+        help    "feature_width/camera_distance at which to start blending near_value->far_value"
+        disablewhen "{ xn__inputsstart_control_06a == block } { xn__inputsstart_control_06a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsstop_control_e5a"
+        label   "inputs:stop"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsstop_dsa"
+        label   "Stop"
+        type    float
+        default { "0.1" }
+        help    "feature_width/camera_distance at which to stop blending near_value->far_value"
+        disablewhen "{ xn__inputsstop_control_e5a == block } { xn__inputsstop_control_e5a == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__inputsnear_value_control_5fb"
+        label   "inputs:near_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsnear_value_41a"
+        label   "Near Value"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        help    "value output when feature_width/camera_distance is less than or equal to start"
+        disablewhen "{ xn__inputsnear_value_control_5fb == block } { xn__inputsnear_value_control_5fb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+    parm {
+        name    "xn__inputsfar_value_control_jeb"
+        label   "inputs:far_value"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__inputsfar_value_i0a"
+        label   "Far Value"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        help    "value output when feature_width/camera_distance is more than or equal to stop"
+        disablewhen "{ xn__inputsfar_value_control_jeb == block } { xn__inputsfar_value_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "color3f" }
+    }
+}

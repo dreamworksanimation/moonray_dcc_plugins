@@ -1,0 +1,348 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    group {
+        name    "folder"
+        label   "Gradient properties"
+
+        parm {
+            name    "xn__inputscolor_A_control_99a"
+            label   "inputs:color_A"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscolor_A_8wa"
+            label   "Color A"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            help    "Start color"
+            disablewhen "{ xn__inputscolor_A_control_99a == block } { xn__inputscolor_A_control_99a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputscolor_B_control_99a"
+            label   "inputs:color_B"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputscolor_B_8wa"
+            label   "Color B"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "End color"
+            disablewhen "{ xn__inputscolor_B_control_99a == block } { xn__inputscolor_B_control_99a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsstart_control_06a"
+            label   "inputs:start"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsstart_zta"
+            label   "Start"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            help    "Start position in the chosen space"
+            disablewhen "{ xn__inputsstart_control_06a == block } { xn__inputsstart_control_06a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsend_control_r3a"
+            label   "inputs:end"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsend_qqa"
+            label   "End"
+            type    vector
+            size    3
+            default { "0" "1" "0" }
+            help    "End position in the chosen space"
+            disablewhen "{ xn__inputsend_control_r3a == block } { xn__inputsend_control_r3a == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "vector3f" }
+        }
+        parm {
+            name    "xn__inputsspace_control_06a"
+            label   "inputs:space"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsspace_zta"
+            label   "Space"
+            type    string
+            default { "render" }
+            help    "The transformation space in which to perform the blending"
+            disablewhen "{ xn__inputsspace_control_06a == block } { xn__inputsspace_control_06a == none }"
+            menu {
+                "render"    "Render"
+                "camera"    "Camera"
+                "world"     "World"
+                "screen"    "Screen"
+                "object"    "Object"
+                "reference" "Reference"
+                "texture"   "Texture"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsobject_control_n8a"
+            label   "inputs:object"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsobject_mva"
+            label   "Object"
+            type    oppath
+            default { "" }
+            help    "Use the provided object's transformation space (only used if object space is also specified)"
+            disablewhen "{ xn__inputsobject_control_n8a == block } { xn__inputsobject_control_n8a == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Falloff properties"
+
+        parm {
+            name    "xn__inputsfalloff_type_control_fjb"
+            label   "inputs:falloff_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_type_e5a"
+            label   "Falloff Type"
+            type    string
+            default { "natural" }
+            help    "Falloff blend mode"
+            disablewhen "{ xn__inputsfalloff_type_control_fjb == block } { xn__inputsfalloff_type_control_fjb == none }"
+            menu {
+                "none"      "None"
+                "natural"   "Natural"
+                "linear"    "Linear"
+                "squared"   "Squared"
+                "gaussian"  "Gaussian"
+                "ease out"  "Ease Out"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsfalloff_exponent_control_xpb"
+            label   "inputs:falloff_exponent"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_exponent_wcb"
+            label   "Falloff Exponent"
+            type    float
+            default { "1" }
+            help    "Adjusts rate of blending"
+            disablewhen "{ xn__inputsfalloff_exponent_control_xpb == block } { xn__inputsfalloff_exponent_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfalloff_start_control_1kb"
+            label   "inputs:falloff_start"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_start_06a"
+            label   "Falloff Start"
+            type    float
+            default { "0" }
+            help    "Shifts where the falloff starts"
+            disablewhen "{ xn__inputsfalloff_start_control_1kb == block } { xn__inputsfalloff_start_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfalloff_end_control_shb"
+            label   "inputs:falloff_end"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_end_r3a"
+            label   "Falloff End"
+            type    float
+            default { "1" }
+            help    "Shifts where the falloff ends"
+            disablewhen "{ xn__inputsfalloff_end_control_shb == block } { xn__inputsfalloff_end_control_shb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfalloff_end_intensity_control_2xb"
+            label   "inputs:falloff_end_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_end_intensity_1kb"
+            label   "Falloff End Intensity"
+            type    float
+            default { "1" }
+            help    "Adjust the intensity of the end color"
+            disablewhen "{ xn__inputsfalloff_end_intensity_control_2xb == block } { xn__inputsfalloff_end_intensity_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsfalloff_bias_control_fjb"
+            label   "inputs:falloff_bias"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputsfalloff_bias_e5a"
+            label   "Falloff Bias"
+            type    float
+            default { "0.5" }
+            help    "Compresses the blending towards the start or end color"
+            disablewhen "{ xn__inputsfalloff_bias_control_fjb == block } { xn__inputsfalloff_bias_control_fjb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Additional properties"
+
+        parm {
+            name    "xn__inputssymmetric_control_jeb"
+            label   "inputs:symmetric"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssymmetric_i0a"
+            label   "Symmetric"
+            type    toggle
+            default { "0" }
+            help    "Color A blends into Color B and then back into Color A from the start to the end point"
+            disablewhen "{ xn__inputssymmetric_control_jeb == block } { xn__inputssymmetric_control_jeb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputssymmetric_center_control_xpb"
+            label   "inputs:symmetric_center"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "Set Or Create"
+                "setexisting"   "Set if Exists"
+                "block"         "Block"
+                "none"          "Do Nothing"
+            }
+        }
+        parm {
+            name    "xn__inputssymmetric_center_wcb"
+            label   "Symmetric Center"
+            type    float
+            default { "0.5" }
+            help    "Shifts the center of the symmetric falloff"
+            disablewhen "{ xn__inputssymmetric_center_control_xpb == block } { xn__inputssymmetric_center_control_xpb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+}
