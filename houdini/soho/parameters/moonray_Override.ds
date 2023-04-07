@@ -35,7 +35,7 @@
             [ "        elif token == \"Light Filter\":" ]
             [ "            menulist = [u'BarnDoorLightFilter', u'BarnDoorLightFilter', u'ColorRampLightFilter', u'ColorRampLightFilter', u'CombineLightFilter', u'CombineLightFilter', u'CookieLightFilter', u'CookieLightFilter', u'CookieLightFilter_v2', u'CookieLightFilter_v2', u'DecayLightFilter', u'DecayLightFilter', u'IntensityLightFilter', u'IntensityLightFilter', u'RodLightFilter', u'RodLightFilter', u'VdbLightFilter', u'VdbLightFilter']" ]
             [ "        elif token == \"Geometry\":" ]
-            [ "            menulist = [u'BoxGeometry', u'BoxGeometry', u'SphereGeometry', u'SphereGeometry', u'UsdGeometry', u'UsdGeometry', u'UsdInstanceGeometry', u'UsdInstanceGeometry']" ]
+            [ "            menulist = [u'BoxGeometry', u'BoxGeometry', u'RdlCurveGeometry', u'RdlCurveGeometry', u'RdlInstancerGeometry', u'RdlInstancerGeometry', u'RdlMeshGeometry', u'RdlMeshGeometry', u'RdlPointGeometry', u'RdlPointGeometry', u'SphereGeometry', u'SphereGeometry', u'UsdGeometry', u'UsdGeometry', u'UsdInstanceGeometry', u'UsdInstanceGeometry', u'VdbGeometry', u'VdbGeometry']" ]
             [ "        return menulist" ]
             [ "        " ]
             language python

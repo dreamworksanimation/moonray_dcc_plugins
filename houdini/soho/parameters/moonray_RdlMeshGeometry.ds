@@ -438,62 +438,8 @@
         parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
     }
     parm {
-        name    "xn__moonraymethod_control_bbb"
-        label   "moonray:method"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraymethod_9wa"
-        label   "Method"
-        type    string
-        default { "xform attributes" }
-        help    "Specify the source of xforms/refIndices for instancing. If set to \"xform attributes\", taking data from attributes \"positions\", \"orientations\", \"scales\", \"velocities\" and \"refIndices\". If set to \"xform list\", taking data from \"xform list\", \"velocities\" and \"refIndices\". If set to \"point file\", taking data from file storing xform points"
-        disablewhen "{ xn__moonraymethod_control_bbb == block } { xn__moonraymethod_control_bbb == none }"
-        menu {
-            "xform attributes"  "Xform Attributes"
-            "point file"        "Point File"
-            "xform list"        "Xform List"
-        }
-        parmtag { "usdvaluetype" "token" }
-    }
-    parm {
-        name    "xn__moonrayinstance_level_control_cob"
-        label   "moonray:instance_level"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayinstance_level_bbb"
-        label   "Instance Level"
-        type    string
-        default { "instance level 0" }
-        help    "Level of this instance.  This level can be referenced in TransformSpaceMap to allow for transforming data to/from the local space of each instance this instancer produces."
-        disablewhen "{ xn__moonrayinstance_level_control_cob == block } { xn__moonrayinstance_level_control_cob == none }"
-        menu {
-            "instance level 0"  "Instance Level 0"
-            "instance level 1"  "Instance Level 1"
-            "instance level 2"  "Instance Level 2"
-            "instance level 3"  "Instance Level 3"
-            "instance level 4"  "Instance Level 4"
-        }
-        parmtag { "usdvaluetype" "token" }
-    }
-    parm {
-        name    "xn__moonrayref_indices_control_gjb"
-        label   "moonray:ref_indices"
+        name    "xn__moonrayvertices_by_index_control_7sb"
+        label   "moonray:vertices_by_index"
         type    string
         default { "none" }
         menujoin {
@@ -504,26 +450,26 @@
         }
     }
     multiparm {
-        name    "ref_indices"
-        label    "Ref Indices"
+        name    "vertices_by_index"
+        label    "Vertices By Index"
         default 0
-        disablewhen "{ xn__moonrayref_indices_control_gjb == block } { xn__moonrayref_indices_control_gjb == none }"
+        disablewhen "{ xn__moonrayvertices_by_index_control_7sb == block } { xn__moonrayvertices_by_index_control_7sb == none }"
         parmtag { "usdvaluetype" "int[]" }
 
         parm {
-            name    "xn__moonrayref_indices_f5a#"
-            label   "Ref Indices"
+            name    "xn__moonrayvertices_by_index_6fb#"
+            label   "Vertices By Index"
             type    integer
             default { "0" }
-            help    "A list of index values to specify entry of \"reference\" per instance. The length should be either 0 or consistent with \"positions\"|\"xform_list\". The index entry falls back to 0 when this attribute is empty or the value of entry is out of index range"
+            help    "Ordered list of vertex indices used to construct the mesh using the vertex list"
             range   { 0 10 }
             parmtag { "moonray::is_parm" "1" }
         }
     }
 
     parm {
-        name    "xn__moonraydisable_indices_control_ypb"
-        label   "moonray:disable_indices"
+        name    "xn__moonrayface_vertex_count_control_7sb"
+        label   "moonray:face_vertex_count"
         type    string
         default { "none" }
         menujoin {
@@ -534,18 +480,375 @@
         }
     }
     multiparm {
-        name    "disable_indices"
-        label    "Disable Indices"
+        name    "face_vertex_count"
+        label    "Face Vertex Count"
         default 0
-        disablewhen "{ xn__moonraydisable_indices_control_ypb == block } { xn__moonraydisable_indices_control_ypb == none }"
+        disablewhen "{ xn__moonrayface_vertex_count_control_7sb == block } { xn__moonrayface_vertex_count_control_7sb == none }"
         parmtag { "usdvaluetype" "int[]" }
 
         parm {
-            name    "xn__moonraydisable_indices_xcb#"
-            label   "Disable Indices"
+            name    "xn__moonrayface_vertex_count_6fb#"
+            label   "Face Vertex Count"
             type    integer
             default { "0" }
-            help    "A list of index values to hide / disable. For example, with 4 instances you can supply a list of 0, 2 to disable those instances. If an index in this list is out of range, it is ignored."
+            help    "Ordered list of vertices per face, used in conjection with vertices by index to construct the mesh"
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayorientation_control_gjb"
+        label   "moonray:orientation"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayorientation_f5a"
+        label   "Orientation"
+        type    string
+        default { "right-handed" }
+        help    "When set to \"left-handed\", normals are generated using the left-handed rule. This reverses the direction of generated normals, and which side of surfaces is considered the front, without affecting supplied normals."
+        disablewhen "{ xn__moonrayorientation_control_gjb == block } { xn__moonrayorientation_control_gjb == none }"
+        menu {
+            "right-handed"  "Right-Handed"
+            "left-handed"   "Left-Handed"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraypart_list_control_6fb"
+        label   "moonray:part_list"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "part_list"
+        label    "Part List"
+        default 0
+        disablewhen "{ xn__moonraypart_list_control_6fb == block } { xn__moonraypart_list_control_6fb == none }"
+        parmtag { "usdvaluetype" "string[]" }
+
+        parm {
+            name    "xn__moonraypart_list_51a#"
+            label   "Part List"
+            type    string
+            default { "" }
+            help    "Ordered list of part names, used in conjunction with 'part face count list' and 'part faces indicies' to assign per-part materials"
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraypart_face_count_list_control_3xb"
+        label   "moonray:part_face_count_list"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "part_face_count_list"
+        label    "Part Face Count List"
+        default 0
+        disablewhen "{ xn__moonraypart_face_count_list_control_3xb == block } { xn__moonraypart_face_count_list_control_3xb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__moonraypart_face_count_list_2kb#"
+            label   "Part Face Count List"
+            type    integer
+            default { "0" }
+            help    "The number of faces belonging to the part with corresponding index in 'part list'."
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraypart_face_indices_control_7sb"
+        label   "moonray:part_face_indices"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "part_face_indices"
+        label    "Part Face Indices"
+        default 0
+        disablewhen "{ xn__moonraypart_face_indices_control_7sb == block } { xn__moonraypart_face_indices_control_7sb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__moonraypart_face_indices_6fb#"
+            label   "Part Face Indices"
+            type    integer
+            default { "0" }
+            help    "Ordered list of face indices. No index should have a value greater than the size of 'face vertex count'"
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonrayvelocity_scale_control_cob"
+        label   "moonray:velocity_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvelocity_scale_bbb"
+        label   "Velocity Scale"
+        type    float
+        default { "1" }
+        help    "Adjust magnitude of velocity-based motion blur"
+        disablewhen "{ xn__moonrayvelocity_scale_control_cob == block } { xn__moonrayvelocity_scale_control_cob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayis_subd_control_xcb"
+        label   "moonray:is_subd"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayis_subd_wya"
+        label   "Is Subd"
+        type    toggle
+        default { "1" }
+        help    "If true, a SubdivisionMesh primitive will be created - PolygonMesh otherwise"
+        disablewhen "{ xn__moonrayis_subd_control_xcb == block } { xn__moonrayis_subd_control_xcb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonraysubd_scheme_control_gjb"
+        label   "moonray:subd_scheme"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraysubd_scheme_f5a"
+        label   "Subd Scheme"
+        type    string
+        default { "catclark" }
+        help    "CatClark or Bilinear"
+        disablewhen "{ xn__moonraysubd_scheme_control_gjb == block } { xn__moonraysubd_scheme_control_gjb == none }"
+        menu {
+            "bilinear"  "Bilinear"
+            "catclark"  "Catclark"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysubd_boundary_control_pmb"
+        label   "moonray:subd_boundary"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraysubd_boundary_o8a"
+        label   "Subd Boundary"
+        type    string
+        default { "edge and corner" }
+        help    "Boundary interpolation: Corners, Edges or None"
+        disablewhen "{ xn__moonraysubd_boundary_control_pmb == block } { xn__moonraysubd_boundary_control_pmb == none }"
+        menu {
+            "none"              "None"
+            "edge only"         "Edge Only"
+            "edge and corner"   "Edge And Corner"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysubd_fvar_linear_control_lrb"
+        label   "moonray:subd_fvar_linear"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraysubd_fvar_linear_keb"
+        label   "Subd Fvar Linear"
+        type    string
+        default { "corners only" }
+        help    "Face-varying linear interpolation: None, Corners Only, Corners Plus 1 or Plus 2 (RenderMan), Boundaries, or All"
+        disablewhen "{ xn__moonraysubd_fvar_linear_control_lrb == block } { xn__moonraysubd_fvar_linear_control_lrb == none }"
+        menu {
+            "none"          "None"
+            "corners only"  "Corners Only"
+            "corners plus1" "Corners Plus1"
+            "corners plus2" "Corners Plus2"
+            "boundaries"    "Boundaries"
+            "all"           "All"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysubd_crease_indices_control_hwb"
+        label   "moonray:subd_crease_indices"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "subd_crease_indices"
+        label    "Subd Crease Indices"
+        default 0
+        disablewhen "{ xn__moonraysubd_crease_indices_control_hwb == block } { xn__moonraysubd_crease_indices_control_hwb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__moonraysubd_crease_indices_gjb#"
+            label   "Subd Crease Indices"
+            type    integer
+            default { "0" }
+            help    "List of vertex index pairs for each crease edge with an assigned sharpness."
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraysubd_crease_sharpnesses_control_z2b"
+        label   "moonray:subd_crease_sharpnesses"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "subd_crease_sharpnesses"
+        label    "Subd Crease Sharpnesses"
+        default 0
+        disablewhen "{ xn__moonraysubd_crease_sharpnesses_control_z2b == block } { xn__moonraysubd_crease_sharpnesses_control_z2b == none }"
+        parmtag { "usdvaluetype" "float[]" }
+
+        parm {
+            name    "xn__moonraysubd_crease_sharpnesses_ypb#"
+            label   "Subd Crease Sharpnesses"
+            type    float
+            default { "0" }
+            help    "Sharpness value for each crease edge."
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraysubd_corner_indices_control_hwb"
+        label   "moonray:subd_corner_indices"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "subd_corner_indices"
+        label    "Subd Corner Indices"
+        default 0
+        disablewhen "{ xn__moonraysubd_corner_indices_control_hwb == block } { xn__moonraysubd_corner_indices_control_hwb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__moonraysubd_corner_indices_gjb#"
+            label   "Subd Corner Indices"
+            type    integer
+            default { "0" }
+            help    "List of indices for each corner vertex with an assigned sharpness."
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraysubd_corner_sharpnesses_control_z2b"
+        label   "moonray:subd_corner_sharpnesses"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "subd_corner_sharpnesses"
+        label    "Subd Corner Sharpnesses"
+        default 0
+        disablewhen "{ xn__moonraysubd_corner_sharpnesses_control_z2b == block } { xn__moonraysubd_corner_sharpnesses_control_z2b == none }"
+        parmtag { "usdvaluetype" "float[]" }
+
+        parm {
+            name    "xn__moonraysubd_corner_sharpnesses_ypb#"
+            label   "Subd Corner Sharpnesses"
+            type    float
+            default { "0" }
+            help    "Sharpness value for each corner vertex."
             range   { 0 10 }
             parmtag { "moonray::is_parm" "1" }
         }
@@ -575,15 +878,15 @@
             label   "Primitive Attributes"
             type    oppath
             default { "" }
-            help    "A list of UserData to specify arbitrary primitive attributes(For example, color or roughness multiplier) per -instance"
+            help    "Vector of UserData.Each key/value pair will be added as a primitive attribute of the mesh."
             parmtag { "moonray::is_parm" "1" }
             parmtag { "oprelative" "." }
         }
     }
 
     parm {
-        name    "xn__moonraypoint_file_control_thb"
-        label   "moonray:point_file"
+        name    "xn__moonraymesh_resolution_control_ypb"
+        label   "moonray:mesh_resolution"
         type    string
         default { "none" }
         menujoin {
@@ -594,39 +897,18 @@
         }
     }
     parm {
-        name    "xn__moonraypoint_file_s3a"
-        label   "Point File"
-        type    file
-        default { "" }
-        help    "Alembic file that contains points as instancing transform data."
-        disablewhen "{ method != \"point file\" } { xn__moonraypoint_file_control_thb == block } { xn__moonraypoint_file_control_thb == none }"
-        parmtag { "usdvaluetype" "asset" }
-    }
-    parm {
-        name    "xn__moonrayevaluation_frame_control_lrb"
-        label   "moonray:evaluation_frame"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayevaluation_frame_keb"
-        label   "Evaluation Frame"
+        name    "xn__moonraymesh_resolution_xcb"
+        label   "Mesh Resolution"
         type    float
-        default { "0" }
-        help    "Evaluate geometry at specified frame (relative) instead of SceneVariables frame."
-        disablewhen "{ xn__moonrayevaluation_frame_control_lrb == block } { xn__moonrayevaluation_frame_control_lrb == none }"
+        default { "2" }
+        help    "The maximum resolution to tessellate a mesh. An edge on input face will be tessellated to at most n segments when \"mesh resolution\" is set to n. If \"adaptive error\" is set to 0, every edge on input face will be uniformly tessellated to \"mesh resolution\". Otherwise renderer will adaptively tessellate mesh based on camera information"
+        disablewhen "{ xn__moonraymesh_resolution_control_ypb == block } { xn__moonraymesh_resolution_control_ypb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
     parm {
-        name    "xn__moonrayuse_rotational_motion_blur_control_v7b"
-        label   "moonray:use_rotational_motion_blur"
+        name    "xn__moonrayadaptive_error_control_cob"
+        label   "moonray:adaptive_error"
         type    string
         default { "none" }
         menujoin {
@@ -637,17 +919,39 @@
         }
     }
     parm {
-        name    "xn__moonrayuse_rotational_motion_blur_uub"
-        label   "Use Rotational Motion Blur"
+        name    "xn__moonrayadaptive_error_bbb"
+        label   "Adaptive Error"
+        type    float
+        default { "0" }
+        help    "the maximum allowable difference in pixels for subdivison mesh adaptive tessellation (each final tessellated edge won't be longer than n pixels if adaptive error is set to n).A value of 0 disables adaptive tessellation, reverting to uniform tessellation, which sometimes is more stable in animation.Adaptive tessellation is not supported for instances."
+        disablewhen "{ xn__moonrayadaptive_error_control_cob == block } { xn__moonrayadaptive_error_control_cob == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonraysmooth_normal_control_pmb"
+        label   "moonray:smooth_normal"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraysmooth_normal_o8a"
+        label   "Smooth Normal"
         type    toggle
         default { "1" }
-        help    "Only valid when using points file.  Uses point attibute 'w' vector quantity which specifies\n		    the angular speed of an object and the axis about which the object is rotating.\n		    The magnitude of the vector is the angle in radians per second. The direction of the\n		    angular velocity vector is perpendicular to the plane of rotation, with rotation specified\n		    by the right-hand rule."
-        disablewhen "{ method != \"point file\" } { xn__moonrayuse_rotational_motion_blur_control_v7b == block } { xn__moonrayuse_rotational_motion_blur_control_v7b == none }"
+        help    "generate smooth shading normal when rendering PolygonMesh and the mesh doesn't provide shading normal itself"
+        disablewhen "{ xn__moonraysmooth_normal_control_pmb == block } { xn__moonraysmooth_normal_control_pmb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
     parm {
-        name    "xn__moonrayuse_reference_xforms_control_3xb"
-        label   "moonray:use_reference_xforms"
+        name    "xn__moonrayuse_rotation_motion_blur_control_m4b"
+        label   "moonray:use_rotation_motion_blur"
         type    string
         default { "none" }
         menujoin {
@@ -658,17 +962,17 @@
         }
     }
     parm {
-        name    "xn__moonrayuse_reference_xforms_2kb"
-        label   "Use Reference Xforms"
+        name    "xn__moonrayuse_rotation_motion_blur_lrb"
+        label   "Use Rotation Motion Blur"
         type    toggle
         default { "0" }
-        help    "Transform the reference (prototype) geometry by it's node_xform parameter before applying the instance transform"
-        disablewhen "{ xn__moonrayuse_reference_xforms_control_3xb == block } { xn__moonrayuse_reference_xforms_control_3xb == none }"
+        help    "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation"
+        disablewhen "{ xn__moonrayuse_rotation_motion_blur_control_m4b == block } { xn__moonrayuse_rotation_motion_blur_control_m4b == none }"
         parmtag { "usdvaluetype" "bool" }
     }
     parm {
-        name    "xn__moonrayuse_reference_attributes_control_m4b"
-        label   "moonray:use_reference_attributes"
+        name    "xn__moonraymotion_blur_type_control_lrb"
+        label   "moonray:motion_blur_type"
         type    string
         default { "none" }
         menujoin {
@@ -679,12 +983,68 @@
         }
     }
     parm {
-        name    "xn__moonrayuse_reference_attributes_lrb"
-        label   "Use Reference Attributes"
-        type    toggle
-        default { "1" }
-        help    "Use the geometry attributes of the reference (prototype) instead of the ones on the InstanceGeometry.   Currently only works for shadow_ray_epsilon"
-        disablewhen "{ xn__moonrayuse_reference_attributes_control_m4b == block } { xn__moonrayuse_reference_attributes_control_m4b == none }"
-        parmtag { "usdvaluetype" "bool" }
+        name    "xn__moonraymotion_blur_type_keb"
+        label   "Motion Blur Type"
+        type    string
+        default { "best" }
+        help    "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n"
+        disablewhen "{ xn__moonraymotion_blur_type_control_lrb == block } { xn__moonraymotion_blur_type_control_lrb == none }"
+        menu {
+            "best"          "Best"
+            "static"        "Static"
+            "velocity"      "Velocity"
+            "frame delta"   "Frame Delta"
+            "acceleration"  "Acceleration"
+            "hermite"       "Hermite"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraycurved_motion_blur_sample_count_control_0gc"
+        label   "moonray:curved_motion_blur_sample_count"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonraycurved_motion_blur_sample_count_z2b"
+        label   "Curved Motion Blur Sample Count"
+        type    integer
+        default { "10" }
+        help    "Number of time samples generated along each curve when using curved motion blur"
+        disablewhen "{ xn__moonraycurved_motion_blur_sample_count_control_0gc == block } { xn__moonraycurved_motion_blur_sample_count_control_0gc == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__moonrayprimitive_attribute_frame_control_85b"
+        label   "moonray:primitive_attribute_frame"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayprimitive_attribute_frame_7sb"
+        label   "Primitive Attribute Frame"
+        type    string
+        default { "both motion steps" }
+        help    "Which frame(s) do we take the primitive attributes from?\n	O : first motion step\n	1 : second motion step\n	2 : both motion steps"
+        disablewhen "{ xn__moonrayprimitive_attribute_frame_control_85b == block } { xn__moonrayprimitive_attribute_frame_control_85b == none }"
+        menu {
+            "first motion step"     "First Motion Step"
+            "second motion step"    "Second Motion Step"
+            "both motion steps"     "Both Motion Steps"
+        }
+        parmtag { "usdvaluetype" "token" }
     }
 }

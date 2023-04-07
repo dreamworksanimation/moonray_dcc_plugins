@@ -454,13 +454,13 @@
         label   "Model"
         type    file
         default { "" }
-        help    "filename that points to a model .mm file"
+        help    "filename that points to a VDB file"
         disablewhen "{ xn__moonraymodel_control_o8a == block } { xn__moonraymodel_control_o8a == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
-        name    "xn__moonrayuse_render_parts_control_lrb"
-        label   "moonray:use_render_parts"
+        name    "xn__moonrayinterpolation_control_pmb"
+        label   "moonray:interpolation"
         type    string
         default { "none" }
         menujoin {
@@ -471,102 +471,22 @@
         }
     }
     parm {
-        name    "xn__moonrayuse_render_parts_keb"
-        label   "Use Render Parts"
-        type    toggle
-        default { "0" }
-        help    "use render parts when true or raw parts when false"
-        disablewhen "{ xn__moonrayuse_render_parts_control_lrb == block } { xn__moonrayuse_render_parts_control_lrb == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonraysubd_type_control_6fb"
-        label   "moonray:subd_type"
+        name    "xn__moonrayinterpolation_o8a"
+        label   "Interpolation"
         type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraysubd_type_51a"
-        label   "Subd Type"
-        type    string
-        default { "use mesh type" }
-        help    "Subdivision type for PolygonMesh/SubdivisionMesh in mm file.\n\"use mesh type\" will use the mesh scheme mm file specifies.\n\"force polygon mesh\" will always resolve to PolygonMesh.\n\"force subdivision mesh\" will always resolve to SubdivisionMesh.\n"
-        disablewhen "{ xn__moonraysubd_type_control_6fb == block } { xn__moonraysubd_type_control_6fb == none }"
+        default { "linear" }
+        help    "the voxel interpolation to use when sampling the volume data"
+        disablewhen "{ xn__moonrayinterpolation_control_pmb == block } { xn__moonrayinterpolation_control_pmb == none }"
         menu {
-            "use mesh type"             "Use Mesh Type"
-            "force polygon mesh"        "Force Polygon Mesh"
-            "force subdivision mesh"    "Force Subdivision Mesh"
+            "nearest neighbor"  "Nearest Neighbor"
+            "linear"            "Linear"
+            "quadratic"         "Quadratic"
         }
         parmtag { "usdvaluetype" "token" }
     }
     parm {
-        name    "xn__moonraypart_list_control_6fb"
-        label   "moonray:part_list"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    multiparm {
-        name    "part_list"
-        label    "Part List"
-        default 0
-        disablewhen "{ xn__moonraypart_list_control_6fb == block } { xn__moonraypart_list_control_6fb == none }"
-        parmtag { "usdvaluetype" "string[]" }
-
-        parm {
-            name    "xn__moonraypart_list_51a#"
-            label   "Part List"
-            type    string
-            default { "" }
-            help    "Ordered list of part names"
-            parmtag { "moonray::is_parm" "1" }
-        }
-    }
-
-    parm {
-        name    "xn__moonrayprimitive_attributes_control_3xb"
-        label   "moonray:primitive_attributes"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    multiparm {
-        name    "primitive_attributes"
-        label    "Primitive Attributes"
-        default 0
-        disablewhen "{ xn__moonrayprimitive_attributes_control_3xb == block } { xn__moonrayprimitive_attributes_control_3xb == none }"
-        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
-
-        parm {
-            name    "xn__moonrayprimitive_attributes_2kb#"
-            label   "Primitive Attributes"
-            type    oppath
-            default { "" }
-            help    "A list of UserData to specify arbitrary primitive attributes"
-            parmtag { "moonray::is_parm" "1" }
-            parmtag { "oprelative" "." }
-        }
-    }
-
-    parm {
-        name    "xn__moonraymesh_resolution_control_ypb"
-        label   "moonray:mesh_resolution"
+        name    "xn__moonraydensity_grid_control_2kb"
+        label   "moonray:density_grid"
         type    string
         default { "none" }
         menujoin {
@@ -577,133 +497,81 @@
         }
     }
     parm {
-        name    "xn__moonraymesh_resolution_xcb"
-        label   "Mesh Resolution"
+        name    "xn__moonraydensity_grid_16a"
+        label   "Density Grid"
+        type    string
+        default { "density" }
+        help    "The name of the density grid. If multiple grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"density[3]\". The index must be in [] brackets."
+        disablewhen "{ xn__moonraydensity_grid_control_2kb == block } { xn__moonraydensity_grid_control_2kb == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonrayemission_grid_control_pmb"
+        label   "moonray:emission_grid"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayemission_grid_o8a"
+        label   "Emission Grid"
+        type    string
+        default { "" }
+        help    "The name of the emission grid. If multiple grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"emission[3]\". The index must be in [] brackets."
+        disablewhen "{ xn__moonrayemission_grid_control_pmb == block } { xn__moonrayemission_grid_control_pmb == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonrayvelocity_grid_control_pmb"
+        label   "moonray:velocity_grid"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvelocity_grid_o8a"
+        label   "Velocity Grid"
+        type    string
+        default { "" }
+        help    "the name of vector grid representing the velocity field. Usually named \"v\" or \"vel\" in simulation export. If multiple velocity grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"v[3]\". The index must be in [] brackets. The index can be different from the index on the \"density_grid\"."
+        disablewhen "{ xn__moonrayvelocity_grid_control_pmb == block } { xn__moonrayvelocity_grid_control_pmb == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonrayvelocity_scale_control_cob"
+        label   "moonray:velocity_scale"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayvelocity_scale_bbb"
+        label   "Velocity Scale"
         type    float
-        default { "2" }
-        help    "The maximum resolution to tessellate a mesh. An edge on input face will be tessellated to at most n segments when \"mesh resolution\" is set to n. If \"adaptive error\" is set to 0, every edge on input face will be uniformly tessellated to \"mesh resolution\". Otherwise renderer will adaptively tessellate mesh based on camera information"
-        disablewhen "{ xn__moonraymesh_resolution_control_ypb == block } { xn__moonraymesh_resolution_control_ypb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonrayadaptive_error_control_cob"
-        label   "moonray:adaptive_error"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayadaptive_error_bbb"
-        label   "Adaptive Error"
-        type    float
-        default { "0" }
-        help    "the maximum allowable difference in pixels for subdivison mesh adaptive tessellation (each final tessellated edge won't be longer than n pixels if adaptive error is set to n).A value of 0 disables adaptive tessellation, reverting to uniform tessellation, which sometimes is more stable in animation.Adaptive tessellation is not supported for instances."
-        disablewhen "{ xn__moonrayadaptive_error_control_cob == block } { xn__moonrayadaptive_error_control_cob == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonraysmooth_normal_control_pmb"
-        label   "moonray:smooth_normal"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraysmooth_normal_o8a"
-        label   "Smooth Normal"
-        type    toggle
         default { "1" }
-        help    "generate smooth shading normal when rendering PolygonMesh and the mesh doesn't provide shading normal itself"
-        disablewhen "{ xn__moonraysmooth_normal_control_pmb == block } { xn__moonraysmooth_normal_control_pmb == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonrayuse_rotation_motion_blur_control_m4b"
-        label   "moonray:use_rotation_motion_blur"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayuse_rotation_motion_blur_lrb"
-        label   "Use Rotation Motion Blur"
-        type    toggle
-        default { "0" }
-        help    "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation"
-        disablewhen "{ xn__moonrayuse_rotation_motion_blur_control_m4b == block } { xn__moonrayuse_rotation_motion_blur_control_m4b == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonraymotion_blur_type_control_lrb"
-        label   "moonray:motion_blur_type"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraymotion_blur_type_keb"
-        label   "Motion Blur Type"
-        type    string
-        default { "best" }
-        help    "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n"
-        disablewhen "{ xn__moonraymotion_blur_type_control_lrb == block } { xn__moonraymotion_blur_type_control_lrb == none }"
-        menu {
-            "best"          "Best"
-            "static"        "Static"
-            "velocity"      "Velocity"
-            "frame delta"   "Frame Delta"
-            "acceleration"  "Acceleration"
-            "hermite"       "Hermite"
-        }
-        parmtag { "usdvaluetype" "token" }
-    }
-    parm {
-        name    "xn__moonraycurved_motion_blur_sample_count_control_0gc"
-        label   "moonray:curved_motion_blur_sample_count"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraycurved_motion_blur_sample_count_z2b"
-        label   "Curved Motion Blur Sample Count"
-        type    integer
-        default { "10" }
-        help    "Number of time samples generated along each curve when using curved motion blur"
-        disablewhen "{ xn__moonraycurved_motion_blur_sample_count_control_0gc == block } { xn__moonraycurved_motion_blur_sample_count_control_0gc == none }"
+        help    "A scale factor for the velocity field. A value of 0 disables motion blur."
+        disablewhen "{ xn__moonrayvelocity_scale_control_cob == block } { xn__moonrayvelocity_scale_control_cob == none }"
         range   { 0 10 }
-        parmtag { "usdvaluetype" "int" }
+        parmtag { "usdvaluetype" "float" }
     }
     parm {
-        name    "xn__moonrayprimitive_attribute_frame_control_85b"
-        label   "moonray:primitive_attribute_frame"
+        name    "xn__moonrayvelocity_sample_rate_control_3xb"
+        label   "moonray:velocity_sample_rate"
         type    string
         default { "none" }
         menujoin {
@@ -714,17 +582,35 @@
         }
     }
     parm {
-        name    "xn__moonrayprimitive_attribute_frame_7sb"
-        label   "Primitive Attribute Frame"
+        name    "xn__moonrayvelocity_sample_rate_2kb"
+        label   "Velocity Sample Rate"
+        type    float
+        default { "0.2" }
+        help    "the relative scale of input velocity grid resolution. Lower value has lower memory overhead and lower fidelity of motion blur effect, which is sometimes desired for artistic reasons"
+        disablewhen "{ xn__moonrayvelocity_sample_rate_control_3xb == block } { xn__moonrayvelocity_sample_rate_control_3xb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonrayemission_sample_rate_control_3xb"
+        label   "moonray:emission_sample_rate"
         type    string
-        default { "both motion steps" }
-        help    "Which frame(s) do we take the primitive attributes from?\n	O : first motion step\n	1 : second motion step\n	2 : both motion steps"
-        disablewhen "{ xn__moonrayprimitive_attribute_frame_control_85b == block } { xn__moonrayprimitive_attribute_frame_control_85b == none }"
-        menu {
-            "first motion step"     "First Motion Step"
-            "second motion step"    "Second Motion Step"
-            "both motion steps"     "Both Motion Steps"
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
         }
-        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonrayemission_sample_rate_2kb"
+        label   "Emission Sample Rate"
+        type    float
+        default { "1" }
+        help    "the relative scale of input emission grid resolution. Lower value has lower memory overhead and faster render time, with the cost of lower fidelity of emission shape and illumination"
+        disablewhen "{ xn__moonrayemission_sample_rate_control_3xb == block } { xn__moonrayemission_sample_rate_control_3xb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
     }
 }

@@ -2898,6 +2898,184 @@
             ]
         }
     }, 
+    "RodLightFilter": {
+        "moonray_type": "LightFilter", 
+        "moonray_name": "RodLightFilter", 
+        "folders_sorted": [
+            "Properties"
+        ], 
+        "parms": {
+            "on": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "on", 
+                "help": "Turns the light filter on/off", 
+                "moonray_type": "Bool", 
+                "houdini_label": "On", 
+                "moonray_name": "on", 
+                "order": 0
+            }, 
+            "density": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "density", 
+                "help": "fades the filter effect. 0=no effect (like having no filter), 1=full effect", 
+                "moonray_type": "Float", 
+                "houdini_label": "Density", 
+                "moonray_name": "density", 
+                "order": 9
+            }, 
+            "color": {
+                "default_value": [
+                    0.0, 
+                    0.0, 
+                    0.0
+                ], 
+                "houdini_name": "color", 
+                "help": "filter color. Scales the light within the volume. For each color channel, 0=full shadow, 1=no shadow", 
+                "moonray_type": "Rgb", 
+                "houdini_label": "Color", 
+                "moonray_name": "color", 
+                "order": 7
+            }, 
+            "invert": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "invert", 
+                "help": "swap application of filter from inside the volume to outside", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Invert", 
+                "moonray_name": "invert", 
+                "order": 10
+            }, 
+            "intensity": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "intensity", 
+                "help": "scalar for multiplying the color. 0=black 1=color", 
+                "moonray_type": "Float", 
+                "houdini_label": "Intensity", 
+                "moonray_name": "intensity", 
+                "order": 8
+            }, 
+            "ramp_in_distances": {
+                "default_value": [
+                    0.0, 
+                    1.0
+                ], 
+                "houdini_name": "ramp_in_distances", 
+                "help": "input distance for ramp control", 
+                "ramp_parm_type": "positions", 
+                "moonray_type": "FloatVector", 
+                "houdini_label": "Ramp In Distances", 
+                "moonray_name": "ramp_in_distances", 
+                "order": 11, 
+                "ramp_parm_name": "ramp"
+            }, 
+            "height": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "height", 
+                "help": "height of the base box (before radius and edge)", 
+                "moonray_type": "Float", 
+                "houdini_label": "Height", 
+                "moonray_name": "height", 
+                "order": 4
+            }, 
+            "width": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "width", 
+                "help": "width of the base box (before radius and edge)", 
+                "moonray_type": "Float", 
+                "houdini_label": "Width", 
+                "moonray_name": "width", 
+                "order": 2
+            }, 
+            "depth": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "depth", 
+                "help": "depth of the base box (before radius and edge)", 
+                "moonray_type": "Float", 
+                "houdini_label": "Depth", 
+                "moonray_name": "depth", 
+                "order": 3
+            }, 
+            "edge": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "edge", 
+                "help": "size of transition zone from the rounded box to the outside", 
+                "moonray_type": "Float", 
+                "houdini_label": "Edge", 
+                "moonray_name": "edge", 
+                "order": 6
+            }, 
+            "radius": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "radius", 
+                "help": "radius by which to expand the base box into a rounded box", 
+                "moonray_type": "Float", 
+                "houdini_label": "Radius", 
+                "moonray_name": "radius", 
+                "order": 5
+            }, 
+            "ramp_out_distances": {
+                "default_value": [
+                    0.0, 
+                    1.0
+                ], 
+                "houdini_name": "ramp_out_distances", 
+                "help": "remapped distances for ramp control", 
+                "ramp_parm_type": "values", 
+                "moonray_type": "FloatVector", 
+                "houdini_label": "Ramp Out Distances", 
+                "moonray_name": "ramp_out_distances", 
+                "order": 12, 
+                "ramp_parm_name": "ramp"
+            }, 
+            "ramp_interpolation_types": {
+                "default_value": [
+                    6, 
+                    6
+                ], 
+                "houdini_name": "ramp_interpolation_types", 
+                "help": "interpolation types for ramp control", 
+                "ramp_parm_type": "interpolation_types", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Ramp Interpolation Types", 
+                "moonray_name": "ramp_interpolation_types", 
+                "order": 13, 
+                "ramp_parm_name": "ramp"
+            }
+        }, 
+        "folders_with_parms": {
+            "Properties": [
+                "node_xform", 
+                "width", 
+                "depth", 
+                "height", 
+                "radius", 
+                "edge", 
+                "color", 
+                "intensity", 
+                "density", 
+                "invert", 
+                "ramp"
+            ]
+        }
+    }, 
     "Joint": {
         "moonray_type": "Joint", 
         "moonray_name": "Joint", 
@@ -12117,6 +12295,393 @@
             ]
         }
     }, 
+    "VdbGeometry": {
+        "moonray_type": "Geometry", 
+        "moonray_name": "VdbGeometry", 
+        "folders_sorted": [], 
+        "parms": {
+            "emission_grid": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "emission_grid", 
+                "help": "The name of the emission grid. If multiple grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"emission[3]\". The index must be in [] brackets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Emission Grid", 
+                "moonray_name": "emission_grid", 
+                "order": 24
+            }, 
+            "shadow_receiver_label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_receiver_label", 
+                "help": "Label used to associate Geometry objects into sets. Then, using the [\"shadow_exclusion_mappings\"] attribute, shadows from specified geometry parts can be suppressed from casting onto specified sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Receiver Label", 
+                "moonray_name": "shadow_receiver_label", 
+                "order": 17, 
+                "aliases": [
+                    "shadow receiver label"
+                ]
+            }, 
+            "ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "ray_epsilon", 
+                "help": "When a secondary ray is fired, anything within this distance of the intersection point will be ignored.  Instead, it is considered part of the current intersection's geometry.  If zero, an automatically calculated epsilon will be used.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Ray Epsilon", 
+                "moonray_name": "ray_epsilon", 
+                "order": 15, 
+                "aliases": [
+                    "ray epsilon"
+                ]
+            }, 
+            "visible_glossy_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_transmission", 
+                "help": "whether the geometry is visible in glossy transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Transmission", 
+                "moonray_name": "visible_glossy_transmission", 
+                "order": 11, 
+                "aliases": [
+                    "visible glossy transmission"
+                ]
+            }, 
+            "contains_camera": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "contains_camera", 
+                "help": "Specifies whether the geometry contains the camera and should be used for IOR tracking. This should not be changed by the user -- they should instead attach the relevant geometry to the camera, which will then flag this geometry.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Contains Camera", 
+                "moonray_name": "contains_camera", 
+                "order": 19
+            }, 
+            "visible_volume": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_volume", 
+                "help": "whether the geometry is visible in indirect volume rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Volume", 
+                "moonray_name": "visible_volume", 
+                "order": 14, 
+                "aliases": [
+                    "visible volume"
+                ]
+            }, 
+            "visible_in_camera": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_in_camera", 
+                "help": "whether the geometry is visible to camera rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible In Camera", 
+                "moonray_name": "visible_in_camera", 
+                "order": 6, 
+                "aliases": [
+                    "visible in camera"
+                ]
+            }, 
+            "emission_sample_rate": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "emission_sample_rate", 
+                "help": "the relative scale of input emission grid resolution. Lower value has lower memory overhead and faster render time, with the cost of lower fidelity of emission shape and illumination", 
+                "moonray_type": "Float", 
+                "houdini_label": "Emission Sample Rate", 
+                "moonray_name": "emission_sample_rate", 
+                "order": 28, 
+                "aliases": [
+                    "emission sample rate"
+                ]
+            }, 
+            "visible_diffuse_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_transmission", 
+                "help": "whether the geometry is visible in diffuse transmission", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Transmission", 
+                "moonray_name": "visible_diffuse_transmission", 
+                "order": 9, 
+                "aliases": [
+                    "visible diffuse transmission"
+                ]
+            }, 
+            "velocity_grid": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "velocity_grid", 
+                "help": "the name of vector grid representing the velocity field. Usually named \"v\" or \"vel\" in simulation export. If multiple velocity grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"v[3]\". The index must be in [] brackets. The index can be different from the index on the \"density_grid\".", 
+                "moonray_type": "String", 
+                "houdini_label": "Velocity Grid", 
+                "moonray_name": "velocity_grid", 
+                "order": 25, 
+                "aliases": [
+                    "velocity grid"
+                ]
+            }, 
+            "visible_shadow": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_shadow", 
+                "help": "whether the geometry casts shadows", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Shadow", 
+                "moonray_name": "visible_shadow", 
+                "order": 7, 
+                "aliases": [
+                    "visible shadow"
+                ]
+            }, 
+            "label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "label", 
+                "help": "label used in material aov expresssions", 
+                "moonray_type": "String", 
+                "houdini_label": "Label", 
+                "moonray_name": "label", 
+                "order": 1
+            }, 
+            "side_type": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "side_type", 
+                "help": "set single sidedness of the mesh, will affect the visibility of the mesh based on normal direction", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "force two-sided", 
+                    "force single-sided", 
+                    "use mesh sidedness"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Side Type", 
+                "moonray_name": "side_type", 
+                "order": 4, 
+                "aliases": [
+                    "side type"
+                ]
+            }, 
+            "visible_mirror_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_transmission", 
+                "help": "whether the geometry is visible in miror transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Transmission", 
+                "moonray_name": "visible_mirror_transmission", 
+                "order": 13, 
+                "aliases": [
+                    "visible mirror transmission"
+                ]
+            }, 
+            "visible_diffuse_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_reflection", 
+                "help": "whether the geometry is visible in diffuse reflection", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Reflection", 
+                "moonray_name": "visible_diffuse_reflection", 
+                "order": 8, 
+                "aliases": [
+                    "visible diffuse reflection"
+                ]
+            }, 
+            "interpolation": {
+                "default_value": [
+                    1
+                ], 
+                "houdini_name": "interpolation", 
+                "help": "the voxel interpolation to use when sampling the volume data", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "nearest neighbor", 
+                    "linear", 
+                    "quadratic"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Interpolation", 
+                "moonray_name": "interpolation", 
+                "order": 22
+            }, 
+            "shadow_ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "shadow_ray_epsilon", 
+                "help": "When a shadow ray is fired, anything within this distance of the intersection point will be ignored.  If this value is less than \"ray_epsilon\", then it has no additional effect.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Shadow Ray Epsilon", 
+                "moonray_name": "shadow_ray_epsilon", 
+                "order": 16
+            }, 
+            "visible_mirror_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_reflection", 
+                "help": "whether the geometry is visible in miror reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Reflection", 
+                "moonray_name": "visible_mirror_reflection", 
+                "order": 12, 
+                "aliases": [
+                    "visible mirror reflection"
+                ]
+            }, 
+            "reverse_normals": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "reverse_normals", 
+                "help": "enable to reverse the normals in the geometry", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Reverse Normals", 
+                "moonray_name": "reverse_normals", 
+                "order": 5, 
+                "aliases": [
+                    "reverse normals"
+                ]
+            }, 
+            "velocity_scale": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "velocity_scale", 
+                "help": "A scale factor for the velocity field. A value of 0 disables motion blur.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Velocity Scale", 
+                "moonray_name": "velocity_scale", 
+                "order": 26, 
+                "aliases": [
+                    "velocity scale"
+                ]
+            }, 
+            "references": {
+                "default_value": [], 
+                "houdini_name": "references", 
+                "help": "list of geometries that geometry procedural can reference during procedural generate/update stages. For example, an instancer geometry procedural can instance primitives generated by the reference geometry procedural.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "References", 
+                "interface": "Geometry", 
+                "moonray_name": "references", 
+                "order": 2
+            }, 
+            "shadow_exclusion_mappings": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_exclusion_mappings", 
+                "help": "List of mappings of the form A:B where:\nA is a list of names of parts to be mapped, or asterisk to map the whole geometry\nB is a list of labels corresponding to the sets corresponding to distinct values of [\"shadow_receiver_label\"], or asterisk to map to all such sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Exclusion Mappings", 
+                "moonray_name": "shadow_exclusion_mappings", 
+                "order": 18, 
+                "aliases": [
+                    "shadow exclusion mappings"
+                ]
+            }, 
+            "velocity_sample_rate": {
+                "default_value": [
+                    0.2
+                ], 
+                "houdini_name": "velocity_sample_rate", 
+                "help": "the relative scale of input velocity grid resolution. Lower value has lower memory overhead and lower fidelity of motion blur effect, which is sometimes desired for artistic reasons", 
+                "moonray_type": "Float", 
+                "houdini_label": "Velocity Sample Rate", 
+                "moonray_name": "velocity_sample_rate", 
+                "order": 27, 
+                "aliases": [
+                    "velocity sample rate"
+                ]
+            }, 
+            "visible_glossy_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_reflection", 
+                "help": "whether the geometry is visible in glossy reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Reflection", 
+                "moonray_name": "visible_glossy_reflection", 
+                "order": 10, 
+                "aliases": [
+                    "visible glossy reflection"
+                ]
+            }, 
+            "dicing_camera": {
+                "default_value": [], 
+                "houdini_name": "dicing_camera", 
+                "moonray_type": "SceneObject*", 
+                "houdini_label": "Dicing Camera", 
+                "moonray_name": "dicing_camera", 
+                "order": 20
+            }, 
+            "static": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "static", 
+                "help": "disable if the geometry will be updated between frames", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Static", 
+                "moonray_name": "static", 
+                "order": 3
+            }, 
+            "model": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "model", 
+                "help": "filename that points to a VDB file", 
+                "is_filepath": true, 
+                "moonray_type": "String", 
+                "houdini_label": "Model", 
+                "moonray_name": "model", 
+                "order": 21
+            }, 
+            "density_grid": {
+                "default_value": [
+                    "density"
+                ], 
+                "houdini_name": "density_grid", 
+                "help": "The name of the density grid. If multiple grids have the same name, only the first grid with that name will be loaded. If a vdb file has multiple grids with the same name, you may use a suffix index to pick which grid to load, e.g. \"density[3]\". The index must be in [] brackets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Density Grid", 
+                "moonray_name": "density_grid", 
+                "order": 23
+            }
+        }, 
+        "folders_with_parms": {}
+    }, 
     "DomeMaster3DCamera": {
         "moonray_type": "Camera", 
         "moonray_name": "DomeMaster3DCamera", 
@@ -20768,6 +21333,480 @@
         }, 
         "folders_with_parms": {}
     }, 
+    "RdlPointGeometry": {
+        "moonray_type": "Geometry", 
+        "moonray_name": "RdlPointGeometry", 
+        "folders_sorted": [], 
+        "parms": {
+            "velocity_list_1": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_1", 
+                "help": "Optionally declare second set ofvertex velocities together with second motion step for cubic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 1", 
+                "moonray_name": "velocity_list_1", 
+                "order": 24
+            }, 
+            "shadow_receiver_label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_receiver_label", 
+                "help": "Label used to associate Geometry objects into sets. Then, using the [\"shadow_exclusion_mappings\"] attribute, shadows from specified geometry parts can be suppressed from casting onto specified sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Receiver Label", 
+                "moonray_name": "shadow_receiver_label", 
+                "order": 17, 
+                "aliases": [
+                    "shadow receiver label"
+                ]
+            }, 
+            "ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "ray_epsilon", 
+                "help": "When a secondary ray is fired, anything within this distance of the intersection point will be ignored.  Instead, it is considered part of the current intersection's geometry.  If zero, an automatically calculated epsilon will be used.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Ray Epsilon", 
+                "moonray_name": "ray_epsilon", 
+                "order": 15, 
+                "aliases": [
+                    "ray epsilon"
+                ]
+            }, 
+            "visible_glossy_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_transmission", 
+                "help": "whether the geometry is visible in glossy transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Transmission", 
+                "moonray_name": "visible_glossy_transmission", 
+                "order": 11, 
+                "aliases": [
+                    "visible glossy transmission"
+                ]
+            }, 
+            "contains_camera": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "contains_camera", 
+                "help": "Specifies whether the geometry contains the camera and should be used for IOR tracking. This should not be changed by the user -- they should instead attach the relevant geometry to the camera, which will then flag this geometry.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Contains Camera", 
+                "moonray_name": "contains_camera", 
+                "order": 19
+            }, 
+            "visible_volume": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_volume", 
+                "help": "whether the geometry is visible in indirect volume rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Volume", 
+                "moonray_name": "visible_volume", 
+                "order": 14, 
+                "aliases": [
+                    "visible volume"
+                ]
+            }, 
+            "velocity_list_0": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_0", 
+                "help": "Optionally declare vertex velocities instead of a second motion step'", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 0", 
+                "moonray_name": "velocity_list_0", 
+                "order": 23, 
+                "aliases": [
+                    "velocity_list", 
+                    "velocity list"
+                ]
+            }, 
+            "visible_in_camera": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_in_camera", 
+                "help": "whether the geometry is visible to camera rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible In Camera", 
+                "moonray_name": "visible_in_camera", 
+                "order": 6, 
+                "aliases": [
+                    "visible in camera"
+                ]
+            }, 
+            "radius_list": {
+                "default_value": [], 
+                "houdini_name": "radius_list", 
+                "help": "Stores all radii", 
+                "moonray_type": "FloatVector", 
+                "houdini_label": "Radius List", 
+                "moonray_name": "radius_list", 
+                "order": 26, 
+                "aliases": [
+                    "radius list"
+                ]
+            }, 
+            "visible_diffuse_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_transmission", 
+                "help": "whether the geometry is visible in diffuse transmission", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Transmission", 
+                "moonray_name": "visible_diffuse_transmission", 
+                "order": 9, 
+                "aliases": [
+                    "visible diffuse transmission"
+                ]
+            }, 
+            "accleration_list": {
+                "default_value": [], 
+                "houdini_name": "accleration_list", 
+                "help": "Optionally declare vertex accelerations for quadratic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Accleration List", 
+                "moonray_name": "accleration_list", 
+                "order": 25
+            }, 
+            "use_rotation_motion_blur": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "use_rotation_motion_blur", 
+                "help": "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Use Rotation Motion Blur", 
+                "moonray_name": "use_rotation_motion_blur", 
+                "order": 31, 
+                "aliases": [
+                    "use_rotation_motion_blur"
+                ]
+            }, 
+            "part_list": {
+                "default_value": [], 
+                "houdini_name": "part_list", 
+                "help": "Ordered list of part names, used in conjunction with 'part_indices' to assign per-part materials", 
+                "moonray_type": "StringVector", 
+                "houdini_label": "Part List", 
+                "moonray_name": "part_list", 
+                "order": 27, 
+                "aliases": [
+                    "part list"
+                ]
+            }, 
+            "visible_shadow": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_shadow", 
+                "help": "whether the geometry casts shadows", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Shadow", 
+                "moonray_name": "visible_shadow", 
+                "order": 7, 
+                "aliases": [
+                    "visible shadow"
+                ]
+            }, 
+            "label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "label", 
+                "help": "label used in material aov expresssions", 
+                "moonray_type": "String", 
+                "houdini_label": "Label", 
+                "moonray_name": "label", 
+                "order": 1
+            }, 
+            "side_type": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "side_type", 
+                "help": "set single sidedness of the mesh, will affect the visibility of the mesh based on normal direction", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "force two-sided", 
+                    "force single-sided", 
+                    "use mesh sidedness"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Side Type", 
+                "moonray_name": "side_type", 
+                "order": 4, 
+                "aliases": [
+                    "side type"
+                ]
+            }, 
+            "visible_mirror_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_transmission", 
+                "help": "whether the geometry is visible in miror transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Transmission", 
+                "moonray_name": "visible_mirror_transmission", 
+                "order": 13, 
+                "aliases": [
+                    "visible mirror transmission"
+                ]
+            }, 
+            "primitive_attribute_frame": {
+                "default_value": [
+                    2
+                ], 
+                "houdini_name": "primitive_attribute_frame", 
+                "help": "Which frame(s) do we take the primitive attributes from?\n\tO : first motion step\n\t1 : second motion step\n\t2 : both motion steps", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "first motion step", 
+                    "second motion step", 
+                    "both motion steps"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Primitive Attribute Frame", 
+                "moonray_name": "primitive_attribute_frame", 
+                "order": 34
+            }, 
+            "visible_diffuse_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_reflection", 
+                "help": "whether the geometry is visible in diffuse reflection", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Reflection", 
+                "moonray_name": "visible_diffuse_reflection", 
+                "order": 8, 
+                "aliases": [
+                    "visible diffuse reflection"
+                ]
+            }, 
+            "shadow_ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "shadow_ray_epsilon", 
+                "help": "When a shadow ray is fired, anything within this distance of the intersection point will be ignored.  If this value is less than \"ray_epsilon\", then it has no additional effect.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Shadow Ray Epsilon", 
+                "moonray_name": "shadow_ray_epsilon", 
+                "order": 16
+            }, 
+            "visible_mirror_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_reflection", 
+                "help": "whether the geometry is visible in miror reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Reflection", 
+                "moonray_name": "visible_mirror_reflection", 
+                "order": 12, 
+                "aliases": [
+                    "visible mirror reflection"
+                ]
+            }, 
+            "reverse_normals": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "reverse_normals", 
+                "help": "enable to reverse the normals in the geometry", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Reverse Normals", 
+                "moonray_name": "reverse_normals", 
+                "order": 5, 
+                "aliases": [
+                    "reverse normals"
+                ]
+            }, 
+            "part_indices": {
+                "default_value": [], 
+                "houdini_name": "part_indices", 
+                "help": "Ordered list of part indices. ", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Part Indices", 
+                "moonray_name": "part_indices", 
+                "order": 28, 
+                "aliases": [
+                    "part indices"
+                ]
+            }, 
+            "curved_motion_blur_sample_count": {
+                "default_value": [
+                    10
+                ], 
+                "houdini_name": "curved_motion_blur_sample_count", 
+                "help": "Number of time samples generated along each curve when using curved motion blur", 
+                "moonray_type": "Int", 
+                "houdini_label": "Curved Motion Blur Sample Count", 
+                "moonray_name": "curved_motion_blur_sample_count", 
+                "order": 33, 
+                "aliases": [
+                    "curved motion blur sample count"
+                ]
+            }, 
+            "vertex_list_1": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_1", 
+                "help": "If the points are in motion, the second motion step is stored in this attribute", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 1", 
+                "moonray_name": "vertex_list_1", 
+                "order": 22, 
+                "aliases": [
+                    "vertex_list_mb", 
+                    "vertex list mb"
+                ]
+            }, 
+            "vertex_list_0": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_0", 
+                "help": "Stores all vertices used by the points at motion step 0", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 0", 
+                "moonray_name": "vertex_list_0", 
+                "order": 21, 
+                "aliases": [
+                    "vertex_list", 
+                    "vertex list"
+                ]
+            }, 
+            "velocity_scale": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "velocity_scale", 
+                "help": "Adjust magnitude of velocity-based motion blur", 
+                "moonray_type": "Float", 
+                "houdini_label": "Velocity Scale", 
+                "moonray_name": "velocity_scale", 
+                "order": 29, 
+                "aliases": [
+                    "velocity scale"
+                ]
+            }, 
+            "references": {
+                "default_value": [], 
+                "houdini_name": "references", 
+                "help": "list of geometries that geometry procedural can reference during procedural generate/update stages. For example, an instancer geometry procedural can instance primitives generated by the reference geometry procedural.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "References", 
+                "interface": "Geometry", 
+                "moonray_name": "references", 
+                "order": 2
+            }, 
+            "shadow_exclusion_mappings": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_exclusion_mappings", 
+                "help": "List of mappings of the form A:B where:\nA is a list of names of parts to be mapped, or asterisk to map the whole geometry\nB is a list of labels corresponding to the sets corresponding to distinct values of [\"shadow_receiver_label\"], or asterisk to map to all such sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Exclusion Mappings", 
+                "moonray_name": "shadow_exclusion_mappings", 
+                "order": 18, 
+                "aliases": [
+                    "shadow exclusion mappings"
+                ]
+            }, 
+            "primitive_attributes": {
+                "default_value": [], 
+                "houdini_name": "primitive_attributes", 
+                "help": "Vector of UserData.Each key/value pair will be added as a primitive attribute of the points.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "Primitive Attributes", 
+                "moonray_name": "primitive_attributes", 
+                "order": 30, 
+                "aliases": [
+                    "primitive attributes"
+                ]
+            }, 
+            "visible_glossy_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_reflection", 
+                "help": "whether the geometry is visible in glossy reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Reflection", 
+                "moonray_name": "visible_glossy_reflection", 
+                "order": 10, 
+                "aliases": [
+                    "visible glossy reflection"
+                ]
+            }, 
+            "dicing_camera": {
+                "default_value": [], 
+                "houdini_name": "dicing_camera", 
+                "moonray_type": "SceneObject*", 
+                "houdini_label": "Dicing Camera", 
+                "moonray_name": "dicing_camera", 
+                "order": 20
+            }, 
+            "motion_blur_type": {
+                "default_value": [
+                    -1
+                ], 
+                "houdini_name": "motion_blur_type", 
+                "help": "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "best", 
+                    "static", 
+                    "velocity", 
+                    "frame delta", 
+                    "acceleration", 
+                    "hermite"
+                ], 
+                "menu_values": [
+                    "-1", 
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3", 
+                    "4"
+                ], 
+                "houdini_label": "Motion Blur Type", 
+                "moonray_name": "motion_blur_type", 
+                "order": 32, 
+                "aliases": [
+                    "motion blur type"
+                ]
+            }, 
+            "static": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "static", 
+                "help": "disable if the geometry will be updated between frames", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Static", 
+                "moonray_name": "static", 
+                "order": 3
+            }
+        }, 
+        "folders_with_parms": {}
+    }, 
     "LightSet": {
         "moonray_type": "LightSet", 
         "moonray_name": "LightSet", 
@@ -25853,12 +26892,12 @@
     "packages": {
         "moonshine_folio": "moonshine-9.48", 
         "moonshine_usd_folio": "moonshine_usd-9.48", 
-        "mcrt_dataio_folio": "mcrt_dataio-10.43", 
+        "mcrt_dataio_folio": "mcrt_dataio-11.6", 
         "moonray_folio": "moonray-12.48", 
         "mcrt_denoise_folio": "mcrt_denoise-1.28", 
-        "mcrt_messages_folio": "mcrt_messages-9.9", 
+        "mcrt_messages_folio": "mcrt_messages-10.4", 
         "scene_rdl2_folio": "scene_rdl2-10.42", 
-        "moonbase_proxies_folio": "moonbase_proxies-9.50"
+        "moonbase_proxies_folio": "moonbase_proxies-10.6"
     }, 
     "BakeCamera": {
         "moonray_type": "Camera", 
@@ -39623,6 +40662,737 @@
         }, 
         "folders_with_parms": {}
     }, 
+    "RdlMeshGeometry": {
+        "moonray_type": "Geometry", 
+        "moonray_name": "RdlMeshGeometry", 
+        "folders_sorted": [], 
+        "parms": {
+            "orientation": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "orientation", 
+                "help": "When set to \"left-handed\", normals are generated using the left-handed rule. This reverses the direction of generated normals, and which side of surfaces is considered the front, without affecting supplied normals.", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "right-handed", 
+                    "left-handed"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1"
+                ], 
+                "houdini_label": "Orientation", 
+                "moonray_name": "orientation", 
+                "order": 28
+            }, 
+            "velocity_list_1": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_1", 
+                "help": "Optionally declare second set ofvertex velocities together with second motion step for cubic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 1", 
+                "moonray_name": "velocity_list_1", 
+                "order": 25, 
+                "aliases": [
+                    "velocity list 1", 
+                    "velocity_list_B", 
+                    "velocity list B"
+                ]
+            }, 
+            "shadow_receiver_label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_receiver_label", 
+                "help": "Label used to associate Geometry objects into sets. Then, using the [\"shadow_exclusion_mappings\"] attribute, shadows from specified geometry parts can be suppressed from casting onto specified sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Receiver Label", 
+                "moonray_name": "shadow_receiver_label", 
+                "order": 17, 
+                "aliases": [
+                    "shadow receiver label"
+                ]
+            }, 
+            "ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "ray_epsilon", 
+                "help": "When a secondary ray is fired, anything within this distance of the intersection point will be ignored.  Instead, it is considered part of the current intersection's geometry.  If zero, an automatically calculated epsilon will be used.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Ray Epsilon", 
+                "moonray_name": "ray_epsilon", 
+                "order": 15, 
+                "aliases": [
+                    "ray epsilon"
+                ]
+            }, 
+            "visible_glossy_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_transmission", 
+                "help": "whether the geometry is visible in glossy transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Transmission", 
+                "moonray_name": "visible_glossy_transmission", 
+                "order": 11, 
+                "aliases": [
+                    "visible glossy transmission"
+                ]
+            }, 
+            "contains_camera": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "contains_camera", 
+                "help": "Specifies whether the geometry contains the camera and should be used for IOR tracking. This should not be changed by the user -- they should instead attach the relevant geometry to the camera, which will then flag this geometry.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Contains Camera", 
+                "moonray_name": "contains_camera", 
+                "order": 19
+            }, 
+            "visible_volume": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_volume", 
+                "help": "whether the geometry is visible in indirect volume rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Volume", 
+                "moonray_name": "visible_volume", 
+                "order": 14, 
+                "aliases": [
+                    "visible volume"
+                ]
+            }, 
+            "velocity_list_0": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_0", 
+                "help": "Optionally declare vertex velocities instead of a second motion step'", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 0", 
+                "moonray_name": "velocity_list_0", 
+                "order": 24, 
+                "aliases": [
+                    "velocity list 0", 
+                    "velocity_list", 
+                    "velocity list"
+                ]
+            }, 
+            "visible_in_camera": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_in_camera", 
+                "help": "whether the geometry is visible to camera rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible In Camera", 
+                "moonray_name": "visible_in_camera", 
+                "order": 6, 
+                "aliases": [
+                    "visible in camera"
+                ]
+            }, 
+            "subd_corner_sharpnesses": {
+                "default_value": [], 
+                "houdini_name": "subd_corner_sharpnesses", 
+                "help": "Sharpness value for each corner vertex.", 
+                "moonray_type": "FloatVector", 
+                "houdini_label": "Subd Corner Sharpnesses", 
+                "moonray_name": "subd_corner_sharpnesses", 
+                "order": 42, 
+                "aliases": [
+                    "subd corner sharpnesses"
+                ]
+            }, 
+            "normal_list": {
+                "default_value": [], 
+                "houdini_name": "normal_list", 
+                "help": " If the mesh is using normals, store them per-face-vertex in this list", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Normal List", 
+                "moonray_name": "normal_list", 
+                "order": 33, 
+                "aliases": [
+                    "normal list"
+                ]
+            }, 
+            "subd_boundary": {
+                "default_value": [
+                    2
+                ], 
+                "houdini_name": "subd_boundary", 
+                "help": "Boundary interpolation: Corners, Edges or None", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "none", 
+                    "edge only", 
+                    "edge and corner"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Subd Boundary", 
+                "moonray_name": "subd_boundary", 
+                "order": 37, 
+                "aliases": [
+                    "subd boundary"
+                ]
+            }, 
+            "visible_diffuse_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_transmission", 
+                "help": "whether the geometry is visible in diffuse transmission", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Transmission", 
+                "moonray_name": "visible_diffuse_transmission", 
+                "order": 9, 
+                "aliases": [
+                    "visible diffuse transmission"
+                ]
+            }, 
+            "accleration_list": {
+                "default_value": [], 
+                "houdini_name": "accleration_list", 
+                "help": "Optionally declare vertex accelerations for quadratic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Accleration List", 
+                "moonray_name": "accleration_list", 
+                "order": 26, 
+                "aliases": [
+                    "acceleration list"
+                ]
+            }, 
+            "subd_crease_sharpnesses": {
+                "default_value": [], 
+                "houdini_name": "subd_crease_sharpnesses", 
+                "help": "Sharpness value for each crease edge.", 
+                "moonray_type": "FloatVector", 
+                "houdini_label": "Subd Crease Sharpnesses", 
+                "moonray_name": "subd_crease_sharpnesses", 
+                "order": 40, 
+                "aliases": [
+                    "subd crease sharpnesses"
+                ]
+            }, 
+            "part_face_count_list": {
+                "default_value": [], 
+                "houdini_name": "part_face_count_list", 
+                "help": "The number of faces belonging to the part with corresponding index in 'part list'.", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Part Face Count List", 
+                "moonray_name": "part_face_count_list", 
+                "order": 30, 
+                "aliases": [
+                    "part face count list"
+                ]
+            }, 
+            "use_rotation_motion_blur": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "use_rotation_motion_blur", 
+                "help": "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Use Rotation Motion Blur", 
+                "moonray_name": "use_rotation_motion_blur", 
+                "order": 47, 
+                "aliases": [
+                    "use_rotation_motion_blur"
+                ]
+            }, 
+            "part_list": {
+                "default_value": [], 
+                "houdini_name": "part_list", 
+                "help": "Ordered list of part names, used in conjunction with 'part face count list' and 'part faces indicies' to assign per-part materials", 
+                "moonray_type": "StringVector", 
+                "houdini_label": "Part List", 
+                "moonray_name": "part_list", 
+                "order": 29, 
+                "aliases": [
+                    "part list"
+                ]
+            }, 
+            "visible_shadow": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_shadow", 
+                "help": "whether the geometry casts shadows", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Shadow", 
+                "moonray_name": "visible_shadow", 
+                "order": 7, 
+                "aliases": [
+                    "visible shadow"
+                ]
+            }, 
+            "label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "label", 
+                "help": "label used in material aov expresssions", 
+                "moonray_type": "String", 
+                "houdini_label": "Label", 
+                "moonray_name": "label", 
+                "order": 1
+            }, 
+            "subd_corner_indices": {
+                "default_value": [], 
+                "houdini_name": "subd_corner_indices", 
+                "help": "List of indices for each corner vertex with an assigned sharpness.", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Subd Corner Indices", 
+                "moonray_name": "subd_corner_indices", 
+                "order": 41, 
+                "aliases": [
+                    "subd corner indices"
+                ]
+            }, 
+            "side_type": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "side_type", 
+                "help": "set single sidedness of the mesh, will affect the visibility of the mesh based on normal direction", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "force two-sided", 
+                    "force single-sided", 
+                    "use mesh sidedness"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Side Type", 
+                "moonray_name": "side_type", 
+                "order": 4, 
+                "aliases": [
+                    "side type"
+                ]
+            }, 
+            "part_face_indices": {
+                "default_value": [], 
+                "houdini_name": "part_face_indices", 
+                "help": "Ordered list of face indices. No index should have a value greater than the size of 'face vertex count'", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Part Face Indices", 
+                "moonray_name": "part_face_indices", 
+                "order": 31, 
+                "aliases": [
+                    "part face indices"
+                ]
+            }, 
+            "visible_mirror_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_transmission", 
+                "help": "whether the geometry is visible in miror transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Transmission", 
+                "moonray_name": "visible_mirror_transmission", 
+                "order": 13, 
+                "aliases": [
+                    "visible mirror transmission"
+                ]
+            }, 
+            "primitive_attribute_frame": {
+                "default_value": [
+                    2
+                ], 
+                "houdini_name": "primitive_attribute_frame", 
+                "help": "Which frame(s) do we take the primitive attributes from?\n\tO : first motion step\n\t1 : second motion step\n\t2 : both motion steps", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "first motion step", 
+                    "second motion step", 
+                    "both motion steps"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Primitive Attribute Frame", 
+                "moonray_name": "primitive_attribute_frame", 
+                "order": 50
+            }, 
+            "visible_diffuse_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_reflection", 
+                "help": "whether the geometry is visible in diffuse reflection", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Reflection", 
+                "moonray_name": "visible_diffuse_reflection", 
+                "order": 8, 
+                "aliases": [
+                    "visible diffuse reflection"
+                ]
+            }, 
+            "shadow_ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "shadow_ray_epsilon", 
+                "help": "When a shadow ray is fired, anything within this distance of the intersection point will be ignored.  If this value is less than \"ray_epsilon\", then it has no additional effect.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Shadow Ray Epsilon", 
+                "moonray_name": "shadow_ray_epsilon", 
+                "order": 16
+            }, 
+            "visible_mirror_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_reflection", 
+                "help": "whether the geometry is visible in miror reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Reflection", 
+                "moonray_name": "visible_mirror_reflection", 
+                "order": 12, 
+                "aliases": [
+                    "visible mirror reflection"
+                ]
+            }, 
+            "is_subd": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "is_subd", 
+                "help": "If true, a SubdivisionMesh primitive will be created - PolygonMesh otherwise", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Is Subd", 
+                "moonray_name": "is_subd", 
+                "order": 35, 
+                "aliases": [
+                    "is subd"
+                ]
+            }, 
+            "primitive_attributes": {
+                "default_value": [], 
+                "houdini_name": "primitive_attributes", 
+                "help": "Vector of UserData.Each key/value pair will be added as a primitive attribute of the mesh.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "Primitive Attributes", 
+                "moonray_name": "primitive_attributes", 
+                "order": 43, 
+                "aliases": [
+                    "primitive attributes"
+                ]
+            }, 
+            "reverse_normals": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "reverse_normals", 
+                "help": "enable to reverse the normals in the geometry", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Reverse Normals", 
+                "moonray_name": "reverse_normals", 
+                "order": 5, 
+                "aliases": [
+                    "reverse normals"
+                ]
+            }, 
+            "mesh_resolution": {
+                "default_value": [
+                    2.0
+                ], 
+                "houdini_name": "mesh_resolution", 
+                "help": "The maximum resolution to tessellate a mesh. An edge on input face will be tessellated to at most n segments when \"mesh resolution\" is set to n. If \"adaptive error\" is set to 0, every edge on input face will be uniformly tessellated to \"mesh resolution\". Otherwise renderer will adaptively tessellate mesh based on camera information", 
+                "moonray_type": "Float", 
+                "houdini_label": "Mesh Resolution", 
+                "moonray_name": "mesh_resolution", 
+                "order": 44, 
+                "aliases": [
+                    "resolution factor", 
+                    "subd resolution", 
+                    "subd_resolution"
+                ]
+            }, 
+            "face_vertex_count": {
+                "default_value": [], 
+                "houdini_name": "face_vertex_count", 
+                "help": "Ordered list of vertices per face, used in conjection with vertices by index to construct the mesh", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Face Vertex Count", 
+                "moonray_name": "face_vertex_count", 
+                "order": 27, 
+                "aliases": [
+                    "face vertex count"
+                ]
+            }, 
+            "curved_motion_blur_sample_count": {
+                "default_value": [
+                    10
+                ], 
+                "houdini_name": "curved_motion_blur_sample_count", 
+                "help": "Number of time samples generated along each curve when using curved motion blur", 
+                "moonray_type": "Int", 
+                "houdini_label": "Curved Motion Blur Sample Count", 
+                "moonray_name": "curved_motion_blur_sample_count", 
+                "order": 49, 
+                "aliases": [
+                    "curved motion blur sample count"
+                ]
+            }, 
+            "adaptive_error": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "adaptive_error", 
+                "help": "the maximum allowable difference in pixels for subdivison mesh adaptive tessellation (each final tessellated edge won't be longer than n pixels if adaptive error is set to n).A value of 0 disables adaptive tessellation, reverting to uniform tessellation, which sometimes is more stable in animation.Adaptive tessellation is not supported for instances.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Adaptive Error", 
+                "moonray_name": "adaptive_error", 
+                "order": 45, 
+                "aliases": [
+                    "adaptive error"
+                ]
+            }, 
+            "vertex_list_1": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_1", 
+                "help": "If the mesh is in motion, the second motion step is stored in this attribute", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 1", 
+                "moonray_name": "vertex_list_1", 
+                "order": 23, 
+                "aliases": [
+                    "vertex list 1", 
+                    "vertex_list_mb", 
+                    "vertex list mb"
+                ]
+            }, 
+            "vertex_list_0": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_0", 
+                "help": "Stores all vertices used by the mesh at motion step 0", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 0", 
+                "moonray_name": "vertex_list_0", 
+                "order": 22, 
+                "aliases": [
+                    "vertex list 0", 
+                    "vertex_list", 
+                    "vertex list"
+                ]
+            }, 
+            "velocity_scale": {
+                "default_value": [
+                    1.0
+                ], 
+                "houdini_name": "velocity_scale", 
+                "help": "Adjust magnitude of velocity-based motion blur", 
+                "moonray_type": "Float", 
+                "houdini_label": "Velocity Scale", 
+                "moonray_name": "velocity_scale", 
+                "order": 34, 
+                "aliases": [
+                    "velocity scale"
+                ]
+            }, 
+            "references": {
+                "default_value": [], 
+                "houdini_name": "references", 
+                "help": "list of geometries that geometry procedural can reference during procedural generate/update stages. For example, an instancer geometry procedural can instance primitives generated by the reference geometry procedural.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "References", 
+                "interface": "Geometry", 
+                "moonray_name": "references", 
+                "order": 2
+            }, 
+            "subd_scheme": {
+                "default_value": [
+                    1
+                ], 
+                "houdini_name": "subd_scheme", 
+                "help": "CatClark or Bilinear", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "bilinear", 
+                    "catclark"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1"
+                ], 
+                "houdini_label": "Subd Scheme", 
+                "moonray_name": "subd_scheme", 
+                "order": 36, 
+                "aliases": [
+                    "subd scheme"
+                ]
+            }, 
+            "shadow_exclusion_mappings": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_exclusion_mappings", 
+                "help": "List of mappings of the form A:B where:\nA is a list of names of parts to be mapped, or asterisk to map the whole geometry\nB is a list of labels corresponding to the sets corresponding to distinct values of [\"shadow_receiver_label\"], or asterisk to map to all such sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Exclusion Mappings", 
+                "moonray_name": "shadow_exclusion_mappings", 
+                "order": 18, 
+                "aliases": [
+                    "shadow exclusion mappings"
+                ]
+            }, 
+            "subd_crease_indices": {
+                "default_value": [], 
+                "houdini_name": "subd_crease_indices", 
+                "help": "List of vertex index pairs for each crease edge with an assigned sharpness.", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Subd Crease Indices", 
+                "moonray_name": "subd_crease_indices", 
+                "order": 39, 
+                "aliases": [
+                    "subd crease indices"
+                ]
+            }, 
+            "vertices_by_index": {
+                "default_value": [], 
+                "houdini_name": "vertices_by_index", 
+                "help": "Ordered list of vertex indices used to construct the mesh using the vertex list", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Vertices By Index", 
+                "moonray_name": "vertices_by_index", 
+                "order": 21, 
+                "aliases": [
+                    "vertices by index"
+                ]
+            }, 
+            "subd_fvar_linear": {
+                "default_value": [
+                    1
+                ], 
+                "houdini_name": "subd_fvar_linear", 
+                "help": "Face-varying linear interpolation: None, Corners Only, Corners Plus 1 or Plus 2 (RenderMan), Boundaries, or All", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "none", 
+                    "corners only", 
+                    "corners plus1", 
+                    "corners plus2", 
+                    "boundaries", 
+                    "all"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3", 
+                    "4", 
+                    "5"
+                ], 
+                "houdini_label": "Subd Fvar Linear", 
+                "moonray_name": "subd_fvar_linear", 
+                "order": 38, 
+                "aliases": [
+                    "subd fvar linear"
+                ]
+            }, 
+            "smooth_normal": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "smooth_normal", 
+                "help": "generate smooth shading normal when rendering PolygonMesh and the mesh doesn't provide shading normal itself", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Smooth Normal", 
+                "moonray_name": "smooth_normal", 
+                "order": 46
+            }, 
+            "uv_list": {
+                "default_value": [], 
+                "houdini_name": "uv_list", 
+                "help": "If the mesh is using UVs, store them per-face-vertex in this list", 
+                "moonray_type": "Vec2fVector", 
+                "houdini_label": "Uv List", 
+                "moonray_name": "uv_list", 
+                "order": 32, 
+                "aliases": [
+                    "uv list"
+                ]
+            }, 
+            "visible_glossy_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_reflection", 
+                "help": "whether the geometry is visible in glossy reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Reflection", 
+                "moonray_name": "visible_glossy_reflection", 
+                "order": 10, 
+                "aliases": [
+                    "visible glossy reflection"
+                ]
+            }, 
+            "dicing_camera": {
+                "default_value": [], 
+                "houdini_name": "dicing_camera", 
+                "moonray_type": "SceneObject*", 
+                "houdini_label": "Dicing Camera", 
+                "moonray_name": "dicing_camera", 
+                "order": 20
+            }, 
+            "motion_blur_type": {
+                "default_value": [
+                    -1
+                ], 
+                "houdini_name": "motion_blur_type", 
+                "help": "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "best", 
+                    "static", 
+                    "velocity", 
+                    "frame delta", 
+                    "acceleration", 
+                    "hermite"
+                ], 
+                "menu_values": [
+                    "-1", 
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3", 
+                    "4"
+                ], 
+                "houdini_label": "Motion Blur Type", 
+                "moonray_name": "motion_blur_type", 
+                "order": 48, 
+                "aliases": [
+                    "motion blur type"
+                ]
+            }, 
+            "static": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "static", 
+                "help": "disable if the geometry will be updated between frames", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Static", 
+                "moonray_name": "static", 
+                "order": 3
+            }
+        }, 
+        "folders_with_parms": {}
+    }, 
     "ColorRampLightFilter": {
         "moonray_type": "LightFilter", 
         "moonray_name": "ColorRampLightFilter", 
@@ -39801,181 +41571,534 @@
             ]
         }
     }, 
-    "RodLightFilter": {
-        "moonray_type": "LightFilter", 
-        "moonray_name": "RodLightFilter", 
+    "RdlCurveGeometry": {
+        "moonray_type": "Geometry", 
+        "moonray_name": "RdlCurveGeometry", 
         "folders_sorted": [
-            "Properties"
+            "Curve"
         ], 
         "parms": {
-            "on": {
+            "tessellation_rate": {
+                "default_value": [
+                    4
+                ], 
+                "houdini_name": "tessellation_rate", 
+                "help": "Number of segments to split curve spans into", 
+                "moonray_type": "Int", 
+                "houdini_label": "Tessellation Rate", 
+                "moonray_name": "tessellation_rate", 
+                "order": 35
+            }, 
+            "velocity_list_1": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_1", 
+                "help": "Optionally declare second set ofvertex velocities together with second motion step for cubic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 1", 
+                "moonray_name": "velocity_list_1", 
+                "order": 24
+            }, 
+            "shadow_receiver_label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "shadow_receiver_label", 
+                "help": "Label used to associate Geometry objects into sets. Then, using the [\"shadow_exclusion_mappings\"] attribute, shadows from specified geometry parts can be suppressed from casting onto specified sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Receiver Label", 
+                "moonray_name": "shadow_receiver_label", 
+                "order": 17, 
+                "aliases": [
+                    "shadow receiver label"
+                ]
+            }, 
+            "ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "ray_epsilon", 
+                "help": "When a secondary ray is fired, anything within this distance of the intersection point will be ignored.  Instead, it is considered part of the current intersection's geometry.  If zero, an automatically calculated epsilon will be used.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Ray Epsilon", 
+                "moonray_name": "ray_epsilon", 
+                "order": 15, 
+                "aliases": [
+                    "ray epsilon"
+                ]
+            }, 
+            "visible_glossy_transmission": {
                 "default_value": [
                     true
                 ], 
-                "houdini_name": "on", 
-                "help": "Turns the light filter on/off", 
+                "houdini_name": "visible_glossy_transmission", 
+                "help": "whether the geometry is visible in glossy transmission (refraction).", 
                 "moonray_type": "Bool", 
-                "houdini_label": "On", 
-                "moonray_name": "on", 
-                "order": 0
+                "houdini_label": "Visible Glossy Transmission", 
+                "moonray_name": "visible_glossy_transmission", 
+                "order": 11, 
+                "aliases": [
+                    "visible glossy transmission"
+                ]
             }, 
-            "density": {
-                "default_value": [
-                    1.0
-                ], 
-                "houdini_name": "density", 
-                "help": "fades the filter effect. 0=no effect (like having no filter), 1=full effect", 
-                "moonray_type": "Float", 
-                "houdini_label": "Density", 
-                "moonray_name": "density", 
-                "order": 9
-            }, 
-            "color": {
-                "default_value": [
-                    0.0, 
-                    0.0, 
-                    0.0
-                ], 
-                "houdini_name": "color", 
-                "help": "filter color. Scales the light within the volume. For each color channel, 0=full shadow, 1=no shadow", 
-                "moonray_type": "Rgb", 
-                "houdini_label": "Color", 
-                "moonray_name": "color", 
-                "order": 7
-            }, 
-            "invert": {
+            "contains_camera": {
                 "default_value": [
                     false
                 ], 
-                "houdini_name": "invert", 
-                "help": "swap application of filter from inside the volume to outside", 
+                "houdini_name": "contains_camera", 
+                "help": "Specifies whether the geometry contains the camera and should be used for IOR tracking. This should not be changed by the user -- they should instead attach the relevant geometry to the camera, which will then flag this geometry.", 
                 "moonray_type": "Bool", 
-                "houdini_label": "Invert", 
-                "moonray_name": "invert", 
-                "order": 10
+                "houdini_label": "Contains Camera", 
+                "moonray_name": "contains_camera", 
+                "order": 19
             }, 
-            "intensity": {
+            "visible_volume": {
                 "default_value": [
-                    1.0
+                    true
                 ], 
-                "houdini_name": "intensity", 
-                "help": "scalar for multiplying the color. 0=black 1=color", 
-                "moonray_type": "Float", 
-                "houdini_label": "Intensity", 
-                "moonray_name": "intensity", 
-                "order": 8
+                "houdini_name": "visible_volume", 
+                "help": "whether the geometry is visible in indirect volume rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Volume", 
+                "moonray_name": "visible_volume", 
+                "order": 14, 
+                "aliases": [
+                    "visible volume"
+                ]
             }, 
-            "ramp_in_distances": {
+            "velocity_list_0": {
+                "default_value": [], 
+                "houdini_name": "velocity_list_0", 
+                "help": "Optionally declare vertex velocities instead of a second motion step'", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Velocity List 0", 
+                "moonray_name": "velocity_list_0", 
+                "order": 23
+            }, 
+            "visible_in_camera": {
                 "default_value": [
-                    0.0, 
-                    1.0
+                    true
                 ], 
-                "houdini_name": "ramp_in_distances", 
-                "help": "input distance for ramp control", 
-                "ramp_parm_type": "positions", 
+                "houdini_name": "visible_in_camera", 
+                "help": "whether the geometry is visible to camera rays", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible In Camera", 
+                "moonray_name": "visible_in_camera", 
+                "order": 6, 
+                "aliases": [
+                    "visible in camera"
+                ]
+            }, 
+            "radius_list": {
+                "default_value": [], 
+                "houdini_name": "radius_list", 
+                "help": "Stores all radii", 
                 "moonray_type": "FloatVector", 
-                "houdini_label": "Ramp In Distances", 
-                "moonray_name": "ramp_in_distances", 
-                "order": 11, 
-                "ramp_parm_name": "ramp"
+                "houdini_label": "Radius List", 
+                "moonray_name": "radius_list", 
+                "order": 26
             }, 
-            "height": {
+            "visible_diffuse_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_transmission", 
+                "help": "whether the geometry is visible in diffuse transmission", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Transmission", 
+                "moonray_name": "visible_diffuse_transmission", 
+                "order": 9, 
+                "aliases": [
+                    "visible diffuse transmission"
+                ]
+            }, 
+            "accleration_list": {
+                "default_value": [], 
+                "houdini_name": "accleration_list", 
+                "help": "Optionally declare vertex accelerations for quadratic motion interpolation", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Accleration List", 
+                "moonray_name": "accleration_list", 
+                "order": 25
+            }, 
+            "use_rotation_motion_blur": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "use_rotation_motion_blur", 
+                "help": "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Use Rotation Motion Blur", 
+                "moonray_name": "use_rotation_motion_blur", 
+                "order": 36, 
+                "aliases": [
+                    "use_rotation_motion_blur"
+                ]
+            }, 
+            "part_list": {
+                "default_value": [], 
+                "houdini_name": "part_list", 
+                "help": "Ordered list of part names, used in conjunction with 'part_indices' to assign per-part materials", 
+                "moonray_type": "StringVector", 
+                "houdini_label": "Part List", 
+                "moonray_name": "part_list", 
+                "order": 28, 
+                "aliases": [
+                    "part list"
+                ]
+            }, 
+            "visible_shadow": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_shadow", 
+                "help": "whether the geometry casts shadows", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Shadow", 
+                "moonray_name": "visible_shadow", 
+                "order": 7, 
+                "aliases": [
+                    "visible shadow"
+                ]
+            }, 
+            "label": {
+                "default_value": [
+                    ""
+                ], 
+                "houdini_name": "label", 
+                "help": "label used in material aov expresssions", 
+                "moonray_type": "String", 
+                "houdini_label": "Label", 
+                "moonray_name": "label", 
+                "order": 1
+            }, 
+            "side_type": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "side_type", 
+                "help": "set single sidedness of the mesh, will affect the visibility of the mesh based on normal direction", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "force two-sided", 
+                    "force single-sided", 
+                    "use mesh sidedness"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Side Type", 
+                "moonray_name": "side_type", 
+                "order": 4, 
+                "aliases": [
+                    "side type"
+                ]
+            }, 
+            "visible_mirror_transmission": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_transmission", 
+                "help": "whether the geometry is visible in miror transmission (refraction).", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Transmission", 
+                "moonray_name": "visible_mirror_transmission", 
+                "order": 13, 
+                "aliases": [
+                    "visible mirror transmission"
+                ]
+            }, 
+            "primitive_attribute_frame": {
+                "default_value": [
+                    2
+                ], 
+                "houdini_name": "primitive_attribute_frame", 
+                "help": "Which frame(s) do we take the primitive attributes from?\n\tO : first motion step\n\t1 : second motion step\n\t2 : both motion steps", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "first motion step", 
+                    "second motion step", 
+                    "both motion steps"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Primitive Attribute Frame", 
+                "moonray_name": "primitive_attribute_frame", 
+                "order": 39
+            }, 
+            "visible_diffuse_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_diffuse_reflection", 
+                "help": "whether the geometry is visible in diffuse reflection", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Diffuse Reflection", 
+                "moonray_name": "visible_diffuse_reflection", 
+                "order": 8, 
+                "aliases": [
+                    "visible diffuse reflection"
+                ]
+            }, 
+            "shadow_ray_epsilon": {
+                "default_value": [
+                    0.0
+                ], 
+                "houdini_name": "shadow_ray_epsilon", 
+                "help": "When a shadow ray is fired, anything within this distance of the intersection point will be ignored.  If this value is less than \"ray_epsilon\", then it has no additional effect.", 
+                "moonray_type": "Float", 
+                "houdini_label": "Shadow Ray Epsilon", 
+                "moonray_name": "shadow_ray_epsilon", 
+                "order": 16
+            }, 
+            "visible_mirror_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_mirror_reflection", 
+                "help": "whether the geometry is visible in miror reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Mirror Reflection", 
+                "moonray_name": "visible_mirror_reflection", 
+                "order": 12, 
+                "aliases": [
+                    "visible mirror reflection"
+                ]
+            }, 
+            "curve_type": {
+                "default_value": [
+                    1
+                ], 
+                "houdini_name": "curve_type", 
+                "help": "Curve interpolation type is linear, bezier, or bspline", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "linear", 
+                    "bezier", 
+                    "bspline"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1", 
+                    "2"
+                ], 
+                "houdini_label": "Curve Type", 
+                "moonray_name": "curve_type", 
+                "order": 32
+            }, 
+            "reverse_normals": {
+                "default_value": [
+                    false
+                ], 
+                "houdini_name": "reverse_normals", 
+                "help": "enable to reverse the normals in the geometry", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Reverse Normals", 
+                "moonray_name": "reverse_normals", 
+                "order": 5, 
+                "aliases": [
+                    "reverse normals"
+                ]
+            }, 
+            "part_indices": {
+                "default_value": [], 
+                "houdini_name": "part_indices", 
+                "help": "Ordered list of part indices. ", 
+                "moonray_type": "IntVector", 
+                "houdini_label": "Part Indices", 
+                "moonray_name": "part_indices", 
+                "order": 29, 
+                "aliases": [
+                    "part indices"
+                ]
+            }, 
+            "curved_motion_blur_sample_count": {
+                "default_value": [
+                    10
+                ], 
+                "houdini_name": "curved_motion_blur_sample_count", 
+                "help": "Number of time samples generated along each curve when using curved motion blur", 
+                "moonray_type": "Int", 
+                "houdini_label": "Curved Motion Blur Sample Count", 
+                "moonray_name": "curved_motion_blur_sample_count", 
+                "order": 38, 
+                "aliases": [
+                    "curved motion blur sample count"
+                ]
+            }, 
+            "vertex_list_1": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_1", 
+                "help": "If the curves are in motion, the second motion step is stored in this attribute", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 1", 
+                "moonray_name": "vertex_list_1", 
+                "order": 22
+            }, 
+            "vertex_list_0": {
+                "default_value": [], 
+                "houdini_name": "vertex_list_0", 
+                "help": "Stores all vertices used by the points at motion step 0", 
+                "moonray_type": "Vec3fVector", 
+                "houdini_label": "Vertex List 0", 
+                "moonray_name": "vertex_list_0", 
+                "order": 21
+            }, 
+            "velocity_scale": {
                 "default_value": [
                     1.0
                 ], 
-                "houdini_name": "height", 
-                "help": "height of the base box (before radius and edge)", 
+                "houdini_name": "velocity_scale", 
+                "help": "Adjust magnitude of velocity-based motion blur", 
                 "moonray_type": "Float", 
-                "houdini_label": "Height", 
-                "moonray_name": "height", 
-                "order": 4
+                "houdini_label": "Velocity Scale", 
+                "moonray_name": "velocity_scale", 
+                "order": 30
             }, 
-            "width": {
-                "default_value": [
-                    1.0
-                ], 
-                "houdini_name": "width", 
-                "help": "width of the base box (before radius and edge)", 
-                "moonray_type": "Float", 
-                "houdini_label": "Width", 
-                "moonray_name": "width", 
+            "references": {
+                "default_value": [], 
+                "houdini_name": "references", 
+                "help": "list of geometries that geometry procedural can reference during procedural generate/update stages. For example, an instancer geometry procedural can instance primitives generated by the reference geometry procedural.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "References", 
+                "interface": "Geometry", 
+                "moonray_name": "references", 
                 "order": 2
             }, 
-            "depth": {
+            "shadow_exclusion_mappings": {
                 "default_value": [
-                    1.0
+                    ""
                 ], 
-                "houdini_name": "depth", 
-                "help": "depth of the base box (before radius and edge)", 
-                "moonray_type": "Float", 
-                "houdini_label": "Depth", 
-                "moonray_name": "depth", 
-                "order": 3
+                "houdini_name": "shadow_exclusion_mappings", 
+                "help": "List of mappings of the form A:B where:\nA is a list of names of parts to be mapped, or asterisk to map the whole geometry\nB is a list of labels corresponding to the sets corresponding to distinct values of [\"shadow_receiver_label\"], or asterisk to map to all such sets.", 
+                "moonray_type": "String", 
+                "houdini_label": "Shadow Exclusion Mappings", 
+                "moonray_name": "shadow_exclusion_mappings", 
+                "order": 18, 
+                "aliases": [
+                    "shadow exclusion mappings"
+                ]
             }, 
-            "edge": {
-                "default_value": [
-                    0.0
-                ], 
-                "houdini_name": "edge", 
-                "help": "size of transition zone from the rounded box to the outside", 
-                "moonray_type": "Float", 
-                "houdini_label": "Edge", 
-                "moonray_name": "edge", 
-                "order": 6
-            }, 
-            "radius": {
-                "default_value": [
-                    0.0
-                ], 
-                "houdini_name": "radius", 
-                "help": "radius by which to expand the base box into a rounded box", 
-                "moonray_type": "Float", 
-                "houdini_label": "Radius", 
-                "moonray_name": "radius", 
-                "order": 5
-            }, 
-            "ramp_out_distances": {
-                "default_value": [
-                    0.0, 
-                    1.0
-                ], 
-                "houdini_name": "ramp_out_distances", 
-                "help": "remapped distances for ramp control", 
-                "ramp_parm_type": "values", 
-                "moonray_type": "FloatVector", 
-                "houdini_label": "Ramp Out Distances", 
-                "moonray_name": "ramp_out_distances", 
-                "order": 12, 
-                "ramp_parm_name": "ramp"
-            }, 
-            "ramp_interpolation_types": {
-                "default_value": [
-                    6, 
-                    6
-                ], 
-                "houdini_name": "ramp_interpolation_types", 
-                "help": "interpolation types for ramp control", 
-                "ramp_parm_type": "interpolation_types", 
+            "curves_vertex_count": {
+                "default_value": [], 
+                "houdini_name": "curves_vertex_count", 
+                "help": "Ordered list of vertices per curve", 
                 "moonray_type": "IntVector", 
-                "houdini_label": "Ramp Interpolation Types", 
-                "moonray_name": "ramp_interpolation_types", 
-                "order": 13, 
-                "ramp_parm_name": "ramp"
+                "houdini_label": "Curves Vertex Count", 
+                "moonray_name": "curves_vertex_count", 
+                "order": 27
+            }, 
+            "primitive_attributes": {
+                "default_value": [], 
+                "houdini_name": "primitive_attributes", 
+                "help": "Vector of UserData.Each key/value pair will be added as a primitive attribute of the points.", 
+                "moonray_type": "SceneObjectVector", 
+                "houdini_label": "Primitive Attributes", 
+                "moonray_name": "primitive_attributes", 
+                "order": 34, 
+                "aliases": [
+                    "primitive attributes"
+                ]
+            }, 
+            "uv_list": {
+                "default_value": [], 
+                "houdini_name": "uv_list", 
+                "help": "If the curves are using UVs, store them per-curve in this list", 
+                "moonray_type": "Vec2fVector", 
+                "houdini_label": "Uv List", 
+                "moonray_name": "uv_list", 
+                "order": 31
+            }, 
+            "visible_glossy_reflection": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "visible_glossy_reflection", 
+                "help": "whether the geometry is visible in glossy reflection.", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Visible Glossy Reflection", 
+                "moonray_name": "visible_glossy_reflection", 
+                "order": 10, 
+                "aliases": [
+                    "visible glossy reflection"
+                ]
+            }, 
+            "dicing_camera": {
+                "default_value": [], 
+                "houdini_name": "dicing_camera", 
+                "moonray_type": "SceneObject*", 
+                "houdini_label": "Dicing Camera", 
+                "moonray_name": "dicing_camera", 
+                "order": 20
+            }, 
+            "motion_blur_type": {
+                "default_value": [
+                    -1
+                ], 
+                "houdini_name": "motion_blur_type", 
+                "help": "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "best", 
+                    "static", 
+                    "velocity", 
+                    "frame delta", 
+                    "acceleration", 
+                    "hermite"
+                ], 
+                "menu_values": [
+                    "-1", 
+                    "0", 
+                    "1", 
+                    "2", 
+                    "3", 
+                    "4"
+                ], 
+                "houdini_label": "Motion Blur Type", 
+                "moonray_name": "motion_blur_type", 
+                "order": 37, 
+                "aliases": [
+                    "motion blur type"
+                ]
+            }, 
+            "curve_subtype": {
+                "default_value": [
+                    0
+                ], 
+                "houdini_name": "curve_subtype", 
+                "help": "Curve subtype is ray facing or round", 
+                "moonray_type": "Int", 
+                "menu": [
+                    "ray_facing", 
+                    "round"
+                ], 
+                "menu_values": [
+                    "0", 
+                    "1"
+                ], 
+                "houdini_label": "Curve Subtype", 
+                "moonray_name": "curve_subtype", 
+                "order": 33
+            }, 
+            "static": {
+                "default_value": [
+                    true
+                ], 
+                "houdini_name": "static", 
+                "help": "disable if the geometry will be updated between frames", 
+                "moonray_type": "Bool", 
+                "houdini_label": "Static", 
+                "moonray_name": "static", 
+                "order": 3
             }
         }, 
         "folders_with_parms": {
-            "Properties": [
-                "node_xform", 
-                "width", 
-                "depth", 
-                "height", 
-                "radius", 
-                "edge", 
-                "color", 
-                "intensity", 
-                "density", 
-                "invert", 
-                "ramp"
+            "Curve": [
+                "tessellation_rate"
             ]
         }
     }, 

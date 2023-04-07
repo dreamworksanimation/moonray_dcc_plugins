@@ -1,82 +1,6 @@
 #include "$HFS/houdini/soho/parameters/CommonMacros.ds"
 {
     name	parameters
-    group {
-        name    "folder"
-        label   "Curve"
-
-        parm {
-            name    "xn__moonraytessellation_rate_control_7sb"
-            label   "moonray:tessellation_rate"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__moonraytessellation_rate_6fb"
-            label   "Tessellation Rate"
-            type    integer
-            default { "4" }
-            help    "Number of segments to split curve spans into"
-            disablewhen "{ xn__moonraytessellation_rate_control_7sb == block } { xn__moonraytessellation_rate_control_7sb == none }"
-            range   { 0 10 }
-            parmtag { "usdvaluetype" "int" }
-        }
-    }
-
-    group {
-        name    "folder2"
-        label   "Model"
-
-        parm {
-            name    "xn__moonraymodel_control_o8a"
-            label   "moonray:model"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__moonraymodel_nva"
-            label   "Model"
-            type    file
-            default { "" }
-            help    "filename that points to a model .abc file"
-            disablewhen "{ xn__moonraymodel_control_o8a == block } { xn__moonraymodel_control_o8a == none }"
-            parmtag { "usdvaluetype" "asset" }
-        }
-        parm {
-            name    "xn__moonraysubasset_name_control_pmb"
-            label   "moonray:subasset_name"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__moonraysubasset_name_o8a"
-            label   "Subasset Name"
-            type    string
-            default { "" }
-            help    "subasset in .abc file, support regex syntax and sub-hierarchy specification.\nexample1: input .*_eye_0 would load l_eye_0 and r_eye_0 in a character model\nexample2: input /toothless_skin_0/l_thumbnail would load just thumbnail from toothless\n"
-            disablewhen "{ xn__moonraysubasset_name_control_pmb == block } { xn__moonraysubasset_name_control_pmb == none }"
-            parmtag { "usdvaluetype" "string" }
-        }
-    }
-
     parm {
         name    "xn__moonraylabel_control_o8a"
         label   "moonray:label"
@@ -514,8 +438,8 @@
         parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
     }
     parm {
-        name    "xn__moonrayadjust_bspline_end_points_control_85b"
-        label   "moonray:adjust_bspline_end_points"
+        name    "xn__moonraymethod_control_bbb"
+        label   "moonray:method"
         type    string
         default { "none" }
         menujoin {
@@ -526,86 +450,21 @@
         }
     }
     parm {
-        name    "xn__moonrayadjust_bspline_end_points_7sb"
-        label   "Adjust Bspline End Points"
-        type    toggle
-        default { "1" }
-        help    "adjusts bspline end points if spline is clamped.   Turn off for curves generated using moonray_bake\n"
-        disablewhen "{ xn__moonrayadjust_bspline_end_points_control_85b == block } { xn__moonrayadjust_bspline_end_points_control_85b == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonrayuse_evaluation_frame_control_3xb"
-        label   "moonray:use_evaluation_frame"
+        name    "xn__moonraymethod_9wa"
+        label   "Method"
         type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayuse_evaluation_frame_2kb"
-        label   "Use Evaluation Frame"
-        type    toggle
-        default { "0" }
-        help    "uses \"evaluation frame\" instead of SceneVariables frame\n"
-        disablewhen "{ xn__moonrayuse_evaluation_frame_control_3xb == block } { xn__moonrayuse_evaluation_frame_control_3xb == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonrayevaluation_frame_control_lrb"
-        label   "moonray:evaluation_frame"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayevaluation_frame_keb"
-        label   "Evaluation Frame"
-        type    float
-        default { "1" }
-        help    "evaluate geometry at specified frame instead of SceneVariables frame\n"
-        disablewhen "{ xn__moonrayevaluation_frame_control_lrb == block } { xn__moonrayevaluation_frame_control_lrb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonraysubd_type_control_6fb"
-        label   "moonray:subd_type"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraysubd_type_51a"
-        label   "Subd Type"
-        type    string
-        default { "use mesh type" }
-        help    "Subdivision type for PolygonMesh/SubdivisionMesh in alembic file.\n\"use mesh type\" will use the mesh scheme alembic file specifies.\n\"force polygon mesh\" will always resolve to PolygonMesh.\n\"force subdivision mesh\" will always resolve to SubdivisionMesh.\n"
-        disablewhen "{ xn__moonraysubd_type_control_6fb == block } { xn__moonraysubd_type_control_6fb == none }"
+        default { "xform attributes" }
+        help    "Specify the source of xforms/refIndices for instancing. If set to \"xform attributes\", taking data from attributes \"positions\", \"orientations\", \"scales\", \"velocities\" and \"refIndices\". If set to \"xform list\", taking data from \"xform list\", \"velocities\" and \"refIndices\". "
+        disablewhen "{ xn__moonraymethod_control_bbb == block } { xn__moonraymethod_control_bbb == none }"
         menu {
-            "use mesh type"             "Use Mesh Type"
-            "force polygon mesh"        "Force Polygon Mesh"
-            "force subdivision mesh"    "Force Subdivision Mesh"
+            "xform attributes"  "Xform Attributes"
+            "xform list"        "Xform List"
         }
         parmtag { "usdvaluetype" "token" }
     }
     parm {
-        name    "xn__moonrayradius_mult_control_gjb"
-        label   "moonray:radius_mult"
+        name    "xn__moonrayinstance_level_control_cob"
+        label   "moonray:instance_level"
         type    string
         default { "none" }
         menujoin {
@@ -616,108 +475,24 @@
         }
     }
     parm {
-        name    "xn__moonrayradius_mult_f5a"
-        label   "Radius Mult"
-        type    float
-        default { "1" }
-        help    "radius multiplier for points and curves"
-        disablewhen "{ xn__moonrayradius_mult_control_gjb == block } { xn__moonrayradius_mult_control_gjb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonraybase_width_factor_control_7sb"
-        label   "moonray:base_width_factor"
+        name    "xn__moonrayinstance_level_bbb"
+        label   "Instance Level"
         type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraybase_width_factor_6fb"
-        label   "Base Width Factor"
-        type    float
-        default { "1" }
-        help    "Multiplier for the radius of the base of curves"
-        disablewhen "{ xn__moonraybase_width_factor_control_7sb == block } { xn__moonraybase_width_factor_control_7sb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonraytip_width_factor_control_lrb"
-        label   "moonray:tip_width_factor"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraytip_width_factor_keb"
-        label   "Tip Width Factor"
-        type    float
-        default { "1" }
-        help    "Multiplier for the radius of the tip of curves"
-        disablewhen "{ xn__moonraytip_width_factor_control_lrb == block } { xn__moonraytip_width_factor_control_lrb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonraycurves_subtype_control_cob"
-        label   "moonray:curves_subtype"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraycurves_subtype_bbb"
-        label   "Curves Subtype"
-        type    string
-        default { "ray_facing" }
-        help    "Curves subtype is ray facing or round"
-        disablewhen "{ xn__moonraycurves_subtype_control_cob == block } { xn__moonraycurves_subtype_control_cob == none }"
+        default { "instance level 0" }
+        help    "Level of this instance.  This level can be referenced in TransformSpaceMap to allow for transforming data to/from the local space of each instance this instancer produces."
+        disablewhen "{ xn__moonrayinstance_level_control_cob == block } { xn__moonrayinstance_level_control_cob == none }"
         menu {
-            "ray_facing"    "Ray_Facing"
-            "round"         "Round"
+            "instance level 0"  "Instance Level 0"
+            "instance level 1"  "Instance Level 1"
+            "instance level 2"  "Instance Level 2"
+            "instance level 3"  "Instance Level 3"
+            "instance level 4"  "Instance Level 4"
         }
         parmtag { "usdvaluetype" "token" }
     }
     parm {
-        name    "xn__moonrayforce_instance_control_cob"
-        label   "moonray:force_instance"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayforce_instance_bbb"
-        label   "Force Instance"
-        type    toggle
-        default { "0" }
-        help    "Forces all geometry to be converted to an instance.  Enabling this will allow scaling the radii of point and curve geometry."
-        disablewhen "{ xn__moonrayforce_instance_control_cob == block } { xn__moonrayforce_instance_control_cob == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonraypart_list_control_6fb"
-        label   "moonray:part_list"
+        name    "xn__moonrayref_indices_control_gjb"
+        label   "moonray:ref_indices"
         type    string
         default { "none" }
         menujoin {
@@ -728,18 +503,49 @@
         }
     }
     multiparm {
-        name    "part_list"
-        label    "Part List"
+        name    "ref_indices"
+        label    "Ref Indices"
         default 0
-        disablewhen "{ xn__moonraypart_list_control_6fb == block } { xn__moonraypart_list_control_6fb == none }"
-        parmtag { "usdvaluetype" "string[]" }
+        disablewhen "{ xn__moonrayref_indices_control_gjb == block } { xn__moonrayref_indices_control_gjb == none }"
+        parmtag { "usdvaluetype" "int[]" }
 
         parm {
-            name    "xn__moonraypart_list_51a#"
-            label   "Part List"
-            type    string
-            default { "" }
-            help    "Ordered list of part names"
+            name    "xn__moonrayref_indices_f5a#"
+            label   "Ref Indices"
+            type    integer
+            default { "0" }
+            help    "A list of index values to specify entry of \"reference\" per instance. The length should be either 0 or consistent with \"positions\"|\"xform_list\". The index entry falls back to 0 when this attribute is empty or the value of entry is out of index range"
+            range   { 0 10 }
+            parmtag { "moonray::is_parm" "1" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraydisable_indices_control_ypb"
+        label   "moonray:disable_indices"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    multiparm {
+        name    "disable_indices"
+        label    "Disable Indices"
+        default 0
+        disablewhen "{ xn__moonraydisable_indices_control_ypb == block } { xn__moonraydisable_indices_control_ypb == none }"
+        parmtag { "usdvaluetype" "int[]" }
+
+        parm {
+            name    "xn__moonraydisable_indices_xcb#"
+            label   "Disable Indices"
+            type    integer
+            default { "0" }
+            help    "A list of index values to hide / disable. For example, with 4 instances you can supply a list of 0, 2 to disable those instances. If an index in this list is out of range, it is ignored."
+            range   { 0 10 }
             parmtag { "moonray::is_parm" "1" }
         }
     }
@@ -768,15 +574,15 @@
             label   "Primitive Attributes"
             type    oppath
             default { "" }
-            help    "A list of UserData to specify arbitrary primitive attributes"
+            help    "A list of UserData to specify arbitrary primitive attributes(For example, color or roughness multiplier) per -instance"
             parmtag { "moonray::is_parm" "1" }
             parmtag { "oprelative" "." }
         }
     }
 
     parm {
-        name    "xn__moonraymesh_resolution_control_ypb"
-        label   "moonray:mesh_resolution"
+        name    "xn__moonrayevaluation_frame_control_lrb"
+        label   "moonray:evaluation_frame"
         type    string
         default { "none" }
         menujoin {
@@ -787,40 +593,18 @@
         }
     }
     parm {
-        name    "xn__moonraymesh_resolution_xcb"
-        label   "Mesh Resolution"
-        type    float
-        default { "2" }
-        help    "The maximum resolution to tessellate a mesh. An edge on input face will be tessellated to at most n segments when \"mesh resolution\" is set to n. If \"adaptive error\" is set to 0, every edge on input face will be uniformly tessellated to \"mesh resolution\". Otherwise renderer will adaptively tessellate mesh based on camera information"
-        disablewhen "{ xn__moonraymesh_resolution_control_ypb == block } { xn__moonraymesh_resolution_control_ypb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__moonrayadaptive_error_control_cob"
-        label   "moonray:adaptive_error"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayadaptive_error_bbb"
-        label   "Adaptive Error"
+        name    "xn__moonrayevaluation_frame_keb"
+        label   "Evaluation Frame"
         type    float
         default { "0" }
-        help    "the maximum allowable difference in pixels for subdivison mesh adaptive tessellation (each final tessellated edge won't be longer than n pixels if adaptive error is set to n).A value of 0 disables adaptive tessellation, reverting to uniform tessellation, which sometimes is more stable in animation.Adaptive tessellation is not supported for instances."
-        disablewhen "{ xn__moonrayadaptive_error_control_cob == block } { xn__moonrayadaptive_error_control_cob == none }"
+        help    "Evaluate geometry at specified frame (relative) instead of SceneVariables frame."
+        disablewhen "{ xn__moonrayevaluation_frame_control_lrb == block } { xn__moonrayevaluation_frame_control_lrb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
     parm {
-        name    "xn__moonraysmooth_normal_control_pmb"
-        label   "moonray:smooth_normal"
+        name    "xn__moonrayuse_reference_xforms_control_3xb"
+        label   "moonray:use_reference_xforms"
         type    string
         default { "none" }
         menujoin {
@@ -831,110 +615,33 @@
         }
     }
     parm {
-        name    "xn__moonraysmooth_normal_o8a"
-        label   "Smooth Normal"
+        name    "xn__moonrayuse_reference_xforms_2kb"
+        label   "Use Reference Xforms"
+        type    toggle
+        default { "0" }
+        help    "Transform the reference (prototype) geometry by it's node_xform parameter before applying the instance transform"
+        disablewhen "{ xn__moonrayuse_reference_xforms_control_3xb == block } { xn__moonrayuse_reference_xforms_control_3xb == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__moonrayuse_reference_attributes_control_m4b"
+        label   "moonray:use_reference_attributes"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "Set Or Create"
+            "setexisting"   "Set if Exists"
+            "block"         "Block"
+            "none"          "Do Nothing"
+        }
+    }
+    parm {
+        name    "xn__moonrayuse_reference_attributes_lrb"
+        label   "Use Reference Attributes"
         type    toggle
         default { "1" }
-        help    "generate smooth shading normal when rendering PolygonMesh and the mesh doesn't provide shading normal itself"
-        disablewhen "{ xn__moonraysmooth_normal_control_pmb == block } { xn__moonraysmooth_normal_control_pmb == none }"
+        help    "Use the geometry attributes of the reference (prototype) instead of the ones on the InstanceGeometry.   Currently only works for shadow_ray_epsilon"
+        disablewhen "{ xn__moonrayuse_reference_attributes_control_m4b == block } { xn__moonrayuse_reference_attributes_control_m4b == none }"
         parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonrayuse_rotation_motion_blur_control_m4b"
-        label   "moonray:use_rotation_motion_blur"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayuse_rotation_motion_blur_lrb"
-        label   "Use Rotation Motion Blur"
-        type    toggle
-        default { "0" }
-        help    "if \"xform\" is time varying and motion blur is turned on, Turning on this toggle can generate better rotation trail. Known limitation: turning on this toggle will disable adaptive tessellation"
-        disablewhen "{ xn__moonrayuse_rotation_motion_blur_control_m4b == block } { xn__moonrayuse_rotation_motion_blur_control_m4b == none }"
-        parmtag { "usdvaluetype" "bool" }
-    }
-    parm {
-        name    "xn__moonraymotion_blur_type_control_lrb"
-        label   "moonray:motion_blur_type"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraymotion_blur_type_keb"
-        label   "Motion Blur Type"
-        type    string
-        default { "best" }
-        help    "Motion blur type for PolygonMesh/Points/Curves in alembic file.\n\"static\" will treat the mesh as static.\n\"velocity\" will blur using the supplied vertex positions and velocities.\n\"frame delta\" will interpolate between the two supplied vertex positions.\n\"acceleration\" will blur using the supplied vertex positions, velocities and accelerations.\n\"hermite\" will use supplied pair of positions and pair of velocities to interpolate along a cubic Hermite curve.\n\"best\" will use choose the method which provides the highest quality given the available data.\n"
-        disablewhen "{ xn__moonraymotion_blur_type_control_lrb == block } { xn__moonraymotion_blur_type_control_lrb == none }"
-        menu {
-            "best"          "Best"
-            "static"        "Static"
-            "velocity"      "Velocity"
-            "frame delta"   "Frame Delta"
-            "acceleration"  "Acceleration"
-            "hermite"       "Hermite"
-        }
-        parmtag { "usdvaluetype" "token" }
-    }
-    parm {
-        name    "xn__moonraycurved_motion_blur_sample_count_control_0gc"
-        label   "moonray:curved_motion_blur_sample_count"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonraycurved_motion_blur_sample_count_z2b"
-        label   "Curved Motion Blur Sample Count"
-        type    integer
-        default { "10" }
-        help    "Number of time samples generated along each curve when using curved motion blur"
-        disablewhen "{ xn__moonraycurved_motion_blur_sample_count_control_0gc == block } { xn__moonraycurved_motion_blur_sample_count_control_0gc == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "int" }
-    }
-    parm {
-        name    "xn__moonrayprimitive_attribute_frame_control_85b"
-        label   "moonray:primitive_attribute_frame"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__moonrayprimitive_attribute_frame_7sb"
-        label   "Primitive Attribute Frame"
-        type    string
-        default { "both motion steps" }
-        help    "Which frame(s) do we take the primitive attributes from?\n	O : first motion step\n	1 : second motion step\n	2 : both motion steps"
-        disablewhen "{ xn__moonrayprimitive_attribute_frame_control_85b == block } { xn__moonrayprimitive_attribute_frame_control_85b == none }"
-        menu {
-            "first motion step"     "First Motion Step"
-            "second motion step"    "Second Motion Step"
-            "both motion steps"     "Both Motion Steps"
-        }
-        parmtag { "usdvaluetype" "token" }
     }
 }
