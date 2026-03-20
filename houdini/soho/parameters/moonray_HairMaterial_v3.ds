@@ -11,11 +11,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspresence_vya"
@@ -33,11 +36,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputscasts_caustics_n8a"
@@ -52,6 +56,64 @@
 
     group {
         name    "folder2"
+        label   "Diffuse"
+
+        parm {
+            name    "xn__inputsdiffuse_lightset_control_xpb"
+            label   "inputs:diffuse_lightset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_lightset_wcb"
+            label   "Diffuse Lightset"
+            type    oppath
+            default { "" }
+            help    "lightset to use for diffuse lobes"
+            disablewhen "{ xn__inputsdiffuse_lightset_control_xpb == block } { xn__inputsdiffuse_lightset_control_xpb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Specular"
+
+        parm {
+            name    "xn__inputsspecular_lightset_control_krb"
+            label   "inputs:specular_lightset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsspecular_lightset_jeb"
+            label   "Specular Lightset"
+            type    oppath
+            default { "" }
+            help    "lightset to use for specular lobes"
+            disablewhen "{ xn__inputsspecular_lightset_control_krb == block } { xn__inputsspecular_lightset_control_krb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder4"
         label   "Fresnel"
 
         parm {
@@ -60,11 +122,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsrefractive_index_wcb"
@@ -82,11 +147,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfresnel_type_e5a"
@@ -107,25 +175,28 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputscuticle_layer_thickness_bob"
             label   "Cuticle Layer Thickness"
             type    float
             default { "0.1" }
-            disablewhen "{ fresnel_type != \"layered cuticles\" } { xn__inputscuticle_layer_thickness_control_c1b == block } { xn__inputscuticle_layer_thickness_control_c1b == none }"
+            disablewhen "{ xn__inputscuticle_layer_thickness_control_c1b == block } { xn__inputscuticle_layer_thickness_control_c1b == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
     }
 
     group {
-        name    "folder3"
+        name    "folder5"
         label   "Primary Specular"
 
         parm {
@@ -134,11 +205,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_primary_specular_1kb"
@@ -155,11 +227,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsprimary_specular_offset_bob"
@@ -167,7 +242,7 @@
             type    float
             default { "-3" }
             help    "offset specular highlight along hair direction (in degrees) [-10,+10], around -3 for human hair"
-            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_offset_control_c1b == block } { xn__inputsprimary_specular_offset_control_c1b == none }"
+            disablewhen "{ xn__inputsprimary_specular_offset_control_c1b == block } { xn__inputsprimary_specular_offset_control_c1b == none }"
             range   { -10 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -177,11 +252,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsprimary_specular_roughness_6sb"
@@ -189,7 +267,7 @@
             type    float
             default { "0.5" }
             help    "roughness of the primary specular highlight, also sets the transmission roughness to 0.5x and secondary specular roughness to 2x by default unless independent roughnesses are being used for both"
-            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_roughness_control_75b == block } { xn__inputsprimary_specular_roughness_control_75b == none }"
+            disablewhen "{ xn__inputsprimary_specular_roughness_control_75b == block } { xn__inputsprimary_specular_roughness_control_75b == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -199,11 +277,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsprimary_specular_tint_1kb"
@@ -212,14 +293,14 @@
             size    3
             default { "1" "1" "1" }
             help    "tint the primary specular highlight with this color (leave white for physical behavior)"
-            disablewhen "{ xn__inputsshow_primary_specular_1kb != 1 } { xn__inputsprimary_specular_tint_control_2xb == block } { xn__inputsprimary_specular_tint_control_2xb == none }"
+            disablewhen "{ xn__inputsprimary_specular_tint_control_2xb == block } { xn__inputsprimary_specular_tint_control_2xb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
     }
 
     group {
-        name    "folder4"
+        name    "folder6"
         label   "Secondary Specular"
 
         parm {
@@ -228,11 +309,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_secondary_specular_bob"
@@ -249,11 +331,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssecondary_specular_offset_krb"
@@ -261,7 +346,7 @@
             type    float
             default { "-4.5" }
             help    "offset secondary specular highlight along hair direction (in degrees) [-10,+10], around -4.5 for human hair"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputssecondary_specular_offset_control_l4b == block } { xn__inputssecondary_specular_offset_control_l4b == none }"
+            disablewhen "{ xn__inputssecondary_specular_offset_control_l4b == block } { xn__inputssecondary_specular_offset_control_l4b == none }"
             range   { -10 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -271,11 +356,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_independent_secondary_specular_roughness_inc"
@@ -283,7 +369,7 @@
             type    toggle
             default { "0" }
             help    "when disabled, uses a physically correct value for secondary specular roughness which is linked to the primary specular roughness"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsuse_independent_secondary_specular_roughness_control_j0c == block } { xn__inputsuse_independent_secondary_specular_roughness_control_j0c == none }"
+            disablewhen "{ xn__inputsuse_independent_secondary_specular_roughness_control_j0c == block } { xn__inputsuse_independent_secondary_specular_roughness_control_j0c == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -292,11 +378,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsindependent_secondary_specular_roughness_zgc"
@@ -304,7 +393,7 @@
             type    float
             default { "0.4" }
             help    "secondary specular roughness"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsindependent_secondary_specular_roughness_control_0tc == block } { xn__inputsindependent_secondary_specular_roughness_control_0tc == none }"
+            disablewhen "{ xn__inputsindependent_secondary_specular_roughness_control_0tc == block } { xn__inputsindependent_secondary_specular_roughness_control_0tc == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -314,11 +403,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssecondary_specular_tint_bob"
@@ -327,7 +419,7 @@
             size    3
             default { "1" "1" "1" }
             help    "tint secondary specular with this color (leave white for physical behavior)"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputssecondary_specular_tint_control_c1b == block } { xn__inputssecondary_specular_tint_control_c1b == none }"
+            disablewhen "{ xn__inputssecondary_specular_tint_control_c1b == block } { xn__inputssecondary_specular_tint_control_c1b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -337,11 +429,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_hair_glint_99a"
@@ -349,7 +442,7 @@
             type    toggle
             default { "0" }
             help    "show hair glint"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsshow_hair_glint_control_bob == block } { xn__inputsshow_hair_glint_control_bob == none }"
+            disablewhen "{ xn__inputsshow_hair_glint_control_bob == block } { xn__inputsshow_hair_glint_control_bob == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -358,11 +451,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsglint_roughness_99a"
@@ -370,7 +466,7 @@
             type    float
             default { "0.5" }
             help    "secondary specular glint roughness"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_roughness_control_bob == block } { xn__inputsglint_roughness_control_bob == none }"
+            disablewhen "{ xn__inputsglint_roughness_control_bob == block } { xn__inputsglint_roughness_control_bob == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -380,11 +476,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsglint_eccentricity_5fb"
@@ -392,7 +491,7 @@
             type    float
             default { "0.85" }
             help    "secondary specular glint eccentricity [0.85, 1], values that deviate from 1 make the hair fiber more elliptical and more glinty"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_eccentricity_control_6sb == block } { xn__inputsglint_eccentricity_control_6sb == none }"
+            disablewhen "{ xn__inputsglint_eccentricity_control_6sb == block } { xn__inputsglint_eccentricity_control_6sb == none }"
             range   { 0.85 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -402,11 +501,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsglint_min_twists_wcb"
@@ -414,7 +516,7 @@
             type    float
             default { "1.5" }
             help    "the minimum number of twists along the hair's length. More twists means more glints. Each hair strand will be randomly assigned a twist amount between [min twists, max twists]"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_min_twists_control_xpb == block } { xn__inputsglint_min_twists_control_xpb == none }"
+            disablewhen "{ xn__inputsglint_min_twists_control_xpb == block } { xn__inputsglint_min_twists_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -424,11 +526,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsglint_max_twists_wcb"
@@ -436,7 +541,7 @@
             type    float
             default { "2.5" }
             help    "the maximum number of twists along the hair's length. More twists means more glints. Each hair strand will be randomly assigned a twist amount between [min twists, max twists]"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_max_twists_control_xpb == block } { xn__inputsglint_max_twists_control_xpb == none }"
+            disablewhen "{ xn__inputsglint_max_twists_control_xpb == block } { xn__inputsglint_max_twists_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -446,11 +551,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsglint_saturation_wcb"
@@ -458,14 +566,14 @@
             type    float
             default { "0.5" }
             help    "secondary specular glint saturation"
-            disablewhen "{ xn__inputsshow_secondary_specular_bob != 1 } { xn__inputsglint_saturation_control_xpb == block } { xn__inputsglint_saturation_control_xpb == none }"
+            disablewhen "{ xn__inputsglint_saturation_control_xpb == block } { xn__inputsglint_saturation_control_xpb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
     }
 
     group {
-        name    "folder5"
+        name    "folder7"
         label   "Transmission"
 
         parm {
@@ -474,11 +582,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_transmission_jeb"
@@ -495,11 +604,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputstransmission_offset_shb"
@@ -507,7 +619,7 @@
             type    float
             default { "-1.5" }
             help    "offset transmission highlight along hair direction (in degrees) [-10,+10], around -1.5 for human hair"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_offset_control_tub == block } { xn__inputstransmission_offset_control_tub == none }"
+            disablewhen "{ xn__inputstransmission_offset_control_tub == block } { xn__inputstransmission_offset_control_tub == none }"
             range   { -10 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -517,11 +629,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_independent_transmission_roughness_qdc"
@@ -529,7 +642,7 @@
             type    toggle
             default { "0" }
             help    "when disabled, uses a physically correct value for Transmission roughness which is linked to the primary specular roughness"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsuse_independent_transmission_roughness_control_rqc == block } { xn__inputsuse_independent_transmission_roughness_control_rqc == none }"
+            disablewhen "{ xn__inputsuse_independent_transmission_roughness_control_rqc == block } { xn__inputsuse_independent_transmission_roughness_control_rqc == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -538,11 +651,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsindependent_transmission_roughness_75b"
@@ -550,7 +666,7 @@
             type    float
             default { "0.1" }
             help    "transmission roughness"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsindependent_transmission_roughness_control_8jc == block } { xn__inputsindependent_transmission_roughness_control_8jc == none }"
+            disablewhen "{ xn__inputsindependent_transmission_roughness_control_8jc == block } { xn__inputsindependent_transmission_roughness_control_8jc == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -560,11 +676,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputstransmission_azimuthal_roughness_y2b"
@@ -572,7 +691,7 @@
             type    float
             default { "1" }
             help    "higher values create a softer look"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_azimuthal_roughness_control_zgc == block } { xn__inputstransmission_azimuthal_roughness_control_zgc == none }"
+            disablewhen "{ xn__inputstransmission_azimuthal_roughness_control_zgc == block } { xn__inputstransmission_azimuthal_roughness_control_zgc == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -582,11 +701,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputstransmission_tint_jeb"
@@ -595,7 +717,7 @@
             size    3
             default { "1" "1" "1" }
             help    "tint transmission with this color (leave white for physical behavior)"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_tint_control_krb == block } { xn__inputstransmission_tint_control_krb == none }"
+            disablewhen "{ xn__inputstransmission_tint_control_krb == block } { xn__inputstransmission_tint_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -605,11 +727,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsdirect_transmission_saturation_pzb"
@@ -617,14 +742,14 @@
             type    float
             default { "1" }
             help    "(Non-Physical, Advanced) saturate/desaturate direct transmission highlights."
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsdirect_transmission_saturation_control_qdc == block } { xn__inputsdirect_transmission_saturation_control_qdc == none }"
+            disablewhen "{ xn__inputsdirect_transmission_saturation_control_qdc == block } { xn__inputsdirect_transmission_saturation_control_qdc == none }"
             range   { 0 4 }
             parmtag { "usdvaluetype" "float" }
         }
     }
 
     group {
-        name    "folder6"
+        name    "folder8"
         label   "Advanced"
 
         parm {
@@ -633,11 +758,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_optimized_sampling_omb"
@@ -654,11 +780,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_multiple_scattering_xpb"
@@ -672,7 +799,7 @@
     }
 
     group {
-        name    "folder7"
+        name    "folder9"
         label   "Emission"
 
         parm {
@@ -681,11 +808,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_emission_06a"
@@ -702,11 +830,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsemission_vya"
@@ -715,7 +846,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the energy emitted from this material"
-            disablewhen "{ xn__inputsshow_emission_06a != 1 } { xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            disablewhen "{ xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -727,11 +858,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsextra_aovs_41a"
@@ -750,11 +882,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -771,11 +904,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspriority_vya"
@@ -788,16 +924,63 @@
         parmtag { "usdvaluetype" "int" }
     }
     parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_control_h9b"
+        label   "inputs:record_reflected_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_gwb"
+        label   "Record Reflected Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next reflected surface should appear in the reflected cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_reflected_cryptomatte_control_h9b == block } { xn__inputsrecord_reflected_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_control_h9b"
+        label   "inputs:record_refracted_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_gwb"
+        label   "Record Refracted Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next refracted surface should appear in the refracted cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_refracted_cryptomatte_control_h9b == block } { xn__inputsrecord_refracted_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
         name    "xn__inputshair_color_control_5fb"
         label   "inputs:hair_color"
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputshair_color_41a"

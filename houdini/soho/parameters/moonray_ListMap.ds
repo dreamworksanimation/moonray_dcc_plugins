@@ -7,11 +7,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap0_dsa"
@@ -30,11 +31,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap1_dsa"
@@ -53,11 +55,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap2_dsa"
@@ -76,11 +79,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap3_dsa"
@@ -99,11 +103,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap4_dsa"
@@ -122,11 +127,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap5_dsa"
@@ -145,11 +151,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap6_dsa"
@@ -168,11 +175,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap7_dsa"
@@ -191,11 +199,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap8_dsa"
@@ -214,11 +223,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap9_dsa"
@@ -237,11 +247,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap10_zta"
@@ -260,11 +271,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap11_zta"
@@ -283,11 +295,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap12_zta"
@@ -306,11 +319,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap13_zta"
@@ -329,11 +343,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap14_zta"
@@ -352,11 +367,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap15_zta"
@@ -375,11 +391,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap16_zta"
@@ -398,11 +415,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap17_zta"
@@ -421,11 +439,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap18_zta"
@@ -444,11 +463,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmap19_zta"

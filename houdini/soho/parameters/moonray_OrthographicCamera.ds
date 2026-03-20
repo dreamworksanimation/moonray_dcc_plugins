@@ -11,14 +11,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraynear_0ta"
+            name    "near"
             label   "Near"
             type    float
             default { "1" }
@@ -33,14 +36,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonrayfar_esa"
+            name    "far"
             label   "Far"
             type    float
             default { "10000" }
@@ -55,14 +61,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonrayhorizontal_film_offset_cob"
+            name    "horizontal_film_offset"
             label   "Horizontal Film Offset"
             type    float
             default { "0" }
@@ -77,14 +86,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonrayvertical_film_offset_2kb"
+            name    "vertical_film_offset"
             label   "Vertical Film Offset"
             type    float
             default { "0" }
@@ -94,24 +106,27 @@
             parmtag { "usdvaluetype" "float" }
         }
         parm {
-            name    "xn__moonrayfilm_width_aperture_control_hwb"
-            label   "moonray:film_width_aperture"
+            name    "horizontalAperture_control"
+            label   "horizontalAperture"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonrayfilm_width_aperture_gjb"
+            name    "horizontalAperture"
             label   "Film Width Aperture"
             type    float
             default { "24" }
             help    "Scale the aperture of the camera (i.e., the orthographic frustum) by this value."
-            disablewhen "{ xn__moonrayfilm_width_aperture_control_hwb == block } { xn__moonrayfilm_width_aperture_control_hwb == none }"
+            disablewhen "{ horizontalAperture_control == block } { horizontalAperture_control == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -121,14 +136,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraypixel_aspect_ratio_thb"
+            name    "pixel_aspect_ratio"
             label   "Pixel Aspect Ratio"
             type    float
             default { "1" }
@@ -144,46 +162,52 @@
         label   "Motion Blur"
 
         parm {
-            name    "xn__moonraymb_shutter_open_control_ypb"
-            label   "moonray:mb_shutter_open"
+            name    "xn__shutteropen_control_16a"
+            label   "shutter:open"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraymb_shutter_open_xcb"
+            name    "xn__shutteropen_0ta"
             label   "Mb Shutter Open"
             type    float
             default { "-0.25" }
             help    "Frame at which the shutter opens, i.e., the beginning of the motion blur interval."
-            disablewhen "{ xn__moonraymb_shutter_open_control_ypb == block } { xn__moonraymb_shutter_open_control_ypb == none }"
+            disablewhen "{ xn__shutteropen_control_16a == block } { xn__shutteropen_control_16a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
         parm {
-            name    "xn__moonraymb_shutter_close_control_lrb"
-            label   "moonray:mb_shutter_close"
+            name    "xn__shutterclose_control_o8a"
+            label   "shutter:close"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraymb_shutter_close_keb"
+            name    "xn__shutterclose_nva"
             label   "Mb Shutter Close"
             type    float
             default { "0.25" }
             help    "Frame at which the shutter closes, i.e., the end of the motion blur interval."
-            disablewhen "{ xn__moonraymb_shutter_close_control_lrb == block } { xn__moonraymb_shutter_close_control_lrb == none }"
+            disablewhen "{ xn__shutterclose_control_o8a == block } { xn__shutterclose_control_o8a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -193,14 +217,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraymb_shutter_bias_xcb"
+            name    "mb_shutter_bias"
             label   "Mb Shutter Bias"
             type    float
             default { "0" }
@@ -221,14 +248,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraypixel_sample_map_keb"
+            name    "pixel_sample_map"
             label   "Pixel Sample Map"
             type    string
             default { "" }
@@ -248,14 +276,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraymedium_material_xcb"
+            name    "medium_material"
             label   "Medium Material"
             type    oppath
             default { "" }
@@ -270,14 +299,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraymedium_geometry_xcb"
+            name    "medium_geometry"
             label   "Medium Geometry"
             type    oppath
             default { "" }
@@ -298,14 +328,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraydof_esa"
+            name    "dof"
             label   "Dof"
             type    toggle
             default { "0" }
@@ -314,45 +345,51 @@
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
-            name    "xn__moonraydof_aperture_control_2kb"
-            label   "moonray:dof_aperture"
+            name    "fStop_control"
+            label   "fStop"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraydof_aperture_16a"
+            name    "fStop"
             label   "Dof Aperture"
             type    float
             default { "8" }
             help    "Depth of field focus distance"
-            disablewhen "{ xn__moonraydof_aperture_control_2kb == block } { xn__moonraydof_aperture_control_2kb == none }"
+            disablewhen "{ fStop_control == block } { fStop_control == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
         parm {
-            name    "xn__moonraydof_focus_distance_control_uub"
-            label   "moonray:dof_focus_distance"
+            name    "focusDistance_control"
+            label   "focusDistance"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraydof_focus_distance_thb"
+            name    "focusDistance"
             label   "Dof Focus Distance"
             type    float
             default { "0" }
-            disablewhen "{ xn__moonraydof_focus_distance_control_uub == block } { xn__moonraydof_focus_distance_control_uub == none }"
+            disablewhen "{ focusDistance_control == block } { focusDistance_control == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -362,14 +399,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_nva"
+            name    "bokeh"
             label   "Bokeh"
             type    toggle
             default { "0" }
@@ -383,14 +421,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_sides_f5a"
+            name    "bokeh_sides"
             label   "Bokeh Sides"
             type    integer
             default { "0" }
@@ -405,14 +446,15 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_image_f5a"
+            name    "bokeh_image"
             label   "Bokeh Image"
             type    string
             default { "" }
@@ -426,14 +468,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_angle_f5a"
+            name    "bokeh_angle"
             label   "Bokeh Angle"
             type    float
             default { "0" }
@@ -448,14 +493,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_weight_location_pmb"
+            name    "bokeh_weight_location"
             label   "Bokeh Weight Location"
             type    float
             default { "0" }
@@ -470,14 +518,17 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__moonraybokeh_weight_strength_pmb"
+            name    "bokeh_weight_strength"
             label   "Bokeh Weight Strength"
             type    float
             default { "0" }

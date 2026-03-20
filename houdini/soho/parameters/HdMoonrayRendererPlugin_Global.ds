@@ -1,0 +1,2904 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    label	"Moonray"
+    group {
+        name    "folder"
+        label   "Frame"
+
+        parm {
+            name    "xn__moonraysceneVariablemin_frame_control_d1bn"
+            label   "moonray:sceneVariable:min_frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemin_frame_cobn"
+            label   "Min Frame"
+            type    float
+            default { "0" }
+            help    "Used to provide unique samples per frame."
+            disablewhen "{ xn__moonraysceneVariablemin_frame_control_d1bn == block } { xn__moonraysceneVariablemin_frame_control_d1bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_frame_control_d1bn"
+            label   "moonray:sceneVariable:max_frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_frame_cobn"
+            label   "Max Frame"
+            type    float
+            default { "0" }
+            help    "Used to provide unique samples per frame."
+            disablewhen "{ xn__moonraysceneVariablemax_frame_control_d1bn == block } { xn__moonraysceneVariablemax_frame_control_d1bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableframe_control_uubn"
+            label   "moonray:sceneVariable:frame"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableframe_thbn"
+            label   "Frame"
+            type    float
+            default { "0" }
+            help    "Used to provide unique samples per frame, and for selecting the frame for scenes with animated data."
+            disablewhen "{ xn__moonraysceneVariableframe_control_uubn == block } { xn__moonraysceneVariableframe_control_uubn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder2"
+        label   "Camera and Layer"
+
+        parm {
+            name    "xn__moonraysceneVariablecamera_control_hwbn"
+            label   "moonray:sceneVariable:camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecamera_gjbn"
+            label   "Camera"
+            type    oppath
+            default { "" }
+            help    "This specifies the camera object used for rendering. If no camera is specified in the scene variables, MoonRay will render using the first camera object encountered."
+            disablewhen "{ xn__moonraysceneVariablecamera_control_hwbn == block } { xn__moonraysceneVariablecamera_control_hwbn == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledicing_camera_control_v7bn"
+            label   "moonray:sceneVariable:dicing_camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledicing_camera_uubn"
+            label   "Dicing Camera"
+            type    oppath
+            default { "" }
+            help    "This attribute specifies a camera to use for adaptive geometry tessellation. The rendering camera is used if no camera is specified."
+            disablewhen "{ xn__moonraysceneVariabledicing_camera_control_v7bn == block } { xn__moonraysceneVariabledicing_camera_control_v7bn == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelayer_control_uubn"
+            label   "moonray:sceneVariable:layer"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelayer_thbn"
+            label   "Layer"
+            type    oppath
+            default { "" }
+            help    "This specifies the layer object used for rendering. If no layer is specified in the scene variables, MoonRay will rendering using the first layer object encountered."
+            disablewhen "{ xn__moonraysceneVariablelayer_control_uubn == block } { xn__moonraysceneVariablelayer_control_uubn == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Metadata"
+
+        parm {
+            name    "xn__moonraysceneVariableexr_header_attributes_control_wlcn"
+            label   "moonray:sceneVariable:exr_header_attributes"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableexr_header_attributes_v7bn"
+            label   "Exr Header Attributes"
+            type    oppath
+            default { "" }
+            help    "Metadata that is passed directly to the exr header. Format: {\"name\", \"type\", \"value\"}"
+            disablewhen "{ xn__moonraysceneVariableexr_header_attributes_control_wlcn == block } { xn__moonraysceneVariableexr_header_attributes_control_wlcn == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Image Size"
+
+        parm {
+            name    "xn__moonraysceneVariableimage_width_control_m4bn"
+            label   "moonray:sceneVariable:image_width"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableimage_width_lrbn"
+            label   "Image Width"
+            type    integer
+            default { "1920" }
+            help    "The desired width of the output image(s), in pixels."
+            disablewhen "{ xn__moonraysceneVariableimage_width_control_m4bn == block } { xn__moonraysceneVariableimage_width_control_m4bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableimage_height_control_85bn"
+            label   "moonray:sceneVariable:image_height"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableimage_height_7sbn"
+            label   "Image Height"
+            type    integer
+            default { "1080" }
+            help    "The desired height of the output image(s), in pixels."
+            disablewhen "{ xn__moonraysceneVariableimage_height_control_85bn == block } { xn__moonraysceneVariableimage_height_control_85bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableres_control_lrbn"
+            label   "moonray:sceneVariable:res"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableres_kebn"
+            label   "Res"
+            type    float
+            default { "1" }
+            help    "Final divisor for the overall image dimensions. A quick way to reduce or increase the size of the render. A value of 2 halves the size of the rendered image(s). A value of 0.5 doubles it."
+            disablewhen "{ xn__moonraysceneVariableres_control_lrbn == block } { xn__moonraysceneVariableres_control_lrbn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableaperture_window_control_4bcn"
+            label   "moonray:sceneVariable:aperture_window"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        multiparm {
+            name    "aperture_window"
+            label    "Aperture Window"
+            default 4
+            disablewhen "{ xn__moonraysceneVariableaperture_window_control_4bcn == block } { xn__moonraysceneVariableaperture_window_control_4bcn == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__moonraysceneVariableaperture_window_3xbn#"
+                label   "Aperture Window"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "Assuming no region_window is defined, an aperture_window of {xmin, ymin, xmax, ymax} overrides image_width using (xmax-xmin) and image_height using (ymax-ymin). Since the values are overrides, they are not restricted to lie in the ranges established by image_width and image_height, but can be arbitrarily large and/or negative. The lower left corner of the image rectangle corresponds to (xmin, ymin) and its midpoint corresponds to the camera's facing direction (the negative camera z-axis), and for projective cameras each boundary edge of the rectangle corresponds to a plane of the view frustum. However, the behavior changes when a region_window is defined - see the region_window documentation."
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__moonraysceneVariableregion_window_control_v7bn"
+            label   "moonray:sceneVariable:region_window"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        multiparm {
+            name    "region_window"
+            label    "Region Window"
+            default 4
+            disablewhen "{ xn__moonraysceneVariableregion_window_control_v7bn == block } { xn__moonraysceneVariableregion_window_control_v7bn == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__moonraysceneVariableregion_window_uubn#"
+                label   "Region Window"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "A region_window of {xmin, ymin, xmax, ymax} overrides the aperture_window if defined, and overrides image_width and image_height otherwise, to establish an image rectangle (xmax-xmin) in width and (ymax-ymin) in height, whose lower left corner corresponds to (xmin, ymin). Importantly, the coordinates are expressed relative to the origin of the aperture_window, or if aperture_window is not defined, relative to the lower-left corner of the image rectangle which would be obtained in the absence of a region_window. The region_window is not restricted to a subset of the aperture_window but can extend outside it, including asymmetrically. The view frustum is reshaped to correspond to the boundary of the region_window, and may therefore end up being skewed."
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__moonraysceneVariablesub_viewport_control_85bn"
+            label   "moonray:sceneVariable:sub_viewport"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        multiparm {
+            name    "sub_viewport"
+            label    "Sub Viewport"
+            default 4
+            disablewhen "{ xn__moonraysceneVariablesub_viewport_control_85bn == block } { xn__moonraysceneVariablesub_viewport_control_85bn == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__moonraysceneVariablesub_viewport_7sbn#"
+                label   "Sub Viewport"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "A sub_viewport of {xmin, ymin, xmax, ymax} restricts the rendered pixels to the rectangle defined by xmin <= x < xmax, ymin <= y < ymax, with origin at the lower left of the image rectangle - no matter how this has been defined (i.e. regardless of which combination of image_width, image_height, aperture_window, region_window has been used). Pixels outside the sub_viewport are left black. Any part of the sub_viewport lying outside the image rectangle has no effect on the result, since there are no pixels there."
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+    }
+
+    group {
+        name    "folder5"
+        label   "Motion and Scale"
+
+        parm {
+            name    "xn__moonraysceneVariablemotion_steps_control_85bn"
+            label   "moonray:sceneVariable:motion_steps"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        multiparm {
+            name    "motion_steps"
+            label    "Motion Steps"
+            default 2
+            disablewhen "{ xn__moonraysceneVariablemotion_steps_control_85bn == block } { xn__moonraysceneVariablemotion_steps_control_85bn == none }"
+            parmtag { "usdvaluetype" "float[]" }
+
+            parm {
+                name    "xn__moonraysceneVariablemotion_steps_7sbn#"
+                label   "Motion Steps"
+                type    float
+                default { "-1" }
+                help    "Frame-relative time offsets for motion sampling"
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__moonraysceneVariableslerp_xforms_control_85bn"
+            label   "moonray:sceneVariable:slerp_xforms"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableslerp_xforms_7sbn"
+            label   "Slerp Xforms"
+            type    toggle
+            default { "0" }
+            help    "If use_rotation_motion_blur is false this will use slerp to interpolate the node_xform for motion blur"
+            disablewhen "{ xn__moonraysceneVariableslerp_xforms_control_85bn == block } { xn__moonraysceneVariableslerp_xforms_control_85bn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablescene_scale_control_m4bn"
+            label   "moonray:sceneVariable:scene_scale"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablescene_scale_lrbn"
+            label   "Scene Scale"
+            type    float
+            default { "0.01" }
+            help    "(in meters): one unit in world space = 'scene scale' meters"
+            disablewhen "{ xn__moonraysceneVariablescene_scale_control_m4bn == block } { xn__moonraysceneVariablescene_scale_control_m4bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder6"
+        label   "Sampling"
+
+        parm {
+            name    "xn__moonraysceneVariablepixel_samples_control_v7bn"
+            label   "moonray:sceneVariable:pixel_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepixel_samples_uubn"
+            label   "Pixel Samples"
+            type    integer
+            default { "8" }
+            help    "The square root of the number of primary samples taken for each pixel in uniform sampling mode. For example, a value of 4 will result in 4*4 = 16 uniform pixel samples."
+            disablewhen "{ xn__moonraysceneVariablepixel_samples_control_v7bn == block } { xn__moonraysceneVariablepixel_samples_control_v7bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelight_samples_control_v7bn"
+            label   "moonray:sceneVariable:light_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelight_samples_uubn"
+            label   "Light Samples"
+            type    integer
+            default { "2" }
+            help    "The square root of the number of samples taken for each light on the primary intersection."
+            disablewhen "{ xn__moonraysceneVariablelight_samples_control_v7bn == block } { xn__moonraysceneVariablelight_samples_control_v7bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablebsdf_samples_control_85bn"
+            label   "moonray:sceneVariable:bsdf_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablebsdf_samples_7sbn"
+            label   "Bsdf Samples"
+            type    integer
+            default { "2" }
+            help    "The square root of the number of samples taken for BSDF lobe evaluations on the primary intersection. The number of samples taken per material depends on the BSDF sampler strategy and the number of lobes that comprise the material."
+            disablewhen "{ xn__moonraysceneVariablebsdf_samples_control_85bn == block } { xn__moonraysceneVariablebsdf_samples_control_85bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablebssrdf_samples_control_i9bn"
+            label   "moonray:sceneVariable:bssrdf_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablebssrdf_samples_hwbn"
+            label   "Bssrdf Samples"
+            type    integer
+            default { "2" }
+            help    "The square root of the number of samples taken to evaluate BSSRDF (subsurface scattering) contributions on the primary intersection."
+            disablewhen "{ xn__moonraysceneVariablebssrdf_samples_control_i9bn == block } { xn__moonraysceneVariablebssrdf_samples_control_i9bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_depth_control_d1bn"
+            label   "moonray:sceneVariable:max_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_depth_cobn"
+            label   "Max Depth"
+            type    integer
+            default { "5" }
+            help    "The maximum ray depth (number of \"bounces\") for diffuse|glossy|mirror event types. This can be thought of as the global depth limit. Reducing this can improve performance at the cost of biasing the rendered image."
+            disablewhen "{ xn__moonraysceneVariablemax_depth_control_d1bn == block } { xn__moonraysceneVariablemax_depth_control_d1bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_diffuse_depth_control_efcn"
+            label   "moonray:sceneVariable:max_diffuse_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_diffuse_depth_d1bn"
+            label   "Max Diffuse Depth"
+            type    integer
+            default { "2" }
+            help    "The maximum ray depth (number of \"bounces\") for diffuse event types. Reducing this can improve performance at the cost of biasing the rendered image. Note that this limit is also governed by the global \"max depth\" attribute."
+            disablewhen "{ xn__moonraysceneVariablemax_diffuse_depth_control_efcn == block } { xn__moonraysceneVariablemax_diffuse_depth_control_efcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_glossy_depth_control_rdcn"
+            label   "moonray:sceneVariable:max_glossy_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_glossy_depth_qzbn"
+            label   "Max Glossy Depth"
+            type    integer
+            default { "2" }
+            help    "The maximum ray depth (number of \"bounces\") for glossy event types. Reducing this can improve performance at the cost of biasing the rendered image. Note that this limit is also governed by the global \"max depth\" attribute."
+            disablewhen "{ xn__moonraysceneVariablemax_glossy_depth_control_rdcn == block } { xn__moonraysceneVariablemax_glossy_depth_control_rdcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_mirror_depth_control_rdcn"
+            label   "moonray:sceneVariable:max_mirror_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_mirror_depth_qzbn"
+            label   "Max Mirror Depth"
+            type    integer
+            default { "3" }
+            help    "The maximum ray depth (number of \"bounces\") for mirror event types. Reducing this can improve performance at the cost of biasing the rendered image. Note that this limit is also governed by the global \"max depth\" attribute."
+            disablewhen "{ xn__moonraysceneVariablemax_mirror_depth_control_rdcn == block } { xn__moonraysceneVariablemax_mirror_depth_control_rdcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_presence_depth_control_0gcn"
+            label   "moonray:sceneVariable:max_presence_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_presence_depth_z2bn"
+            label   "Max Presence Depth"
+            type    integer
+            default { "16" }
+            help    "The maximum ray depth (number of \"bounces\") for presence event types. The material's \"presence\" attribute is ignored after this depth has been reached and the surface is treated as fully present. Reducing this can improve performance at the cost of biasing the rendered image."
+            disablewhen "{ xn__moonraysceneVariablemax_presence_depth_control_0gcn == block } { xn__moonraysceneVariablemax_presence_depth_control_0gcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_hair_depth_control_i9bn"
+            label   "moonray:sceneVariable:max_hair_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_hair_depth_hwbn"
+            label   "Max Hair Depth"
+            type    integer
+            default { "5" }
+            help    "The maximum ray depth (number of \"bounces\") for hair material types. This limit may need to be increased to allow for more hair-to-hair interactions, especially for blonde/white hair or fur. Reducing this can improve performance at the cost of biasing the rendered image. "
+            disablewhen "{ xn__moonraysceneVariablemax_hair_depth_control_i9bn == block } { xn__moonraysceneVariablemax_hair_depth_control_i9bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledisable_optimized_hair_sampling_control_61cn"
+            label   "moonray:sceneVariable:disable_optimized_hair_sampling"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledisable_optimized_hair_sampling_5ocn"
+            label   "Disable Optimized Hair Sampling"
+            type    toggle
+            default { "0" }
+            help    "Forces all hair materials to sample each hair BSDF lobe independently. This will enable the LPE label syntax for 'hair R', 'hair TT', 'hair TRT' and 'hair TRRT ' but will result in slower rendering"
+            disablewhen "{ xn__moonraysceneVariabledisable_optimized_hair_sampling_control_61cn == block } { xn__moonraysceneVariabledisable_optimized_hair_sampling_control_61cn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_subsurface_per_path_control_5ocn"
+            label   "moonray:sceneVariable:max_subsurface_per_path"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_subsurface_per_path_4bcn"
+            label   "Max Subsurface Per Path"
+            type    integer
+            default { "1" }
+            help    "The maximum ray depth (number of \"bounces\") to allow subsurface scattering. For ray depths beyond this limit Lambertian diffuse is used to approximate subsurface scattering."
+            disablewhen "{ xn__moonraysceneVariablemax_subsurface_per_path_control_5ocn == block } { xn__moonraysceneVariablemax_subsurface_per_path_control_5ocn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablerussian_roulette_threshold_control_1tcn"
+            label   "moonray:sceneVariable:russian_roulette_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablerussian_roulette_threshold_0gcn"
+            label   "Russian Roulette Threshold"
+            type    float
+            default { "0.0375" }
+            help    "The Russian roulette threshold specifies the point at which point Russian roulette is evaluated for direct light sampling and BSDF continuation. The unit is luminance of the radiance."
+            disablewhen "{ xn__moonraysceneVariablerussian_roulette_threshold_control_1tcn == block } { xn__moonraysceneVariablerussian_roulette_threshold_control_1tcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletransparency_threshold_control_jncn"
+            label   "moonray:sceneVariable:transparency_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletransparency_threshold_i9bn"
+            label   "Transparency Threshold"
+            type    float
+            default { "1" }
+            help    "The transparency threshold defines the point at which the accumulated opacity can be considered opaque, skipping the generation of new transparency rays."
+            disablewhen "{ xn__moonraysceneVariabletransparency_threshold_control_jncn == block } { xn__moonraysceneVariabletransparency_threshold_control_jncn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepresence_threshold_control_0gcn"
+            label   "moonray:sceneVariable:presence_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepresence_threshold_z2bn"
+            label   "Presence Threshold"
+            type    float
+            default { "0.999" }
+            help    "The presence threshold defines the point at which the accumulated presence can be considered opaque, skipping the generation of presence continuation rays."
+            disablewhen "{ xn__moonraysceneVariablepresence_threshold_control_0gcn == block } { xn__moonraysceneVariablepresence_threshold_control_0gcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepresence_quality_control_rdcn"
+            label   "moonray:sceneVariable:presence_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepresence_quality_qzbn"
+            label   "Presence Quality"
+            type    float
+            default { "0.75" }
+            help    "The presence quality defines the threshold for path throughput after which presence sampling becomes stochastic. This is similar to russian roulette.  A value of 1.0 means never use stochastic sampling (highest quality).  A value of 0.0 means always use stochastic sampling (faster, but may be noisy).  Values between 0.0 and 1.0 will generally be a good trade-off in speed vs. quality when multiple layers of presence are involved."
+            disablewhen "{ xn__moonraysceneVariablepresence_quality_control_rdcn == block } { xn__moonraysceneVariablepresence_quality_control_rdcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelock_frame_noise_control_rdcn"
+            label   "moonray:sceneVariable:lock_frame_noise"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelock_frame_noise_qzbn"
+            label   "Lock Frame Noise"
+            type    toggle
+            default { "0" }
+            help    "By default, the random number generators are seeded by considering the frame number. However, if lock_frame_noise is true, the same seed values are used for each frame, which is typically undesirable."
+            disablewhen "{ xn__moonraysceneVariablelock_frame_noise_control_rdcn == block } { xn__moonraysceneVariablelock_frame_noise_control_rdcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder7"
+        label   "Volumes"
+
+        parm {
+            name    "xn__moonraysceneVariablemax_volume_depth_control_rdcn"
+            label   "moonray:sceneVariable:max_volume_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_volume_depth_qzbn"
+            label   "Max Volume Depth"
+            type    integer
+            default { "1" }
+            help    "The maximum ray depth (number of \"bounces\") for volume event types. Volumes are ignored after this depth has been reached. Reducing this can improve performance at the cost of biasing the rendered image. "
+            disablewhen "{ xn__moonraysceneVariablemax_volume_depth_control_rdcn == block } { xn__moonraysceneVariablemax_volume_depth_control_rdcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_quality_control_i9bn"
+            label   "moonray:sceneVariable:volume_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_quality_hwbn"
+            label   "Volume Quality"
+            type    float
+            default { "0.5" }
+            help    "Controls the overall quality of volume rendering. The higher number gives better volume shape detail and more accurate scattering integration result."
+            disablewhen "{ xn__moonraysceneVariablevolume_quality_control_i9bn == block } { xn__moonraysceneVariablevolume_quality_control_i9bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_shadow_quality_control_wlcn"
+            label   "moonray:sceneVariable:volume_shadow_quality"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_shadow_quality_v7bn"
+            label   "Volume Shadow Quality"
+            type    float
+            default { "1" }
+            help    "Controls the quality of volume shadow (transmittance). The higher number gives more accurate volume shadow."
+            disablewhen "{ xn__moonraysceneVariablevolume_shadow_quality_control_wlcn == block } { xn__moonraysceneVariablevolume_shadow_quality_control_wlcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_illumination_samples_control_ovcn"
+            label   "moonray:sceneVariable:volume_illumination_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_illumination_samples_nicn"
+            label   "Volume Illumination Samples"
+            type    integer
+            default { "4" }
+            help    "Sample number along the ray when computing volume scattering radiance towards the eye. Set to 0 to turn off volume lighting completely."
+            disablewhen "{ xn__moonraysceneVariablevolume_illumination_samples_control_ovcn == block } { xn__moonraysceneVariablevolume_illumination_samples_control_ovcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_opacity_threshold_control_sqcn"
+            label   "moonray:sceneVariable:volume_opacity_threshold"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_opacity_threshold_rdcn"
+            label   "Volume Opacity Threshold"
+            type    float
+            default { "0.995" }
+            help    "As a ray travels through volumes, it will accumulate opacity. When the value exceeds the volume opacity threshold, the renderer will stop further volume integration along this ray."
+            disablewhen "{ xn__moonraysceneVariablevolume_opacity_threshold_control_sqcn == block } { xn__moonraysceneVariablevolume_opacity_threshold_control_sqcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_overlap_mode_control_nicn"
+            label   "moonray:sceneVariable:volume_overlap_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_overlap_mode_m4bn"
+            label   "Volume Overlap Mode"
+            type    string
+            default { "sum" }
+            help    "Selects how to handle contributions from overlapping volumes:\n		sum: add contributions from all volumes\n		max: only consider maximum volume based on extinction\n		rnd: randomly choose one value weighted by extinction\n		Warning: light linking does not work correctly in sum mode."
+            disablewhen "{ xn__moonraysceneVariablevolume_overlap_mode_control_nicn == block } { xn__moonraysceneVariablevolume_overlap_mode_control_nicn == none }"
+            menu {
+                "sum"   "Sum"
+                "max"   "Max"
+                "rnd"   "Rnd"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_attenuation_factor_control_fscn"
+            label   "moonray:sceneVariable:volume_attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_attenuation_factor_efcn"
+            label   "Volume Attenuation Factor"
+            type    float
+            default { "0.65" }
+            help    "Controls how volume attenuation gets exponentially scaled down when rendering multiple scattering volumes. Dialing down the value generally results in more translucent look. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__moonraysceneVariablevolume_attenuation_factor_control_fscn == block } { xn__moonraysceneVariablevolume_attenuation_factor_control_fscn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_contribution_factor_control_1tcn"
+            label   "moonray:sceneVariable:volume_contribution_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_contribution_factor_0gcn"
+            label   "Volume Contribution Factor"
+            type    float
+            default { "0.65" }
+            help    "Controls how scattering contribution gets exponentially scaled down when rendering multiple scattering volumes. Dialing down the value generally results in a darker volume scattering look. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__moonraysceneVariablevolume_contribution_factor_control_1tcn == block } { xn__moonraysceneVariablevolume_contribution_factor_control_1tcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_phase_attenuation_factor_control_61cn"
+            label   "moonray:sceneVariable:volume_phase_attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_phase_attenuation_factor_5ocn"
+            label   "Volume Phase Attenuation Factor"
+            type    float
+            default { "0.5" }
+            help    "Controls how phase function (anisotropy) gets exponentially scaled down when rendering multiple scattering volumes. This variable is only effective when \"max volume depth\" is greater than 1"
+            disablewhen "{ xn__moonraysceneVariablevolume_phase_attenuation_factor_control_61cn == block } { xn__moonraysceneVariablevolume_phase_attenuation_factor_control_61cn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_indirect_samples_control_5ocn"
+            label   "moonray:sceneVariable:volume_indirect_samples"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevolume_indirect_samples_4bcn"
+            label   "Volume Indirect Samples"
+            type    integer
+            default { "0" }
+            help    "Number of indirect illumination samples on volumes (per primary ray)."
+            disablewhen "{ xn__moonraysceneVariablevolume_indirect_samples_control_5ocn == block } { xn__moonraysceneVariablevolume_indirect_samples_control_5ocn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+    }
+
+    group {
+        name    "folder8"
+        label   "Fireflies Removal"
+
+        parm {
+            name    "xn__moonraysceneVariablesample_clamping_value_control_wlcn"
+            label   "moonray:sceneVariable:sample_clamping_value"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablesample_clamping_value_v7bn"
+            label   "Sample Clamping Value"
+            type    float
+            default { "10" }
+            help    "Clamp sample radiance values to this maximum value (the feature is disabled if the value is 0.0). Using this technique reduces fireflies, but is biased."
+            disablewhen "{ xn__moonraysceneVariablesample_clamping_value_control_wlcn == block } { xn__moonraysceneVariablesample_clamping_value_control_wlcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablesample_clamping_depth_control_wlcn"
+            label   "moonray:sceneVariable:sample_clamping_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablesample_clamping_depth_v7bn"
+            label   "Sample Clamping Depth"
+            type    integer
+            default { "1" }
+            help    "Clamp sample values only after the given non-specular ray depth."
+            disablewhen "{ xn__moonraysceneVariablesample_clamping_depth_control_wlcn == block } { xn__moonraysceneVariablesample_clamping_depth_control_wlcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableroughness_clamping_factor_control_fscn"
+            label   "moonray:sceneVariable:roughness_clamping_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableroughness_clamping_factor_efcn"
+            label   "Roughness Clamping Factor"
+            type    float
+            default { "0" }
+            help    "Clamp material roughness along paths. A value of 1 clamps values to the maximum roughness encountered, while lower values temper the clamping value. 0 disables the effect. Using this technique reduces fireflies from indirect caustics but is biased."
+            disablewhen "{ xn__moonraysceneVariableroughness_clamping_factor_control_fscn == block } { xn__moonraysceneVariableroughness_clamping_factor_control_fscn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder9"
+        label   "Filtering"
+
+        parm {
+            name    "xn__moonraysceneVariabletexture_blur_control_85bn"
+            label   "moonray:sceneVariable:texture_blur"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletexture_blur_7sbn"
+            label   "Texture Blur"
+            type    float
+            default { "0" }
+            help    "Adjusts the amount of texture filtering."
+            disablewhen "{ xn__moonraysceneVariabletexture_blur_control_85bn == block } { xn__moonraysceneVariabletexture_blur_control_85bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepixel_filter_width_control_0gcn"
+            label   "moonray:sceneVariable:pixel_filter_width"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepixel_filter_width_z2bn"
+            label   "Pixel Filter Width"
+            type    float
+            default { "3" }
+            help    "The overall extents, in pixels, of the pixel filter. Larger values will result in softer images."
+            disablewhen "{ xn__moonraysceneVariablepixel_filter_width_control_0gcn == block } { xn__moonraysceneVariablepixel_filter_width_control_0gcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepixel_filter_control_85bn"
+            label   "moonray:sceneVariable:pixel_filter"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepixel_filter_7sbn"
+            label   "Pixel Filter"
+            type    string
+            default { "cubic b-spline" }
+            help    "The type of filter used for filter importance sampling. A box filter with a width of 1 is analogous to disabling pixel filtering."
+            disablewhen "{ xn__moonraysceneVariablepixel_filter_control_85bn == block } { xn__moonraysceneVariablepixel_filter_control_85bn == none }"
+            menu {
+                "box"                   "Box"
+                "cubic b-spline"        "Cubic B-Spline"
+                "quadratic b-spline"    "Quadratic B-Spline"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder10"
+        label   "Deep Images"
+
+        parm {
+            name    "xn__moonraysceneVariabledeep_format_control_m4bn"
+            label   "moonray:sceneVariable:deep_format"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_format_lrbn"
+            label   "Deep Format"
+            type    string
+            default { "opendcx2.0" }
+            help    "Deep image format:\n		openexr2.0: vanilla OpenEXR deep\n		opendcx2.0: DCX abuffer mask encoding"
+            disablewhen "{ xn__moonraysceneVariabledeep_format_control_m4bn == block } { xn__moonraysceneVariabledeep_format_control_m4bn == none }"
+            menu {
+                "openexr2.0"    "Openexr2.0"
+                "opendcx2.0"    "Opendcx2.0"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_curvature_tolerance_control_sqcn"
+            label   "moonray:sceneVariable:deep_curvature_tolerance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_curvature_tolerance_rdcn"
+            label   "Deep Curvature Tolerance"
+            type    float
+            default { "45" }
+            help    "Maximum curvature (in degrees) of the deep surface within a pixel before it is split"
+            disablewhen "{ xn__moonraysceneVariabledeep_curvature_tolerance_control_sqcn == block } { xn__moonraysceneVariabledeep_curvature_tolerance_control_sqcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_z_tolerance_control_rdcn"
+            label   "moonray:sceneVariable:deep_z_tolerance"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_z_tolerance_qzbn"
+            label   "Deep Z Tolerance"
+            type    float
+            default { "2" }
+            help    "Maximum range of the deep surface's Z values within a pixel before it is split"
+            disablewhen "{ xn__moonraysceneVariabledeep_z_tolerance_control_rdcn == block } { xn__moonraysceneVariabledeep_z_tolerance_control_rdcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_vol_compression_res_control_sqcn"
+            label   "moonray:sceneVariable:deep_vol_compression_res"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_vol_compression_res_rdcn"
+            label   "Deep Vol Compression Res"
+            type    integer
+            default { "10" }
+            help    "Volume opacity compression resolution.  Lower values gives higher compression."
+            disablewhen "{ xn__moonraysceneVariabledeep_vol_compression_res_control_sqcn == block } { xn__moonraysceneVariabledeep_vol_compression_res_control_sqcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_id_attribute_names_control_5ocn"
+            label   "moonray:sceneVariable:deep_id_attribute_names"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledeep_id_attribute_names_4bcn"
+            label   "Deep Id Attribute Names"
+            type    string
+            default { "" }
+            help    "Names of primitive attributes containing deep IDs"
+            disablewhen "{ xn__moonraysceneVariabledeep_id_attribute_names_control_5ocn == block } { xn__moonraysceneVariabledeep_id_attribute_names_control_5ocn == none }"
+            parmtag { "usdvaluetype" "string[]" }
+        }
+    }
+
+    group {
+        name    "folder11"
+        label   "Caching"
+
+        parm {
+            name    "xn__moonraysceneVariabletexture_cache_size_control_0gcn"
+            label   "moonray:sceneVariable:texture_cache_size"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletexture_cache_size_z2bn"
+            label   "Texture Cache Size"
+            type    integer
+            default { "4000" }
+            help    "Specifies the maximum size of the texture cache in megabytes. This value can significantly impact rendering speed, where larger values often improve rendering speed."
+            disablewhen "{ xn__moonraysceneVariabletexture_cache_size_control_0gcn == block } { xn__moonraysceneVariabletexture_cache_size_control_0gcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletexture_file_handles_control_9jcn"
+            label   "moonray:sceneVariable:texture_file_handles"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletexture_file_handles_85bn"
+            label   "Texture File Handles"
+            type    integer
+            default { "24000" }
+            help    "Specifies the maximum number of simultaneous open texture file handles."
+            disablewhen "{ xn__moonraysceneVariabletexture_file_handles_control_9jcn == block } { xn__moonraysceneVariabletexture_file_handles_control_9jcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablefast_geometry_update_control_9jcn"
+            label   "moonray:sceneVariable:fast_geometry_update"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablefast_geometry_update_85bn"
+            label   "Fast Geometry Update"
+            type    toggle
+            default { "0" }
+            help    "If this flag is off, the tessellation related data for subdivision surface will be deleted after tessellation is done. This is to save memory for single frame rendering. Otherwise, that data will be kept in memory to support re-tessellation after geometry are updated."
+            disablewhen "{ xn__moonraysceneVariablefast_geometry_update_control_9jcn == block } { xn__moonraysceneVariablefast_geometry_update_control_9jcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder12"
+        label   "Checkpoint"
+
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_active_control_efcn"
+            label   "moonray:sceneVariable:checkpoint_active"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_active_d1bn"
+            label   "Checkpoint Active"
+            type    toggle
+            default { "0" }
+            help    "Enables or disables checkpoint file writing."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_active_control_efcn == block } { xn__moonraysceneVariablecheckpoint_active_control_efcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_interval_control_nicn"
+            label   "moonray:sceneVariable:checkpoint_interval"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_interval_m4bn"
+            label   "Checkpoint Interval"
+            type    float
+            default { "15" }
+            help    "Specifies the time interval, in minutes, between checkpoint file writes. The interval must be equal to or greater than 0.1 minutes."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_interval_control_nicn == block } { xn__moonraysceneVariablecheckpoint_interval_control_nicn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_quality_steps_control_sqcn"
+            label   "moonray:sceneVariable:checkpoint_quality_steps"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_quality_steps_rdcn"
+            label   "Checkpoint Quality Steps"
+            type    integer
+            default { "2" }
+            help    "Specifies the number of quality steps, which refers to the internal sampling iteration count between checkpoint file writes. The value must be equal to or greater than 1. In the case of uniform sampling, this number of steps is equivalent to the pixel sampling steps for each pixel. For example, if you set quality steps to 2, a checkpoint file will be created every time each pixel's sample count exceeds 2, 4, 6, 8, 10, and so on. In the case of adaptive sampling, this number of steps is equivalent to the internal adaptive sampling iteration steps. A recommended number falls within the range of 1 to 3. For example, if you set the value to 2, a checkpoint file will be created after finishing every 2 adaptive sampling passes. A larger value will conduct more rendering passes before writing a file."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_quality_steps_control_sqcn == block } { xn__moonraysceneVariablecheckpoint_quality_steps_control_sqcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_time_cap_control_nicn"
+            label   "moonray:sceneVariable:checkpoint_time_cap"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_time_cap_m4bn"
+            label   "Checkpoint Time Cap"
+            type    float
+            default { "0" }
+            help    "Determines when the render will finish based on the total render process time in minutes. If the value is exceeded, the render will finish after the next checkpoint write. If the value is set to 0, the time cap feature is disabled."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_time_cap_control_nicn == block } { xn__moonraysceneVariablecheckpoint_time_cap_control_nicn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_sample_cap_control_wlcn"
+            label   "moonray:sceneVariable:checkpoint_sample_cap"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_sample_cap_v7bn"
+            label   "Checkpoint Sample Cap"
+            type    integer
+            default { "0" }
+            help    "Causes the render to finish based on the total pixel sample count. For example, if the value is 1024, the render will end after the next checkpoint write when each pixel exceeds 1024 samples. If the value is set to 0, the sample cap feature is disabled."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_sample_cap_control_wlcn == block } { xn__moonraysceneVariablecheckpoint_sample_cap_control_wlcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_overwrite_control_9jcn"
+            label   "moonray:sceneVariable:checkpoint_overwrite"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_overwrite_85bn"
+            label   "Checkpoint Overwrite"
+            type    toggle
+            default { "1" }
+            help    "When set to true, the last checkpoint file will be overwritten when writing out the new checkpoint file. If set to false, the checkpoint filename will be appended with the total number of samples, which will result in the retention of all checkpoint files."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_overwrite_control_9jcn == block } { xn__moonraysceneVariablecheckpoint_overwrite_control_9jcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_mode_control_4bcn"
+            label   "moonray:sceneVariable:checkpoint_mode"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_mode_3xbn"
+            label   "Checkpoint Mode"
+            type    string
+            default { "time" }
+            help    "Allows you to choose whether checkpoint images are written based on time elapsed or on quality reached."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_mode_control_4bcn == block } { xn__moonraysceneVariablecheckpoint_mode_control_4bcn == none }"
+            menu {
+                "time"      "Time"
+                "quality"   "Quality"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_start_sample_control_5ocn"
+            label   "moonray:sceneVariable:checkpoint_start_sample"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_start_sample_4bcn"
+            label   "Checkpoint Start Sample"
+            type    integer
+            default { "1" }
+            help    "Specifies the samples per pixel (SPP). A checkpoint file is created when all pixels' SPP are greater than or equal to this number. A checkpoint file is created once this criterion is met."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_start_sample_control_5ocn == block } { xn__moonraysceneVariablecheckpoint_start_sample_control_5ocn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_bg_write_control_nicn"
+            label   "moonray:sceneVariable:checkpoint_bg_write"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_bg_write_m4bn"
+            label   "Checkpoint Bg Write"
+            type    toggle
+            default { "1" }
+            help    "When set to true, checkpoint file writes occur in a background thread that runs concurrently with the MCRT threads. Otherwise, all MCRT threads must wait while the checkpoint file is written."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_bg_write_control_nicn == block } { xn__moonraysceneVariablecheckpoint_bg_write_control_nicn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_post_script_control_jncn"
+            label   "moonray:sceneVariable:checkpoint_post_script"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_post_script_i9bn"
+            label   "Checkpoint Post Script"
+            type    string
+            default { "" }
+            help    "Specifies the filename of a Lua script that will be executed after every checkpoint file is written. The script will run concurrently with the ongoing MCRT threads. For more information, refer to the documentation for MoonRay-provided Lua variables accessible within the script."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_post_script_control_jncn == block } { xn__moonraysceneVariablecheckpoint_post_script_control_jncn == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_total_files_control_jncn"
+            label   "moonray:sceneVariable:checkpoint_total_files"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_total_files_i9bn"
+            label   "Checkpoint Total Files"
+            type    integer
+            default { "0" }
+            help    "This variable specifies the total number of checkpoint files for the quality-based checkpoint mode. It serves as a substitute parameter for checkpoint_quality_steps. If the value is set to 0 (the default), the interval at which checkpoints are generated is controlled by the checkpoint_quality_steps variable. If the value is set to 1 or higher, the renderer will attempt to automatically generate a user-defined number of checkpoint files based on this value. This option takes into account the checkpoint_start_sample variable.\n\nIn some cases, the renderer may be unable to create the requested number of checkpoint_total_files due to limitations in the internal implementation or because the user has specified a value greater than 1 for the checkpoint_start_sample variable. However, in these cases, the renderer will attempt to generate the closest possible number of checkpoint files to the user-defined value."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_total_files_control_jncn == block } { xn__moonraysceneVariablecheckpoint_total_files_control_jncn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_max_bgcache_control_jncn"
+            label   "moonray:sceneVariable:checkpoint_max_bgcache"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_max_bgcache_i9bn"
+            label   "Checkpoint Max Bgcache"
+            type    integer
+            default { "2" }
+            help    "Specifies the maximum number of queued checkpoint images the checkpoint-writing background thread can handle. The value of checkpoint_max_bgcache must be greater than or equal to 1. If the number of queued checkpoint images exceeds this limit, MCRT threads will be temporarily suspended while background images are written to make room in the queue. A larger value can support background writing even with short checkpoint intervals, but it may require more memory. A value of 2 is recommended for most cases."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_max_bgcache_control_jncn == block } { xn__moonraysceneVariablecheckpoint_max_bgcache_control_jncn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_max_snapshot_overhead_control_t3cn"
+            label   "moonray:sceneVariable:checkpoint_max_snapshot_overhead"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_max_snapshot_overhead_sqcn"
+            label   "Checkpoint Max Snapshot Overhead"
+            type    float
+            default { "0" }
+            help    "Specifies the maximum fraction of the snapshot overhead threshold for an extra snapshot action in the event of an unexpected interruption by SIGINT. The value is expressed as a fraction. If the value is set to zero or a negative number, no extra snapshot action will be executed, and no checkpoint file will be generated if SIGINT is received."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_max_snapshot_overhead_control_t3cn == block } { xn__moonraysceneVariablecheckpoint_max_snapshot_overhead_control_t3cn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_snapshot_interval_control_bxcn"
+            label   "moonray:sceneVariable:checkpoint_snapshot_interval"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecheckpoint_snapshot_interval_9jcn"
+            label   "Checkpoint Snapshot Interval"
+            type    float
+            default { "0" }
+            help    "Specifies the time interval, in minutes, allowed for a snapshot when a SIGINT is encountered. If the value is 0 or negative, the checkpoint_max_snapshot_overhead parameter is used instead."
+            disablewhen "{ xn__moonraysceneVariablecheckpoint_snapshot_interval_control_bxcn == block } { xn__moonraysceneVariablecheckpoint_snapshot_interval_control_bxcn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder13"
+        label   "Resume Render"
+
+        parm {
+            name    "xn__moonraysceneVariableresumable_output_control_rdcn"
+            label   "moonray:sceneVariable:resumable_output"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableresumable_output_qzbn"
+            label   "Resumable Output"
+            type    toggle
+            default { "0" }
+            help    "make aov output as resumable for resume render"
+            disablewhen "{ xn__moonraysceneVariableresumable_output_control_rdcn == block } { xn__moonraysceneVariableresumable_output_control_rdcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableresume_render_control_v7bn"
+            label   "moonray:sceneVariable:resume_render"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableresume_render_uubn"
+            label   "Resume Render"
+            type    toggle
+            default { "0" }
+            help    "resuming render process"
+            disablewhen "{ xn__moonraysceneVariableresume_render_control_v7bn == block } { xn__moonraysceneVariableresume_render_control_v7bn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableon_resume_script_control_rdcn"
+            label   "moonray:sceneVariable:on_resume_script"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableon_resume_script_qzbn"
+            label   "On Resume Script"
+            type    string
+            default { "" }
+            help    "When using resumable rendering, the Lua script named here is executed after the render prep stage. In addition, MoonRay sets some Lua global variables the script can access. This functionality is disabled when the script name is empty or when not using resumable rendering. Please refer to the checkpoint/resume documentation for more details."
+            disablewhen "{ xn__moonraysceneVariableon_resume_script_control_rdcn == block } { xn__moonraysceneVariableon_resume_script_control_rdcn == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+    }
+
+    group {
+        name    "folder14"
+        label   "Global Toggles"
+
+        parm {
+            name    "xn__moonraysceneVariableenable_motion_blur_control_0gcn"
+            label   "moonray:sceneVariable:enable_motion_blur"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_motion_blur_z2bn"
+            label   "Enable Motion Blur"
+            type    toggle
+            default { "1" }
+            help    "Enables or disables motion blur"
+            disablewhen "{ xn__moonraysceneVariableenable_motion_blur_control_0gcn == block } { xn__moonraysceneVariableenable_motion_blur_control_0gcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_dof_control_z2bn"
+            label   "moonray:sceneVariable:enable_dof"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_dof_ypbn"
+            label   "Enable Dof"
+            type    toggle
+            default { "1" }
+            help    "Enables or disables camera depth-of-field (DOF)"
+            disablewhen "{ xn__moonraysceneVariableenable_dof_control_z2bn == block } { xn__moonraysceneVariableenable_dof_control_z2bn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_max_geometry_resolution_control_k0cn"
+            label   "moonray:sceneVariable:enable_max_geometry_resolution"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_max_geometry_resolution_jncn"
+            label   "Enable Max Geometry Resolution"
+            type    toggle
+            default { "0" }
+            help    "Specifies whether the max_geometry_resolution limit is in effect."
+            disablewhen "{ xn__moonraysceneVariableenable_max_geometry_resolution_control_k0cn == block } { xn__moonraysceneVariableenable_max_geometry_resolution_control_k0cn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_geometry_resolution_control_5ocn"
+            label   "moonray:sceneVariable:max_geometry_resolution"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemax_geometry_resolution_4bcn"
+            label   "Max Geometry Resolution"
+            type    integer
+            default { "2.14748e+09" }
+            help    "Specifies a global limit to geometry resolution. Geometry procedurals should respect this limit."
+            disablewhen "{ xn__moonraysceneVariablemax_geometry_resolution_control_5ocn == block } { xn__moonraysceneVariablemax_geometry_resolution_control_5ocn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_displacement_control_nicn"
+            label   "moonray:sceneVariable:enable_displacement"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_displacement_m4bn"
+            label   "Enable Displacement"
+            type    toggle
+            default { "1" }
+            help    "Enables or disables geometry displacement."
+            disablewhen "{ xn__moonraysceneVariableenable_displacement_control_nicn == block } { xn__moonraysceneVariableenable_displacement_control_nicn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_subsurface_scattering_control_bxcn"
+            label   "moonray:sceneVariable:enable_subsurface_scattering"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_subsurface_scattering_9jcn"
+            label   "Enable Subsurface Scattering"
+            type    toggle
+            default { "1" }
+            help    "Enables or disables sub-surface scattering."
+            disablewhen "{ xn__moonraysceneVariableenable_subsurface_scattering_control_bxcn == block } { xn__moonraysceneVariableenable_subsurface_scattering_control_bxcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_shadowing_control_rdcn"
+            label   "moonray:sceneVariable:enable_shadowing"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_shadowing_qzbn"
+            label   "Enable Shadowing"
+            type    toggle
+            default { "1" }
+            help    "Enables or disables shadowing through occlusion rays."
+            disablewhen "{ xn__moonraysceneVariableenable_shadowing_control_rdcn == block } { xn__moonraysceneVariableenable_shadowing_control_rdcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_presence_shadows_control_5ocn"
+            label   "moonray:sceneVariable:enable_presence_shadows"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableenable_presence_shadows_4bcn"
+            label   "Enable Presence Shadows"
+            type    toggle
+            default { "0" }
+            help    "Whether or not to respect a material's \"presence\" value for shadow rays. Performance may improve when disabled, but all materials are treated as fully present."
+            disablewhen "{ xn__moonraysceneVariableenable_presence_shadows_control_5ocn == block } { xn__moonraysceneVariableenable_presence_shadows_control_5ocn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelights_visible_in_camera_control_sqcn"
+            label   "moonray:sceneVariable:lights_visible_in_camera"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelights_visible_in_camera_rdcn"
+            label   "Lights Visible In Camera"
+            type    toggle
+            default { "0" }
+            help    "Globally enables or disables lights being visible in camera. Each light has its own setting which may override this value."
+            disablewhen "{ xn__moonraysceneVariablelights_visible_in_camera_control_sqcn == block } { xn__moonraysceneVariablelights_visible_in_camera_control_sqcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepropagate_visibility_bounce_type_control_t3cn"
+            label   "moonray:sceneVariable:propagate_visibility_bounce_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablepropagate_visibility_bounce_type_sqcn"
+            label   "Propagate Visibility Bounce Type"
+            type    toggle
+            default { "0" }
+            help    "turns on/off propagation for ray visibility masks"
+            disablewhen "{ xn__moonraysceneVariablepropagate_visibility_bounce_type_control_t3cn == block } { xn__moonraysceneVariablepropagate_visibility_bounce_type_control_t3cn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableshadow_terminator_fix_control_wlcn"
+            label   "moonray:sceneVariable:shadow_terminator_fix"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableshadow_terminator_fix_v7bn"
+            label   "Shadow Terminator Fix"
+            type    string
+            default { "Off" }
+            help    "Attempt to soften hard shadow terminator boundaries due to shading/geometric normal deviations.  \"ON uses a custom terminator softening method. Cosine Compensation\" is Chiang's 2019 SIGGRAPH technique.  \"GGX\" is Estevez's raytracing gems technique.  \"Sine Compensation\" is a sine based modification of Chiang's method. Different scenes may work better with different techniques.  The recommendation is to start with the custom compensation ON, then sine compensation technique, then GGX, then cosine."
+            disablewhen "{ xn__moonraysceneVariableshadow_terminator_fix_control_wlcn == block } { xn__moonraysceneVariableshadow_terminator_fix_control_wlcn == none }"
+            menu {
+                "Off"                                   "Off"
+                "On"                                    "On"
+                "On (Sine Compensation Alternative)"    "On (Sine Compensation Alternative)"
+                "On (GGX Compensation Alternative)"     "On (GGX Compensation Alternative)"
+                "On (Cosine Compensation Alternative"   "On (Cosine Compensation Alternative"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecryptomatte_multi_presence_control_1tcn"
+            label   "moonray:sceneVariable:cryptomatte_multi_presence"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablecryptomatte_multi_presence_0gcn"
+            label   "Cryptomatte Multi Presence"
+            type    toggle
+            default { "0" }
+            help    "Determines whether to record presence bounces as separate cryptomatte samples."
+            disablewhen "{ xn__moonraysceneVariablecryptomatte_multi_presence_control_1tcn == block } { xn__moonraysceneVariablecryptomatte_multi_presence_control_1tcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder15"
+        label   "Driver"
+
+        parm {
+            name    "xn__moonraysceneVariablemachine_id_control_z2bn"
+            label   "moonray:sceneVariable:machine_id"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablemachine_id_ypbn"
+            label   "Machine Id"
+            type    integer
+            default { "-1" }
+            help    "Used only in arras moonray context, automatically set by arras and indicates the MCRT computation ID in the current session"
+            disablewhen "{ xn__moonraysceneVariablemachine_id_control_z2bn == block } { xn__moonraysceneVariablemachine_id_control_z2bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablenum_machines_control_85bn"
+            label   "moonray:sceneVariable:num_machines"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablenum_machines_7sbn"
+            label   "Num Machines"
+            type    integer
+            default { "-1" }
+            help    "Used only in arras moonray context, automatically set by arras and indicates total number of MCRT computations active in the current session"
+            disablewhen "{ xn__moonraysceneVariablenum_machines_control_85bn == block } { xn__moonraysceneVariablenum_machines_control_85bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletask_distribution_type_control_jncn"
+            label   "moonray:sceneVariable:task_distribution_type"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletask_distribution_type_i9bn"
+            label   "Task Distribution Type"
+            type    string
+            default { "multiplex pixel" }
+            help    "Used only in arras moonray context, defines the task distribution method to the MCRT computation. Multi-plex pixel is the default and preferred method. Non-overlapped tile is experimental and only used for debugging/development purposes"
+            disablewhen "{ xn__moonraysceneVariabletask_distribution_type_control_jncn == block } { xn__moonraysceneVariabletask_distribution_type_control_jncn == none }"
+            menu {
+                "non-overlapped tile"   "Non-Overlapped Tile"
+                "multiplex pixel"       "Multiplex Pixel"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableoutput_file_control_m4bn"
+            label   "moonray:sceneVariable:output_file"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableoutput_file_lrbn"
+            label   "Output File"
+            type    string
+            default { "scene.exr" }
+            help    "This specifies the output path for the beauty image (RGBA). This is independent of the AOV RenderOutputs, which can also write a beauty image."
+            disablewhen "{ xn__moonraysceneVariableoutput_file_control_m4bn == block } { xn__moonraysceneVariableoutput_file_control_m4bn == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletmp_dir_control_3xbn"
+            label   "moonray:sceneVariable:tmp_dir"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabletmp_dir_2kbn"
+            label   "Tmp Dir"
+            type    string
+            default { "" }
+            help    "Define temporary directory name for temporary file generation. Use $TMPDIR environment variable value if this variable is empty.If $TMPDIR is also empty, use /tmp"
+            disablewhen "{ xn__moonraysceneVariabletmp_dir_control_3xbn == block } { xn__moonraysceneVariabletmp_dir_control_3xbn == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableprimary_aov_control_m4bn"
+            label   "moonray:sceneVariable:primary_aov"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableprimary_aov_lrbn"
+            label   "Primary Aov"
+            type    oppath
+            default { "" }
+            help    "The aov that acts as the primary output. If undefined, it will default to the typical render buffer."
+            disablewhen "{ xn__moonraysceneVariableprimary_aov_control_m4bn == block } { xn__moonraysceneVariableprimary_aov_control_m4bn == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+        }
+    }
+
+    group {
+        name    "folder16"
+        label   "Logging"
+
+        parm {
+            name    "xn__moonraysceneVariablelog_debug_control_d1bn"
+            label   "moonray:sceneVariable:log_debug"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelog_debug_cobn"
+            label   "Log Debug"
+            type    toggle
+            default { "0" }
+            help    "Determines whether debugging-level messages are logged."
+            disablewhen "{ xn__moonraysceneVariablelog_debug_control_d1bn == block } { xn__moonraysceneVariablelog_debug_control_d1bn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelog_info_control_qzbn"
+            label   "moonray:sceneVariable:log_info"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablelog_info_pmbn"
+            label   "Log Info"
+            type    toggle
+            default { "0" }
+            help    "Determines whether information-level messages are logged."
+            disablewhen "{ xn__moonraysceneVariablelog_info_control_qzbn == block } { xn__moonraysceneVariablelog_info_control_qzbn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablefatal_color_control_m4bn"
+            label   "moonray:sceneVariable:fatal_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablefatal_color_lrbn"
+            label   "Fatal Color"
+            type    color
+            size    3
+            default { "1" "0" "1" }
+            help    "The color to use for materials or map shaders that are unable to execute shading, usually due to incomplete initialization."
+            disablewhen "{ xn__moonraysceneVariablefatal_color_control_m4bn == block } { xn__moonraysceneVariablefatal_color_control_m4bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablestats_file_control_z2bn"
+            label   "moonray:sceneVariable:stats_file"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablestats_file_ypbn"
+            label   "Stats File"
+            type    string
+            default { "" }
+            help    "The filename to write the rendering statistics to in CSV format."
+            disablewhen "{ xn__moonraysceneVariablestats_file_control_z2bn == block } { xn__moonraysceneVariablestats_file_control_z2bn == none }"
+            parmtag { "usdvaluetype" "string" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableathena_debug_control_85bn"
+            label   "moonray:sceneVariable:athena_debug"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariableathena_debug_7sbn"
+            label   "Athena Debug"
+            type    toggle
+            default { "0" }
+            help    "[DreamWorks Animation internal] Enables or disables sending logging results to the Athena debugging database instead of the production database."
+            disablewhen "{ xn__moonraysceneVariableathena_debug_control_85bn == block } { xn__moonraysceneVariableathena_debug_control_85bn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    group {
+        name    "folder17"
+        label   "Debug"
+
+        parm {
+            name    "xn__moonraysceneVariabledebug_pixel_control_m4bn"
+            label   "moonray:sceneVariable:debug_pixel"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        multiparm {
+            name    "debug_pixel"
+            label    "Debug Pixel"
+            default 2
+            disablewhen "{ xn__moonraysceneVariabledebug_pixel_control_m4bn == block } { xn__moonraysceneVariabledebug_pixel_control_m4bn == none }"
+            parmtag { "usdvaluetype" "int[]" }
+
+            parm {
+                name    "xn__moonraysceneVariabledebug_pixel_lrbn#"
+                label   "Debug Pixel"
+                type    integer
+                default { "-2.14748e+09" }
+                help    "Allows for rendering a single pixel and is typically used for debugging. The value given specifies the 2D pixel coordinate expressed from the bottom-left of the frame-viewport"
+                range   { 0 10 }
+                parmtag { "moonray::is_parm" "1" }
+            }
+        }
+
+        parm {
+            name    "xn__moonraysceneVariabledebug_console_control_v7bn"
+            label   "moonray:sceneVariable:debug_console"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariabledebug_console_uubn"
+            label   "Debug Console"
+            type    integer
+            default { "-1" }
+            help    "Specifies the port number for the debug console. When the debug console functionalities are enabled, you can use a telnet connection to send commands and control rendering behavior for debugging purposes.\n- A value of -1 disables all debug console functionality.\n- A positive value specifies a specific port number.\n- If you set the port number to 0, the kernel will find an available port for you and display the port number to stderr."
+            disablewhen "{ xn__moonraysceneVariabledebug_console_control_v7bn == block } { xn__moonraysceneVariabledebug_console_control_v7bn == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "int" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevalidate_geometry_control_efcn"
+            label   "moonray:sceneVariable:validate_geometry"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__moonraysceneVariablevalidate_geometry_d1bn"
+            label   "Validate Geometry"
+            type    toggle
+            default { "0" }
+            help    "Checks geometry for bad data"
+            disablewhen "{ xn__moonraysceneVariablevalidate_geometry_control_efcn == block } { xn__moonraysceneVariablevalidate_geometry_control_efcn == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+    }
+
+    parm {
+        name    "xn__moonraysceneVariablefps_control_lrbn"
+        label   "moonray:sceneVariable:fps"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablefps_kebn"
+        label   "Fps"
+        type    float
+        default { "24" }
+        help    "(Frames per second) Affects motion blur."
+        disablewhen "{ xn__moonraysceneVariablefps_control_lrbn == block } { xn__moonraysceneVariablefps_control_lrbn == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablesampling_mode_control_v7bn"
+        label   "moonray:sceneVariable:sampling_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablesampling_mode_uubn"
+        label   "Sampling Mode"
+        type    string
+        default { "uniform" }
+        help    "Controls which sampling scheme to use: uniform or adaptive."
+        disablewhen "{ xn__moonraysceneVariablesampling_mode_control_v7bn == block } { xn__moonraysceneVariablesampling_mode_control_v7bn == none }"
+        menu {
+            "uniform"   "Uniform"
+            "adaptive"  "Adaptive"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablemin_adaptive_samples_control_9jcn"
+        label   "moonray:sceneVariable:min_adaptive_samples"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablemin_adaptive_samples_85bn"
+        label   "Min Adaptive Samples"
+        type    integer
+        default { "16" }
+        help    "This is the minimum number of samples taken per pixel before enabling adaptive sampling. A larger number of samples may prevent the adaptive sampler from prematurely identifying an area as converged but may incur a longer running time."
+        disablewhen "{ xn__moonraysceneVariablemin_adaptive_samples_control_9jcn == block } { xn__moonraysceneVariablemin_adaptive_samples_control_9jcn == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablemax_adaptive_samples_control_9jcn"
+        label   "moonray:sceneVariable:max_adaptive_samples"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablemax_adaptive_samples_85bn"
+        label   "Max Adaptive Samples"
+        type    integer
+        default { "4096" }
+        help    "When adaptive sampling is turned on, this represents the max number of samples we can throw at a pixel. It's best to err on the high side since adaptive sampling will cull out samples where they're not needed based on the target adaptive error, in which case we should rarely hit the max samples value."
+        disablewhen "{ xn__moonraysceneVariablemax_adaptive_samples_control_9jcn == block } { xn__moonraysceneVariablemax_adaptive_samples_control_9jcn == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__moonraysceneVariabletarget_adaptive_error_control_wlcn"
+        label   "moonray:sceneVariable:target_adaptive_error"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariabletarget_adaptive_error_v7bn"
+        label   "Target Adaptive Error"
+        type    float
+        default { "10" }
+        help    "When adaptive sampling is turned on, this represents the desired quality of the output images. Lower values will give higher quality but take longer to render. Higher values will give lower quality but render quicker."
+        disablewhen "{ xn__moonraysceneVariabletarget_adaptive_error_control_wlcn == block } { xn__moonraysceneVariabletarget_adaptive_error_control_wlcn == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablelight_sampling_mode_control_nicn"
+        label   "moonray:sceneVariable:light_sampling_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablelight_sampling_mode_m4bn"
+        label   "Light Sampling Mode"
+        type    string
+        default { "uniform" }
+        help    "Controls which light sampling scheme to use:  uniform or adaptive"
+        disablewhen "{ xn__moonraysceneVariablelight_sampling_mode_control_nicn == block } { xn__moonraysceneVariablelight_sampling_mode_control_nicn == none }"
+        menu {
+            "uniform"   "Uniform"
+            "adaptive"  "Adaptive"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablelight_sampling_quality_control_jncn"
+        label   "moonray:sceneVariable:light_sampling_quality"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablelight_sampling_quality_i9bn"
+        label   "Light Sampling Quality"
+        type    float
+        default { "0.5" }
+        help    "When the light sampling mode is 'adaptive', this attribute controls how many lights are sampled per light sample, where 0.0 is low quality (1 light sampled per light sample) and 1.0 is high quality (all lights sampled per light sample). Any value in between will cause adaptive light sampling to kick into effect, meaning that it will choose a higher or lower number of lights depending on what that particular point needs. A number closer to 0.0 will cause it to sample a lower number of lights on average, and vice versa. "
+        disablewhen "{ xn__moonraysceneVariablelight_sampling_quality_control_jncn == block } { xn__moonraysceneVariablelight_sampling_quality_control_jncn == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablecrypto_uv_attribute_name_control_sqcn"
+        label   "moonray:sceneVariable:crypto_uv_attribute_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablecrypto_uv_attribute_name_rdcn"
+        label   "Crypto Uv Attribute Name"
+        type    string
+        default { "" }
+        help    "Names of primitive attribute containing crypto UVs"
+        disablewhen "{ xn__moonraysceneVariablecrypto_uv_attribute_name_control_sqcn == block } { xn__moonraysceneVariablecrypto_uv_attribute_name_control_sqcn == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablebatch_tile_order_control_rdcn"
+        label   "moonray:sceneVariable:batch_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablebatch_tile_order_qzbn"
+        label   "Batch Tile Order"
+        type    string
+        default { "morton" }
+        help    "Specifies the order in which tiles (as areas of 8x8 pixels) are prioritized for batch rendering, which determines which areas of the image are rendered first. The ordering is not guaranteed: the strict sequence of tile starting and completion for any pass is nondeterministic due to thread scheduling."
+        disablewhen "{ xn__moonraysceneVariablebatch_tile_order_control_rdcn == block } { xn__moonraysceneVariablebatch_tile_order_control_rdcn == none }"
+        menu {
+            "top"               "Top"
+            "bottom"            "Bottom"
+            "left"              "Left"
+            "right"             "Right"
+            "morton"            "Morton"
+            "random"            "Random"
+            "spiral square"     "Spiral Square"
+            "spiral rect"       "Spiral Rect"
+            "morton shiftflip"  "Morton Shiftflip"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysceneVariableprogressive_tile_order_control_jncn"
+        label   "moonray:sceneVariable:progressive_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariableprogressive_tile_order_i9bn"
+        label   "Progressive Tile Order"
+        type    string
+        default { "morton" }
+        help    "Specifies the order in which tiles (as areas of 8x8 pixels) are prioritized for progressive rendering, which determines which areas of the image are rendered first. The ordering is not guaranteed: the strict sequence of tile starting and completion for any pass is nondeterministic due to thread scheduling."
+        disablewhen "{ xn__moonraysceneVariableprogressive_tile_order_control_jncn == block } { xn__moonraysceneVariableprogressive_tile_order_control_jncn == none }"
+        menu {
+            "top"               "Top"
+            "bottom"            "Bottom"
+            "left"              "Left"
+            "right"             "Right"
+            "morton"            "Morton"
+            "random"            "Random"
+            "spiral square"     "Spiral Square"
+            "spiral rect"       "Spiral Rect"
+            "morton shiftflip"  "Morton Shiftflip"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablecheckpoint_tile_order_control_wlcn"
+        label   "moonray:sceneVariable:checkpoint_tile_order"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariablecheckpoint_tile_order_v7bn"
+        label   "Checkpoint Tile Order"
+        type    string
+        default { "morton" }
+        help    "Specifies the order in which tiles (as areas of 8x8 pixels) are prioritized for checkpoint rendering, which determines which areas of the image are rendered first. The ordering is not guaranteed: the strict sequence of tile starting and completion for any pass is nondeterministic due to thread scheduling."
+        disablewhen "{ xn__moonraysceneVariablecheckpoint_tile_order_control_wlcn == block } { xn__moonraysceneVariablecheckpoint_tile_order_control_wlcn == none }"
+        menu {
+            "top"               "Top"
+            "bottom"            "Bottom"
+            "left"              "Left"
+            "right"             "Right"
+            "morton"            "Morton"
+            "random"            "Random"
+            "spiral square"     "Spiral Square"
+            "spiral rect"       "Spiral Rect"
+            "morton shiftflip"  "Morton Shiftflip"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__moonraysceneVariabletwo_stage_output_control_rdcn"
+        label   "moonray:sceneVariable:two_stage_output"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__moonraysceneVariabletwo_stage_output_qzbn"
+        label   "Two Stage Output"
+        type    toggle
+        default { "1" }
+        help    "Specifies whether to use a two-stage writing process for images. In two-stage writing, the image is first written to a temporary location and then moved to the final location. This approach significantly reduces the risk of output data corruption due to an unexpected render process termination.\nThe directory where the temporary files are stored is defined by the \"tmp_dir\" scene variable."
+        disablewhen "{ xn__moonraysceneVariabletwo_stage_output_control_rdcn == block } { xn__moonraysceneVariabletwo_stage_output_control_rdcn == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+}

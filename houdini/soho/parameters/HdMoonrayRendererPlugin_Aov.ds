@@ -1,0 +1,895 @@
+#include "$HFS/houdini/soho/parameters/CommonMacros.ds"
+{
+    name	parameters
+    label	"Moonray"
+    parm {
+        name    "xn__parametersmoonrayactive_control_orbh"
+        label   "parameters:moonray:active"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayactive_nebh"
+        label   "Active"
+        type    toggle
+        default { "1" }
+        help    "true enables, false disables render output."
+        disablewhen "{ xn__parametersmoonrayactive_control_orbh == block } { xn__parametersmoonrayactive_control_orbh == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonrayresult_control_orbh"
+        label   "parameters:moonray:result"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayresult_nebh"
+        label   "Result"
+        type    string
+        default { "beauty" }
+        help    "The result to output.  Available results: \n	general results:\n		\"beauty\" - full render (R, G, B), \n		\"alpha\" - full render alpha channel (A), \n		\"depth\" - z distance from camera (Z), \n		\"display filter\" - output results from a display filter, \n	aov results:\n		\"state variable\" - Built-in state variable, \n		\"primitive attribute\" - Procedural provided attributes, \n		\"material aov\" - Aovs provided via material expressions \n		\"light aov\" - Aovs provided via light path expressions \n		\"visibility aov\" - Fraction of light samples that hit light source\n		\"weight\" - weight,\n		\"beauty aux\" - renderBuffer auxiliary sample data for adaptive sampling,\n		\"cryptomatte\" - cryptomatte,\n		\"alpha aux\" - alpha auxiliary sample data for adaptive sampling,\n	diagnostic results:\n		\"time per pixel\" - Time per pixel heat map metric,\n		\"wireframe\" - Render as wireframe"
+        disablewhen "{ xn__parametersmoonrayresult_control_orbh == block } { xn__parametersmoonrayresult_control_orbh == none }"
+        menu {
+            "beauty"                "Beauty"
+            "alpha"                 "Alpha"
+            "depth"                 "Depth"
+            "state variable"        "State Variable"
+            "primitive attribute"   "Primitive Attribute"
+            "time per pixel"        "Time Per Pixel"
+            "wireframe"             "Wireframe"
+            "material aov"          "Material Aov"
+            "light aov"             "Light Aov"
+            "visibility aov"        "Visibility Aov"
+            "weight"                "Weight"
+            "beauty aux"            "Beauty Aux"
+            "cryptomatte"           "Cryptomatte"
+            "alpha aux"             "Alpha Aux"
+            "display filter"        "Display Filter"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonrayoutput_type_control_tzbh"
+        label   "parameters:moonray:output_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayoutput_type_smbh"
+        label   "Output Type"
+        type    string
+        default { "flat" }
+        help    "Specifies the type of output.  Defaults to \"flat\", meaning a flat exr file.  \"deep\" will output a deep exr file."
+        disablewhen "{ xn__parametersmoonrayoutput_type_control_tzbh == block } { xn__parametersmoonrayoutput_type_control_tzbh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraystate_variable_control_p4bh"
+        label   "parameters:moonray:state_variable"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraystate_variable_orbh"
+        label   "State Variable"
+        type    string
+        default { "N" }
+        help    "If \"result\" is \"state variable\", this attribute specifies the particular state variable result. \n	\"P\" - position (P.X, P.Y, P.Z), \n	\"Ng\" - geometric normal (Ng.X, Ng.Y, Ng.Z), \n	\"N\" - normal (N.X, N.Y, N.Z), \n	\"St\" - texture coordinates (St.X, St.Y), \n	\"dPds\" - derivative of P w.r.t S (dPds.X, dPds.Y, dPds.Z), \n	\"dPdt\" - derivative of P w.r.t T (dPdt.X, dPdt.Y, dPdt.Z), \n	\"dSdx\" - s derivative w.r.t. x (dSdx), \n	\"dSdy\" - s derivative w.r.t. y (dSdy), \n	\"dTdx\" - t derivative w.r.t. x (dTdx), \n	\"dTdy\" - t derivative w.r.t. y (dTdy), \n	\"Wp\" - world position (Wp.X, Wp.Y, Wp.Z), \n	\"depth\" - z distance from camera (Z), \n	\"motionvec\" - 2D motion vector"
+        disablewhen "{ xn__parametersmoonraystate_variable_control_p4bh == block } { xn__parametersmoonraystate_variable_control_p4bh == none }"
+        menu {
+            "P"         "P"
+            "Ng"        "Ng"
+            "N"         "N"
+            "St"        "St"
+            "dPds"      "dPds"
+            "dPdt"      "dPdt"
+            "dSdx"      "dSdx"
+            "dSdy"      "dSdy"
+            "dTdx"      "dTdx"
+            "dTdy"      "dTdy"
+            "Wp"        "Wp"
+            "depth"     "Depth"
+            "motionvec" "Motionvec"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonrayprimitive_attribute_control_udch"
+        label   "parameters:moonray:primitive_attribute"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayprimitive_attribute_tzbh"
+        label   "Primitive Attribute"
+        type    string
+        default { "" }
+        help    "If \"result\" is \"primitive attribute\", this attribute specifies the particular primitive attribute to output.  Default channel name is based on primitive attribute name and type."
+        disablewhen "{ xn__parametersmoonrayprimitive_attribute_control_udch == block } { xn__parametersmoonrayprimitive_attribute_control_udch == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonrayprimitive_attribute_type_control_zlch"
+        label   "parameters:moonray:primitive_attribute_type"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayprimitive_attribute_type_y7bh"
+        label   "Primitive Attribute Type"
+        type    string
+        default { "FLOAT" }
+        help    "This attribute specifies the type of the attribute named with the \"primitive attribute\" setting.  This is required to uniquely specify the primitive attribute."
+        disablewhen "{ xn__parametersmoonrayprimitive_attribute_type_control_zlch == block } { xn__parametersmoonrayprimitive_attribute_type_control_zlch == none }"
+        menu {
+            "FLOAT" "FLOAT"
+            "VEC2F" "VEC2F"
+            "VEC3F" "VEC3F"
+            "RGB"   "RGB"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonraymaterial_aov_control_g1bh"
+        label   "parameters:moonray:material_aov"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraymaterial_aov_fobh"
+        label   "Material Aov"
+        type    string
+        default { "" }
+        help    "If \"result\" is \"material aov\", this attribute specifies a material aov expression to output.  The expression format is: \n	[('<GL>')+\\.][('<ML>')+\\.][('<LL>')+\\.][(SS|R|T|D|G|M)+\\.][fresnel\\.]<property>. Where:\n		<GL> is a label associated with the geometry \n		<ML> is a label associated with the material \n		<LL> is a lobe label \n		R means reflection side lobe \n		T means transmission side lobe \n		D means diffuse lobe category \n		G means glossy lobe category \n		M means mirror lobe category \n		SS means sub-surface component of the material \n		fresnel means to select the lobe's or sub-surface's fresnel \n		<property> can be one of: \n			'albedo'       (bsdf lobe | subsurface)           (RGB),\n			'color'        (bsdf lobe | subsurface | fresnel) (RGB),\n			'depth'        (state variable)                   (FLOAT),\n			'dPds'         (state variable)                   (VEC3F),\n			'dPdt'         (state variable)                   (VEC3F),\n			'dSdx'         (state variable)                   (FLOAT),\n			'dSdy'         (state variable)                   (FLOAT),\n			'dTdx'         (state variable)                   (FLOAT),\n			'dTdy'         (state variable)                   (FLOAT),\n			'emission'     (bsdf)                             (RGB),\n			'factor'       (fresnel)                          (FLOAT),\n			'float:<attr>' (primitive attribute)              (FLOAT),\n			'matte'        (bsdf lobe | subsurface)           (FLOAT),\n			'motionvec'    (state variable)                   (VEC2F),\n			'N'            (state variable)                   (VEC3F),\n			'Ng'           (state variable)                   (VEC3F),\n			'normal'       (bsdf lobe | subsurface)           (VEC3F),\n			'P'            (state variable)                   (VEC3F),\n			'pbr_validity' (bsdf lobe | subsurface)           (RGB),\n			'radius'       (subsurface)                       (RGB),\n			'rgb:<attr>'   (primitive attribute)              (RGB),\n			'roughness'    (bsdf lobe) (fresnel)              (VEC2F),\n			'St'           (state variable)                   (VEC2F),\n			'vec2:<attr>'  (primitive attribute)              (VEC2F),\n			'vec3:<attr>'  (primitive attribute)              (VEC3F),\n			'Wp'           (state variable)                   (VEC3F)\n	Examples:\n		albedo              : Albedo of all rendered materials \n		R.albedo            : Total reflection albedo \n		'spec'.MG.roughness : Roughness of all mirror and glossy lobes that have the 'spec' label"
+        disablewhen "{ xn__parametersmoonraymaterial_aov_control_g1bh == block } { xn__parametersmoonraymaterial_aov_control_g1bh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraylpe_control_smbh"
+        label   "parameters:moonray:lpe"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraylpe_r8ah"
+        label   "Lpe"
+        type    string
+        default { "" }
+        help    "This attribute specifies a light path expression to output. For details on light path expression syntax see:\n		https://github.com/imageworks/OpenShadingLanguage/wiki/OSL-Light-Path-Expressions\n	Labels on scattering events are constructed from two parts: [ML.]LL Where:\n		<ML> is the label attribute value of the material (if non-empty)\n		<LL> is the lobe label assigned in the shader by the shader writer\n	Labels on light events are set from the label attribute of the light.\n	Additionally, a small set of pre-defined expressions are available:\n		'caustic'      : CD[S]+[<L.>O]\n		'diffuse'      : CD[<L.>O]\n		'emission'     : CO\n		'glossy'       : CG[<L.>O]\n		'mirror'       : CS[<L.>O]\n		'reflection'   : C<RS>[DSG]+[<L.>O]\n		'translucent'  : C<TD>[DSG]+[<L.>O]\n		'transmission' : C<TS>[DSG]+[<L.>O]"
+        disablewhen "{ xn__parametersmoonraylpe_control_smbh == block } { xn__parametersmoonraylpe_control_smbh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonrayvisibility_aov_control_p4bh"
+        label   "parameters:moonray:visibility_aov"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayvisibility_aov_orbh"
+        label   "Visibility Aov"
+        type    string
+        default { "C[<T.><RS>]*[<R[DG]><TD>][LO]" }
+        help    "If \"result\" is \"visibility aov\", this attribute specifies a light path expression that defines the set of all paths usedto compute the visibility ratio."
+        disablewhen "{ xn__parametersmoonrayvisibility_aov_control_p4bh == block } { xn__parametersmoonrayvisibility_aov_control_p4bh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonrayfile_name_control_kwbh"
+        label   "parameters:moonray:file_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayfile_name_jjbh"
+        label   "File Name"
+        type    string
+        default { "scene.exr" }
+        help    "Name of destination file."
+        disablewhen "{ xn__parametersmoonrayfile_name_control_kwbh == block } { xn__parametersmoonrayfile_name_control_kwbh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonrayfile_part_control_kwbh"
+        label   "parameters:moonray:file_part"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayfile_part_jjbh"
+        label   "File Part"
+        type    string
+        default { "" }
+        help    "Name of sub-image if using a multi-part exr file."
+        disablewhen "{ xn__parametersmoonrayfile_part_control_kwbh == block } { xn__parametersmoonrayfile_part_control_kwbh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraycompression_control_tzbh"
+        label   "parameters:moonray:compression"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycompression_smbh"
+        label   "Compression"
+        type    string
+        default { "zip" }
+        help    "Compression used for file (or file part in the multi-part case). All render outputs that target the same image must specify the same compression."
+        disablewhen "{ xn__parametersmoonraycompression_control_tzbh == block } { xn__parametersmoonraycompression_control_tzbh == none }"
+        menu {
+            "none"  "None"
+            "zip"   "Zip"
+            "rle"   "Rle"
+            "zips"  "Zips"
+            "piz"   "Piz"
+            "pxr24" "Pxr24"
+            "b44"   "B44"
+            "b44a"  "B44A"
+            "dwaa"  "Dwaa"
+            "dwab"  "Dwab"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonrayexr_dwa_compression_level_control_mnch"
+        label   "parameters:moonray:exr_dwa_compression_level"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayexr_dwa_compression_level_l9bh"
+        label   "Exr Dwa Compression Level"
+        type    float
+        default { "85" }
+        help    "Compression level used for file with dwaa or dwab compression. All render outputs that target the same image must specify the same compression level."
+        disablewhen "{ xn__parametersmoonrayexr_dwa_compression_level_control_mnch == block } { xn__parametersmoonrayexr_dwa_compression_level_control_mnch == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_name_control_g1bh"
+        label   "parameters:moonray:channel_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_name_fobh"
+        label   "Channel Name"
+        type    string
+        default { "" }
+        help    "Name of the output channel.  In the case of an empty channel name a sensible default name is chosen."
+        disablewhen "{ xn__parametersmoonraychannel_name_control_g1bh == block } { xn__parametersmoonraychannel_name_control_g1bh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_suffix_mode_control_udch"
+        label   "parameters:moonray:channel_suffix_mode"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_suffix_mode_tzbh"
+        label   "Channel Suffix Mode"
+        type    string
+        default { "auto" }
+        help    "When processing multi-channel outputs, how should channel names be suffixed?\n	auto : a best guess suffix is chosen based on the type of output\n	rgb  : .R, .G, .B\n	xyz  : .X, .Y, .Z\n	uvw  : .U, .V, .W"
+        disablewhen "{ xn__parametersmoonraychannel_suffix_mode_control_udch == block } { xn__parametersmoonraychannel_suffix_mode_control_udch == none }"
+        menu {
+            "auto"  "Auto"
+            "rgb"   "Rgb"
+            "xyz"   "Xyz"
+            "uvw"   "Uvw"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_format_control_p4bh"
+        label   "parameters:moonray:channel_format"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraychannel_format_orbh"
+        label   "Channel Format"
+        type    string
+        default { "half" }
+        help    "The pixel encoding (bit depth and type) of the output channel."
+        disablewhen "{ xn__parametersmoonraychannel_format_control_p4bh == block } { xn__parametersmoonraychannel_format_control_p4bh == none }"
+        menu {
+            "float" "Float"
+            "half"  "Half"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonraymath_filter_control_tzbh"
+        label   "parameters:moonray:math_filter"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraymath_filter_smbh"
+        label   "Math Filter"
+        type    string
+        default { "average" }
+        help    "the math filter over the pixel.\noptions include:\n	average\n	sum\n	min\n	max\n	force_consistent_sampling : average of the first \"min_adaptive_samples\"\n	closest                   : use sample with minimum z-depth"
+        disablewhen "{ xn__parametersmoonraymath_filter_control_tzbh == block } { xn__parametersmoonraymath_filter_control_tzbh == none }"
+        menu {
+            "average"                   "Average"
+            "sum"                       "Sum"
+            "min"                       "Min"
+            "max"                       "Max"
+            "force_consistent_sampling" "Force_Consistent_Sampling"
+            "closest"                   "Closest"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonrayexr_header_attributes_control_3gch"
+        label   "parameters:moonray:exr_header_attributes"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayexr_header_attributes_22bh"
+        label   "Exr Header Attributes"
+        type    oppath
+        default { "" }
+        help    "Metadata that is passed directly to the exr header. Format: {\"name\", \"type\", \"value\"}"
+        disablewhen "{ xn__parametersmoonrayexr_header_attributes_control_3gch == block } { xn__parametersmoonrayexr_header_attributes_control_3gch == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+    }
+    parm {
+        name    "xn__parametersmoonraydenoiser_input_control_p4bh"
+        label   "parameters:moonray:denoiser_input"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraydenoiser_input_orbh"
+        label   "Denoiser Input"
+        type    string
+        default { "not an input" }
+        help    "How to use this output as a denoiser input"
+        disablewhen "{ xn__parametersmoonraydenoiser_input_control_p4bh == block } { xn__parametersmoonraydenoiser_input_control_p4bh == none }"
+        menu {
+            "not an input"  "Not An Input"
+            "as albedo"     "As Albedo"
+            "as normal"     "As Normal"
+        }
+        parmtag { "usdvaluetype" "token" }
+    }
+    parm {
+        name    "xn__parametersmoonraydenoise_control_btbh"
+        label   "parameters:moonray:denoise"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraydenoise_9fbh"
+        label   "Denoise"
+        type    toggle
+        default { "0" }
+        help    "Run optix denoiser before writing to disk"
+        disablewhen "{ xn__parametersmoonraydenoise_control_btbh == block } { xn__parametersmoonraydenoise_control_btbh == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycheckpoint_file_name_control_hfch"
+        label   "parameters:moonray:checkpoint_file_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycheckpoint_file_name_g1bh"
+        label   "Checkpoint File Name"
+        type    string
+        default { "checkpoint.exr" }
+        help    "Name of checkpoint output file."
+        disablewhen "{ xn__parametersmoonraycheckpoint_file_name_control_hfch == block } { xn__parametersmoonraycheckpoint_file_name_control_hfch == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraycheckpoint_multi_version_file_name_control_91ch"
+        label   "parameters:moonray:checkpoint_multi_version_file_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycheckpoint_multi_version_file_name_8och"
+        label   "Checkpoint Multi Version File Name"
+        type    string
+        default { "" }
+        help    "Name of checkpoint output file under checkpoint file overwrite=off condition."
+        disablewhen "{ xn__parametersmoonraycheckpoint_multi_version_file_name_control_91ch == block } { xn__parametersmoonraycheckpoint_multi_version_file_name_control_91ch == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonrayresume_file_name_control_y7bh"
+        label   "parameters:moonray:resume_file_name"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonrayresume_file_name_xubh"
+        label   "Resume File Name"
+        type    string
+        default { "" }
+        help    "Name of input file for resume render start condition"
+        disablewhen "{ xn__parametersmoonrayresume_file_name_control_y7bh == block } { xn__parametersmoonrayresume_file_name_control_y7bh == none }"
+        parmtag { "usdvaluetype" "string" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_depth_control_l9bh"
+        label   "parameters:moonray:cryptomatte_depth"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_depth_kwbh"
+        label   "Cryptomatte Depth"
+        type    integer
+        default { "6" }
+        help    "Number of cryptomatte (id,coverage) data sets to output"
+        disablewhen "{ xn__parametersmoonraycryptomatte_depth_control_l9bh == block } { xn__parametersmoonraycryptomatte_depth_control_l9bh == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_positions_control_isch"
+        label   "parameters:moonray:cryptomatte_output_positions"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_positions_hfch"
+        label   "Cryptomatte Output Positions"
+        type    toggle
+        default { "0" }
+        help    "Whether to output position data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_positions_control_isch == block } { xn__parametersmoonraycryptomatte_output_positions_control_isch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_p0_control_3gch"
+        label   "parameters:moonray:cryptomatte_output_p0"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_p0_22bh"
+        label   "Cryptomatte Output P0"
+        type    toggle
+        default { "0" }
+        help    "Whether to output p0 data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_p0_control_3gch == block } { xn__parametersmoonraycryptomatte_output_p0_control_3gch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_normals_control_8och"
+        label   "parameters:moonray:cryptomatte_output_normals"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_normals_7bch"
+        label   "Cryptomatte Output Normals"
+        type    toggle
+        default { "0" }
+        help    "Whether to output shading normal data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_normals_control_8och == block } { xn__parametersmoonraycryptomatte_output_normals_control_8och == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_beauty_control_mnch"
+        label   "parameters:moonray:cryptomatte_output_beauty"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_beauty_l9bh"
+        label   "Cryptomatte Output Beauty"
+        type    toggle
+        default { "0" }
+        help    "Whether to output beauty data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_beauty_control_mnch == block } { xn__parametersmoonraycryptomatte_output_beauty_control_mnch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_refp_control_dkch"
+        label   "parameters:moonray:cryptomatte_output_refp"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_refp_c6bh"
+        label   "Cryptomatte Output Refp"
+        type    toggle
+        default { "0" }
+        help    "Whether to output refp data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_refp_control_dkch == block } { xn__parametersmoonraycryptomatte_output_refp_control_dkch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_refn_control_dkch"
+        label   "parameters:moonray:cryptomatte_output_refn"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_refn_c6bh"
+        label   "Cryptomatte Output Refn"
+        type    toggle
+        default { "0" }
+        help    "Whether to output refn data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_refn_control_dkch == block } { xn__parametersmoonraycryptomatte_output_refn_control_dkch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_uv_control_3gch"
+        label   "parameters:moonray:cryptomatte_output_uv"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_output_uv_22bh"
+        label   "Cryptomatte Output Uv"
+        type    toggle
+        default { "0" }
+        help    "Whether to output uv data per cryptomatte id"
+        disablewhen "{ xn__parametersmoonraycryptomatte_output_uv_control_3gch == block } { xn__parametersmoonraycryptomatte_output_uv_control_3gch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_support_resume_render_control_n0ch"
+        label   "parameters:moonray:cryptomatte_support_resume_render"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_support_resume_render_mnch"
+        label   "Cryptomatte Support Resume Render"
+        type    toggle
+        default { "0" }
+        help    "Whether to add additional cryptomatte layers to support checkpoint/resume rendering"
+        disablewhen "{ xn__parametersmoonraycryptomatte_support_resume_render_control_n0ch == block } { xn__parametersmoonraycryptomatte_support_resume_render_control_n0ch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_record_reflected_control_isch"
+        label   "parameters:moonray:cryptomatte_record_reflected"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_record_reflected_hfch"
+        label   "Cryptomatte Record Reflected"
+        type    toggle
+        default { "0" }
+        help    "Record reflected cryptomatte channels.  Enabling this will increase the number of cryptomatte channels."
+        disablewhen "{ xn__parametersmoonraycryptomatte_record_reflected_control_isch == block } { xn__parametersmoonraycryptomatte_record_reflected_control_isch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_record_refracted_control_isch"
+        label   "parameters:moonray:cryptomatte_record_refracted"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycryptomatte_record_refracted_hfch"
+        label   "Cryptomatte Record Refracted"
+        type    toggle
+        default { "0" }
+        help    "Record refracted cryptomatte channels.  Enabling this will increase the number of cryptomatte channels."
+        disablewhen "{ xn__parametersmoonraycryptomatte_record_refracted_control_isch == block } { xn__parametersmoonraycryptomatte_record_refracted_control_isch == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__parametersmoonraycamera_control_orbh"
+        label   "parameters:moonray:camera"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraycamera_nebh"
+        label   "Camera"
+        type    oppath
+        default { "" }
+        help    "Camera to use for this output.  If not specified, defaults to the primary camera."
+        disablewhen "{ xn__parametersmoonraycamera_control_orbh == block } { xn__parametersmoonraycamera_control_orbh == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+    }
+    parm {
+        name    "xn__parametersmoonraydisplay_filter_control_p4bh"
+        label   "parameters:moonray:display_filter"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__parametersmoonraydisplay_filter_orbh"
+        label   "Display Filter"
+        type    oppath
+        default { "" }
+        help    "If \"result\" is \"display filter\", this attribute refers to a display filter object which is used to compute the output pixel values."
+        disablewhen "{ xn__parametersmoonraydisplay_filter_control_p4bh == block } { xn__parametersmoonraydisplay_filter_control_p4bh == none }"
+        parmtag { "oprelative" "." }
+        parmtag { "usdvaluetype" "<class 'pxr.Usd.Relationship'>" }
+    }
+}

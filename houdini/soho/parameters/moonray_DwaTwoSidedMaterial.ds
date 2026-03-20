@@ -11,11 +11,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfallback_bssrdf_99a"
@@ -37,11 +40,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfallback_specular_model_bob"
@@ -57,42 +63,19 @@
             parmtag { "usdvaluetype" "token" }
         }
         parm {
-            name    "xn__inputsfallback_toon_specular_model_control_h9b"
-            label   "inputs:fallback_toon_specular_model"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__inputsfallback_toon_specular_model_gwb"
-            label   "Fallback Toon Specular Model"
-            type    string
-            default { "GGX" }
-            help    "If child materials disagree on the type of toon specular model, this type will be used instead."
-            disablewhen "{ xn__inputsfallback_toon_specular_model_control_h9b == block } { xn__inputsfallback_toon_specular_model_control_h9b == none }"
-            menu {
-                "Beckmann"  "Beckmann"
-                "GGX"       "GGX"
-                "Toon"      "Toon"
-            }
-            parmtag { "usdvaluetype" "token" }
-        }
-        parm {
             name    "xn__inputsfallback_outer_specular_model_control_3bc"
             label   "inputs:fallback_outer_specular_model"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfallback_outer_specular_model_2xb"
@@ -113,11 +96,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfallback_clearcoat_use_bending_pzb"
@@ -129,16 +113,39 @@
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
+            name    "xn__inputsfallback_prevent_light_culling_control_qdc"
+            label   "inputs:fallback_prevent_light_culling"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsfallback_prevent_light_culling_pzb"
+            label   "Fallback Prevent Light Culling"
+            type    toggle
+            default { "0" }
+            help    "If child materials disagree on prevent light culling, this will be used instead."
+            disablewhen "{ xn__inputsfallback_prevent_light_culling_control_qdc == block } { xn__inputsfallback_prevent_light_culling_control_qdc == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
             name    "xn__inputssss_trace_set_control_1kb"
             label   "inputs:sss_trace_set"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssss_trace_set_06a"
@@ -158,11 +165,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsextra_aovs_41a"
@@ -181,11 +189,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -202,11 +211,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspriority_vya"
@@ -219,16 +231,61 @@
         parmtag { "usdvaluetype" "int" }
     }
     parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_control_h9b"
+        label   "inputs:record_reflected_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_gwb"
+        label   "Record Reflected Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next reflected surface should appear in the reflected cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_reflected_cryptomatte_control_h9b == block } { xn__inputsrecord_reflected_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_control_h9b"
+        label   "inputs:record_refracted_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_gwb"
+        label   "Record Refracted Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next refracted surface should appear in the refracted cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_refracted_cryptomatte_control_h9b == block } { xn__inputsrecord_refracted_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
         name    "xn__inputsfront_material_control_omb"
         label   "inputs:front_material"
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsfront_material_n8a"
@@ -247,11 +304,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsback_material_06a"

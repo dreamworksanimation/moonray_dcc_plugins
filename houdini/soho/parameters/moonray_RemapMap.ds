@@ -11,11 +11,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsinput_min_RGB_06a"
@@ -24,7 +27,7 @@
             size    3
             default { "0" "0" "0" }
             help    "the input value that will be remapped to the 'output min' value"
-            disablewhen "{ remap_method != RGB } { xn__inputsinput_min_RGB_control_1kb == block } { xn__inputsinput_min_RGB_control_1kb == none }"
+            disablewhen "{ xn__inputsinput_min_RGB_control_1kb == block } { xn__inputsinput_min_RGB_control_1kb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -34,11 +37,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsinput_max_RGB_06a"
@@ -47,7 +53,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the input value that will be remapped to the 'output max' value"
-            disablewhen "{ remap_method != RGB } { xn__inputsinput_max_RGB_control_1kb == block } { xn__inputsinput_max_RGB_control_1kb == none }"
+            disablewhen "{ xn__inputsinput_max_RGB_control_1kb == block } { xn__inputsinput_max_RGB_control_1kb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -57,11 +63,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsoutput_min_RGB_n8a"
@@ -70,7 +79,7 @@
             size    3
             default { "0" "0" "0" }
             help    "the value that 'input min' is remapped to"
-            disablewhen "{ remap_method != RGB } { xn__inputsoutput_min_RGB_control_omb == block } { xn__inputsoutput_min_RGB_control_omb == none }"
+            disablewhen "{ xn__inputsoutput_min_RGB_control_omb == block } { xn__inputsoutput_min_RGB_control_omb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -80,11 +89,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsoutput_max_RGB_n8a"
@@ -93,7 +105,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the value that 'input max' is remapped to"
-            disablewhen "{ remap_method != RGB } { xn__inputsoutput_max_RGB_control_omb == block } { xn__inputsoutput_max_RGB_control_omb == none }"
+            disablewhen "{ xn__inputsoutput_max_RGB_control_omb == block } { xn__inputsoutput_max_RGB_control_omb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -103,11 +115,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsmidpoint_bias_RGB_jeb"
@@ -116,7 +131,7 @@
             size    3
             default { "0.5" "0.5" "0.5" }
             help    "biases the in-between values toward 'output min' or 'output max'. Default = 0.5"
-            disablewhen "{ remap_method != RGB } { xn__inputsmidpoint_bias_RGB_control_krb == block } { xn__inputsmidpoint_bias_RGB_control_krb == none }"
+            disablewhen "{ xn__inputsmidpoint_bias_RGB_control_krb == block } { xn__inputsmidpoint_bias_RGB_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -126,11 +141,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclamp_min_RGB_06a"
@@ -139,7 +157,7 @@
             size    3
             default { "0" "0" "0" }
             help    "the minimum value output by this map when 'clamp' is enabled"
-            disablewhen "{ remap_method != RGB } { xn__inputsclamp_min_RGB_control_1kb == block } { xn__inputsclamp_min_RGB_control_1kb == none }"
+            disablewhen "{ xn__inputsclamp_min_RGB_control_1kb == block } { xn__inputsclamp_min_RGB_control_1kb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -149,11 +167,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclamp_max_RGB_06a"
@@ -162,7 +183,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the maximum value output by this map when 'clamp' is enabled"
-            disablewhen "{ remap_method != RGB } { xn__inputsclamp_max_RGB_control_1kb == block } { xn__inputsclamp_max_RGB_control_1kb == none }"
+            disablewhen "{ xn__inputsclamp_max_RGB_control_1kb == block } { xn__inputsclamp_max_RGB_control_1kb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -174,11 +195,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsremap_method_e5a"
@@ -199,11 +223,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsinput_zta"
@@ -222,11 +249,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsinput_min_i0a"
@@ -234,7 +264,7 @@
         type    float
         default { "0" }
         help    "the input value that will be remapped to the 'output min' value"
-        disablewhen "{ remap_method != uniform } { xn__inputsinput_min_control_jeb == block } { xn__inputsinput_min_control_jeb == none }"
+        disablewhen "{ xn__inputsinput_min_control_jeb == block } { xn__inputsinput_min_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -244,11 +274,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsinput_max_i0a"
@@ -256,7 +289,7 @@
         type    float
         default { "1" }
         help    "the input value that will be remapped to the 'output max' value"
-        disablewhen "{ remap_method != uniform } { xn__inputsinput_max_control_jeb == block } { xn__inputsinput_max_control_jeb == none }"
+        disablewhen "{ xn__inputsinput_max_control_jeb == block } { xn__inputsinput_max_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -266,11 +299,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsoutput_min_41a"
@@ -278,7 +314,7 @@
         type    float
         default { "0" }
         help    "the value that 'input min' is remapped to"
-        disablewhen "{ remap_method != uniform } { xn__inputsoutput_min_control_5fb == block } { xn__inputsoutput_min_control_5fb == none }"
+        disablewhen "{ xn__inputsoutput_min_control_5fb == block } { xn__inputsoutput_min_control_5fb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -288,11 +324,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsoutput_max_41a"
@@ -300,7 +339,7 @@
         type    float
         default { "1" }
         help    "the value that 'input max' is remapped to"
-        disablewhen "{ remap_method != uniform } { xn__inputsoutput_max_control_5fb == block } { xn__inputsoutput_max_control_5fb == none }"
+        disablewhen "{ xn__inputsoutput_max_control_5fb == block } { xn__inputsoutput_max_control_5fb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -310,11 +349,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmidpoint_bias_06a"
@@ -322,7 +364,7 @@
         type    float
         default { "0.5" }
         help    "biases the in-between values toward 'output min' or 'output max'. Default = 0.5"
-        disablewhen "{ remap_method != uniform } { xn__inputsmidpoint_bias_control_1kb == block } { xn__inputsmidpoint_bias_control_1kb == none }"
+        disablewhen "{ xn__inputsmidpoint_bias_control_1kb == block } { xn__inputsmidpoint_bias_control_1kb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -332,11 +374,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsclamp_zta"
@@ -344,7 +387,7 @@
         type    toggle
         default { "1" }
         help    "enables/disables clamping of the output values.  This useful prevent out-of-range values when expanding the input values."
-        disablewhen "{ remap_method != uniform } { xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
+        disablewhen "{ xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
         parmtag { "usdvaluetype" "bool" }
     }
     parm {
@@ -353,11 +396,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsclamp_min_i0a"
@@ -365,7 +411,7 @@
         type    float
         default { "0" }
         help    "the minimum value output by this map when 'clamp' is enabled"
-        disablewhen "{ remap_method != uniform } { xn__inputsclamp_min_control_jeb == block } { xn__inputsclamp_min_control_jeb == none }"
+        disablewhen "{ xn__inputsclamp_min_control_jeb == block } { xn__inputsclamp_min_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -375,11 +421,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsclamp_max_i0a"
@@ -387,7 +436,7 @@
         type    float
         default { "1" }
         help    "the maximum value output by this map when 'clamp' is enabled"
-        disablewhen "{ remap_method != uniform } { xn__inputsclamp_max_control_jeb == block } { xn__inputsclamp_max_control_jeb == none }"
+        disablewhen "{ xn__inputsclamp_max_control_jeb == block } { xn__inputsclamp_max_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
     }
@@ -397,11 +446,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsclamp_RGB_i0a"
@@ -409,7 +459,7 @@
         type    toggle
         default { "1" }
         help    "enables/disables clamping of the output values.  This useful prevent out-of-range values when expanding the input values."
-        disablewhen "{ remap_method != RGB } { xn__inputsclamp_RGB_control_jeb == block } { xn__inputsclamp_RGB_control_jeb == none }"
+        disablewhen "{ xn__inputsclamp_RGB_control_jeb == block } { xn__inputsclamp_RGB_control_jeb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
 }

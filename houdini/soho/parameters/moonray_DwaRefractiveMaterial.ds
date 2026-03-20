@@ -11,11 +11,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_fuzz_i0a"
@@ -32,11 +33,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfuzz_dsa"
@@ -44,7 +48,7 @@
             type    float
             default { "1" }
             help    "fuzz mask"
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsfuzz_control_e5a == block } { xn__inputsfuzz_control_e5a == none }"
+            disablewhen "{ xn__inputsfuzz_control_e5a == block } { xn__inputsfuzz_control_e5a == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -54,11 +58,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfuzz_roughness_n8a"
@@ -66,7 +73,7 @@
             type    float
             default { "0.25" }
             help    "Lower values result in glancing angle highlights while higher values result in a broad, uniform coverage"
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsfuzz_roughness_control_omb == block } { xn__inputsfuzz_roughness_control_omb == none }"
+            disablewhen "{ xn__inputsfuzz_roughness_control_omb == block } { xn__inputsfuzz_roughness_control_omb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -76,11 +83,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfuzz_albedo_r3a"
@@ -89,7 +99,7 @@
             size    3
             default { "1" "1" "1" }
             help    "Color of the fuzz highlights."
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsfuzz_albedo_control_shb == block } { xn__inputsfuzz_albedo_control_shb == none }"
+            disablewhen "{ xn__inputsfuzz_albedo_control_shb == block } { xn__inputsfuzz_albedo_control_shb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -99,11 +109,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_absorbing_fuzz_fibers_krb"
@@ -111,7 +122,7 @@
             type    toggle
             default { "0" }
             help    "Specify whether dark fuzz fibers absorb energy or transmit it to the layers below."
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsuse_absorbing_fuzz_fibers_control_l4b == block } { xn__inputsuse_absorbing_fuzz_fibers_control_l4b == none }"
+            disablewhen "{ xn__inputsuse_absorbing_fuzz_fibers_control_l4b == block } { xn__inputsuse_absorbing_fuzz_fibers_control_l4b == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -120,11 +131,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfuzz_normal_r3a"
@@ -133,7 +145,7 @@
             invisible
             default { "" }
             help    "specifies an independent shading normal (normal map) for the fuzz lobe"
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsfuzz_normal_control_shb == block } { xn__inputsfuzz_normal_control_shb == none }"
+            disablewhen "{ xn__inputsfuzz_normal_control_shb == block } { xn__inputsfuzz_normal_control_shb == none }"
             parmtag { "oprelative" "." }
             parmtag { "usdvaluetype" "token" }
         }
@@ -143,11 +155,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsfuzz_normal_dial_wcb"
@@ -155,7 +170,7 @@
             type    float
             default { "1" }
             help    "controls the amount of infuence of the alternate fuzz normal"
-            disablewhen "{ xn__inputsshow_fuzz_i0a != 1 } { xn__inputsfuzz_normal_dial_control_xpb == block } { xn__inputsfuzz_normal_dial_control_xpb == none }"
+            disablewhen "{ xn__inputsfuzz_normal_dial_control_xpb == block } { xn__inputsfuzz_normal_dial_control_xpb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -171,11 +186,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_clearcoat_n8a"
@@ -192,11 +208,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_i0a"
@@ -204,7 +223,7 @@
             type    float
             default { "1" }
             help    "enables/disables clearcoat (binary 0|1 for plausibility)"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_control_jeb == block } { xn__inputsclearcoat_control_jeb == none }"
+            disablewhen "{ xn__inputsclearcoat_control_jeb == block } { xn__inputsclearcoat_control_jeb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -214,11 +233,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_model_99a"
@@ -226,7 +248,7 @@
             type    string
             default { "GGX" }
             help    "sets the normal distribution function for clearcoat.  GGX is currently isotropic only"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_model_control_bob == block } { xn__inputsclearcoat_model_control_bob == none }"
+            disablewhen "{ xn__inputsclearcoat_model_control_bob == block } { xn__inputsclearcoat_model_control_bob == none }"
             menu {
                 "Beckmann"  "Beckmann"
                 "GGX"       "GGX"
@@ -239,11 +261,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_refractive_index_6sb"
@@ -251,7 +276,7 @@
             type    float
             default { "1.5" }
             help    "defines the Fresnel behavior"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_refractive_index_control_75b == block } { xn__inputsclearcoat_refractive_index_control_75b == none }"
+            disablewhen "{ xn__inputsclearcoat_refractive_index_control_75b == block } { xn__inputsclearcoat_refractive_index_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -261,11 +286,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_roughness_shb"
@@ -273,7 +301,7 @@
             type    float
             default { "0.1" }
             help    "the roughness of the clearcoat lobe"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_roughness_control_tub == block } { xn__inputsclearcoat_roughness_control_tub == none }"
+            disablewhen "{ xn__inputsclearcoat_roughness_control_tub == block } { xn__inputsclearcoat_roughness_control_tub == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -283,11 +311,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_thickness_shb"
@@ -295,7 +326,7 @@
             type    float
             default { "0" }
             help    "the thickness of the virtual clearcoat layer. Values > 0 enable absorption"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_thickness_control_tub == block } { xn__inputsclearcoat_thickness_control_tub == none }"
+            disablewhen "{ xn__inputsclearcoat_thickness_control_tub == block } { xn__inputsclearcoat_thickness_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -305,11 +336,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_attenuation_color_tub"
@@ -318,7 +352,7 @@
             size    3
             default { "0.5" "0.5" "0.5" }
             help    "the attenuation color of the clearcoat when 'cleacoat thickness' > 0"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_attenuation_color_control_u7b == block } { xn__inputsclearcoat_attenuation_color_control_u7b == none }"
+            disablewhen "{ xn__inputsclearcoat_attenuation_color_control_u7b == block } { xn__inputsclearcoat_attenuation_color_control_u7b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -328,11 +362,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_bending_jeb"
@@ -340,7 +375,7 @@
             type    toggle
             default { "1" }
             help    "(advanced, recommended ON) bends rays based on the clearcoat-refractive-index before evaluating the lobes under clearcoat"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_bending_control_krb == block } { xn__inputsclearcoat_bending_control_krb == none }"
+            disablewhen "{ xn__inputsclearcoat_bending_control_krb == block } { xn__inputsclearcoat_bending_control_krb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -349,11 +384,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_independent_clearcoat_normal_y2b"
@@ -361,7 +397,7 @@
             type    toggle
             default { "0" }
             help    "specifies whether the clearcoat lobe should use an independent normal"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsuse_independent_clearcoat_normal_control_zgc == block } { xn__inputsuse_independent_clearcoat_normal_control_zgc == none }"
+            disablewhen "{ xn__inputsuse_independent_clearcoat_normal_control_zgc == block } { xn__inputsuse_independent_clearcoat_normal_control_zgc == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -370,11 +406,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsindependent_clearcoat_normal_gwb"
@@ -383,7 +420,7 @@
             invisible
             default { "" }
             help    "specifies an independent shading normal (normal map) for the clearcoat lobe"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsindependent_clearcoat_normal_control_h9b == block } { xn__inputsindependent_clearcoat_normal_control_h9b == none }"
+            disablewhen "{ xn__inputsindependent_clearcoat_normal_control_h9b == block } { xn__inputsindependent_clearcoat_normal_control_h9b == none }"
             parmtag { "oprelative" "." }
             parmtag { "usdvaluetype" "token" }
         }
@@ -393,11 +430,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsclearcoat_normal_dial_1kb"
@@ -405,7 +445,7 @@
             type    float
             default { "1" }
             help    "controls the amount of infuence of the alternate clearcoat normal"
-            disablewhen "{ xn__inputsshow_clearcoat_n8a != 1 } { xn__inputsclearcoat_normal_dial_control_2xb == block } { xn__inputsclearcoat_normal_dial_control_2xb == none }"
+            disablewhen "{ xn__inputsclearcoat_normal_dial_control_2xb == block } { xn__inputsclearcoat_normal_dial_control_2xb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -416,16 +456,40 @@
         label   "Specular"
 
         parm {
+            name    "xn__inputsspecular_lightset_control_krb"
+            label   "inputs:specular_lightset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsspecular_lightset_jeb"
+            label   "Specular Lightset"
+            type    oppath
+            default { "" }
+            help    "lightset to use for specular lobes"
+            disablewhen "{ xn__inputsspecular_lightset_control_krb == block } { xn__inputsspecular_lightset_control_krb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
             name    "xn__inputsshow_specular_control_1kb"
             label   "inputs:show_specular"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_specular_06a"
@@ -442,11 +506,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsspecular_model_n8a"
@@ -454,7 +521,7 @@
             type    string
             default { "GGX" }
             help    "sets the normal distribution function for specular.  GGX is currently isotropic only"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsspecular_model_control_omb == block } { xn__inputsspecular_model_control_omb == none }"
+            disablewhen "{ xn__inputsspecular_model_control_omb == block } { xn__inputsspecular_model_control_omb == none }"
             menu {
                 "Beckmann"  "Beckmann"
                 "GGX"       "GGX"
@@ -467,11 +534,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsrefractive_index_wcb"
@@ -479,7 +549,7 @@
             type    float
             default { "1.5" }
             help    "defines the Fresnel behavior, (affects reflection and refraction)"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsrefractive_index_control_xpb == block } { xn__inputsrefractive_index_control_xpb == none }"
+            disablewhen "{ xn__inputsrefractive_index_control_xpb == block } { xn__inputsrefractive_index_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -489,11 +559,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsroughness_i0a"
@@ -501,7 +574,7 @@
             type    float
             default { "0.5" }
             help    "the roughness of the surface (currently only affects reflection)"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsroughness_control_jeb == block } { xn__inputsroughness_control_jeb == none }"
+            disablewhen "{ xn__inputsroughness_control_jeb == block } { xn__inputsroughness_control_jeb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -511,11 +584,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsanisotropy_41a"
@@ -523,7 +599,7 @@
             type    float
             default { "0" }
             help    "controls the shape of the primary reflection"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
+            disablewhen "{ xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -533,11 +609,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshading_tangent_99a"
@@ -546,7 +625,7 @@
             size    2
             default { "1" "0" }
             help    "controls the orientation of anistropy"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsshading_tangent_control_bob == block } { xn__inputsshading_tangent_control_bob == none }"
+            disablewhen "{ xn__inputsshading_tangent_control_bob == block } { xn__inputsshading_tangent_control_bob == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -562,11 +641,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_r3a"
@@ -574,7 +656,7 @@
             type    float
             default { "0" }
             help    "controls the strength of the iridescence effect"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_control_shb == block } { xn__inputsiridescence_control_shb == none }"
+            disablewhen "{ xn__inputsiridescence_control_shb == block } { xn__inputsiridescence_control_shb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -584,11 +666,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_apply_to_fjb"
@@ -596,7 +681,7 @@
             type    string
             default { "primary specular" }
             help    "Apply iridescence to primary specular lobe or clearcoat/moisture lobe"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_apply_to_control_gwb == block } { xn__inputsiridescence_apply_to_control_gwb == none }"
+            disablewhen "{ xn__inputsiridescence_apply_to_control_gwb == block } { xn__inputsiridescence_apply_to_control_gwb == none }"
             menu {
                 "primary specular"              "Primary Specular"
                 "clearcoat/moisture specular"   "Clearcoat/Moisture Specular"
@@ -609,11 +694,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_color_control_krb"
@@ -621,7 +709,7 @@
             type    string
             default { "use hue interpolation" }
             help    "use hue interpolation: automatically cycles through hue wheel, use ramp: user specified color ramp"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_color_control_control_l4b == block } { xn__inputsiridescence_color_control_control_l4b == none }"
+            disablewhen "{ xn__inputsiridescence_color_control_control_l4b == block } { xn__inputsiridescence_color_control_control_l4b == none }"
             menu {
                 "use hue interpolation" "Use Hue Interpolation"
                 "use ramp"              "Use Ramp"
@@ -634,11 +722,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_primary_color_krb"
@@ -647,7 +738,7 @@
             size    3
             default { "1" "0" "0" }
             help    "First color to interpolate from around the hue wheel"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_primary_color_control_l4b == block } { xn__inputsiridescence_primary_color_control_l4b == none }"
+            disablewhen "{ xn__inputsiridescence_primary_color_control_l4b == block } { xn__inputsiridescence_primary_color_control_l4b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -657,11 +748,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_secondary_color_tub"
@@ -670,7 +764,7 @@
             size    3
             default { "1" "0" "0" }
             help    "Second color to interpolate to around the hue wheel"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_secondary_color_control_u7b == block } { xn__inputsiridescence_secondary_color_control_u7b == none }"
+            disablewhen "{ xn__inputsiridescence_secondary_color_control_u7b == block } { xn__inputsiridescence_secondary_color_control_u7b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -680,11 +774,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_flip_hue_direction_pzb"
@@ -692,7 +787,7 @@
             type    toggle
             default { "0" }
             help    "flip interpolation around the hue wheel to counter-clockwise direction"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_flip_hue_direction_control_qdc == block } { xn__inputsiridescence_flip_hue_direction_control_qdc == none }"
+            disablewhen "{ xn__inputsiridescence_flip_hue_direction_control_qdc == block } { xn__inputsiridescence_flip_hue_direction_control_qdc == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -701,11 +796,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_ramp_interpolation_mode_u7b"
@@ -713,7 +811,7 @@
             type    string
             default { "RGB" }
             help    "RGB: lerp in RGB space which matches UI preview but can lose saturation, HSV: lerp in HSV space which preserves saturation"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_ramp_interpolation_mode_control_vlc == block } { xn__inputsiridescence_ramp_interpolation_mode_control_vlc == none }"
+            disablewhen "{ xn__inputsiridescence_ramp_interpolation_mode_control_vlc == block } { xn__inputsiridescence_ramp_interpolation_mode_control_vlc == none }"
             menu {
                 "RGB"   "RGB"
                 "HSV"   "HSV"
@@ -726,18 +824,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "iridescence_ramp"
             label   "Iridescence Ramp"
             type    ramp_rgb
             default { "7" }
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_colors_control_6sb == block } { xn__inputsiridescence_colors_control_6sb == none }"
+            disablewhen "{ xn__inputsiridescence_colors_control_6sb == block } { xn__inputsiridescence_colors_control_6sb == none }"
             range   { 1! 10 }
             parmtag { "usdvaluetype" "color3f[]" }
         }
@@ -747,11 +848,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_thickness_1kb"
@@ -759,7 +863,7 @@
             type    float
             default { "1" }
             help    "Controls how much the color spectrum is repeated"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_thickness_control_2xb == block } { xn__inputsiridescence_thickness_control_2xb == none }"
+            disablewhen "{ xn__inputsiridescence_thickness_control_2xb == block } { xn__inputsiridescence_thickness_control_2xb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -769,11 +873,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_exponent_fjb"
@@ -781,7 +888,7 @@
             type    float
             default { "1" }
             help    "Tightens or broadens the distribution of colors"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_exponent_control_gwb == block } { xn__inputsiridescence_exponent_control_gwb == none }"
+            disablewhen "{ xn__inputsiridescence_exponent_control_gwb == block } { xn__inputsiridescence_exponent_control_gwb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -791,11 +898,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_at_0_incidence_6sb"
@@ -803,7 +913,7 @@
             type    float
             default { "1" }
             help    "Iridescence effect at 0 degree viewing angle"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_at_0_incidence_control_75b == block } { xn__inputsiridescence_at_0_incidence_control_75b == none }"
+            disablewhen "{ xn__inputsiridescence_at_0_incidence_control_75b == block } { xn__inputsiridescence_at_0_incidence_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -813,11 +923,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsiridescence_at_90_incidence_tub"
@@ -825,7 +938,7 @@
             type    float
             default { "1" }
             help    "Iridescence effect at 90 degree viewing angle"
-            disablewhen "{ show_specular == 0 show_clearcoat == 0 } { xn__inputsiridescence_at_90_incidence_control_u7b == block } { xn__inputsiridescence_at_90_incidence_control_u7b == none }"
+            disablewhen "{ xn__inputsiridescence_at_90_incidence_control_u7b == block } { xn__inputsiridescence_at_90_incidence_control_u7b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -841,11 +954,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_transmission_jeb"
@@ -862,11 +976,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputstransmission_color_5fb"
@@ -875,7 +992,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the desired color of transmitted light"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputstransmission_color_control_6sb == block } { xn__inputstransmission_color_control_6sb == none }"
+            disablewhen "{ xn__inputstransmission_color_control_6sb == block } { xn__inputstransmission_color_control_6sb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -885,11 +1002,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_independent_transmission_refractive_index_4oc"
@@ -897,7 +1015,7 @@
             type    toggle
             default { "0" }
             help    "use a separate IOR for transmission"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsuse_independent_transmission_refractive_index_control_51c == block } { xn__inputsuse_independent_transmission_refractive_index_control_51c == none }"
+            disablewhen "{ xn__inputsuse_independent_transmission_refractive_index_control_51c == block } { xn__inputsuse_independent_transmission_refractive_index_control_51c == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -906,11 +1024,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsindependent_transmission_refractive_index_mic"
@@ -918,7 +1039,7 @@
             type    float
             default { "1.5" }
             help    "defines a separate IOR for the bending of light with transmission"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsindependent_transmission_refractive_index_control_nvc == block } { xn__inputsindependent_transmission_refractive_index_control_nvc == none }"
+            disablewhen "{ xn__inputsindependent_transmission_refractive_index_control_nvc == block } { xn__inputsindependent_transmission_refractive_index_control_nvc == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -928,11 +1049,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_independent_transmission_roughness_qdc"
@@ -940,7 +1062,7 @@
             type    toggle
             default { "0" }
             help    "use a separate roughness for transmission"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsuse_independent_transmission_roughness_control_rqc == block } { xn__inputsuse_independent_transmission_roughness_control_rqc == none }"
+            disablewhen "{ xn__inputsuse_independent_transmission_roughness_control_rqc == block } { xn__inputsuse_independent_transmission_roughness_control_rqc == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -949,11 +1071,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsindependent_transmission_roughness_75b"
@@ -961,7 +1086,7 @@
             type    float
             default { "0.5" }
             help    "separate roughness for transmission"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsindependent_transmission_roughness_control_8jc == block } { xn__inputsindependent_transmission_roughness_control_8jc == none }"
+            disablewhen "{ xn__inputsindependent_transmission_roughness_control_8jc == block } { xn__inputsindependent_transmission_roughness_control_8jc == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -971,11 +1096,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsuse_dispersion_n8a"
@@ -983,7 +1109,7 @@
             type    toggle
             default { "0" }
             help    "use dispersion effects in transmission"
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsuse_dispersion_control_omb == block } { xn__inputsuse_dispersion_control_omb == none }"
+            disablewhen "{ xn__inputsuse_dispersion_control_omb == block } { xn__inputsuse_dispersion_control_omb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -992,11 +1118,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsdispersion_abbe_number_omb"
@@ -1004,7 +1133,7 @@
             type    float
             default { "34" }
             help    "The amount of dispersion/chromatic-aberration via refractions. Lower this number to increase the effect. A value of 0 turns off dispersion. Around [25-80] makes sense for realistic glass. Lower values may look better on gemstones."
-            disablewhen "{ xn__inputsshow_transmission_jeb != 1 } { xn__inputsdispersion_abbe_number_control_pzb == block } { xn__inputsdispersion_abbe_number_control_pzb == none }"
+            disablewhen "{ xn__inputsdispersion_abbe_number_control_pzb == block } { xn__inputsdispersion_abbe_number_control_pzb == none }"
             range   { 0 100 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -1020,11 +1149,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsshow_emission_06a"
@@ -1041,11 +1171,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsemission_vya"
@@ -1054,7 +1187,7 @@
             size    3
             default { "1" "1" "1" }
             help    "the energy emitted from this material"
-            disablewhen "{ xn__inputsshow_emission_06a != 1 } { xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
+            disablewhen "{ xn__inputsemission_control_wcb == block } { xn__inputsemission_control_wcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -1070,11 +1203,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsinput_normal_e5a"
@@ -1093,11 +1227,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsinput_normal_dial_jeb"
@@ -1121,11 +1258,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnormal_AA_strategy_5fb"
@@ -1146,11 +1286,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnormal_AA_dial_n8a"
@@ -1158,7 +1301,7 @@
             type    float
             default { "1" }
             help    "Controls the amount roughness compensation from the normal map AA strategy."
-            disablewhen "{ normal_AA_strategy != toksvig } { xn__inputsnormal_AA_dial_control_omb == block } { xn__inputsnormal_AA_dial_control_omb == none }"
+            disablewhen "{ xn__inputsnormal_AA_dial_control_omb == block } { xn__inputsnormal_AA_dial_control_omb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -1174,11 +1317,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspresence_vya"
@@ -1196,11 +1342,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsthin_geometry_06a"
@@ -1217,11 +1364,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputscasts_caustics_n8a"
@@ -1236,6 +1384,35 @@
 
     group {
         name    "folder10"
+        label   "Diffuse"
+
+        parm {
+            name    "xn__inputsdiffuse_lightset_control_xpb"
+            label   "inputs:diffuse_lightset"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_lightset_wcb"
+            label   "Diffuse Lightset"
+            type    oppath
+            default { "" }
+            help    "lightset to use for diffuse lobes"
+            disablewhen "{ xn__inputsdiffuse_lightset_control_xpb == block } { xn__inputsdiffuse_lightset_control_xpb == none }"
+            parmtag { "oprelative" "." }
+            parmtag { "usdvaluetype" "token" }
+        }
+    }
+
+    group {
+        name    "folder11"
         label   "Advanced"
 
         parm {
@@ -1244,11 +1421,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsspecular_vya"
@@ -1256,7 +1436,7 @@
             type    float
             default { "1" }
             help    "enables/disables specular reflections (binary 0|1 for plausibility)"
-            disablewhen "{ xn__inputsshow_specular_06a != 1 } { xn__inputsspecular_control_wcb == block } { xn__inputsspecular_control_wcb == none }"
+            disablewhen "{ xn__inputsspecular_control_wcb == block } { xn__inputsspecular_control_wcb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -1268,11 +1448,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsextra_aovs_41a"
@@ -1291,11 +1472,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -1312,11 +1494,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspriority_vya"
@@ -1327,5 +1512,49 @@
         disablewhen "{ xn__inputspriority_control_wcb == block } { xn__inputspriority_control_wcb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "int" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_control_h9b"
+        label   "inputs:record_reflected_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_gwb"
+        label   "Record Reflected Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next reflected surface should appear in the reflected cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_reflected_cryptomatte_control_h9b == block } { xn__inputsrecord_reflected_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_control_h9b"
+        label   "inputs:record_refracted_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_gwb"
+        label   "Record Refracted Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next refracted surface should appear in the refracted cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_refracted_cryptomatte_control_h9b == block } { xn__inputsrecord_refracted_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
     }
 }

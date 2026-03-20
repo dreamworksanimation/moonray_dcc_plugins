@@ -7,11 +7,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsextra_aovs_41a"
@@ -30,11 +31,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -51,11 +53,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspriority_vya"
@@ -68,16 +73,63 @@
         parmtag { "usdvaluetype" "int" }
     }
     parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_control_h9b"
+        label   "inputs:record_reflected_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_gwb"
+        label   "Record Reflected Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next reflected surface should appear in the reflected cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_reflected_cryptomatte_control_h9b == block } { xn__inputsrecord_reflected_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_control_h9b"
+        label   "inputs:record_refracted_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_gwb"
+        label   "Record Refracted Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next refracted surface should appear in the refracted cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_refracted_cryptomatte_control_h9b == block } { xn__inputsrecord_refracted_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
         name    "xn__inputschoice_control_n8a"
         label   "inputs:choice"
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputschoice_mva"
@@ -95,11 +147,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial0_i0a"
@@ -107,6 +160,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial0_control_jeb == block } { xn__inputsmaterial0_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -117,11 +171,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial1_i0a"
@@ -129,6 +184,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial1_control_jeb == block } { xn__inputsmaterial1_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -139,11 +195,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial2_i0a"
@@ -151,6 +208,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial2_control_jeb == block } { xn__inputsmaterial2_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -161,11 +219,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial3_i0a"
@@ -173,6 +232,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial3_control_jeb == block } { xn__inputsmaterial3_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -183,11 +243,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial4_i0a"
@@ -195,6 +256,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial4_control_jeb == block } { xn__inputsmaterial4_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -205,11 +267,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial5_i0a"
@@ -217,6 +280,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial5_control_jeb == block } { xn__inputsmaterial5_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -227,11 +291,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial6_i0a"
@@ -239,6 +304,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial6_control_jeb == block } { xn__inputsmaterial6_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -249,11 +315,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial7_i0a"
@@ -261,6 +328,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial7_control_jeb == block } { xn__inputsmaterial7_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -271,11 +339,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial8_i0a"
@@ -283,6 +352,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial8_control_jeb == block } { xn__inputsmaterial8_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -293,11 +363,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial9_i0a"
@@ -305,6 +376,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial9_control_jeb == block } { xn__inputsmaterial9_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -315,11 +387,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial10_41a"
@@ -327,6 +400,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial10_control_5fb == block } { xn__inputsmaterial10_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -337,11 +411,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial11_41a"
@@ -349,6 +424,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial11_control_5fb == block } { xn__inputsmaterial11_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -359,11 +435,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial12_41a"
@@ -371,6 +448,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial12_control_5fb == block } { xn__inputsmaterial12_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -381,11 +459,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial13_41a"
@@ -393,6 +472,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial13_control_5fb == block } { xn__inputsmaterial13_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -403,11 +483,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial14_41a"
@@ -415,6 +496,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial14_control_5fb == block } { xn__inputsmaterial14_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -425,11 +507,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial15_41a"
@@ -437,6 +520,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial15_control_5fb == block } { xn__inputsmaterial15_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -447,11 +531,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial16_41a"
@@ -459,6 +544,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial16_control_5fb == block } { xn__inputsmaterial16_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -469,11 +555,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial17_41a"
@@ -481,6 +568,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial17_control_5fb == block } { xn__inputsmaterial17_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -491,11 +579,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial18_41a"
@@ -503,6 +592,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial18_control_5fb == block } { xn__inputsmaterial18_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -513,11 +603,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial19_41a"
@@ -525,6 +616,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial19_control_5fb == block } { xn__inputsmaterial19_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -535,11 +627,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial20_41a"
@@ -547,6 +640,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial20_control_5fb == block } { xn__inputsmaterial20_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -557,11 +651,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial21_41a"
@@ -569,6 +664,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial21_control_5fb == block } { xn__inputsmaterial21_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -579,11 +675,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial22_41a"
@@ -591,6 +688,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial22_control_5fb == block } { xn__inputsmaterial22_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -601,11 +699,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial23_41a"
@@ -613,6 +712,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial23_control_5fb == block } { xn__inputsmaterial23_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -623,11 +723,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial24_41a"
@@ -635,6 +736,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial24_control_5fb == block } { xn__inputsmaterial24_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -645,11 +747,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial25_41a"
@@ -657,6 +760,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial25_control_5fb == block } { xn__inputsmaterial25_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -667,11 +771,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial26_41a"
@@ -679,6 +784,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial26_control_5fb == block } { xn__inputsmaterial26_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -689,11 +795,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial27_41a"
@@ -701,6 +808,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial27_control_5fb == block } { xn__inputsmaterial27_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -711,11 +819,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial28_41a"
@@ -723,6 +832,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial28_control_5fb == block } { xn__inputsmaterial28_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -733,11 +843,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial29_41a"
@@ -745,6 +856,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial29_control_5fb == block } { xn__inputsmaterial29_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -755,11 +867,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial30_41a"
@@ -767,6 +880,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial30_control_5fb == block } { xn__inputsmaterial30_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -777,11 +891,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial31_41a"
@@ -789,6 +904,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial31_control_5fb == block } { xn__inputsmaterial31_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -799,11 +915,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial32_41a"
@@ -811,6 +928,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial32_control_5fb == block } { xn__inputsmaterial32_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -821,11 +939,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial33_41a"
@@ -833,6 +952,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial33_control_5fb == block } { xn__inputsmaterial33_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -843,11 +963,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial34_41a"
@@ -855,6 +976,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial34_control_5fb == block } { xn__inputsmaterial34_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -865,11 +987,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial35_41a"
@@ -877,6 +1000,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial35_control_5fb == block } { xn__inputsmaterial35_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -887,11 +1011,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial36_41a"
@@ -899,6 +1024,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial36_control_5fb == block } { xn__inputsmaterial36_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -909,11 +1035,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial37_41a"
@@ -921,6 +1048,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial37_control_5fb == block } { xn__inputsmaterial37_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -931,11 +1059,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial38_41a"
@@ -943,6 +1072,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial38_control_5fb == block } { xn__inputsmaterial38_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -953,11 +1083,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial39_41a"
@@ -965,6 +1096,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial39_control_5fb == block } { xn__inputsmaterial39_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -975,11 +1107,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial40_41a"
@@ -987,6 +1120,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial40_control_5fb == block } { xn__inputsmaterial40_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -997,11 +1131,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial41_41a"
@@ -1009,6 +1144,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial41_control_5fb == block } { xn__inputsmaterial41_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1019,11 +1155,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial42_41a"
@@ -1031,6 +1168,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial42_control_5fb == block } { xn__inputsmaterial42_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1041,11 +1179,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial43_41a"
@@ -1053,6 +1192,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial43_control_5fb == block } { xn__inputsmaterial43_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1063,11 +1203,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial44_41a"
@@ -1075,6 +1216,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial44_control_5fb == block } { xn__inputsmaterial44_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1085,11 +1227,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial45_41a"
@@ -1097,6 +1240,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial45_control_5fb == block } { xn__inputsmaterial45_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1107,11 +1251,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial46_41a"
@@ -1119,6 +1264,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial46_control_5fb == block } { xn__inputsmaterial46_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1129,11 +1275,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial47_41a"
@@ -1141,6 +1288,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial47_control_5fb == block } { xn__inputsmaterial47_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1151,11 +1299,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial48_41a"
@@ -1163,6 +1312,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial48_control_5fb == block } { xn__inputsmaterial48_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1173,11 +1323,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial49_41a"
@@ -1185,6 +1336,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial49_control_5fb == block } { xn__inputsmaterial49_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1195,11 +1347,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial50_41a"
@@ -1207,6 +1360,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial50_control_5fb == block } { xn__inputsmaterial50_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1217,11 +1371,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial51_41a"
@@ -1229,6 +1384,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial51_control_5fb == block } { xn__inputsmaterial51_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1239,11 +1395,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial52_41a"
@@ -1251,6 +1408,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial52_control_5fb == block } { xn__inputsmaterial52_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1261,11 +1419,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial53_41a"
@@ -1273,6 +1432,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial53_control_5fb == block } { xn__inputsmaterial53_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1283,11 +1443,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial54_41a"
@@ -1295,6 +1456,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial54_control_5fb == block } { xn__inputsmaterial54_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1305,11 +1467,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial55_41a"
@@ -1317,6 +1480,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial55_control_5fb == block } { xn__inputsmaterial55_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1327,11 +1491,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial56_41a"
@@ -1339,6 +1504,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial56_control_5fb == block } { xn__inputsmaterial56_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1349,11 +1515,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial57_41a"
@@ -1361,6 +1528,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial57_control_5fb == block } { xn__inputsmaterial57_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1371,11 +1539,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial58_41a"
@@ -1383,6 +1552,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial58_control_5fb == block } { xn__inputsmaterial58_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1393,11 +1563,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial59_41a"
@@ -1405,6 +1576,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial59_control_5fb == block } { xn__inputsmaterial59_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1415,11 +1587,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial60_41a"
@@ -1427,6 +1600,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial60_control_5fb == block } { xn__inputsmaterial60_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1437,11 +1611,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial61_41a"
@@ -1449,6 +1624,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial61_control_5fb == block } { xn__inputsmaterial61_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1459,11 +1635,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial62_41a"
@@ -1471,6 +1648,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial62_control_5fb == block } { xn__inputsmaterial62_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1481,11 +1659,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmaterial63_41a"
@@ -1493,6 +1672,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "material input option"
         disablewhen "{ xn__inputsmaterial63_control_5fb == block } { xn__inputsmaterial63_control_5fb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }

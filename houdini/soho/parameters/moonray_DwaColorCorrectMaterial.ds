@@ -11,11 +11,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputshue_shift_i0a"
@@ -23,7 +26,7 @@
             type    float
             default { "0" }
             help    "shifts the hue of the input (spectrum range is 0-1)"
-            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputshue_shift_control_jeb == block } { xn__inputshue_shift_control_jeb == none }"
+            disablewhen "{ xn__inputshue_shift_control_jeb == block } { xn__inputshue_shift_control_jeb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -33,11 +36,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssaturation_41a"
@@ -45,7 +51,7 @@
             type    float
             default { "1" }
             help    "desaturates the input below 1.0 and adds saturation above 1.0"
-            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
+            disablewhen "{ xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
             range   { 0 1 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -55,11 +61,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsgain_dsa"
@@ -67,7 +76,7 @@
             type    float
             default { "1" }
             help    "multiplies the input channels by the specified value"
-            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
+            disablewhen "{ xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
             range   { 0 4 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -83,11 +92,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsTMI_enabled_r3a"
@@ -95,7 +105,7 @@
             type    toggle
             default { "0" }
             help    "enables the TMI parameters"
-            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsTMI_enabled_control_shb == block } { xn__inputsTMI_enabled_control_shb == none }"
+            disablewhen "{ xn__inputsTMI_enabled_control_shb == block } { xn__inputsTMI_enabled_control_shb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -104,11 +114,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsTMI_qqa"
@@ -117,7 +130,7 @@
             size    3
             default { "0" "0" "0" }
             help    "T = Temperature where positive values push towards blue and negative towards red.   M = Magenta where positive values push towards magenta and negative towards green.  I = Intensity where negative values remove and positive values add energy "
-            disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsTMI_control_r3a == block } { xn__inputsTMI_control_r3a == none }"
+            disablewhen "{ xn__inputsTMI_control_r3a == block } { xn__inputsTMI_control_r3a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
         }
@@ -129,11 +142,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsextra_aovs_41a"
@@ -152,11 +166,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -173,11 +188,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspriority_vya"
@@ -190,16 +208,61 @@
         parmtag { "usdvaluetype" "int" }
     }
     parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_control_h9b"
+        label   "inputs:record_reflected_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_reflected_cryptomatte_gwb"
+        label   "Record Reflected Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next reflected surface should appear in the reflected cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_reflected_cryptomatte_control_h9b == block } { xn__inputsrecord_reflected_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_control_h9b"
+        label   "inputs:record_refracted_cryptomatte"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputsrecord_refracted_cryptomatte_gwb"
+        label   "Record Refracted Cryptomatte"
+        type    toggle
+        default { "0" }
+        help    "Indicates whether the next refracted surface should appear in the refracted cryptomatte layers"
+        disablewhen "{ xn__inputsrecord_refracted_cryptomatte_control_h9b == block } { xn__inputsrecord_refracted_cryptomatte_control_h9b == none }"
+        parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
         name    "xn__inputsinput_material_control_omb"
         label   "inputs:input_material"
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsinput_material_n8a"
@@ -207,6 +270,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "Material to modify"
         disablewhen "{ xn__inputsinput_material_control_omb == block } { xn__inputsinput_material_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -217,11 +281,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputson_3oa"
@@ -238,11 +303,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsmix_qqa"
@@ -250,7 +318,7 @@
         type    float
         default { "1" }
         help    "how much of the overall color correct to mix in"
-        disablewhen "{ xn__inputson_3oa != 1 } { xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
+        disablewhen "{ xn__inputsmix_control_r3a == block } { xn__inputsmix_control_r3a == none }"
         range   { 0 1 }
         parmtag { "usdvaluetype" "float" }
     }

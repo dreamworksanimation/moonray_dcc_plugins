@@ -7,11 +7,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsproject_on_back_faces_1kb"
@@ -28,11 +29,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsblack_outside_projection_xpb"
@@ -49,18 +51,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsuse_reference_space_shb"
         label   "Use Reference Space"
         type    toggle
         default { "0" }
-        help    "use reference space"
+        help    "Use reference space"
         disablewhen "{ xn__inputsuse_reference_space_control_tub == block } { xn__inputsuse_reference_space_control_tub == none }"
         parmtag { "usdvaluetype" "bool" }
     }
@@ -70,11 +73,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojection_mode_99a"
@@ -96,19 +102,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojector_i0a"
         label   "Projector"
         type    oppath
         default { "" }
-        help    "the object whose transform to use for projection"
-        disablewhen "{ projection_mode != projector } { xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        help    "The object whose transform to use for projection when 'projection_mode' is set to 'projector'"
+        disablewhen "{ xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
     }
@@ -118,11 +125,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojection_matrix_jeb"
@@ -130,8 +140,8 @@
         type    float
         size    16
         default { "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" }
-        help    "the transform to use for projection"
-        disablewhen "{ projection_mode != projection_matrix } { xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
+        help    "The transform to use for projection when 'projection_mode' is set to 'projection_matrix'"
+        disablewhen "{ xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "double[]" }
     }
@@ -141,19 +151,22 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsTRS_order_i0a"
         label   "TRS Order"
         type    string
         default { "Scale Rot Trans" }
-        help    "Order in which to apply transformations"
-        disablewhen "{ projection_mode != TRS } { xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
+        help    "Order in which to apply transformations when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
         menu {
             "Scale Rot Trans"   "Scale Rot Trans"
             "Scale Trans Rot"   "Scale Trans Rot"
@@ -170,19 +183,22 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotation_order_n8a"
         label   "Rotation Order"
         type    string
         default { "xyz" }
-        help    "Order in which to apply rotation transformations"
-        disablewhen "{ projection_mode != TRS } { xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+        help    "Order in which to apply rotation transformations when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
         menu {
             "xyz"   "Xyz"
             "xzy"   "Xzy"
@@ -199,11 +215,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputstranslate_i0a"
@@ -211,8 +230,8 @@
         type    vector
         size    3
         default { "0" "0" "0" }
-        help    "Tranlation of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
+        help    "Translation of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }
@@ -222,11 +241,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotate_mva"
@@ -234,8 +256,8 @@
         type    vector
         size    3
         default { "0" "0" "0" }
-        help    "Rotation of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
+        help    "Rotation of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }
@@ -245,11 +267,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsscale_zta"
@@ -257,8 +282,8 @@
         type    vector
         size    3
         default { "1" "1" "1" }
-        help    "Scale of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        help    "Scale of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }

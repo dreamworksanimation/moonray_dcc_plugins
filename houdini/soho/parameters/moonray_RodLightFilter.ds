@@ -11,18 +11,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraywidth_nva"
             label   "Width"
             type    float
             default { "1" }
-            help    "width of the base box (before radius and edge)"
+            help    "Width of the base box (before radius and edge)."
             disablewhen "{ xn__moonraywidth_control_o8a == block } { xn__moonraywidth_control_o8a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -33,18 +36,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraydepth_nva"
             label   "Depth"
             type    float
             default { "1" }
-            help    "depth of the base box (before radius and edge)"
+            help    "Depth of the base box (before radius and edge)."
             disablewhen "{ xn__moonraydepth_control_o8a == block } { xn__moonraydepth_control_o8a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -55,18 +61,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayheight_9wa"
             label   "Height"
             type    float
             default { "1" }
-            help    "height of the base box (before radius and edge)"
+            help    "Height of the base box (before radius and edge)."
             disablewhen "{ xn__moonrayheight_control_bbb == block } { xn__moonrayheight_control_bbb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -77,18 +86,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayradius_9wa"
             label   "Radius"
             type    float
             default { "0" }
-            help    "radius by which to expand the base box into a rounded box"
+            help    "Radius by which to expand the base box into a rounded box."
             disablewhen "{ xn__moonrayradius_control_bbb == block } { xn__moonrayradius_control_bbb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -99,18 +111,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayedge_0ta"
             label   "Edge"
             type    float
             default { "0" }
-            help    "size of transition zone from the rounded box to the outside"
+            help    "Size of transition zone from the rounded box to the outside."
             disablewhen "{ xn__moonrayedge_control_16a == block } { xn__moonrayedge_control_16a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -121,11 +136,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraycolor_nva"
@@ -133,7 +151,7 @@
             type    color
             size    3
             default { "0" "0" "0" }
-            help    "filter color. Scales the light within the volume. For each color channel, 0=full shadow, 1=no shadow"
+            help    "Filter color. Scales the light within the volume. For each color channel: 0 means full shadow, 1 means no shadow."
             disablewhen "{ xn__moonraycolor_control_o8a == block } { xn__moonraycolor_control_o8a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -144,18 +162,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayintensity_51a"
             label   "Intensity"
             type    float
             default { "1" }
-            help    "scalar for multiplying the color. 0=black 1=color"
+            help    "Scalar for multiplying the color. 0 means black, 1 means no change."
             disablewhen "{ xn__moonrayintensity_control_6fb == block } { xn__moonrayintensity_control_6fb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -166,18 +187,21 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraydensity_wya"
             label   "Density"
             type    float
             default { "1" }
-            help    "fades the filter effect. 0=no effect (like having no filter), 1=full effect"
+            help    "Fades the filter effect. 0 means no effect (like having no filter). 1 means full effect."
             disablewhen "{ xn__moonraydensity_control_xcb == block } { xn__moonraydensity_control_xcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -188,18 +212,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayinvert_9wa"
             label   "Invert"
             type    toggle
             default { "0" }
-            help    "swap application of filter from inside the volume to outside"
+            help    "Swap application of filter from inside the volume to outside."
             disablewhen "{ xn__moonrayinvert_control_bbb == block } { xn__moonrayinvert_control_bbb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -209,11 +234,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "ramp"
@@ -232,18 +260,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__moonrayon_rqa"
         label   "On"
         type    toggle
         default { "1" }
-        help    "Turns the light filter on/off"
+        help    "Turns the light filter on/off."
         disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
         parmtag { "usdvaluetype" "bool" }
     }

@@ -3,50 +3,84 @@
     name	parameters
     group {
         name    "folder"
-        label   "Scattering Properties"
+        label   "Volume Baking"
 
         parm {
-            name    "xn__inputsdiffuse_color_control_1kb"
-            label   "inputs:diffuse_color"
+            name    "xn__inputsbake_resolution_mode_control_gwb"
+            label   "inputs:bake_resolution_mode"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__inputsdiffuse_color_06a"
-            label   "Diffuse Color"
-            type    color
-            size    3
-            default { "1" "1" "1" }
-            help    "reflectance color of the volume. Technically this is called scattering albedo, which is the scattering coefficient divided by the extinction coefficient."
-            disablewhen "{ xn__inputsdiffuse_color_control_1kb == block } { xn__inputsdiffuse_color_control_1kb == none }"
+            name    "xn__inputsbake_resolution_mode_fjb"
+            label   "Bake Resolution Mode"
+            type    string
+            default { "default" }
+            help    "Method to specify grid resolution of baked density grid.  Choices are:\n		\"default\": For shaders that are bound to vdb volumes, use vdb resolution.\n						For shaders that are bounds to mesh geometries use 100 divisions\n		\"divisions\": Specify number of divisions.\n		\"voxel size\": Specify voxel size."
+            disablewhen "{ xn__inputsbake_resolution_mode_control_gwb == block } { xn__inputsbake_resolution_mode_control_gwb == none }"
+            menu {
+                "default"       "Default"
+                "divisions"     "Divisions"
+                "voxel size"    "Voxel Size"
+            }
+            parmtag { "usdvaluetype" "token" }
+        }
+        parm {
+            name    "xn__inputsbake_divisions_control_omb"
+            label   "inputs:bake_divisions"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsbake_divisions_n8a"
+            label   "Bake Divisions"
+            type    integer
+            default { "100" }
+            help    "Divide widest axis by this many divisions"
+            disablewhen "{ xn__inputsbake_divisions_control_omb == block } { xn__inputsbake_divisions_control_omb == none }"
             range   { 0 10 }
-            parmtag { "usdvaluetype" "color3f" }
+            parmtag { "usdvaluetype" "int" }
         }
         parm {
-            name    "xn__inputsanisotropy_control_5fb"
-            label   "inputs:anisotropy"
+            name    "xn__inputsbake_voxel_size_control_bob"
+            label   "inputs:bake_voxel_size"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__inputsanisotropy_41a"
-            label   "Anisotropy"
+            name    "xn__inputsbake_voxel_size_99a"
+            label   "Bake Voxel Size"
             type    float
-            default { "0" }
-            help    "Value in the interval [-1,1] that defines how foward (1) or backward (-1) scattering the volume is. 0.0 is isotropic."
-            disablewhen "{ xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
+            default { "10" }
+            help    "Size of voxel in world space"
+            disablewhen "{ xn__inputsbake_voxel_size_control_bob == block } { xn__inputsbake_voxel_size_control_bob == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -54,99 +88,54 @@
 
     group {
         name    "folder2"
-        label   "Attenuation Properties"
+        label   "Volume"
 
         parm {
-            name    "xn__inputsattenuation_intensity_control_2xb"
-            label   "inputs:attenuation_intensity"
+            name    "xn__inputssurface_opacity_threshold_control_l4b"
+            label   "inputs:surface_opacity_threshold"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
-            name    "xn__inputsattenuation_intensity_1kb"
-            label   "Attenuation Intensity"
+            name    "xn__inputssurface_opacity_threshold_krb"
+            label   "Surface Opacity Threshold"
             type    float
-            default { "1" }
-            help    "the rate at which the intensity of a ray traversing a volume is lost. The attenuation (extinction) coefficient is technically the product of attenuation_color, attenuation_intensity, and attenuation_factor"
-            disablewhen "{ xn__inputsattenuation_intensity_control_2xb == block } { xn__inputsattenuation_intensity_control_2xb == none }"
+            default { "0.5" }
+            help    "Accumulated opacity that's considered the 'surface' for computing surface position and Z"
+            disablewhen "{ xn__inputssurface_opacity_threshold_control_l4b == block } { xn__inputssurface_opacity_threshold_control_l4b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
-        parm {
-            name    "xn__inputsattenuation_factor_control_6sb"
-            label   "inputs:attenuation_factor"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__inputsattenuation_factor_5fb"
-            label   "Attenuation Factor"
-            type    float
-            default { "1" }
-            help    "An additional factor to scale the attenuation. This attribute behaves identically to attenuation_intensity - it is provided simply as an extra way to control attenuation, typically during lighting. Surfacing should generally avoid setting this."
-            disablewhen "{ xn__inputsattenuation_factor_control_6sb == block } { xn__inputsattenuation_factor_control_6sb == none }"
-            range   { 0 10 }
-            parmtag { "usdvaluetype" "float" }
-        }
-        parm {
-            name    "xn__inputsattenuation_color_control_krb"
-            label   "inputs:attenuation_color"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__inputsattenuation_color_jeb"
-            label   "Attenuation Color"
-            type    color
-            size    3
-            default { "1" "1" "1" }
-            help    "a color to tint (multiply to) the attenuation. Technically the product of attenuation color and intensity is the attenuation(extinction) coefficient.(Note the inverse behavior of color with this parameter.)"
-            disablewhen "{ xn__inputsattenuation_color_control_krb == block } { xn__inputsattenuation_color_control_krb == none }"
-            range   { 0 10 }
-            parmtag { "usdvaluetype" "color3f" }
-        }
-    }
-
-    group {
-        name    "folder3"
-        label   "Emission Properties"
-
         parm {
             name    "xn__inputsemission_intensity_control_6sb"
             label   "inputs:emission_intensity"
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsemission_intensity_5fb"
             label   "Emission Intensity"
             type    float
             default { "1" }
-            help    "the rate at which a volume emits light at a given point. Technically the product of emission color and intensity is the emission coefficient."
+            help    "The rate at which a volume emits light at a given point.  The product of emission color and intensity is the emission coefficient."
             disablewhen "{ xn__inputsemission_intensity_control_6sb == block } { xn__inputsemission_intensity_control_6sb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
@@ -157,11 +146,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsemission_color_n8a"
@@ -169,10 +161,465 @@
             type    color
             size    3
             default { "0" "0" "0" }
-            help    "a color to tint (multiply to) the emission Technically the product of emision color and intensity is the emission coefficient"
+            help    "A color multiplier for the emission.  The product of emission color and intensity is the emission coefficient"
             disablewhen "{ xn__inputsemission_color_control_omb == block } { xn__inputsemission_color_control_omb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
+        }
+    }
+
+    group {
+        name    "folder3"
+        label   "Scattering Properties"
+
+        parm {
+            name    "xn__inputsdiffuse_color_control_1kb"
+            label   "inputs:diffuse_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_color_06a"
+            label   "Diffuse Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "Reflectance color of the volume. Technically this is called scattering albedo, which is the scattering coefficient divided by the extinction coefficient."
+            disablewhen "{ xn__inputsdiffuse_color_control_1kb == block } { xn__inputsdiffuse_color_control_1kb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsuse_diffuse_ramp_control_xpb"
+            label   "inputs:use_diffuse_ramp"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsuse_diffuse_ramp_wcb"
+            label   "Use Diffuse Ramp"
+            type    toggle
+            default { "0" }
+            help    "Use a ramp to define different diffuse colors depending on the depth of the volume."
+            disablewhen "{ xn__inputsuse_diffuse_ramp_control_xpb == block } { xn__inputsuse_diffuse_ramp_control_xpb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_colors_control_omb"
+            label   "inputs:diffuse_colors"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "diffuse_color_ramp"
+            label   "Diffuse Color Ramp"
+            type    ramp_rgb
+            default { "2" }
+            disablewhen "{ xn__inputsdiffuse_colors_control_omb == block } { xn__inputsdiffuse_colors_control_omb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "color3f[]" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_min_depth_control_krb"
+            label   "inputs:diffuse_min_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_min_depth_jeb"
+            label   "Diffuse Min Depth"
+            type    float
+            default { "1" }
+            help    "Represents the minimum ray depth, or the shortest visible distance a ray has to travel through the volume. This sets the lower bound for the ramp. "
+            disablewhen "{ xn__inputsdiffuse_min_depth_control_krb == block } { xn__inputsdiffuse_min_depth_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_max_depth_control_krb"
+            label   "inputs:diffuse_max_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdiffuse_max_depth_jeb"
+            label   "Diffuse Max Depth"
+            type    float
+            default { "2" }
+            help    "Represents the maximum ray depth, or the longest visible distance a ray has to travel through the volume. This sets the upper bound for the ramp. "
+            disablewhen "{ xn__inputsdiffuse_max_depth_control_krb == block } { xn__inputsdiffuse_max_depth_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsanisotropy_control_5fb"
+            label   "inputs:anisotropy"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsanisotropy_41a"
+            label   "Anisotropy"
+            type    float
+            default { "0" }
+            help    "Value in the interval [-1,1] that defines how foward (1) or backward (-1) scattering the volume is.  A value of 0.0 indicates an isotropic volume."
+            disablewhen "{ xn__inputsanisotropy_control_5fb == block } { xn__inputsanisotropy_control_5fb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder4"
+        label   "Attenuation Properties"
+
+        parm {
+            name    "xn__inputsattenuation_color_control_krb"
+            label   "inputs:attenuation_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsattenuation_color_jeb"
+            label   "Attenuation Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            help    "A color to tint (multiply to) the attenuation. Technically the product of attenuation color and intensity is the attenuation (extinction) coefficient.(Note the inverse behavior of color with this parameter.)"
+            disablewhen "{ xn__inputsattenuation_color_control_krb == block } { xn__inputsattenuation_color_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "color3f" }
+        }
+        parm {
+            name    "xn__inputsattenuation_intensity_control_2xb"
+            label   "inputs:attenuation_intensity"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsattenuation_intensity_1kb"
+            label   "Attenuation Intensity"
+            type    float
+            default { "1" }
+            help    "The rate at which the light traversing a volume is attenuated. The attenuation (extinction) coefficient is the product of attenuation_color, attenuation_intensity, and attenuation_factor"
+            disablewhen "{ xn__inputsattenuation_intensity_control_2xb == block } { xn__inputsattenuation_intensity_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsattenuation_factor_control_6sb"
+            label   "inputs:attenuation_factor"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsattenuation_factor_5fb"
+            label   "Attenuation Factor"
+            type    float
+            default { "1" }
+            help    "Identical in behavior to attenuation_intensity but provided as a second means  to control attenuation, intended for use during lighting as a per-shot or  per-sequence adjustment."
+            disablewhen "{ xn__inputsattenuation_factor_control_6sb == block } { xn__inputsattenuation_factor_control_6sb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsmatch_diffuse_control_1kb"
+            label   "inputs:match_diffuse"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsmatch_diffuse_06a"
+            label   "Match Diffuse"
+            type    toggle
+            default { "0" }
+            help    "Use the same color(s) for attenuation that is/are being used for diffuse."
+            disablewhen "{ xn__inputsmatch_diffuse_control_1kb == block } { xn__inputsmatch_diffuse_control_1kb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsinvert_attenuation_color_control_y2b"
+            label   "inputs:invert_attenuation_color"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsinvert_attenuation_color_xpb"
+            label   "Invert Attenuation Color"
+            type    toggle
+            default { "0" }
+            help    "Invert the input attenuation color(s)."
+            disablewhen "{ xn__inputsinvert_attenuation_color_control_y2b == block } { xn__inputsinvert_attenuation_color_control_y2b == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsuse_attenuation_ramp_control_gwb"
+            label   "inputs:use_attenuation_ramp"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsuse_attenuation_ramp_fjb"
+            label   "Use Attenuation Ramp"
+            type    toggle
+            default { "0" }
+            help    "Use a ramp to define different attenuation colors depending on the depth of the volume."
+            disablewhen "{ xn__inputsuse_attenuation_ramp_control_gwb == block } { xn__inputsuse_attenuation_ramp_control_gwb == none }"
+            parmtag { "usdvaluetype" "bool" }
+        }
+        parm {
+            name    "xn__inputsattenuation_colors_control_6sb"
+            label   "inputs:attenuation_colors"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "attenuation_ramp"
+            label   "Attenuation Ramp"
+            type    ramp_rgb
+            default { "2" }
+            disablewhen "{ xn__inputsattenuation_colors_control_6sb == block } { xn__inputsattenuation_colors_control_6sb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "color3f[]" }
+        }
+        parm {
+            name    "xn__inputsattenuation_min_depth_control_2xb"
+            label   "inputs:attenuation_min_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsattenuation_min_depth_1kb"
+            label   "Attenuation Min Depth"
+            type    float
+            default { "1" }
+            help    "Represents the minimum ray depth, or the shortest visible distance a ray has to travel through the volume. This sets the lower bound for the ramp. "
+            disablewhen "{ xn__inputsattenuation_min_depth_control_2xb == block } { xn__inputsattenuation_min_depth_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsattenuation_max_depth_control_2xb"
+            label   "inputs:attenuation_max_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsattenuation_max_depth_1kb"
+            label   "Attenuation Max Depth"
+            type    float
+            default { "2" }
+            help    "Represents the maximum ray depth, or the longest visible distance a ray has to travel through the volume. This sets the upper bound for the ramp. "
+            disablewhen "{ xn__inputsattenuation_max_depth_control_2xb == block } { xn__inputsattenuation_max_depth_control_2xb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+    }
+
+    group {
+        name    "folder5"
+        label   "Density Properties"
+
+        parm {
+            name    "xn__inputsdensities_control_jeb"
+            label   "inputs:densities"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "density_ramp"
+            label   "Density Ramp"
+            type    ramp_flt
+            default { "2" }
+            disablewhen "{ xn__inputsdensities_control_jeb == block } { xn__inputsdensities_control_jeb == none }"
+            range   { 1! 10 }
+            parmtag { "usdvaluetype" "float[]" }
+        }
+        parm {
+            name    "xn__inputsdensity_min_depth_control_krb"
+            label   "inputs:density_min_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdensity_min_depth_jeb"
+            label   "Density Min Depth"
+            type    float
+            default { "1" }
+            help    "Represents the minimum ray depth, or the shortest visible distance a ray has to travel through the volume. This sets the lower bound for the ramp. "
+            disablewhen "{ xn__inputsdensity_min_depth_control_krb == block } { xn__inputsdensity_min_depth_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
+        }
+        parm {
+            name    "xn__inputsdensity_max_depth_control_krb"
+            label   "inputs:density_max_depth"
+            type    string
+            default { "none" }
+            menujoin {
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
+            }
+            parmtag { "sidefx::look" "icon" }
+        }
+        parm {
+            name    "xn__inputsdensity_max_depth_jeb"
+            label   "Density Max Depth"
+            type    float
+            default { "2" }
+            help    "Represents the maximum ray depth, or the longest visible distance a ray has to travel through the volume. This sets the upper bound for the ramp. "
+            disablewhen "{ xn__inputsdensity_max_depth_control_krb == block } { xn__inputsdensity_max_depth_control_krb == none }"
+            range   { 0 10 }
+            parmtag { "usdvaluetype" "float" }
         }
     }
 
@@ -182,11 +629,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputslabel_zta"
@@ -196,97 +644,5 @@
         help    "label used in light aovs"
         disablewhen "{ xn__inputslabel_control_06a == block } { xn__inputslabel_control_06a == none }"
         parmtag { "usdvaluetype" "string" }
-    }
-    parm {
-        name    "xn__inputsbake_resolution_mode_control_gwb"
-        label   "inputs:bake_resolution_mode"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__inputsbake_resolution_mode_fjb"
-        label   "Bake Resolution Mode"
-        type    string
-        default { "default" }
-        help    "Toggle method to specify grid resolution of baked density grid.\n		default: for shaders that are bound to vdb volumes, use vdb resolution. For shaders that are bounds to mesh geometriesuse 100 divisions\n		divisions: specify number of divisions.\n		voxel size: specify voxel size."
-        disablewhen "{ xn__inputsbake_resolution_mode_control_gwb == block } { xn__inputsbake_resolution_mode_control_gwb == none }"
-        menu {
-            "default"       "Default"
-            "divisions"     "Divisions"
-            "voxel size"    "Voxel Size"
-        }
-        parmtag { "usdvaluetype" "token" }
-    }
-    parm {
-        name    "xn__inputsbake_divisions_control_omb"
-        label   "inputs:bake_divisions"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__inputsbake_divisions_n8a"
-        label   "Bake Divisions"
-        type    integer
-        default { "100" }
-        help    "Divide widest axis by this many divisions"
-        disablewhen "{ xn__inputsbake_divisions_control_omb == block } { xn__inputsbake_divisions_control_omb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "int" }
-    }
-    parm {
-        name    "xn__inputsbake_voxel_size_control_bob"
-        label   "inputs:bake_voxel_size"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__inputsbake_voxel_size_99a"
-        label   "Bake Voxel Size"
-        type    float
-        default { "10" }
-        help    "Size of voxel in world space"
-        disablewhen "{ xn__inputsbake_voxel_size_control_bob == block } { xn__inputsbake_voxel_size_control_bob == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
-    }
-    parm {
-        name    "xn__inputssurface_opacity_threshold_control_l4b"
-        label   "inputs:surface_opacity_threshold"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__inputssurface_opacity_threshold_krb"
-        label   "Surface Opacity Threshold"
-        type    float
-        default { "0.5" }
-        help    "Accumulated opacity that's considered the 'surface' for computing surface position and Z"
-        disablewhen "{ xn__inputssurface_opacity_threshold_control_l4b == block } { xn__inputssurface_opacity_threshold_control_l4b == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "float" }
     }
 }

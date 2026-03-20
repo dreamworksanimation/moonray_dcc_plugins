@@ -11,11 +11,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_scale_wcb"
@@ -24,7 +27,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_scale_control_xpb == block } { xn__inputspositive_x_scale_control_xpb == none }"
+            disablewhen "{ xn__inputspositive_x_scale_control_xpb == block } { xn__inputspositive_x_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -34,11 +37,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_offset_jeb"
@@ -47,7 +53,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_offset_control_krb == block } { xn__inputspositive_x_offset_control_krb == none }"
+            disablewhen "{ xn__inputspositive_x_offset_control_krb == block } { xn__inputspositive_x_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -57,11 +63,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_invert_s_shb"
@@ -69,7 +76,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_invert_s_control_tub == block } { xn__inputspositive_x_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputspositive_x_invert_s_control_tub == block } { xn__inputspositive_x_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -78,11 +85,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_invert_t_shb"
@@ -90,7 +98,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_invert_t_control_tub == block } { xn__inputspositive_x_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputspositive_x_invert_t_control_tub == block } { xn__inputspositive_x_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -99,11 +107,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_swap_st_5fb"
@@ -111,7 +120,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_swap_st_control_6sb == block } { xn__inputspositive_x_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputspositive_x_swap_st_control_6sb == block } { xn__inputspositive_x_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -120,11 +129,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_rotation_shb"
@@ -132,7 +144,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_rotation_control_tub == block } { xn__inputspositive_x_rotation_control_tub == none }"
+            disablewhen "{ xn__inputspositive_x_rotation_control_tub == block } { xn__inputspositive_x_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -142,11 +154,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_rotation_center_6sb"
@@ -155,7 +170,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_rotation_center_control_75b == block } { xn__inputspositive_x_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputspositive_x_rotation_center_control_75b == block } { xn__inputspositive_x_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -165,11 +180,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_x_wrap_around_omb"
@@ -177,7 +193,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_wrap_around_control_pzb == block } { xn__inputspositive_x_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputspositive_x_wrap_around_control_pzb == block } { xn__inputspositive_x_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -192,11 +208,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_scale_wcb"
@@ -205,7 +224,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_scale_control_xpb == block } { xn__inputspositive_y_scale_control_xpb == none }"
+            disablewhen "{ xn__inputspositive_y_scale_control_xpb == block } { xn__inputspositive_y_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -215,11 +234,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_offset_jeb"
@@ -228,7 +250,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_offset_control_krb == block } { xn__inputspositive_y_offset_control_krb == none }"
+            disablewhen "{ xn__inputspositive_y_offset_control_krb == block } { xn__inputspositive_y_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -238,11 +260,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_invert_s_shb"
@@ -250,7 +273,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_invert_s_control_tub == block } { xn__inputspositive_y_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputspositive_y_invert_s_control_tub == block } { xn__inputspositive_y_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -259,11 +282,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_invert_t_shb"
@@ -271,7 +295,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_invert_t_control_tub == block } { xn__inputspositive_y_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputspositive_y_invert_t_control_tub == block } { xn__inputspositive_y_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -280,11 +304,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_swap_st_5fb"
@@ -292,7 +317,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_swap_st_control_6sb == block } { xn__inputspositive_y_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputspositive_y_swap_st_control_6sb == block } { xn__inputspositive_y_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -301,11 +326,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_rotation_shb"
@@ -313,7 +341,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_rotation_control_tub == block } { xn__inputspositive_y_rotation_control_tub == none }"
+            disablewhen "{ xn__inputspositive_y_rotation_control_tub == block } { xn__inputspositive_y_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -323,11 +351,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_rotation_center_6sb"
@@ -336,7 +367,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_rotation_center_control_75b == block } { xn__inputspositive_y_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputspositive_y_rotation_center_control_75b == block } { xn__inputspositive_y_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -346,11 +377,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_y_wrap_around_omb"
@@ -358,7 +390,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_wrap_around_control_pzb == block } { xn__inputspositive_y_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputspositive_y_wrap_around_control_pzb == block } { xn__inputspositive_y_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -373,11 +405,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_scale_wcb"
@@ -386,7 +421,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_scale_control_xpb == block } { xn__inputspositive_z_scale_control_xpb == none }"
+            disablewhen "{ xn__inputspositive_z_scale_control_xpb == block } { xn__inputspositive_z_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -396,11 +431,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_offset_jeb"
@@ -409,7 +447,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_offset_control_krb == block } { xn__inputspositive_z_offset_control_krb == none }"
+            disablewhen "{ xn__inputspositive_z_offset_control_krb == block } { xn__inputspositive_z_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -419,11 +457,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_invert_s_shb"
@@ -431,7 +470,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_invert_s_control_tub == block } { xn__inputspositive_z_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputspositive_z_invert_s_control_tub == block } { xn__inputspositive_z_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -440,11 +479,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_invert_t_shb"
@@ -452,7 +492,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_invert_t_control_tub == block } { xn__inputspositive_z_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputspositive_z_invert_t_control_tub == block } { xn__inputspositive_z_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -461,11 +501,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_swap_st_5fb"
@@ -473,7 +514,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_swap_st_control_6sb == block } { xn__inputspositive_z_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputspositive_z_swap_st_control_6sb == block } { xn__inputspositive_z_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -482,11 +523,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_rotation_shb"
@@ -494,7 +538,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_rotation_control_tub == block } { xn__inputspositive_z_rotation_control_tub == none }"
+            disablewhen "{ xn__inputspositive_z_rotation_control_tub == block } { xn__inputspositive_z_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -504,11 +548,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_rotation_center_6sb"
@@ -517,7 +564,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_rotation_center_control_75b == block } { xn__inputspositive_z_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputspositive_z_rotation_center_control_75b == block } { xn__inputspositive_z_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -527,11 +574,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputspositive_z_wrap_around_omb"
@@ -539,7 +587,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_wrap_around_control_pzb == block } { xn__inputspositive_z_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputspositive_z_wrap_around_control_pzb == block } { xn__inputspositive_z_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -554,11 +602,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_scale_wcb"
@@ -567,7 +618,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_scale_control_xpb == block } { xn__inputsnegative_x_scale_control_xpb == none }"
+            disablewhen "{ xn__inputsnegative_x_scale_control_xpb == block } { xn__inputsnegative_x_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -577,11 +628,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_offset_jeb"
@@ -590,7 +644,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_offset_control_krb == block } { xn__inputsnegative_x_offset_control_krb == none }"
+            disablewhen "{ xn__inputsnegative_x_offset_control_krb == block } { xn__inputsnegative_x_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -600,11 +654,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_invert_s_shb"
@@ -612,7 +667,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_invert_s_control_tub == block } { xn__inputsnegative_x_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_x_invert_s_control_tub == block } { xn__inputsnegative_x_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -621,11 +676,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_invert_t_shb"
@@ -633,7 +689,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_invert_t_control_tub == block } { xn__inputsnegative_x_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_x_invert_t_control_tub == block } { xn__inputsnegative_x_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -642,11 +698,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_swap_st_5fb"
@@ -654,7 +711,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_swap_st_control_6sb == block } { xn__inputsnegative_x_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputsnegative_x_swap_st_control_6sb == block } { xn__inputsnegative_x_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -663,11 +720,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_rotation_shb"
@@ -675,7 +735,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_rotation_control_tub == block } { xn__inputsnegative_x_rotation_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_x_rotation_control_tub == block } { xn__inputsnegative_x_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -685,11 +745,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_rotation_center_6sb"
@@ -698,7 +761,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_rotation_center_control_75b == block } { xn__inputsnegative_x_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputsnegative_x_rotation_center_control_75b == block } { xn__inputsnegative_x_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -708,11 +771,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_x_wrap_around_omb"
@@ -720,7 +784,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_wrap_around_control_pzb == block } { xn__inputsnegative_x_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputsnegative_x_wrap_around_control_pzb == block } { xn__inputsnegative_x_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -735,11 +799,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_scale_wcb"
@@ -748,7 +815,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_scale_control_xpb == block } { xn__inputsnegative_y_scale_control_xpb == none }"
+            disablewhen "{ xn__inputsnegative_y_scale_control_xpb == block } { xn__inputsnegative_y_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -758,11 +825,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_offset_jeb"
@@ -771,7 +841,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_offset_control_krb == block } { xn__inputsnegative_y_offset_control_krb == none }"
+            disablewhen "{ xn__inputsnegative_y_offset_control_krb == block } { xn__inputsnegative_y_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -781,11 +851,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_invert_s_shb"
@@ -793,7 +864,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_invert_s_control_tub == block } { xn__inputsnegative_y_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_y_invert_s_control_tub == block } { xn__inputsnegative_y_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -802,11 +873,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_invert_t_shb"
@@ -814,7 +886,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_invert_t_control_tub == block } { xn__inputsnegative_y_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_y_invert_t_control_tub == block } { xn__inputsnegative_y_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -823,11 +895,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_swap_st_5fb"
@@ -835,7 +908,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_swap_st_control_6sb == block } { xn__inputsnegative_y_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputsnegative_y_swap_st_control_6sb == block } { xn__inputsnegative_y_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -844,11 +917,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_rotation_shb"
@@ -856,7 +932,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_rotation_control_tub == block } { xn__inputsnegative_y_rotation_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_y_rotation_control_tub == block } { xn__inputsnegative_y_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -866,11 +942,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_rotation_center_6sb"
@@ -879,7 +958,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_rotation_center_control_75b == block } { xn__inputsnegative_y_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputsnegative_y_rotation_center_control_75b == block } { xn__inputsnegative_y_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -889,11 +968,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_y_wrap_around_omb"
@@ -901,7 +981,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_wrap_around_control_pzb == block } { xn__inputsnegative_y_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputsnegative_y_wrap_around_control_pzb == block } { xn__inputsnegative_y_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -916,11 +996,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_scale_wcb"
@@ -929,7 +1012,7 @@
             size    2
             default { "1" "1" }
             help    "2D scale"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_scale_control_xpb == block } { xn__inputsnegative_z_scale_control_xpb == none }"
+            disablewhen "{ xn__inputsnegative_z_scale_control_xpb == block } { xn__inputsnegative_z_scale_control_xpb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -939,11 +1022,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_offset_jeb"
@@ -952,7 +1038,7 @@
             size    2
             default { "0" "0" }
             help    "2D offset"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_offset_control_krb == block } { xn__inputsnegative_z_offset_control_krb == none }"
+            disablewhen "{ xn__inputsnegative_z_offset_control_krb == block } { xn__inputsnegative_z_offset_control_krb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -962,11 +1048,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_invert_s_shb"
@@ -974,7 +1061,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the s direction (horizontal)"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_invert_s_control_tub == block } { xn__inputsnegative_z_invert_s_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_z_invert_s_control_tub == block } { xn__inputsnegative_z_invert_s_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -983,11 +1070,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_invert_t_shb"
@@ -995,7 +1083,7 @@
             type    toggle
             default { "0" }
             help    "Flip in the t direction (vertical)"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_invert_t_control_tub == block } { xn__inputsnegative_z_invert_t_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_z_invert_t_control_tub == block } { xn__inputsnegative_z_invert_t_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -1004,11 +1092,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_swap_st_5fb"
@@ -1016,7 +1105,7 @@
             type    toggle
             default { "0" }
             help    "Swap the s and t directions.   Same as a 90 degree rotation"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_swap_st_control_6sb == block } { xn__inputsnegative_z_swap_st_control_6sb == none }"
+            disablewhen "{ xn__inputsnegative_z_swap_st_control_6sb == block } { xn__inputsnegative_z_swap_st_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
         parm {
@@ -1025,11 +1114,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_rotation_shb"
@@ -1037,7 +1129,7 @@
             type    float
             default { "0" }
             help    "2D rotation amount"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_rotation_control_tub == block } { xn__inputsnegative_z_rotation_control_tub == none }"
+            disablewhen "{ xn__inputsnegative_z_rotation_control_tub == block } { xn__inputsnegative_z_rotation_control_tub == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -1047,11 +1139,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_rotation_center_6sb"
@@ -1060,7 +1155,7 @@
             size    2
             default { "0" "0" }
             help    "2D rotation center"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_rotation_center_control_75b == block } { xn__inputsnegative_z_rotation_center_control_75b == none }"
+            disablewhen "{ xn__inputsnegative_z_rotation_center_control_75b == block } { xn__inputsnegative_z_rotation_center_control_75b == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float2" }
         }
@@ -1070,11 +1165,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsnegative_z_wrap_around_omb"
@@ -1082,7 +1178,7 @@
             type    toggle
             default { "1" }
             help    "Controls whether to repeat (true) or clamp (false) the texture"
-            disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_wrap_around_control_pzb == block } { xn__inputsnegative_z_wrap_around_control_pzb == none }"
+            disablewhen "{ xn__inputsnegative_z_wrap_around_control_pzb == block } { xn__inputsnegative_z_wrap_around_control_pzb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
     }
@@ -1093,11 +1189,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsuse_reference_space_shb"
@@ -1114,11 +1211,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsgamma_zta"
@@ -1140,11 +1240,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdebug_mode_41a"
@@ -1166,11 +1269,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnumber_of_textures_5fb"
@@ -1192,11 +1298,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputstransition_width_wcb"
@@ -1214,11 +1323,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrandom_seed_r3a"
@@ -1236,18 +1348,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrandomize_rotation_5fb"
         label   "Randomize Rotation"
         type    toggle
         default { "0" }
-        help    "Rnd 2d rotation of each active texture"
+        help    "Random 2d rotation of each active texture"
         disablewhen "{ xn__inputsrandomize_rotation_control_6sb == block } { xn__inputsrandomize_rotation_control_6sb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
@@ -1257,18 +1370,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrandomize_flip_n8a"
         label   "Randomize Flip"
         type    toggle
         default { "0" }
-        help    "Rnd flipping in S or T for each active texture"
+        help    "Random flipping in S or T for each active texture"
         disablewhen "{ xn__inputsrandomize_flip_control_omb == block } { xn__inputsrandomize_flip_control_omb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
@@ -1278,18 +1392,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrandomize_offset_wcb"
         label   "Randomize Offset"
         type    toggle
         default { "0" }
-        help    "Rnd offset in S or T for each active texture"
+        help    "Random offset in S or T for each active texture"
         disablewhen "{ xn__inputsrandomize_offset_control_xpb == block } { xn__inputsrandomize_offset_control_xpb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
@@ -1299,11 +1414,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_x_active_jeb"
@@ -1320,19 +1436,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_x_texture_5fb"
         label   "Positive X Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputspositive_x_active_jeb != 1 } { xn__inputspositive_x_texture_control_6sb == block } { xn__inputspositive_x_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_x_texture_control_6sb == block } { xn__inputspositive_x_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1341,11 +1458,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_y_active_jeb"
@@ -1362,19 +1480,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_y_texture_5fb"
         label   "Positive Y Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputspositive_y_active_jeb != 1 } { xn__inputspositive_y_texture_control_6sb == block } { xn__inputspositive_y_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_y_texture_control_6sb == block } { xn__inputspositive_y_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1383,11 +1502,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_z_active_jeb"
@@ -1404,19 +1524,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputspositive_z_texture_5fb"
         label   "Positive Z Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputspositive_z_active_jeb != 1 } { xn__inputspositive_z_texture_control_6sb == block } { xn__inputspositive_z_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputspositive_z_texture_control_6sb == block } { xn__inputspositive_z_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1425,11 +1546,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_x_active_jeb"
@@ -1446,19 +1568,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_x_texture_5fb"
         label   "Negative X Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputsnegative_x_active_jeb != 1 } { xn__inputsnegative_x_texture_control_6sb == block } { xn__inputsnegative_x_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_x_texture_control_6sb == block } { xn__inputsnegative_x_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1467,11 +1590,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_y_active_jeb"
@@ -1488,19 +1612,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_y_texture_5fb"
         label   "Negative Y Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputsnegative_y_active_jeb != 1 } { xn__inputsnegative_y_texture_control_6sb == block } { xn__inputsnegative_y_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_y_texture_control_6sb == block } { xn__inputsnegative_y_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1509,11 +1634,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_z_active_jeb"
@@ -1530,19 +1656,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsnegative_z_texture_5fb"
         label   "Negative Z Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
-        disablewhen "{ xn__inputsnegative_z_active_jeb != 1 } { xn__inputsnegative_z_texture_control_6sb == block } { xn__inputsnegative_z_texture_control_6sb == none }"
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx)."
+        disablewhen "{ xn__inputsnegative_z_texture_control_6sb == block } { xn__inputsnegative_z_texture_control_6sb == none }"
         parmtag { "usdvaluetype" "asset" }
     }
     parm {
@@ -1551,11 +1678,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojection_mode_99a"
@@ -1577,19 +1707,20 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojector_i0a"
         label   "Projector"
         type    oppath
         default { "" }
-        help    "the object whose transform to use for projection"
-        disablewhen "{ projection_mode != projector } { xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
+        help    "The object whose transform to use for projection when 'projection_mode' is set to 'projector'"
+        disablewhen "{ xn__inputsprojector_control_jeb == block } { xn__inputsprojector_control_jeb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
     }
@@ -1599,11 +1730,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsprojection_matrix_jeb"
@@ -1611,8 +1745,8 @@
         type    float
         size    16
         default { "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" "0" "0" "0" "0" "1" }
-        help    "the transform to use for projection"
-        disablewhen "{ projection_mode != projection_matrix } { xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
+        help    "The transform to use for projection when 'projection_mode' is set to 'projection_matrix'"
+        disablewhen "{ xn__inputsprojection_matrix_control_krb == block } { xn__inputsprojection_matrix_control_krb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "double[]" }
     }
@@ -1622,19 +1756,22 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsTRS_order_i0a"
         label   "TRS Order"
         type    string
         default { "Scale Rot Trans" }
-        help    "Order in which to apply transformations"
-        disablewhen "{ projection_mode != TRS } { xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
+        help    "Order in which to apply transformations when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsTRS_order_control_jeb == block } { xn__inputsTRS_order_control_jeb == none }"
         menu {
             "Scale Rot Trans"   "Scale Rot Trans"
             "Scale Trans Rot"   "Scale Trans Rot"
@@ -1651,19 +1788,22 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotation_order_n8a"
         label   "Rotation Order"
         type    string
         default { "xyz" }
-        help    "Order in which to apply rotation transformations"
-        disablewhen "{ projection_mode != TRS } { xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
+        help    "Order in which to apply rotation transformations when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsrotation_order_control_omb == block } { xn__inputsrotation_order_control_omb == none }"
         menu {
             "xyz"   "Xyz"
             "xzy"   "Xzy"
@@ -1680,11 +1820,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputstranslate_i0a"
@@ -1692,8 +1835,8 @@
         type    vector
         size    3
         default { "0" "0" "0" }
-        help    "Tranlation of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
+        help    "Translation of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputstranslate_control_jeb == block } { xn__inputstranslate_control_jeb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }
@@ -1703,11 +1846,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotate_mva"
@@ -1715,8 +1861,8 @@
         type    vector
         size    3
         default { "0" "0" "0" }
-        help    "Rotation of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
+        help    "Rotation of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsrotate_control_n8a == block } { xn__inputsrotate_control_n8a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }
@@ -1726,11 +1872,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsscale_zta"
@@ -1738,8 +1887,8 @@
         type    vector
         size    3
         default { "1" "1" "1" }
-        help    "Scale of the projection transform"
-        disablewhen "{ projection_mode != TRS } { xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
+        help    "Scale of the projection transform when 'projection_mode' is set to 'TRS'"
+        disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3d" }
     }

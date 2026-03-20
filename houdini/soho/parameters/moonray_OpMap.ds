@@ -7,17 +7,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsoperation_i0a"
         label   "Operation"
         type    string
         default { "add" }
+        help    "Operation"
         disablewhen "{ xn__inputsoperation_control_jeb == block } { xn__inputsoperation_control_jeb == none }"
         menu {
             "add"                   "Add"
@@ -59,6 +63,8 @@
             "bit_shift_right"       "Bit_Shift_Right"
             "bitwise_and"           "Bitwise_And"
             "bitwise_or"            "Bitwise_Or"
+            "vector_equal"          "Vector_Equal"
+            "vector_not_equal"      "Vector_Not_Equal"
         }
         parmtag { "usdvaluetype" "token" }
     }
@@ -68,11 +74,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsop1_qqa"
@@ -80,7 +89,7 @@
         type    color
         size    3
         default { "1" "1" "1" }
-        help    "the first operand"
+        help    "First operand"
         disablewhen "{ xn__inputsop1_control_r3a == block } { xn__inputsop1_control_r3a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "color3f" }
@@ -91,11 +100,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsop2_qqa"
@@ -103,7 +115,7 @@
         type    color
         size    3
         default { "1" "1" "1" }
-        help    "the second operand"
+        help    "Second operand"
         disablewhen "{ xn__inputsop2_control_r3a == block } { xn__inputsop2_control_r3a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "color3f" }
@@ -114,18 +126,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsop1_factor_41a"
         label   "Op1 Factor"
         type    float
         default { "1" }
-        help    "a scalar multiplier on op1"
+        help    "Scalar multiplier on op1"
         disablewhen "{ xn__inputsop1_factor_control_5fb == block } { xn__inputsop1_factor_control_5fb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
@@ -136,18 +151,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsop2_factor_41a"
         label   "Op2 Factor"
         type    float
         default { "1" }
-        help    "a scalar multiplier on op2"
+        help    "Scalar multiplier on op2"
         disablewhen "{ xn__inputsop2_factor_control_5fb == block } { xn__inputsop2_factor_control_5fb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
@@ -158,19 +176,45 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsclamp_zta"
         label   "Clamp"
         type    toggle
         default { "0" }
-        help    "if on, the result is clamped to 0 - 1"
+        help    "Whether to clamp result to 0 - 1"
         disablewhen "{ xn__inputsclamp_control_06a == block } { xn__inputsclamp_control_06a == none }"
         parmtag { "usdvaluetype" "bool" }
+    }
+    parm {
+        name    "xn__inputstolerance_control_jeb"
+        label   "inputs:tolerance"
+        type    string
+        default { "none" }
+        menujoin {
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
+        }
+        parmtag { "sidefx::look" "icon" }
+    }
+    parm {
+        name    "xn__inputstolerance_i0a"
+        label   "Tolerance"
+        type    float
+        default { "0.001" }
+        help    "Epsilon. Sets range for almost-equals checking of values"
+        disablewhen "{ xn__inputstolerance_control_jeb == block } { xn__inputstolerance_control_jeb == none }"
+        range   { 0 10 }
+        parmtag { "usdvaluetype" "float" }
     }
 }

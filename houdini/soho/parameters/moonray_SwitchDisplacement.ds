@@ -7,11 +7,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsbound_padding_06a"
@@ -29,18 +32,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputschoice_mva"
         label   "Choice"
         type    float
         default { "0" }
-        help    "which of the 64 inputs (0 to 63) to use, values greater than 63 get cycled back to be in [0,63]"
+        help    "Which of the 64 inputs (0 to 63) to use, values greater than 63 get cycled back to be in the [0,63] range"
         disablewhen "{ xn__inputschoice_control_n8a == block } { xn__inputschoice_control_n8a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
@@ -51,11 +57,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement0_06a"
@@ -63,6 +70,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement0_control_1kb == block } { xn__inputsdisplacement0_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -73,11 +81,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement1_06a"
@@ -85,6 +94,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement1_control_1kb == block } { xn__inputsdisplacement1_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -95,11 +105,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement2_06a"
@@ -107,6 +118,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement2_control_1kb == block } { xn__inputsdisplacement2_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -117,11 +129,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement3_06a"
@@ -129,6 +142,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement3_control_1kb == block } { xn__inputsdisplacement3_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -139,11 +153,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement4_06a"
@@ -151,6 +166,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement4_control_1kb == block } { xn__inputsdisplacement4_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -161,11 +177,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement5_06a"
@@ -173,6 +190,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement5_control_1kb == block } { xn__inputsdisplacement5_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -183,11 +201,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement6_06a"
@@ -195,6 +214,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement6_control_1kb == block } { xn__inputsdisplacement6_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -205,11 +225,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement7_06a"
@@ -217,6 +238,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement7_control_1kb == block } { xn__inputsdisplacement7_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -227,11 +249,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement8_06a"
@@ -239,6 +262,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement8_control_1kb == block } { xn__inputsdisplacement8_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -249,11 +273,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement9_06a"
@@ -261,6 +286,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement9_control_1kb == block } { xn__inputsdisplacement9_control_1kb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -271,11 +297,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement10_n8a"
@@ -283,6 +310,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement10_control_omb == block } { xn__inputsdisplacement10_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -293,11 +321,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement11_n8a"
@@ -305,6 +334,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement11_control_omb == block } { xn__inputsdisplacement11_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -315,11 +345,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement12_n8a"
@@ -327,6 +358,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement12_control_omb == block } { xn__inputsdisplacement12_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -337,11 +369,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement13_n8a"
@@ -349,6 +382,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement13_control_omb == block } { xn__inputsdisplacement13_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -359,11 +393,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement14_n8a"
@@ -371,6 +406,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement14_control_omb == block } { xn__inputsdisplacement14_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -381,11 +417,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement15_n8a"
@@ -393,6 +430,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement15_control_omb == block } { xn__inputsdisplacement15_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -403,11 +441,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement16_n8a"
@@ -415,6 +454,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement16_control_omb == block } { xn__inputsdisplacement16_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -425,11 +465,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement17_n8a"
@@ -437,6 +478,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement17_control_omb == block } { xn__inputsdisplacement17_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -447,11 +489,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement18_n8a"
@@ -459,6 +502,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement18_control_omb == block } { xn__inputsdisplacement18_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -469,11 +513,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement19_n8a"
@@ -481,6 +526,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement19_control_omb == block } { xn__inputsdisplacement19_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -491,11 +537,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement20_n8a"
@@ -503,6 +550,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement20_control_omb == block } { xn__inputsdisplacement20_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -513,11 +561,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement21_n8a"
@@ -525,6 +574,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement21_control_omb == block } { xn__inputsdisplacement21_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -535,11 +585,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement22_n8a"
@@ -547,6 +598,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement22_control_omb == block } { xn__inputsdisplacement22_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -557,11 +609,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement23_n8a"
@@ -569,6 +622,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement23_control_omb == block } { xn__inputsdisplacement23_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -579,11 +633,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement24_n8a"
@@ -591,6 +646,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement24_control_omb == block } { xn__inputsdisplacement24_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -601,11 +657,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement25_n8a"
@@ -613,6 +670,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement25_control_omb == block } { xn__inputsdisplacement25_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -623,11 +681,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement26_n8a"
@@ -635,6 +694,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement26_control_omb == block } { xn__inputsdisplacement26_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -645,11 +705,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement27_n8a"
@@ -657,6 +718,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement27_control_omb == block } { xn__inputsdisplacement27_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -667,11 +729,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement28_n8a"
@@ -679,6 +742,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement28_control_omb == block } { xn__inputsdisplacement28_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -689,11 +753,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement29_n8a"
@@ -701,6 +766,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement29_control_omb == block } { xn__inputsdisplacement29_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -711,11 +777,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement30_n8a"
@@ -723,6 +790,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement30_control_omb == block } { xn__inputsdisplacement30_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -733,11 +801,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement31_n8a"
@@ -745,6 +814,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement31_control_omb == block } { xn__inputsdisplacement31_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -755,11 +825,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement32_n8a"
@@ -767,6 +838,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement32_control_omb == block } { xn__inputsdisplacement32_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -777,11 +849,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement33_n8a"
@@ -789,6 +862,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement33_control_omb == block } { xn__inputsdisplacement33_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -799,11 +873,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement34_n8a"
@@ -811,6 +886,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement34_control_omb == block } { xn__inputsdisplacement34_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -821,11 +897,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement35_n8a"
@@ -833,6 +910,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement35_control_omb == block } { xn__inputsdisplacement35_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -843,11 +921,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement36_n8a"
@@ -855,6 +934,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement36_control_omb == block } { xn__inputsdisplacement36_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -865,11 +945,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement37_n8a"
@@ -877,6 +958,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement37_control_omb == block } { xn__inputsdisplacement37_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -887,11 +969,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement38_n8a"
@@ -899,6 +982,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement38_control_omb == block } { xn__inputsdisplacement38_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -909,11 +993,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement39_n8a"
@@ -921,6 +1006,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement39_control_omb == block } { xn__inputsdisplacement39_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -931,11 +1017,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement40_n8a"
@@ -943,6 +1030,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement40_control_omb == block } { xn__inputsdisplacement40_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -953,11 +1041,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement41_n8a"
@@ -965,6 +1054,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement41_control_omb == block } { xn__inputsdisplacement41_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -975,11 +1065,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement42_n8a"
@@ -987,6 +1078,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement42_control_omb == block } { xn__inputsdisplacement42_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -997,11 +1089,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement43_n8a"
@@ -1009,6 +1102,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement43_control_omb == block } { xn__inputsdisplacement43_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1019,11 +1113,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement44_n8a"
@@ -1031,6 +1126,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement44_control_omb == block } { xn__inputsdisplacement44_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1041,11 +1137,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement45_n8a"
@@ -1053,6 +1150,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement45_control_omb == block } { xn__inputsdisplacement45_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1063,11 +1161,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement46_n8a"
@@ -1075,6 +1174,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement46_control_omb == block } { xn__inputsdisplacement46_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1085,11 +1185,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement47_n8a"
@@ -1097,6 +1198,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement47_control_omb == block } { xn__inputsdisplacement47_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1107,11 +1209,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement48_n8a"
@@ -1119,6 +1222,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement48_control_omb == block } { xn__inputsdisplacement48_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1129,11 +1233,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement49_n8a"
@@ -1141,6 +1246,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement49_control_omb == block } { xn__inputsdisplacement49_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1151,11 +1257,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement50_n8a"
@@ -1163,6 +1270,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement50_control_omb == block } { xn__inputsdisplacement50_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1173,11 +1281,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement51_n8a"
@@ -1185,6 +1294,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement51_control_omb == block } { xn__inputsdisplacement51_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1195,11 +1305,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement52_n8a"
@@ -1207,6 +1318,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement52_control_omb == block } { xn__inputsdisplacement52_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1217,11 +1329,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement53_n8a"
@@ -1229,6 +1342,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement53_control_omb == block } { xn__inputsdisplacement53_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1239,11 +1353,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement54_n8a"
@@ -1251,6 +1366,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement54_control_omb == block } { xn__inputsdisplacement54_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1261,11 +1377,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement55_n8a"
@@ -1273,6 +1390,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement55_control_omb == block } { xn__inputsdisplacement55_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1283,11 +1401,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement56_n8a"
@@ -1295,6 +1414,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement56_control_omb == block } { xn__inputsdisplacement56_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1305,11 +1425,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement57_n8a"
@@ -1317,6 +1438,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement57_control_omb == block } { xn__inputsdisplacement57_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1327,11 +1449,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement58_n8a"
@@ -1339,6 +1462,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement58_control_omb == block } { xn__inputsdisplacement58_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1349,11 +1473,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement59_n8a"
@@ -1361,6 +1486,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement59_control_omb == block } { xn__inputsdisplacement59_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1371,11 +1497,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement60_n8a"
@@ -1383,6 +1510,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement60_control_omb == block } { xn__inputsdisplacement60_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1393,11 +1521,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement61_n8a"
@@ -1405,6 +1534,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement61_control_omb == block } { xn__inputsdisplacement61_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1415,11 +1545,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement62_n8a"
@@ -1427,6 +1558,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement62_control_omb == block } { xn__inputsdisplacement62_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }
@@ -1437,11 +1569,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdisplacement63_n8a"
@@ -1449,6 +1582,7 @@
         type    oppath
         invisible
         default { "" }
+        help    "A reference to a displacement scene object"
         disablewhen "{ xn__inputsdisplacement63_control_omb == block } { xn__inputsdisplacement63_control_omb == none }"
         parmtag { "oprelative" "." }
         parmtag { "usdvaluetype" "token" }

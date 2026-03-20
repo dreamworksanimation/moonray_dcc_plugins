@@ -11,65 +11,24 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsmip_bias_vya"
             label   "Mip Bias"
             type    float
             default { "0" }
-            help    "Amount to scale derivatives which controls mipmap selection"
+            help    "Amount to offset derivatives which controls mipmap selection.   This can be used to provide a cheap, albiet low quality, blur.  Note: Setting this value to -1.0 effectively disables mip mapping and the highest resolution will be used."
             disablewhen "{ xn__inputsmip_bias_control_wcb == block } { xn__inputsmip_bias_control_wcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
-        }
-        parm {
-            name    "xn__inputsblur_control_e5a"
-            label   "inputs:blur"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__inputsblur_dsa"
-            label   "Blur"
-            type    float
-            default { "0" }
-            help    "This parameter is deprecated, do not use!   Number of pixels to blur the image"
-            disablewhen "{ xn__inputsblur_control_e5a == block } { xn__inputsblur_control_e5a == none }"
-            range   { 0 10 }
-            parmtag { "usdvaluetype" "float" }
-        }
-        parm {
-            name    "xn__inputsnum_blur_samples_control_xpb"
-            label   "inputs:num_blur_samples"
-            type    string
-            default { "none" }
-            menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
-            }
-        }
-        parm {
-            name    "xn__inputsnum_blur_samples_wcb"
-            label   "Num Blur Samples"
-            type    integer
-            default { "3" }
-            help    "This parameter is deprecated, do not use!  Number of internal samples for blur.   Higher values increase quality"
-            disablewhen "{ xn__inputsnum_blur_samples_control_xpb == block } { xn__inputsnum_blur_samples_control_xpb == none }"
-            range   { 1 10 }
-            parmtag { "usdvaluetype" "int" }
         }
     }
 
@@ -83,17 +42,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssaturation_enabled_5fb"
             label   "Saturation Enabled"
             type    toggle
             default { "0" }
+            help    "Enables 'saturation' parameter"
             disablewhen "{ xn__inputssaturation_enabled_control_6sb == block } { xn__inputssaturation_enabled_control_6sb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -103,11 +64,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputssaturation_41a"
@@ -115,6 +79,7 @@
             type    color
             size    3
             default { "1" "1" "1" }
+            help    "Applies saturation per channel with 0.0 being grayscale and 1.0 being full saturation"
             disablewhen "{ xn__inputssaturation_control_5fb == block } { xn__inputssaturation_control_5fb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -125,17 +90,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputscontrast_enabled_wcb"
             label   "Contrast Enabled"
             type    toggle
             default { "0" }
+            help    "Enables 'contrast' parameter"
             disablewhen "{ xn__inputscontrast_enabled_control_xpb == block } { xn__inputscontrast_enabled_control_xpb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -145,11 +112,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputscontrast_vya"
@@ -157,6 +127,7 @@
             type    color
             size    3
             default { "1" "1" "1" }
+            help    "Applies contrast per channel in the style of Nuke where the pivot is at 0.18"
             disablewhen "{ xn__inputscontrast_control_wcb == block } { xn__inputscontrast_control_wcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -167,17 +138,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsgamma_enabled_06a"
             label   "Gamma Enabled"
             type    toggle
             default { "0" }
+            help    "Enables 'gamma_adjust' parameter"
             disablewhen "{ xn__inputsgamma_enabled_control_1kb == block } { xn__inputsgamma_enabled_control_1kb == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -187,11 +160,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsgamma_adjust_e5a"
@@ -199,6 +175,7 @@
             type    color
             size    3
             default { "1" "1" "1" }
+            help    "Applies gamma(power fuction) per channel."
             disablewhen "{ xn__inputsgamma_adjust_control_fjb == block } { xn__inputsgamma_adjust_control_fjb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -209,17 +186,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsgain_offset_enabled_shb"
             label   "Gain Offset Enabled"
             type    toggle
             default { "0" }
+            help    "Enables 'gain' and 'offset_adjust' parameters"
             disablewhen "{ xn__inputsgain_offset_enabled_control_tub == block } { xn__inputsgain_offset_enabled_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -229,11 +208,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsgain_dsa"
@@ -241,6 +223,7 @@
             type    color
             size    3
             default { "1" "1" "1" }
+            help    "Applies multiplier per channel."
             disablewhen "{ xn__inputsgain_control_e5a == block } { xn__inputsgain_control_e5a == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -251,11 +234,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsoffset_adjust_06a"
@@ -263,6 +249,7 @@
             type    color
             size    3
             default { "0" "0" "0" }
+            help    "Applies offset per channel."
             disablewhen "{ xn__inputsoffset_adjust_control_1kb == block } { xn__inputsoffset_adjust_control_1kb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "color3f" }
@@ -273,17 +260,19 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsTMI_control_enabled_shb"
             label   "TMI Control Enabled"
             type    toggle
             default { "0" }
+            help    "Enables 'TMI' (Temperature Magenta Intensity) parameter"
             disablewhen "{ xn__inputsTMI_control_enabled_control_tub == block } { xn__inputsTMI_control_enabled_control_tub == none }"
             parmtag { "usdvaluetype" "bool" }
         }
@@ -293,11 +282,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__inputsTMI_qqa"
@@ -318,17 +310,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputswrap_around_r3a"
         label   "Wrap Around"
         type    toggle
         default { "1" }
+        help    "If true, the image will repeat itself at it's boundries.   If false, the image will be clamped at it's boundries."
         disablewhen "{ xn__inputswrap_around_control_shb == block } { xn__inputswrap_around_control_shb == none }"
         parmtag { "usdvaluetype" "bool" }
     }
@@ -338,18 +332,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputstexture_8wa"
         label   "Texture"
         type    file
         default { "" }
-        help    "filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx). If filename contains '<UDIM>', udim index substitution is performed on filename.  In the UDIM case, 'scale', 'offset', and 'wrap around' are ignored."
+        help    "Filename that points to a texture .exr or .tx file (must be mip-mapped and tiled with maketx). If filename contains '<UDIM>', udim index substitution is performed on filename.  In the UDIM case, 'scale', 'offset', and 'wrap around' are ignored."
         disablewhen "{ xn__inputstexture_control_99a == block } { xn__inputstexture_control_99a == none }"
         parmtag { "usdvaluetype" "asset" }
     }
@@ -359,11 +354,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsuse_default_color_when_missing_pzb"
@@ -380,11 +376,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsdefault_color_06a"
@@ -392,7 +391,7 @@
         type    color
         size    3
         default { "0" "1" "0" }
-        help    "default color to be used for missing udims when 'use default color when missing' is enabled"
+        help    "Default color to be used for missing udims when 'use default color when missing' is enabled"
         disablewhen "{ xn__inputsdefault_color_control_1kb == block } { xn__inputsdefault_color_control_1kb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "color3f" }
@@ -403,17 +402,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputstexture_coordinates_shb"
         label   "Texture Coordinates"
         type    string
         default { "texture" }
+        help    "Selects the source of the coordinates used to map the texture.  For meshes, the 'texture' setting will read a Vec2f attribute named 'surface_st' if it exists, otherwise it will use barycentric coordinates.   For points and curves, the 'texture' setting will read a Vec2f attribute named 'uv' if it exists.   If the attribute doesn't exist, parametric st coordinates are used for curves and a constant value of (1.0, 1.0) is used for points.  The 'input texture coordinates' setting will evaluate a binding on the 'input_texture_coordinates' parameter and use the resulting red and green channels as the texture coordinates.   The 'hair surface' setting will try to read an explicit attribute named 'surface_st'.   The 'hair closest surface' setting will try to read an explicit attribute named 'closest_surface_uv'."
         disablewhen "{ xn__inputstexture_coordinates_control_tub == block } { xn__inputstexture_coordinates_control_tub == none }"
         menu {
             "texture"                   "Texture"
@@ -429,11 +432,12 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsalpha_only_41a"
@@ -450,11 +454,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsinput_texture_coordinates_krb"
@@ -462,6 +469,7 @@
         type    vector
         size    3
         default { "0" "0" "0" }
+        help    "If the 'texture_coordinates' parameter is set to 'input texture coordinates' then this parameter is evaluated and the resulting red and green channels are used for the u and v coordinates respectively."
         disablewhen "{ xn__inputsinput_texture_coordinates_control_l4b == block } { xn__inputsinput_texture_coordinates_control_l4b == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "vector3f" }
@@ -472,17 +480,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsgamma_zta"
         label   "Gamma"
         type    string
         default { "auto" }
+        help    "If this is set to 'on' or 'auto' and the 'texture' file is 8-bit, then a power of 2.2 will be applied to the RGB channels of the image."
         disablewhen "{ xn__inputsgamma_control_06a == block } { xn__inputsgamma_control_06a == none }"
         menu {
             "off"   "Off"
@@ -497,11 +509,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsoffset_mva"
@@ -509,6 +524,7 @@
         type    vector2
         size    2
         default { "0" "0" }
+        help    "A constant offset applied to the texture coordinates."
         disablewhen "{ xn__inputsoffset_control_n8a == block } { xn__inputsoffset_control_n8a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float2" }
@@ -519,11 +535,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsscale_zta"
@@ -531,6 +550,7 @@
         type    vector2
         size    2
         default { "1" "1" }
+        help    "A constant scale applied to the texture coordinates."
         disablewhen "{ xn__inputsscale_control_06a == block } { xn__inputsscale_control_06a == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float2" }
@@ -541,18 +561,21 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotation_angle_n8a"
         label   "Rotation Angle"
         type    float
         default { "0" }
-        help    "Rotation in degrees"
+        help    "A constant rotation in degrees applied to the texture coordinates."
         disablewhen "{ xn__inputsrotation_angle_control_omb == block } { xn__inputsrotation_angle_control_omb == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float" }
@@ -563,11 +586,14 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "add"           "![BUTTONS_set_add]Add if Exists"
+            "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__inputsrotation_center_99a"
@@ -579,84 +605,5 @@
         disablewhen "{ xn__inputsrotation_center_control_bob == block } { xn__inputsrotation_center_control_bob == none }"
         range   { 0 10 }
         parmtag { "usdvaluetype" "float2" }
-    }
-    parm {
-        name    "xn__inputsudim_values_control_shb"
-        label   "inputs:udim_values"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    multiparm {
-        name    "udim_values"
-        label    "Udim Values"
-        default 0
-        disablewhen "{ xn__inputsudim_values_control_shb == block } { xn__inputsudim_values_control_shb == none }"
-        parmtag { "usdvaluetype" "int[]" }
-
-        parm {
-            name    "xn__inputsudim_values_r3a#"
-            label   "Udim Values"
-            type    integer
-            default { "0" }
-            range   { 0 10 }
-            parmtag { "moonray::is_parm" "1" }
-        }
-    }
-
-    parm {
-        name    "xn__inputsudim_files_control_5fb"
-        label   "inputs:udim_files"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    multiparm {
-        name    "udim_files"
-        label    "Udim Files"
-        default 0
-        disablewhen "{ xn__inputsudim_files_control_5fb == block } { xn__inputsudim_files_control_5fb == none }"
-        parmtag { "usdvaluetype" "string[]" }
-
-        parm {
-            name    "xn__inputsudim_files_41a#"
-            label   "Udim Files"
-            type    string
-            default { "" }
-            parmtag { "moonray::is_parm" "1" }
-        }
-    }
-
-    parm {
-        name    "xn__inputsudim_max_v_control_5fb"
-        label   "inputs:udim_max_v"
-        type    string
-        default { "none" }
-        menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
-        }
-    }
-    parm {
-        name    "xn__inputsudim_max_v_41a"
-        label   "Udim Max V"
-        type    integer
-        default { "10" }
-        help    "udim maximum v value"
-        disablewhen "{ xn__inputsudim_max_v_control_5fb == block } { xn__inputsudim_max_v_control_5fb == none }"
-        range   { 0 10 }
-        parmtag { "usdvaluetype" "int" }
     }
 }

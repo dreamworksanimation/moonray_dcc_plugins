@@ -11,11 +11,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayfalloff_near_16a"
@@ -32,11 +33,12 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayfalloff_far_f5a"
@@ -53,11 +55,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraynear_start_s3a"
@@ -65,7 +70,7 @@
             type    float
             default { "0" }
             help    "distance from light to start of fade in"
-            disablewhen "{ falloff_near == 0 } { xn__moonraynear_start_control_thb == block } { xn__moonraynear_start_control_thb == none }"
+            disablewhen "{ xn__moonraynear_start_control_thb == block } { xn__moonraynear_start_control_thb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -75,11 +80,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonraynear_end_j0a"
@@ -87,7 +95,7 @@
             type    float
             default { "0" }
             help    "distance from light to end of fade in"
-            disablewhen "{ falloff_near == 0 } { xn__moonraynear_end_control_keb == block } { xn__moonraynear_end_control_keb == none }"
+            disablewhen "{ xn__moonraynear_end_control_keb == block } { xn__moonraynear_end_control_keb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -97,11 +105,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayfar_start_51a"
@@ -109,7 +120,7 @@
             type    float
             default { "0" }
             help    "distance from light to start of fade out"
-            disablewhen "{ falloff_far == 0 } { xn__moonrayfar_start_control_6fb == block } { xn__moonrayfar_start_control_6fb == none }"
+            disablewhen "{ xn__moonrayfar_start_control_6fb == block } { xn__moonrayfar_start_control_6fb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -119,11 +130,14 @@
             type    string
             default { "none" }
             menujoin {
-                "set"           "Set Or Create"
-                "setexisting"   "Set if Exists"
-                "block"         "Block"
-                "none"          "Do Nothing"
+                "set"           "![BUTTONS_set_or_create]Set or Create"
+                "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+                "add"           "![BUTTONS_set_add]Add if Exists"
+                "multiply"      "![BUTTONS_set_multiply]Multiply if Exists"
+                "block"         "![BUTTONS_set_block]Block"
+                "none"          "![BUTTONS_set_nothing]Do Nothing"
             }
+            parmtag { "sidefx::look" "icon" }
         }
         parm {
             name    "xn__moonrayfar_end_wya"
@@ -131,7 +145,7 @@
             type    float
             default { "0" }
             help    "distance from light to end of fade out"
-            disablewhen "{ falloff_far == 0 } { xn__moonrayfar_end_control_xcb == block } { xn__moonrayfar_end_control_xcb == none }"
+            disablewhen "{ xn__moonrayfar_end_control_xcb == block } { xn__moonrayfar_end_control_xcb == none }"
             range   { 0 10 }
             parmtag { "usdvaluetype" "float" }
         }
@@ -143,18 +157,19 @@
         type    string
         default { "none" }
         menujoin {
-            "set"           "Set Or Create"
-            "setexisting"   "Set if Exists"
-            "block"         "Block"
-            "none"          "Do Nothing"
+            "set"           "![BUTTONS_set_or_create]Set or Create"
+            "setexisting"   "![BUTTONS_set_if_exists]Set if Exists"
+            "block"         "![BUTTONS_set_block]Block"
+            "none"          "![BUTTONS_set_nothing]Do Nothing"
         }
+        parmtag { "sidefx::look" "icon" }
     }
     parm {
         name    "xn__moonrayon_rqa"
         label   "On"
         type    toggle
         default { "1" }
-        help    "Turns the light filter on/off"
+        help    "Turns the light filter on/off."
         disablewhen "{ xn__moonrayon_control_s3a == block } { xn__moonrayon_control_s3a == none }"
         parmtag { "usdvaluetype" "bool" }
     }
